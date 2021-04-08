@@ -19,9 +19,10 @@ clean: clean-data-local clean-am
 
 clean-data-local:
 	echo -e "Going to clean xpm files"; \
-	rm -f *.xpm;	
+	rm -f *.xpm themerc;
 
-uninstall-local: uninstall-am
+uninstall-local: uninstall-am clean-data-local
+	rm -f $(DESTDIR)$(themedir)/*.xpm $(DESTDIR)$(themedir)/themerc
 
 EXTRA_DIST = \
 	generator.py \

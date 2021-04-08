@@ -21,6 +21,7 @@ clean-data-local:
 	echo -e "Going to clean png files"; \
 	rm -f *.png *.xpm;
 
-uninstall-local: uninstall-am
+uninstall-local: uninstall-am clean-data-local
+	rm -f $(DESTDIR)$(themedir)/*.png $(DESTDIR)$(themedir)/*.xpm
 
 EXTRA_DIST = generator.py
