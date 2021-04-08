@@ -22,3 +22,5 @@ clean-data-local:
 	rm -f *.png *.xpm;
 
 uninstall-local: uninstall-am
+
+EXTRA_DIST = generator.py

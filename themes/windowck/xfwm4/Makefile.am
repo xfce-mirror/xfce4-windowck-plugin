@@ -22,3 +22,7 @@ clean-data-local:
 	rm -f *.xpm;	
 
 uninstall-local: uninstall-am
+
+EXTRA_DIST = \
+	generator.py \
+	themerc

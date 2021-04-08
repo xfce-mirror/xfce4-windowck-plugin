@@ -23,3 +23,6 @@ clean-data-local:
 
 uninstall-local: uninstall-am
 
+EXTRA_DIST = \
+	generator.py \
+	themerc
