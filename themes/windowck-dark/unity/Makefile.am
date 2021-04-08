@@ -13,12 +13,14 @@ install-data-local:
 	for file in `find . -name "*.png"`; do \
 		$(mkdir_p) $(DESTDIR)$(themedir); \
 		$(install_sh_DATA) $$file $(DESTDIR)$(themedir); \
-	done; 
+	done;
 
 clean: clean-data-local clean-am
 
 clean-data-local:
 	echo -e "Going to clean png files"; \
-	rm -f *.png *.xpm;	
+	rm -f *.png *.xpm;
 
 uninstall-local: uninstall-am
+
+EXTRA_DIST = generator.py
