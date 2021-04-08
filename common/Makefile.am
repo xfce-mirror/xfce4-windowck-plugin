@@ -17,8 +17,7 @@ libwck_common_la_SOURCES = \
 	wck-plugin.c \
 	wck-plugin.h \
 	wck-utils.c \
-	wck-utils.h \
-	xpm-color-table.h 
+	wck-utils.h
 
 libwck_common_la_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -41,8 +40,5 @@ libwck_common_la_LIBADD = \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4PANEL_LIBS) \
 	$(LIBWNCK_LIBS)
-
-EXTRA_DIST =				\
-	gen-color-table.pl
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
