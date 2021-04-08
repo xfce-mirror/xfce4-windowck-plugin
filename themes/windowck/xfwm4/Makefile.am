@@ -13,7 +13,7 @@ install-data-local:
 	for file in `find . -name "*.xpm"` themerc; do \
 		$(mkdir_p) $(DESTDIR)$(themedir); \
 		$(install_sh_DATA) $$file $(DESTDIR)$(themedir); \
-	done; 
+	done;
 
 clean: clean-data-local clean-am
 
