@@ -10,7 +10,7 @@ install-data: install-data-local
 
 install-data-local:
 	echo -e "Going to copy files for $$size"; \
-	for file in `find . -name "*.xpm"` themerc; do \
+	for file in `find . -name "*.xpm"` $(srcdir)/themerc; do \
 		$(mkdir_p) $(DESTDIR)$(themedir); \
 		$(install_sh_DATA) $$file $(DESTDIR)$(themedir); \
 	done;
