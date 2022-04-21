@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-windowck-plugin\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 13:57+0200\n"
+"POT-Creation-Date: 2022-04-21 00:58+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>, 2022\n"
 "Language-Team: Slovak (https://www.transifex.com/xfce/teams/16840/sk/)\n"
@@ -44,12 +44,12 @@ msgstr "natiahnuť"
 #: ../panel-plugin/title/windowck-dialogs.glade.h:4
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
 msgid "Control maximized windows."
-msgstr "Ovládať maximalizované okná."
+msgstr "Spravovať maximalizované okná."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:5
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
 msgid "Control active windows."
-msgstr "Ovládať aktívne okná."
+msgstr "Spravovať aktívne okná."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:6
 msgid "Show the plugin on desktop."
@@ -66,7 +66,7 @@ msgstr "Šírka:"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:9
 msgid "chars"
-msgstr "znaky"
+msgstr "znakov"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:10
 msgid "Padding:"
@@ -74,7 +74,7 @@ msgstr "Odsadenie:"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:11
 msgid "pixels"
-msgstr "pixely"
+msgstr "pixely/ov"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:12
 msgid "Show the full title name"
@@ -90,11 +90,11 @@ msgstr "Synchronizovať písmo so správcom okien."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:15
 msgid "Subtitle font:"
-msgstr "Písmo podtitulku:"
+msgstr "Písmo v podtitulku:"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:16
 msgid "Title font:"
-msgstr "Písmo titulku:"
+msgstr "Písmo v názve:"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:17
 msgid "Alignment:"
@@ -123,7 +123,7 @@ msgstr "Ponuka"
 #: ../panel-plugin/title/windowck-dialogs.glade.h:23
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
 msgid "<b>Appearance</b>"
-msgstr "<b>Vzhľad</b>"
+msgstr "<b>Zobrazenie</b>"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:24
 msgid "left"
@@ -159,7 +159,7 @@ msgstr "Zobraziť tlačidlá na ploche."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
-msgstr ""
+msgstr "Odhlásiť sa po kliknutí na tlačidlo zavretia na ploche."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
