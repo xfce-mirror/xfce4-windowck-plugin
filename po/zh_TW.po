@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hsiu-Ming Chang <cges30901@gmail.com>, 2022
+# Walter Cheuk <wwycheuk@gmail.com>, 2022
+# Nick Schermer <nick@xfce.org>, 2022
+# 黃柏諺 <s8321414@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-21 00:58+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2022\n"
+"Language-Team: Chinese (Taiwan) (https://www.transifex.com/xfce/teams/16840/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../panel-plugin/title/windowck-dialogs.c:493
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "無法開啟以下 URL：%s"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "最大"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "固定為"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "延伸"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+msgid "Control maximized windows."
+msgstr "控制最大化的視窗。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+msgid "Control active windows."
+msgstr "控制作用中的視窗。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "Show the plugin on desktop."
+msgstr "在桌面時顯示外掛程式。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+msgid "<b>Behaviour</b>"
+msgstr "<b>行為</b>"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Width:"
+msgstr "寬："
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "chars"
+msgstr "字元"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "Padding:"
+msgstr "邊距："
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "pixels"
+msgstr "像素"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "Show the full title name"
+msgstr "顯示完整標題名稱"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Display the title in two lines"
+msgstr "分兩行顯示標題"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "Sync the font with the window manager."
+msgstr "將字型與視窗管理程式同步。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Subtitle font:"
+msgstr "子標題字型："
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Title font:"
+msgstr "標題字型："
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Alignment:"
+msgstr "對齊："
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title"
+msgstr "標題"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Show the window menu."
+msgstr "顯示視窗選單。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Show the window Icon."
+msgstr "顯示視窗圖示。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Place the menu icon on right."
+msgstr "將選單圖示放在右側。"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "Menu"
+msgstr "選單"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:23
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+msgid "<b>Appearance</b>"
+msgstr "<b>外觀</b>"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:24
+msgid "left"
+msgstr "左側"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:25
+msgid "center"
+msgstr "中間"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:26
+msgid "right"
+msgstr "右側"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "視窗標頭 - 標題"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr "將最大化的視窗標題放在面板上。"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+msgid "Directory"
+msgstr "目錄"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+msgid "Themes usable"
+msgstr "可用佈景主題"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+msgid "Show the buttons on desktop."
+msgstr "在桌面上顯示按鈕。"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+msgid "Logout on close button desktop."
+msgstr "在關閉桌面按鈕時登出。"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+msgid "Get in sync with the window manager theme."
+msgstr "與視窗管理程式的佈景主題同步。"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+msgid "Button layout:"
+msgstr "按鈕佈局："
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"按您想要的順序放置按鈕。\n"
+"範例：[HMC]\n"
+"H=隱藏, M=最大化/取消最大化, C=關閉"
+
+#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
+msgid "Window Header - Buttons"
+msgstr "視窗標頭 - 按鈕"
+
+#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
+msgid "Put the maximized window buttons on the panel."
+msgstr "將最大化的視窗按鈕放在面板上。"
