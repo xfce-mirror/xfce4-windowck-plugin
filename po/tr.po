@@ -77,11 +77,11 @@ msgstr "piksel"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:12
 msgid "Show the full title name"
-msgstr "Tam başlık adını göster."
+msgstr "Tam başlık adını göster"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:13
 msgid "Display the title in two lines"
-msgstr "Başlıkları iki satırda görüntüle"
+msgstr "Başlığı iki satırda görüntüle"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:14
 msgid "Sync the font with the window manager."
@@ -158,7 +158,7 @@ msgstr "Düğmeleri masaüstünde göster."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
-msgstr "Masaüstünde kapat düğmesinden çıkış yap"
+msgstr "Masaüstünde kapat düğmesinden çıkış yap."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
@@ -184,4 +184,4 @@ msgstr "Pencere Başlığı - Düğmeler"
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
-msgstr "Büyütülmüş pencere düğmelerini panele koy"
+msgstr "Büyütülmüş pencere düğmelerini panele koy."
