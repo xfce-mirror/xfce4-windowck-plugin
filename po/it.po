@@ -5,9 +5,9 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
-# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Dmytro Tokayev, 2022
+# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-21 00:58+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Dmytro Tokayev, 2022\n"
+"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr "caratteri"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:10
 msgid "Padding:"
-msgstr "Padding:"
+msgstr "Spaziatura:"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:11
 msgid "pixels"
@@ -79,11 +79,11 @@ msgstr "pixel"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:12
 msgid "Show the full title name"
-msgstr "Mostrare il nome completo del titolo:"
+msgstr "Mostra il nome completo del titolo:"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:13
 msgid "Display the title in two lines"
-msgstr "Mostrare il titolo in due righe"
+msgstr "Mostra il titolo in due righe"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:14
 msgid "Sync the font with the window manager."
@@ -115,7 +115,7 @@ msgstr "Mostra l'icona della finestra."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:21
 msgid "Place the menu icon on right."
-msgstr ""
+msgstr "Posiziona l'icona del menu sulla destra."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:22
 msgid "Menu"
@@ -140,7 +140,7 @@ msgstr "destra"
 
 #: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
 msgid "Window Header - Title"
-msgstr ""
+msgstr "Intestazione Finestra - Titolo"
 
 #: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
 msgid "Put the maximized window title on the panel."
@@ -152,7 +152,7 @@ msgstr "Cartella"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
 msgid "Themes usable"
-msgstr ""
+msgstr "Temi usabili"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
@@ -160,11 +160,11 @@ msgstr "Mostra i pulsanti sulla scrivania."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
-msgstr ""
+msgstr "Esci con il pulsante di chiusura del desktop."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
-msgstr ""
+msgstr "Mantieni sincronizzazione con il tema del gestore delle finestre."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
 msgid "Button layout:"
@@ -176,10 +176,13 @@ msgid ""
 "Example: [HMC]\n"
 "H=Hide, M=Maximize/unMaximize, C=Close"
 msgstr ""
+"Posizionare l'ID dei pulsanti nell'ordine desiderato.\n"
+"Esempio: [HMC]\n"
+"H=Nascondi, M=Massimizza/Minimizza, C=Chiudi"
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
-msgstr ""
+msgstr "Intestazione Finestra - Pulsanti"
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
