@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Nick Schermer <nick@xfce.org>, 2022
+# Moo, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-21 00:58+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: Moo, 2022\n"
+"Language-Team: Lithuanian (https://www.transifex.com/xfce/teams/16840/lt/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lt\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+
+#: ../panel-plugin/title/windowck-dialogs.c:493
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "Nepavyko atverti sekančio url: %s"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "daugiausiai"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "tiksliai"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "išplėsti"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+msgid "Control maximized windows."
+msgstr "Valdyti išskleistus langus."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+msgid "Control active windows."
+msgstr "Valdyti aktyvius langus."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "Show the plugin on desktop."
+msgstr "Rodyti įskiepį darbalaukyje."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+msgid "<b>Behaviour</b>"
+msgstr "<b>Elgsena</b>"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Width:"
+msgstr "Plotis:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "chars"
+msgstr "simbolių"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "Padding:"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "pixels"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "Show the full title name"
+msgstr "Rodyti pilną pavadinimą"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Display the title in two lines"
+msgstr "Rodyti pavadinimą dviejose eilutėse"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "Sync the font with the window manager."
+msgstr "Sinchronizuoti šriftą su langų tvarkytuve."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Subtitle font:"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Title font:"
+msgstr "Pavadinimo šriftas:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Alignment:"
+msgstr "Lygiavimas:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Show the window menu."
+msgstr "Rodyti lango meniu."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Show the window Icon."
+msgstr "Rodyti lango piktogramą."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Place the menu icon on right."
+msgstr "Išdėstyti meniu piktogramą dešinėje."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "Menu"
+msgstr "Meniu"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:23
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+msgid "<b>Appearance</b>"
+msgstr "<b>Išvaizda</b>"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:24
+msgid "left"
+msgstr "kairėje"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:25
+msgid "center"
+msgstr "centre"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:26
+msgid "right"
+msgstr "dešinėje"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "Lango antraštė - Pavadinimas"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+msgid "Directory"
+msgstr "Katalogas"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+msgid "Themes usable"
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+msgid "Show the buttons on desktop."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+msgid "Logout on close button desktop."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+msgid "Get in sync with the window manager theme."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+msgid "Button layout:"
+msgstr "Mygtukų išdėstymas:"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"Išdėstykite mygtukų id pageidaujama tvarka.\n"
+"Pavyzdys: [HMC]\n"
+"H=Slėpti, M=Išskleisti/grąžinti iš išskleidimo, C=Užverti"
+
+#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
+msgid "Window Header - Buttons"
+msgstr "Lango antraštė - Mygtukai"
+
+#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
+msgid "Put the maximized window buttons on the panel."
+msgstr ""
