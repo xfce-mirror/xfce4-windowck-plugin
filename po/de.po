@@ -9,15 +9,16 @@
 # Nick Schermer <nick@xfce.org>, 2022
 # Michael John <amstelchen@gmail.com>, 2022
 # Joerg Schachner, 2022
+# Andreas Eitel <github-aneitel@online.de>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-windowck-plugin\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 13:57+0200\n"
+"POT-Creation-Date: 2022-04-21 00:58+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Joerg Schachner, 2022\n"
+"Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2022\n"
 "Language-Team: German (https://www.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,7 +146,7 @@ msgstr "Fensterleiste - Titel"
 
 #: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
 msgid "Put the maximized window title on the panel."
-msgstr ""
+msgstr "Setzen des Titels des maximierten Fensters auf die Leiste."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
 msgid "Directory"
@@ -161,7 +162,7 @@ msgstr "Knöpfe auf dem Desktop zeigen."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
-msgstr ""
+msgstr "Abmelden bei Schließen des Desktops."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
