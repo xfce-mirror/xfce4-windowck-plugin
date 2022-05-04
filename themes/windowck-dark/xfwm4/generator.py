@@ -23,42 +23,6 @@
 from os import linesep
 
 
-def gendeg2(color1, color2, steps):
-    ''' Generates a list of colors being a gradient from color1 to color2 on
-        given steps number. '''
-    def fix(c):
-        if c < 0: return 0
-        elif c > 255: return 255
-        return int(round(c))
-    a = [0]*steps
-    c1 = (int(color1[1:3],16),int(color1[3:5],16),int(color1[5:7],16))
-    c2 = (int(color2[1:3],16),int(color2[3:5],16),int(color2[5:7],16))
-    ci = (float(c2[0]-c1[0])/(steps+1),float(c2[1]-c1[1])/(steps+1),float(c2[2]-c1[2])/(steps+1))
-    tr = [c1]
-    for i in range(steps):
-        tr.append((fix(tr[-1][0]+ci[0]),fix(tr[-1][1]+ci[1]),fix(tr[-1][2]+ci[2])))
-    tr.append(c2)
-    return [("#%2s%2s%2s" % (hex(i[0])[2:],hex(i[1])[2:],hex(i[2])[2:])).replace(" ", "0") for i in tr]
-
-def gendeg3(color1, color2, color3, steps):
-    ''' Generates a list of colors being a gradient from color1 to color3, with
-        color2 at middle, with given steps number between each color. '''
-    return gendeg(color1,color2,steps)[:-1]+gendeg(color2,color3,steps)
-
-def gendeg(*args):
-    ''' Interface between gendeg2 or gendeg3 depending on arg number '''
-    if len(args) == 3: return gendeg2(*args)
-    elif len(args) == 4: return gendeg3(*args)
-    raise NotImplemented("Bad arguments, see gendeg2 and gendeg3 documentation.")
-
-def genmap(dmap, chars, *gendeg_args):
-    ''' 
-
-    '''
-    r = dict(zip(chars,gendeg(*gendeg_args)))
-    r.update(dmap)
-    return r
-
 def generate(name, txt, dic, x0=0, y0=0, w=None, h=None):
     ''' Creates xpm file with given name, given draw as string, colors as dict.
         Extra args are for generate parts of xpm.
@@ -77,26 +41,26 @@ def generate(name, txt, dic, x0=0, y0=0, w=None, h=None):
                 colors[j] = dic[j]
     xpmlines = [
         "/* XPM */",
-        "static char * %s = {" % name.replace("-", "_"),
-        "\"%d %d %d 1\", " % (w, h, len(colors))
+        f'static char * {name.replace("-", "_")} = {{',
+        f'"{w} {h} {len(colors)} 1", '
         ]
     xpmlines.extend(
-        "\"%s\tc %s\", " % i for i in list(colors.items())
+        f'"{i[0]}\tc {i[1]}", ' for i in list(colors.items())
         )
     xpmlines.extend(
-        "\"%s\", " % i for i in lines
+        f'"{i}", ' for i in lines
         )
     xpmlines.append(
         "};"
         )
-    with open("%s.xpm" % name,"w") as f: f.write(linesep.join(xpmlines))
+    with open(f"{name}.xpm", "w") as f: f.write(linesep.join(xpmlines))
 
 def holePos(txt):
     ''' Detects a hole on a xpm string, used to find border sizes.'''
     lines = txt.split("\n")
-    for i in range(len(lines)):
-        if " " in lines[i]:
-            return (lines[i].find(" "),i)
+    for i, line in enumerate(lines):
+        if " " in line:
+            return (line.find(" "), i)
     raise ValueError
 
 def holeSize(txt):
@@ -115,9 +79,9 @@ def build():
     gvar = globals()
     for i in ("close", "hide", "maximize", "maximize_toggled", "menu", "shade", "shade_toggled", "stick", "stick_toggled"):
         for j in ("active", "pressed", "inactive", "prelight"):
-            name = "%s_%s" % (i,j)
+            name = f"{i}_{j}"
             if name in gvar:
-                generate(name.replace("_", "-"), gvar[name], gvar["%s_map" % name])
+                generate(name.replace("_", "-"), gvar[name], gvar[f"{name}_map"])
     
     alw, alh = (len(active.split("\n")[0]),len(active.split("\n")))
     ilw, ilh = (len(inactive.split("\n")[0]),len(inactive.split("\n")))
@@ -155,8 +119,8 @@ def build():
 
     #top
     for i in range(1,6):
-        generate("title-%d-active" % i, active, amap, acw, 0, alw-2*acw, ahy)
-        generate("title-%d-inactive" % i, inactive, imap, icw, 0, alw-2*icw, ihy)
+        generate(f"title-{i}-active", active, amap, acw, 0, alw-2*acw, ahy)
+        generate(f"title-{i}-inactive", inactive, imap, icw, 0, alw-2*icw, ihy)
 
     #bottom
     generate("bottom-active", active, amap, ahx, ahy+ahh, ahw, ibh)
