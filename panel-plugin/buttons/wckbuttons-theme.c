@@ -60,7 +60,7 @@ static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
 gchar *button_layout_filter  (const gchar *string, const gchar *default_layout)
 {
     guint i, j;
-    gchar layout[BUTTONS] = {0};
+    gchar layout[BUTTONS+1] = {0};
 
     /* WARNING : beware of bluffer overflow !!!  */
     j = 0;
