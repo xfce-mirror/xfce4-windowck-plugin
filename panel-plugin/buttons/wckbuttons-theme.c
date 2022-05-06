@@ -57,10 +57,10 @@ static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
 }
 
 
-gchar *button_layout_filter  (const gchar *string, const gchar *default_layout)
+gchar *button_layout_filter (const gchar *string, const gchar *default_layout)
 {
     guint i, j;
-    gchar layout[BUTTONS] = {0};
+    gchar layout[BUTTONS+1] = {0};
 
     /* WARNING : beware of bluffer overflow !!!  */
     j = 0;
@@ -88,14 +88,14 @@ gchar *button_layout_filter  (const gchar *string, const gchar *default_layout)
 }
 
 
-gchar *opposite_layout_filter  (const gchar *string)
+gchar *opposite_layout_filter (const gchar *string)
 {
-    guint i, j;
-    gchar layout[8] = {0};
+    const size_t n = strlen (string);
+    size_t i, j;
+    gchar layout[n+1];
 
-    /* WARNING : beware of bluffer overflow !!!  */
     j = 0;
-    for (i = 0; i < strlen (string) && j < 8; i++)
+    for (i = 0; i < n; i++)
     {
         switch (string[i])
         {
@@ -109,6 +109,7 @@ gchar *opposite_layout_filter  (const gchar *string)
         }
     }
 
+    g_assert (j < n+1);
     layout[j] = '\0';
 
     return g_strdup (layout);
