@@ -43,4 +43,4 @@ For Arch Linux users [AUR package](https://aur.archlinux.org/packages/xfce4-wind
 
 # How to report bugs?
 
-Bugs should be reported right to this [GitHub page](https://github.com/nikitabobko/xfce4-windowck-plugin-bobko-mod/issues)
+Bugs should be reported right to [this page](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues).
