@@ -19,7 +19,7 @@ clean: clean-data-local clean-am
 
 clean-data-local:
 	@echo -e "Going to clean xpm files"
-	rm -f *.xpm themerc
+	rm -f *.xpm
 
 uninstall-local: uninstall-am clean-data-local
 	rm -f $(DESTDIR)$(themedir)/*.xpm $(DESTDIR)$(themedir)/themerc
