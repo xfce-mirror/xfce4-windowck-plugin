@@ -167,25 +167,26 @@ gchar *get_rc_button_layout (const gchar *theme)
 
     if (G_LIKELY(wm_themedir))
     {
-        const gchar *rc_button_layout;
-        gchar *filename;
-        XfceRc       *rc;
+        gchar  *filename;
+        XfceRc *rc;
 
         /* check in the rc if the theme supports a custom button layout */
         filename = g_build_filename (wm_themedir, THEMERC, NULL);
+        g_free (wm_themedir);
 
         rc = xfce_rc_simple_open (filename, TRUE);
         g_free (filename);
 
         if (G_LIKELY (rc))
         {
-            rc_button_layout = xfce_rc_read_entry (rc, "button_layout", NULL);
+            const gchar *rc_button_layout = xfce_rc_read_entry (rc, "button_layout", NULL);
+
+            xfce_rc_close (rc);
 
             if (rc_button_layout)
                 return button_layout_filter (rc_button_layout, NULL);
         }
     }
-    g_free (wm_themedir);
 
     return NULL;
 }
