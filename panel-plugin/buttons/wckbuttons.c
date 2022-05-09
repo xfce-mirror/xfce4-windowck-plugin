@@ -225,17 +225,19 @@ static void wckbuttons_free (XfcePanelPlugin *plugin, WBPlugin    *wb)
 {
     GtkWidget *dialog;
 
+    disconnect_wnck (wb->win);
+
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data (G_OBJECT (plugin), "dialog");
     if (G_UNLIKELY (dialog != NULL))
-    gtk_widget_destroy (dialog);
+        gtk_widget_destroy (dialog);
 
     /* destroy the panel widgets */
     gtk_widget_destroy (wb->box);
 
     /* cleanup the settings */
     if (G_LIKELY (wb->prefs->button_layout != NULL))
-    g_free (wb->prefs->button_layout);
+        g_free (wb->prefs->button_layout);
 
     /* free the plugin structure */
     g_slice_free(WckUtils, wb->win);

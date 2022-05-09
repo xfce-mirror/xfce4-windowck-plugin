@@ -41,6 +41,8 @@ typedef struct {
     gulong msh;                         // upper maximized window state handler id
     gulong ash;                         // active state handler id
     gulong mwh;                         // upper maximized workspace handler id
+
+    gulong sah;                         // active window changed handler id
     gulong sch;                         // window closed handler id
     gulong soh;                         // window opened handler id
     gulong svh;                         // viewport changed handler id
@@ -52,6 +54,7 @@ typedef struct {
 } WckUtils;
 
 void init_wnck (WckUtils *win, gboolean only_maximized, gpointer data);
+void disconnect_wnck (WckUtils *win);
 void on_wck_state_changed (WnckWindow *controlwindow, gpointer data);
 void on_control_window_changed(WnckWindow *controlwindow, WnckWindow *previous, gpointer data);
 void reload_wnck (WckUtils *win, gboolean only_maximized, gpointer data);
