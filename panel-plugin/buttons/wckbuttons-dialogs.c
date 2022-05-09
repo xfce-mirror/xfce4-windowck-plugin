@@ -392,45 +392,9 @@ wckbuttons_configure_response (GtkWidget *dialog, gint response, WBPlugin *wb)
 
 void wckbuttons_configure (XfcePanelPlugin *plugin, WBPlugin *wb)
 {
-    GtkWidget *dialog;
-    GtkWidget *content_area;
     GtkWidget *ca;
-    const gchar *name;
-
-    /* block the plugin menu */
-    xfce_panel_plugin_block_menu (plugin);
-
-    /* create the dialog */
-    name = xfce_panel_plugin_get_display_name (plugin);
-    dialog = xfce_titled_dialog_new_with_mixed_buttons (_(name),
-                                                        GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
-                                                        GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                        "help-browser", _("Help"), GTK_RESPONSE_HELP,
-                                                        "window-close", _("_Close"), GTK_RESPONSE_OK,
-                                                        NULL);
-
-    /* center dialog on the screen */
-    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
-
-    /* set dialog icon */
-    gtk_window_set_icon_name (GTK_WINDOW (dialog), "xfce4-settings");
-
-    /* link the dialog to the plugin, so we can destroy it when the plugin
-    * is closed, but the dialog is still open */
-    g_object_set_data (G_OBJECT (plugin), "dialog", dialog);
-
-    /* connect the reponse signal to the dialog */
-    g_signal_connect (G_OBJECT (dialog), "response",
-                    G_CALLBACK(wckbuttons_configure_response), wb);
-
-    content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog) );
 
     ca = build_properties_area (wb, wckbuttons_dialogs_ui, wckbuttons_dialogs_ui_length);
-    if (G_LIKELY (ca != NULL))
-        gtk_container_add(GTK_CONTAINER (content_area), ca);
-    else
-        DBG("Failed to create content area");
 
-    /* show the entire dialog */
-    gtk_widget_show (dialog);
+    wck_configure_dialog (plugin, ca, G_CALLBACK(wckbuttons_configure_response), wb);
 }
