@@ -481,7 +481,10 @@ void init_title (WindowckPlugin *wckp)
     gtk_label_set_ellipsize(wckp->title, PANGO_ELLIPSIZE_END);
 
     if (wckp->prefs->size_mode != SHRINK)
-        gtk_misc_set_alignment(GTK_MISC(wckp->title), wckp->prefs->title_alignment / 10.0, 0.5);
+    {
+        gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 10.0);
+        gtk_label_set_yalign (wckp->title, 0.5);
+    }
 
     /* get the xfwm4 chanel */
     wckp->wm_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xfwm4");
