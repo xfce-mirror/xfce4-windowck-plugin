@@ -6,8 +6,8 @@
 # Translators:
 # Påvel Nicklasson <pavel2@frimix.se>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Luna Jernberg <bittin@cafe8bitar.se>, 2022
 # Arve Eriksson <031299870@telia.com>, 2022
+# Luna Jernberg <bittin@cafe8bitar.se>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-21 00:58+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Arve Eriksson <031299870@telia.com>, 2022\n"
+"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,12 +45,12 @@ msgstr "expandera"
 #: ../panel-plugin/title/windowck-dialogs.glade.h:4
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
 msgid "Control maximized windows."
-msgstr ""
+msgstr "Kontrollera maximerat fönster."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:5
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
 msgid "Control active windows."
-msgstr ""
+msgstr "Kontrollera aktivt fönster."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:6
 msgid "Show the plugin on desktop."
