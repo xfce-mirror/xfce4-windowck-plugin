@@ -100,19 +100,21 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
 {
     WnckWorkspace *workspace = wnck_window_get_workspace(window);
     WnckScreen *screen = wnck_workspace_get_screen(workspace);
-    if (wnck_screen_get_active_workspace(screen) != workspace) {
+    if (wnck_screen_get_active_workspace(screen) == workspace) {
+        GList *windows = wnck_screen_get_windows_stacked(screen);
+        GList *top_window = g_list_last(windows);
+        GList *bottom_window = g_list_first(windows);
+        while (top_window->data != window && top_window != bottom_window) {
+            if (wnck_window_is_maximized((WnckWindow *)top_window->data)) {
+                return FALSE;
+            }
+            top_window = top_window->prev;
+        }
+        return TRUE;
+    }
+    else {
         return FALSE;
     }
-    GList *windows = wnck_screen_get_windows_stacked(screen);
-    GList *top_window = g_list_last(windows);
-    GList *bottom_window = g_list_first(windows);
-    while (top_window->data != window && top_window != bottom_window) {
-        if (wnck_window_is_maximized((WnckWindow *)top_window->data)) {
-            return FALSE;
-        }
-        top_window = top_window->prev;
-    }
-    return TRUE;
 }
 
 /* Triggers when controlwindow's name changes */
@@ -440,15 +442,14 @@ static void on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const g
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "title_font")
-					|| !strcmp (name, "show_app_icon"))
+                if (!strcmp (name, "title_font") || !strcmp (name, "show_app_icon"))
                 {
                     apply_wm_settings (wckp);
                 }
                 else if (!strcmp (name, "theme"))
                 {
-					init_title(wckp);
-					reload_wnck_title (wckp);
+                    init_title(wckp);
+                    reload_wnck_title (wckp);
                 }
                 break;
             default:
