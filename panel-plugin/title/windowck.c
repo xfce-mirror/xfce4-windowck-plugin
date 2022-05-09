@@ -166,7 +166,7 @@ void reset_symbol (WindowckPlugin *wckp)
         if (wckp->prefs->show_app_icon)
             wckp->icon->symbol = xfce_panel_image_new();
         else
-            wckp->icon->symbol = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+            wckp->icon->symbol = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
 
         gtk_container_add (GTK_CONTAINER (wckp->icon->eventbox), wckp->icon->symbol);
         gtk_widget_show_all (GTK_WIDGET(wckp->icon->eventbox));
