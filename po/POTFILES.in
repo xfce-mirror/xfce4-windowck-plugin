@@ -1,3 +1,4 @@
+common/wck-plugin.c
 panel-plugin/title/windowck-dialogs.c
 panel-plugin/title/windowck-dialogs.glade
 panel-plugin/title/windowck-plugin.desktop.in
