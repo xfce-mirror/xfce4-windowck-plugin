@@ -60,7 +60,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
             if (!wnck_window_is_active(controlwindow))
                 gtk_widget_set_sensitive (wckp->icon->symbol, FALSE);
 
-            xfce_panel_image_set_from_source (XFCE_PANEL_IMAGE (wckp->icon->symbol),GTK_STOCK_HOME);
+            xfce_panel_image_set_from_source (XFCE_PANEL_IMAGE (wckp->icon->symbol), "go-home");
         }
     }
 
