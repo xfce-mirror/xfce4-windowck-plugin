@@ -128,7 +128,7 @@ static void on_two_lines_toggled(GtkToggleButton *two_lines, WindowckPlugin *wck
     if (wckp->prefs->two_lines)
     {
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(sync_wm_font), FALSE);
-	}
+    }
 
     gtk_widget_set_sensitive (subtitle_font, wckp->prefs->two_lines);
     gtk_widget_set_sensitive (subtitle_font_label, wckp->prefs->two_lines);
