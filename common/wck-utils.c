@@ -268,15 +268,7 @@ void toggle_maximize (WnckWindow *window)
 
 void reload_wnck (WckUtils *win, gboolean only_maximized, gpointer data)
 {
-    /* disconnect all signal handlers */
-    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->ash);
-    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->msh);
-    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->mwh);
-
-    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->sch);
-    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->soh);
-    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->svh);
-    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->swh);
+    disconnect_wnck (win);
 
     init_wnck (win, only_maximized, data);
 }
@@ -298,7 +290,7 @@ void init_wnck (WckUtils *win, gboolean only_maximized, gpointer data)
     win->only_maximized = only_maximized;
 
     /* Global window tracking */
-    g_signal_connect(win->activescreen, "active-window-changed", G_CALLBACK (active_window_changed), win);
+    win->sah = g_signal_connect(win->activescreen, "active-window-changed", G_CALLBACK (active_window_changed), win);
 
     if (win->only_maximized)
     {
@@ -314,4 +306,19 @@ void init_wnck (WckUtils *win, gboolean only_maximized, gpointer data)
     
     if (!win->controlwindow)
         on_control_window_changed (NULL, NULL, win->data);
+}
+
+
+void disconnect_wnck (WckUtils *win)
+{
+    /* disconnect all signal handlers */
+    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->ash);
+    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->msh);
+    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->mwh);
+
+    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->sah);
+    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->sch);
+    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->soh);
+    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->svh);
+    wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->swh);
 }

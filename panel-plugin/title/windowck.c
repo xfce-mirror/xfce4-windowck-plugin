@@ -287,6 +287,8 @@ static void windowck_free(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 {
     GtkWidget *dialog;
 
+    disconnect_wnck (wckp->win);
+
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data(G_OBJECT (plugin), "dialog");
     if (G_UNLIKELY (dialog != NULL))
