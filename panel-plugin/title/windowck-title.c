@@ -378,10 +378,8 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
     menu = wnck_action_menu_new (wckp->win->controlwindow);
 
     gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(wckp->icon->eventbox), NULL);
-    gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-                      xfce_panel_plugin_position_menu,
-                      wckp->plugin,
-                      1, gtk_get_current_event_time ());
+    gtk_menu_popup_at_widget (GTK_MENU (menu), GTK_WIDGET(wckp->icon->eventbox),
+                              GDK_GRAVITY_STATIC, GDK_GRAVITY_STATIC, NULL);
 
     return TRUE;
 }
@@ -467,7 +465,10 @@ void init_title (WindowckPlugin *wckp)
     gtk_label_set_ellipsize(wckp->title, PANGO_ELLIPSIZE_END);
 
     if (wckp->prefs->size_mode != SHRINK)
-        gtk_misc_set_alignment(GTK_MISC(wckp->title), wckp->prefs->title_alignment / 10.0, 0.5);
+    {
+        gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 10.0);
+        gtk_label_set_yalign (wckp->title, 0.5);
+    }
 
     /* get the xfwm4 chanel */
     wckp->wm_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xfwm4");
@@ -479,7 +480,10 @@ void init_title (WindowckPlugin *wckp)
         g_signal_connect (wckp->wm_channel, "property-changed", G_CALLBACK (on_xfwm_channel_property_changed), wckp);
     }
 
-    gtk_alignment_set_padding(GTK_ALIGNMENT(wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
+    gtk_widget_set_margin_top (wckp->box, ICON_PADDING);
+    gtk_widget_set_margin_bottom (wckp->box, ICON_PADDING);
+    gtk_widget_set_margin_start (wckp->box, wckp->prefs->title_padding);
+    gtk_widget_set_margin_end (wckp->box, wckp->prefs->title_padding);
     gtk_box_set_spacing (GTK_BOX(wckp->box), wckp->prefs->title_padding);
 
     /* get the xsettings chanel to update the gtk theme */
