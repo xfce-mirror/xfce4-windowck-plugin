@@ -192,7 +192,7 @@ static void on_sync_wm_font_toggled(GtkToggleButton *sync_wm_font, WindowckPlugi
     wckp->prefs->sync_wm_font = gtk_toggle_button_get_active (sync_wm_font);
     init_title (wckp);
     title_font = GTK_FONT_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "title_font"));
-    gtk_font_button_set_font_name(title_font, wckp->prefs->title_font);
+    gtk_font_chooser_set_font (GTK_FONT_CHOOSER (title_font), wckp->prefs->title_font);
 }
 
 
@@ -201,7 +201,7 @@ static void on_title_font_set(GtkFontButton *title_font, WindowckPlugin *wckp)
     PangoFontDescription *font;
 
     g_free(wckp->prefs->title_font);
-    wckp->prefs->title_font = g_strdup(gtk_font_button_get_font_name(title_font));
+    wckp->prefs->title_font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (title_font)));
 
     font = pango_font_description_from_string(wckp->prefs->title_font);
     gtk_widget_modify_font(GTK_WIDGET(wckp->title), font);
@@ -217,7 +217,7 @@ static void on_subtitle_font_set(GtkFontButton *subtitle_font, WindowckPlugin *w
     PangoFontDescription *font;
 
     g_free(wckp->prefs->subtitle_font);
-    wckp->prefs->subtitle_font = g_strdup(gtk_font_button_get_font_name(subtitle_font));
+    wckp->prefs->subtitle_font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (subtitle_font)));
 
     font = pango_font_description_from_string(wckp->prefs->subtitle_font);
     gtk_widget_modify_font(GTK_WIDGET(wckp->title), font);
@@ -399,7 +399,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 
             if (G_LIKELY (title_font != NULL))
             {
-                gtk_font_button_set_font_name(title_font, wckp->prefs->title_font);
+                gtk_font_chooser_set_font (GTK_FONT_CHOOSER (title_font), wckp->prefs->title_font);
                 g_signal_connect(title_font, "font-set", G_CALLBACK(on_title_font_set), wckp);
             }
             else {
@@ -410,7 +410,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
             subtitle_font_label = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "subtitle_font_label"));
             if (G_LIKELY (subtitle_font != NULL))
             {
-                gtk_font_button_set_font_name(subtitle_font, wckp->prefs->subtitle_font);
+                gtk_font_chooser_set_font (GTK_FONT_CHOOSER (subtitle_font), wckp->prefs->subtitle_font);
                 gtk_widget_set_sensitive (GTK_WIDGET(subtitle_font), wckp->prefs->two_lines);
                 gtk_widget_set_sensitive (subtitle_font_label, wckp->prefs->two_lines);
                 g_signal_connect(subtitle_font, "font-set", G_CALLBACK(on_subtitle_font_set), wckp);
