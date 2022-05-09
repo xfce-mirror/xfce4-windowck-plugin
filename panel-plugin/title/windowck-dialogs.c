@@ -206,7 +206,7 @@ static void on_title_font_set(GtkFontButton *title_font, WindowckPlugin *wckp)
     wckp->prefs->title_font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (title_font)));
 
     font = pango_font_description_from_string(wckp->prefs->title_font);
-    gtk_widget_modify_font(GTK_WIDGET(wckp->title), font);
+    gtk_widget_override_font (GTK_WIDGET(wckp->title), font);
     pango_font_description_free(font);
 
     if (wckp->prefs->sync_wm_font)
@@ -221,7 +221,7 @@ static void on_subtitle_font_set(GtkFontButton *subtitle_font, WindowckPlugin *w
     wckp->prefs->subtitle_font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (subtitle_font)));
 
     font = pango_font_description_from_string(wckp->prefs->subtitle_font);
-    gtk_widget_modify_font(GTK_WIDGET(wckp->title), font);
+    gtk_widget_override_font (GTK_WIDGET(wckp->title), font);
     pango_font_description_free(font);
 }
 
