@@ -390,10 +390,8 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
     menu = wnck_action_menu_new (wckp->win->controlwindow);
 
     gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(wckp->icon->eventbox), NULL);
-    gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-                      xfce_panel_plugin_position_menu,
-                      wckp->plugin,
-                      1, gtk_get_current_event_time ());
+    gtk_menu_popup_at_widget (GTK_MENU (menu), GTK_WIDGET(wckp->icon->eventbox),
+                              GDK_GRAVITY_STATIC, GDK_GRAVITY_STATIC, NULL);
 
     return TRUE;
 }
