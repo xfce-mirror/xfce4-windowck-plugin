@@ -493,7 +493,10 @@ void init_title (WindowckPlugin *wckp)
         g_signal_connect (wckp->wm_channel, "property-changed", G_CALLBACK (on_xfwm_channel_property_changed), wckp);
     }
 
-    gtk_alignment_set_padding(GTK_ALIGNMENT(wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
+    gtk_widget_set_margin_top (wckp->box, ICON_PADDING);
+    gtk_widget_set_margin_bottom (wckp->box, ICON_PADDING);
+    gtk_widget_set_margin_start (wckp->box, wckp->prefs->title_padding);
+    gtk_widget_set_margin_end (wckp->box, wckp->prefs->title_padding);
     gtk_box_set_spacing (GTK_BOX(wckp->box), wckp->prefs->title_padding);
 
     /* get the xsettings chanel to update the gtk theme */
