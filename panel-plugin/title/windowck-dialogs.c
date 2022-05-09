@@ -35,8 +35,6 @@
 #include "windowck-dialogs.h"
 #include "windowck-dialogs_ui.h"
 
-/* the website url */
-#define PLUGIN_WEBSITE "http://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin"
 #define TITLE_SIZE_MIN 3
 
 
@@ -487,10 +485,10 @@ static void windowck_configure_response(GtkWidget *dialog, gint response, Window
     if (response == GTK_RESPONSE_HELP)
     {
         /* show help */
-        result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PLUGIN_WEBSITE, NULL);
+        result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
 
         if (G_UNLIKELY (result == FALSE))
-            g_warning (_("Unable to open the following url: %s"), PLUGIN_WEBSITE);
+            g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
     }
     else
     {
