@@ -99,3 +99,13 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
 
     return refresh;
 }
+
+void show_help()
+{
+    gboolean result;
+
+    result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
+
+    if (G_UNLIKELY (result == FALSE))
+        g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
+}
