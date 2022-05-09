@@ -24,9 +24,6 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4panel/libxfce4panel.h>
 
-/* the website url */
-#define PLUGIN_WEBSITE "http://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin"
-
 G_BEGIN_DECLS
 
 XfconfChannel *
