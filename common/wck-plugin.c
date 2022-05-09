@@ -79,7 +79,7 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
             "version", PACKAGE_VERSION,
             "program-name", xfce_panel_plugin_get_display_name (plugin),
             "comments", xfce_panel_plugin_get_comment (plugin),
-            "website", PLUGIN_WEBSITE,
+            "website", PACKAGE_URL,
             "copyright", "Copyright \302\251 2013-2015\n",
             "authors", auth,
             NULL );
