@@ -478,17 +478,12 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 }
 
 
-static void windowck_configure_response(GtkWidget *dialog, gint response, WindowckPlugin *wckp)
+static void
+windowck_configure_response(GtkWidget *dialog, gint response, WindowckPlugin *wckp)
 {
-    gboolean result;
-
     if (response == GTK_RESPONSE_HELP)
     {
-        /* show help */
-        result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
-
-        if (G_UNLIKELY (result == FALSE))
-            g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
+        show_help();
     }
     else
     {
