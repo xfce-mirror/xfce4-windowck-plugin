@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 00:58+0200\n"
+"POT-Creation-Date: 2022-05-10 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/xfce/teams/16840/pt/)\n"
@@ -23,11 +23,22 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-plugin/title/windowck-dialogs.c:493
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#: ../common/wck-plugin.c:97
+msgid "_Refresh"
+msgstr "_Recarregar"
+
+#: ../common/wck-plugin.c:115
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Não foi possível abrir o seguinte url: %s"
+
+#: ../common/wck-plugin.c:133
+msgid "Help"
+msgstr "Ajuda"
+
+#: ../common/wck-plugin.c:134
+msgid "_Close"
+msgstr "Fe_char"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
