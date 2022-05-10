@@ -203,6 +203,7 @@ static void on_title_font_set(GtkFontButton *title_font, WindowckPlugin *wckp)
 {
     PangoFontDescription *font;
 
+    g_free(wckp->prefs->title_font);
     wckp->prefs->title_font = g_strdup(gtk_font_button_get_font_name(title_font));
 
     font = pango_font_description_from_string(wckp->prefs->title_font);
@@ -218,6 +219,7 @@ static void on_subtitle_font_set(GtkFontButton *subtitle_font, WindowckPlugin *w
 {
     PangoFontDescription *font;
 
+    g_free(wckp->prefs->subtitle_font);
     wckp->prefs->subtitle_font = g_strdup(gtk_font_button_get_font_name(subtitle_font));
 
     font = pango_font_description_from_string(wckp->prefs->subtitle_font);
@@ -276,6 +278,9 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
     GtkToggleButton *show_app_icon, *icon_on_right, *show_window_menu;
     GtkFontButton *title_font, *subtitle_font;
     GtkWidget *width_unit, *subtitle_font_label;
+
+    if (wckp->prefs->builder)
+        g_object_unref(G_OBJECT (wckp->prefs->builder));
 
     wckp->prefs->builder = gtk_builder_new();
 
@@ -463,7 +468,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                 DBG("No widget with the name \"size_mode\" found");
             }
 
-            return GTK_WIDGET(area) ;
+            return GTK_WIDGET(area);
         }
         else {
             g_set_error_literal(&error, 0, 0, "No widget with the name \"contentarea\" found");
@@ -474,7 +479,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
     g_error_free(error);
     g_object_unref(G_OBJECT (wckp->prefs->builder) );
 
-    return NULL ;
+    return NULL;
 }
 
 
