@@ -30,4 +30,4 @@ typedef struct
 xfwmColorSymbol;
 
 GdkPixbuf *             pixbuf_load (const gchar *, const gchar *, xfwmColorSymbol *);
-GdkPixbuf *	            pixbuf_alpha_load (const gchar * dir, const gchar * file);
+GdkPixbuf *             pixbuf_alpha_load (const gchar * dir, const gchar * file);
