@@ -194,16 +194,26 @@ static void on_sync_wm_font_toggled(GtkToggleButton *sync_wm_font, WindowckPlugi
 }
 
 
+static gchar *
+set_title_font (GtkLabel *title, GtkFontButton *font_button)
+{
+    gchar *font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (font_button)));
+    PangoFontDescription *font_desc = pango_font_description_from_string (font);
+    PangoAttribute *attr = pango_attr_font_desc_new (font_desc);
+    PangoAttrList *attr_list = pango_attr_list_new ();
+
+    pango_attr_list_insert (attr_list, attr);
+    gtk_label_set_attributes (title, attr_list);
+
+    pango_attr_list_unref (attr_list);
+    pango_font_description_free (font_desc);
+    return font;
+}
+
 static void on_title_font_set(GtkFontButton *title_font, WindowckPlugin *wckp)
 {
-    PangoFontDescription *font;
-
-    g_free(wckp->prefs->title_font);
-    wckp->prefs->title_font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (title_font)));
-
-    font = pango_font_description_from_string(wckp->prefs->title_font);
-    gtk_widget_override_font (GTK_WIDGET(wckp->title), font);
-    pango_font_description_free(font);
+    g_free (wckp->prefs->title_font);
+    wckp->prefs->title_font = set_title_font (wckp->title, title_font);
 
     if (wckp->prefs->sync_wm_font)
         xfconf_channel_set_string (wckp->wm_channel, "/general/title_font", wckp->prefs->title_font);
@@ -212,14 +222,8 @@ static void on_title_font_set(GtkFontButton *title_font, WindowckPlugin *wckp)
 
 static void on_subtitle_font_set(GtkFontButton *subtitle_font, WindowckPlugin *wckp)
 {
-    PangoFontDescription *font;
-
-    g_free(wckp->prefs->subtitle_font);
-    wckp->prefs->subtitle_font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (subtitle_font)));
-
-    font = pango_font_description_from_string(wckp->prefs->subtitle_font);
-    gtk_widget_override_font (GTK_WIDGET(wckp->title), font);
-    pango_font_description_free(font);
+    g_free (wckp->prefs->subtitle_font);
+    wckp->prefs->subtitle_font = set_title_font (wckp->title, subtitle_font);
 }
 
 
