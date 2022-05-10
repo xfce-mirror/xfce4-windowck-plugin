@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 00:58+0200\n"
+"POT-Creation-Date: 2022-05-10 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2022\n"
 "Language-Team: Malay (https://www.transifex.com/xfce/teams/16840/ms/)\n"
@@ -21,11 +21,22 @@ msgstr ""
 "Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../panel-plugin/title/windowck-dialogs.c:493
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#: ../common/wck-plugin.c:97
+msgid "_Refresh"
+msgstr "Se_gar Semula"
+
+#: ../common/wck-plugin.c:115
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Tidak boleh buka url berikut: %s"
+
+#: ../common/wck-plugin.c:133
+msgid "Help"
+msgstr "Bantuan"
+
+#: ../common/wck-plugin.c:134
+msgid "_Close"
+msgstr "_Tutup"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
