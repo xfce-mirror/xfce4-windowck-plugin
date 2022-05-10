@@ -238,6 +238,29 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 }
 
 
+static void
+set_icon_color (GtkWidget *widget, const gchar *color)
+{
+    GtkStyleContext *style_ctx = gtk_widget_get_style_context (widget);
+    GtkCssProvider *provider;
+    const gchar *data_name = "color_provider";
+    gpointer current_provider = g_object_get_data (G_OBJECT (widget), data_name);
+    gchar *style;
+
+    if (current_provider)
+        gtk_style_context_remove_provider (style_ctx, GTK_STYLE_PROVIDER (current_provider));
+
+    provider = gtk_css_provider_new ();
+    style = g_strdup_printf ("* { color: %s; }", color);
+    gtk_css_provider_load_from_data (provider, style, strlen (style), NULL);
+    g_free (style);
+    gtk_style_context_add_provider (style_ctx, GTK_STYLE_PROVIDER (provider), G_MAXUINT);
+
+    /* Store the provider inside widget */
+    g_object_set_data_full (G_OBJECT (widget), data_name, provider, g_object_unref);
+}
+
+
 void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 {
     WindowckPlugin *wckp = data;
@@ -252,14 +275,11 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
         }
         else
         {
-            GdkRGBA rgba;
-
             if (controlwindow
                 && (!window_is_desktop (controlwindow)
-                    || wckp->prefs->show_on_desktop)
-                && gdk_rgba_parse (&rgba, wnck_window_is_active (controlwindow) ? wckp->prefs->active_text_color : wckp->prefs->inactive_text_color))
+                    || wckp->prefs->show_on_desktop))
             {
-                gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
+                set_icon_color (wckp->icon->symbol, wnck_window_is_active (controlwindow) ? wckp->prefs->active_text_color : wckp->prefs->inactive_text_color);
             }
         }
     }
