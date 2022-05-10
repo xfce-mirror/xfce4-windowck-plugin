@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Omer I.S. <omeritzicschwartz@gmail.com>, 2022
 # Elishai Eliyahu <elishai@mailfence.com>, 2022
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 00:58+0200\n"
+"POT-Creation-Date: 2022-05-10 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2022\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2022\n"
 "Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,22 @@ msgstr ""
 "Language: he\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
-#: ../panel-plugin/title/windowck-dialogs.c:493
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#: ../common/wck-plugin.c:97
+msgid "_Refresh"
+msgstr "_רענון"
+
+#: ../common/wck-plugin.c:115
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "לא יכול לפתוח את הכתובת הבאה: %s "
+
+#: ../common/wck-plugin.c:133
+msgid "Help"
+msgstr "עזרה"
+
+#: ../common/wck-plugin.c:134
+msgid "_Close"
+msgstr "_סגור"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
