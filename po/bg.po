@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Любомир Василев, 2022
+# Nick Schermer <nick@xfce.org>, 2022
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2022
 # 
 #, fuzzy
@@ -12,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 00:58+0200\n"
+"POT-Creation-Date: 2022-05-10 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/xfce/teams/16840/bg/)\n"
@@ -22,11 +23,22 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-plugin/title/windowck-dialogs.c:493
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#: ../common/wck-plugin.c:97
+msgid "_Refresh"
+msgstr "Опресняване"
+
+#: ../common/wck-plugin.c:115
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Следният адрес не може да бъде отворен: %s"
+
+#: ../common/wck-plugin.c:133
+msgid "Help"
+msgstr "Помощ"
+
+#: ../common/wck-plugin.c:134
+msgid "_Close"
+msgstr "Затваряне"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
