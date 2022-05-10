@@ -390,6 +390,8 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 static void set_title_colors(WindowckPlugin *wckp)
 {
     /* get plugin widget style */
+    g_free (wckp->prefs->active_text_color);
+    g_free (wckp->prefs->inactive_text_color);
     wckp->prefs->active_text_color = get_ui_color (GTK_WIDGET(wckp->plugin), GTK_STYLE_PROPERTY_COLOR, GTK_STATE_FLAG_NORMAL);
     wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL, wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
 }
@@ -397,14 +399,18 @@ static void set_title_colors(WindowckPlugin *wckp)
 
 static void apply_wm_settings (WindowckPlugin *wckp)
 {
-    const gchar *wm_theme = xfconf_channel_get_string (wckp->wm_channel, "/general/theme", NULL);
+    gchar *wm_theme = xfconf_channel_get_string (wckp->wm_channel, "/general/theme", NULL);
 
     if (G_LIKELY(wm_theme))
     {
-        const gchar *wm_title_font = xfconf_channel_get_string (wckp->wm_channel, "/general/title_font", wckp->prefs->title_font);
-        wckp->prefs->title_font = g_strdup (wm_title_font);
+        gchar *wm_title_font = xfconf_channel_get_string (wckp->wm_channel, "/general/title_font", wckp->prefs->title_font);
+
+        g_free (wckp->prefs->title_font);
+        wckp->prefs->title_font = wm_title_font;
 
         on_name_changed (wckp->win->controlwindow, wckp);
+
+        g_free (wm_theme);
     }
 }
 

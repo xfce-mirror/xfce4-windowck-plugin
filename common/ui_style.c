@@ -93,7 +93,7 @@ get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
     s = rgba_to_hex_string (rgba);
     gdk_rgba_free (rgba);
     TRACE ("%s[%d]=%s", name, state, s);
-    return (s);
+    return s;
 }
 
 /**
@@ -203,7 +203,7 @@ mix_bg_fg (GtkWidget * win, GtkStateFlags state, float alpha, float beta)
     s = rgba_to_hex_string (&rgba);
 
     TRACE ("mix_bg_fg[%d]=%s", state, s);
-    return (s);
+    return s;
 }
 
 PangoFontDescription *
