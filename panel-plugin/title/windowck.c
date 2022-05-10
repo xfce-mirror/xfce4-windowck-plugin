@@ -176,8 +176,8 @@ static void windowck_read(WindowckPlugin *wckp)
     wckp->prefs->size_mode = DEFAULT_SIZE_MODE;
     wckp->prefs->title_size = DEFAULT_TITLE_SIZE;
     wckp->prefs->sync_wm_font = DEFAULT_SYNC_WM_FONT;
-    wckp->prefs->title_font = DEFAULT_TITLE_FONT;
-    wckp->prefs->subtitle_font = DEFAULT_SUBTITLE_FONT;
+    wckp->prefs->title_font = g_strdup(DEFAULT_TITLE_FONT);
+    wckp->prefs->subtitle_font = g_strdup(DEFAULT_SUBTITLE_FONT);
     wckp->prefs->title_alignment = DEFAULT_TITLE_ALIGNMENT;
     wckp->prefs->title_padding = DEFAULT_TITLE_PADDING;
     wckp->prefs->inactive_text_alpha = DEFAULT_INACTIVE_TEXT_ALPHA;
@@ -187,8 +187,11 @@ static void windowck_read(WindowckPlugin *wckp)
 
 void create_symbol (gboolean show_app_icon, WindowckPlugin *wckp)
 {
-    if (GTK_IS_WIDGET (wckp->icon->symbol))
+    if (wckp->icon->symbol)
+    {
         gtk_widget_destroy (wckp->icon->symbol);
+        wckp->icon->symbol = NULL;
+    }
 
     if (wckp->prefs->show_window_menu)
     {
