@@ -451,15 +451,14 @@ static void on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const g
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "title_font")
-					|| !strcmp (name, "show_app_icon"))
+                if (!strcmp (name, "title_font") || !strcmp (name, "show_app_icon"))
                 {
                     apply_wm_settings (wckp);
                 }
                 else if (!strcmp (name, "theme"))
                 {
-					init_title(wckp);
-					reload_wnck_title (wckp);
+                    init_title(wckp);
+                    reload_wnck_title (wckp);
                 }
                 break;
             default:
