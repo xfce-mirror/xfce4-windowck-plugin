@@ -100,12 +100,17 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
 {
     WnckWorkspace *workspace = wnck_window_get_workspace(window);
     WnckScreen *screen = wnck_workspace_get_screen(workspace);
+    GList *windows;
+    GList *top_window;
+    GList *bottom_window;
+
     if (wnck_screen_get_active_workspace(screen) != workspace) {
         return FALSE;
     }
-    GList *windows = wnck_screen_get_windows_stacked(screen);
-    GList *top_window = g_list_last(windows);
-    GList *bottom_window = g_list_first(windows);
+
+    windows = wnck_screen_get_windows_stacked(screen);
+    top_window = g_list_last(windows);
+    bottom_window = g_list_first(windows);
     while (top_window->data != window && top_window != bottom_window) {
         if (wnck_window_is_maximized((WnckWindow *)top_window->data)) {
             return FALSE;
