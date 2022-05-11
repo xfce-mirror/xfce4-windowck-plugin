@@ -1,6 +1,6 @@
 Format: http://dep.debian.net/deps/dep5
 Upstream-Name: xfce4-windowck-plugin
-Source: http://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin
+Source: https://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin
 
 Files: *
 Copyright: 2015 Cédric Leporcq <cedl38@gmail.com>

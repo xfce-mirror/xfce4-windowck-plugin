@@ -8,8 +8,8 @@ Build-Depends: debhelper (>= 9), ui-auto, pkg-config, intltool,
   xfce4-dev-tools, libglib2.0-dev, libgtk2.0-dev, libx11-dev, libxfce4ui-1-0,
   xfce4-panel-dev, imagemagick, python3
 Standards-Version: 3.9.3
-Homepage: http://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin
-Vcs-Git: git://github.com/geckoblu/xfce4-windowck-plugin.git
+Homepage: https://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin
+Vcs-Git: https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin.git
 
 Package: xfce4-windowck-plugin
 Architecture: any
