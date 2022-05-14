@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''
     simple-gtk xpm generator
-    
+
     Copyright (C) 2012  Felipe A. Hernandez <spayder26@gmail.com>
     Portions adapted by Cedric Leporcq.
 
@@ -25,7 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-from generator_xfwm4 import IconMap, build
+from generator_common import IconMap, build_xfwm4
 
 
 #close
@@ -342,4 +342,4 @@ imap = {
 }
 
 if __name__ == "__main__":
-    build(icons, IconMap(active, amap), IconMap(inactive, imap))
+    build_xfwm4(icons, IconMap(active, amap), IconMap(inactive, imap))
