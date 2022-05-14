@@ -143,4 +143,7 @@ def build_unity(icons: dict):
             print(f"Can't convert {name}.xpm to {name}.png: {e.strerror} '{e.filename}'" )
 
     for i in ("close", "maximize", "minimize", "menu", "unmaximize"):
-        shutil.copy2(f"{i}_focused_normal.png", f"{i}.png")
+        try:
+            shutil.copy2(f"{i}_focused_normal.png", f"{i}.png")
+        except FileNotFoundError as e:
+            print(f"Can't copy {i}_focused_normal.png to {i}.png: {e.strerror} '{e.filename}'" )
