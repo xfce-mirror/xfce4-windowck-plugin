@@ -19,6 +19,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+import shutil
+import subprocess
 from dataclasses import dataclass
 from os import linesep
 
@@ -82,7 +84,7 @@ def hole_size(txt):
     raise ValueError
 
 
-def build(icons: dict, active: IconMap, inactive: IconMap):
+def build_xfwm4(icons: dict, active: IconMap, inactive: IconMap):
     for name, icon in icons.items():
         generate(name, icon)
 
@@ -130,3 +132,12 @@ def build(icons: dict, active: IconMap, inactive: IconMap):
     # bottom
     generate("bottom-active", active, ahx, ahy + ahh, ahw, ibh)
     generate("bottom-inactive", inactive, ihx, ihy + ihh, ihw, ibh)
+
+
+def build_unity(icons: dict):
+    for name, icon in icons.items():
+        generate(name, icon)
+        subprocess.call(["convert", f"{name}.xpm", f"{name}.png"])
+
+    for i in ("close", "maximize", "minimize", "menu", "unmaximize"):
+        shutil.copy2(f"{i}_focused_normal.png", f"{i}.png")
