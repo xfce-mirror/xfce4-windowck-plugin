@@ -137,7 +137,10 @@ def build_xfwm4(icons: dict, active: IconMap, inactive: IconMap):
 def build_unity(icons: dict):
     for name, icon in icons.items():
         generate(name, icon)
-        subprocess.call(["convert", f"{name}.xpm", f"{name}.png"])
+        try:
+            subprocess.call(["convert", f"{name}.xpm", f"{name}.png"])
+        except FileNotFoundError as e:
+            print(f"Can't convert {name}.xpm to {name}.png: {e.strerror} '{e.filename}'" )
 
     for i in ("close", "maximize", "minimize", "menu", "unmaximize"):
         shutil.copy2(f"{i}_focused_normal.png", f"{i}.png")
