@@ -26,7 +26,8 @@ dist-hook: ChangeLog
 EXTRA_DIST = \
 	intltool-extract.in \
 	intltool-merge.in \
-	intltool-update.in
+	intltool-update.in \
+	po/.intltool-merge-cache.lock
 
 DISTCLEANFILES = \
 	intltool-extract \
