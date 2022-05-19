@@ -285,7 +285,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
     wckp->prefs->builder = gtk_builder_new();
 
     if (gtk_builder_add_from_string(wckp->prefs->builder, buffer, length, &error)) {
-        area = gtk_builder_get_object(wckp->prefs->builder, "alignment0");
+        area = gtk_builder_get_object(wckp->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
         {
