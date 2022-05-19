@@ -270,7 +270,7 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
     wb->prefs->builder = gtk_builder_new();
 
     if (gtk_builder_add_from_string(wb->prefs->builder, buffer, length, &error)) {
-        area = gtk_builder_get_object(wb->prefs->builder, "alignment0");
+        area = gtk_builder_get_object(wb->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
         {
