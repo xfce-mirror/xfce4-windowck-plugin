@@ -70,8 +70,6 @@ typedef struct {
     gchar       *theme;             // Selected theme path
     gchar      *button_layout;      // Button layout ["XXX"] (example "HMC" : H=Hide, M=Maximize/unMaximize, C=Close)
     gboolean sync_wm_theme;         // [T/F] Try to use xfwm4 active theme if possible.
-    gint inactive_text_alpha;       // Title inactive alpha
-    gint inactive_text_shade;       // Title inactive shade
 } WBPreferences;
 
 /* Definition for our button */
