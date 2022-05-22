@@ -37,7 +37,6 @@
 /* default settings */
 #define DEFAULT_ONLY_MAXIMIZED TRUE
 #define DEFAULT_SHOW_ON_DESKTOP FALSE
-#define DEFAULT_HIDE_TITLE FALSE
 #define DEFAULT_FULL_NAME TRUE
 #define DEFAULT_TWO_LINES FALSE
 #define DEFAULT_SHOW_TOOLTIPS TRUE
@@ -85,7 +84,6 @@ void windowck_save(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
         xfce_rc_write_bool_entry(rc, "show_app_icon", wckp->prefs->show_app_icon);
         xfce_rc_write_bool_entry(rc, "icon_on_right", wckp->prefs->icon_on_right);
         xfce_rc_write_bool_entry(rc, "show_window_menu", wckp->prefs->show_window_menu);
-        xfce_rc_write_bool_entry(rc, "hide_title", wckp->prefs->hide_title);
         xfce_rc_write_bool_entry(rc, "full_name", wckp->prefs->full_name);
         xfce_rc_write_bool_entry(rc, "two_lines", wckp->prefs->two_lines);
         xfce_rc_write_bool_entry(rc, "show_tooltips", wckp->prefs->show_tooltips);
@@ -137,7 +135,6 @@ static void windowck_read(WindowckPlugin *wckp)
             wckp->prefs->show_app_icon = xfce_rc_read_bool_entry(rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
             wckp->prefs->icon_on_right = xfce_rc_read_bool_entry(rc, "icon_on_right", DEFAULT_ICON_ON_RIGHT);
             wckp->prefs->show_window_menu = xfce_rc_read_bool_entry(rc, "show_window_menu", DEFAULT_SHOW_WINDOW_MENU);
-            wckp->prefs->hide_title = xfce_rc_read_bool_entry(rc, "hide_title", DEFAULT_HIDE_TITLE);
             wckp->prefs->full_name = xfce_rc_read_bool_entry(rc, "full_name", DEFAULT_FULL_NAME);
             wckp->prefs->two_lines = xfce_rc_read_bool_entry(rc, "two_lines", DEFAULT_TWO_LINES);
             wckp->prefs->show_tooltips = xfce_rc_read_bool_entry(rc, "show_tooltips", DEFAULT_SHOW_TOOLTIPS);
@@ -169,7 +166,6 @@ static void windowck_read(WindowckPlugin *wckp)
     wckp->prefs->show_app_icon = DEFAULT_SHOW_APP_ICON;
     wckp->prefs->icon_on_right = DEFAULT_ICON_ON_RIGHT;
     wckp->prefs->show_window_menu = DEFAULT_SHOW_WINDOW_MENU;
-    wckp->prefs->hide_title = DEFAULT_HIDE_TITLE;
     wckp->prefs->full_name = DEFAULT_FULL_NAME;
     wckp->prefs->two_lines = DEFAULT_TWO_LINES;
     wckp->prefs->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
