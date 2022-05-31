@@ -181,7 +181,7 @@ static void windowck_read(WindowckPlugin *wckp)
 }
 
 
-void create_symbol (WindowckPlugin *wckp)
+void reset_symbol (WindowckPlugin *wckp)
 {
     if (wckp->icon->symbol)
     {
@@ -206,19 +206,18 @@ void create_symbol (WindowckPlugin *wckp)
 }
 
 
-static void create_icon (WindowckPlugin *wckp)
+static WindowIcon *
+window_icon_new (void)
 {
-    wckp->icon = g_slice_new0 (WindowIcon);
-    wckp->icon->eventbox = GTK_EVENT_BOX (gtk_event_box_new());
-    wckp->icon->symbol = NULL;
+    WindowIcon *icon = g_slice_new0 (WindowIcon);
 
-    gtk_widget_set_can_focus (GTK_WIDGET(wckp->icon->eventbox), TRUE);
+    icon->eventbox = GTK_EVENT_BOX (gtk_event_box_new ());
+    gtk_widget_set_can_focus (GTK_WIDGET (icon->eventbox), TRUE);
+    gtk_event_box_set_visible_window (icon->eventbox, FALSE);
 
-    gtk_event_box_set_visible_window (wckp->icon->eventbox, FALSE);
+    icon->symbol = NULL;
 
-    gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), FALSE, FALSE, 0);
-
-    create_symbol (wckp);
+    return icon;
 }
 
 
@@ -227,7 +226,6 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
     WindowckPlugin *wckp;
 
     GtkOrientation orientation;
-    GtkWidget *label;
 
     /* allocate memory for the plugin structure */
     wckp = g_slice_new0 (WindowckPlugin);
@@ -257,17 +255,20 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
 
 
     /* some wckp widgets */
-    label = gtk_label_new("");
-    wckp->title = GTK_LABEL (label);
-
-    create_icon (wckp);
-
-    gtk_box_pack_start (GTK_BOX(wckp->box), label, TRUE, TRUE, 0);
-
+    wckp->icon = window_icon_new ();
+    wckp->title = GTK_LABEL (gtk_label_new (""));
     if (wckp->prefs->icon_on_right)
     {
-        gtk_box_reorder_child (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), 1);
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
     }
+    else
+    {
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
+    }
+
+    reset_symbol (wckp);
 
     gtk_container_add(GTK_CONTAINER(wckp->alignment), GTK_WIDGET(wckp->box));
     gtk_container_add(GTK_CONTAINER(wckp->ebox), wckp->alignment);
@@ -276,7 +277,7 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
     gtk_widget_show(wckp->ebox);
     gtk_widget_show(wckp->alignment);
     gtk_widget_show(wckp->box);
-    gtk_widget_show(label);
+    gtk_widget_show(GTK_WIDGET (wckp->title));
 
     return wckp;
 }

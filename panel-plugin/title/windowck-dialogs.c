@@ -140,7 +140,7 @@ static void on_show_app_icon_toggled(GtkToggleButton *show_app_icon, WindowckPlu
 {
     wckp->prefs->show_app_icon = gtk_toggle_button_get_active(show_app_icon);
 
-    create_symbol (wckp);
+    reset_symbol (wckp);
 
     if (!wckp->prefs->show_app_icon)
         wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cih);
@@ -169,7 +169,7 @@ static void on_show_window_menu_toggled(GtkToggleButton *show_window_menu, Windo
     show_app_icon = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "show_app_icon"));
     icon_on_right = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "icon_on_right"));
 
-    create_symbol (wckp);
+    reset_symbol (wckp);
 
     if (wckp->prefs->show_window_menu)
     {
