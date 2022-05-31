@@ -102,7 +102,7 @@ typedef struct {
 } WindowckPlugin;
 
 void windowck_save(XfcePanelPlugin *plugin, WindowckPlugin *wckp);
-void create_symbol (gboolean show_app_icon, WindowckPlugin *wckp);
+void create_symbol (WindowckPlugin *wckp);
 
 G_END_DECLS
 

@@ -181,7 +181,7 @@ static void windowck_read(WindowckPlugin *wckp)
 }
 
 
-void create_symbol (gboolean show_app_icon, WindowckPlugin *wckp)
+void create_symbol (WindowckPlugin *wckp)
 {
     if (wckp->icon->symbol)
     {
@@ -191,7 +191,7 @@ void create_symbol (gboolean show_app_icon, WindowckPlugin *wckp)
 
     if (wckp->prefs->show_window_menu)
     {
-        if (show_app_icon)
+        if (wckp->prefs->show_app_icon)
             wckp->icon->symbol = xfce_panel_image_new();
         else
             wckp->icon->symbol = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
@@ -218,7 +218,7 @@ static void create_icon (WindowckPlugin *wckp)
 
     gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), FALSE, FALSE, 0);
 
-    create_symbol (wckp->prefs->show_app_icon, wckp);
+    create_symbol (wckp);
 }
 
 
