@@ -255,18 +255,19 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
 
 
     /* some wckp widgets */
-    wckp->title = GTK_LABEL (gtk_label_new (""));
-    gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
-
     wckp->icon = window_icon_new ();
+    wckp->title = GTK_LABEL (gtk_label_new (""));
     if (wckp->prefs->icon_on_right)
     {
-        gtk_box_pack_end (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
     }
     else
     {
         gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
     }
+
     reset_symbol (wckp);
 
     gtk_container_add(GTK_CONTAINER(wckp->alignment), GTK_WIDGET(wckp->box));
