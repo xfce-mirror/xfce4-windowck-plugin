@@ -57,7 +57,7 @@
 static void windowck_construct(XfcePanelPlugin *plugin);
 
 
-static void
+void
 wcktitle_settings_save (XfceRc *rc, const WCKPreferences *prefs)
 {
     xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
@@ -83,7 +83,8 @@ wcktitle_settings_save (XfceRc *rc, const WCKPreferences *prefs)
     xfce_rc_write_int_entry(rc, "inactive_text_shade", prefs->inactive_text_shade);
 }
 
-void windowck_save(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
+static void
+windowck_save (XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 {
     wck_settings_save (plugin, (WckSettingsSave) wcktitle_settings_save, wckp->prefs);
 }
