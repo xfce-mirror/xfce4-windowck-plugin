@@ -171,19 +171,16 @@ static void on_show_window_menu_toggled(GtkToggleButton *show_window_menu, Windo
 
     reset_symbol (wckp);
 
+    gtk_widget_set_sensitive (show_app_icon, wckp->prefs->show_window_menu);
+    gtk_widget_set_sensitive (icon_on_right, wckp->prefs->show_window_menu);
+
     if (wckp->prefs->show_window_menu)
     {
-        gtk_widget_set_sensitive (show_app_icon, TRUE);
-        gtk_widget_set_sensitive (icon_on_right, TRUE);
         on_wck_state_changed (wckp->win->controlwindow, wckp);
     }
-    else
+    else if (wckp->prefs->show_app_icon)
     {
-        gtk_widget_set_sensitive (show_app_icon, FALSE);
-        gtk_widget_set_sensitive (icon_on_right, FALSE);
-
-        if (wckp->prefs->show_app_icon)
-            wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cih);
+        wck_signal_handler_disconnect (G_OBJECT (wckp->win->controlwindow), wckp->cih);
     }
 }
 
@@ -338,6 +335,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 
             if (G_LIKELY (show_app_icon != NULL))
             {
+                gtk_widget_set_sensitive (GTK_WIDGET (show_app_icon), wckp->prefs->show_window_menu);
                 gtk_toggle_button_set_active(show_app_icon, wckp->prefs->show_app_icon);
                 g_signal_connect(show_app_icon, "toggled", G_CALLBACK(on_show_app_icon_toggled), wckp);
             }
@@ -349,6 +347,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 
             if (G_LIKELY (icon_on_right != NULL))
             {
+                gtk_widget_set_sensitive (GTK_WIDGET (icon_on_right), wckp->prefs->show_window_menu);
                 gtk_toggle_button_set_active(icon_on_right, wckp->prefs->icon_on_right);
                 g_signal_connect(icon_on_right, "toggled", G_CALLBACK(on_icon_on_right_toggled), wckp);
             }
