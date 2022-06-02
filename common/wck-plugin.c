@@ -179,7 +179,7 @@ wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response
 }
 
 void
-wck_configure_response(XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSave wck_save, gpointer data)
+wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsSave save_settings, gconstpointer data)
 {
     if (response == GTK_RESPONSE_HELP)
     {
@@ -199,7 +199,7 @@ wck_configure_response(XfcePanelPlugin *plugin, GtkWidget *dialog, gint response
         xfce_panel_plugin_unblock_menu (plugin);
 
         /* save the plugin */
-        wck_save (plugin, data);
+        wck_settings_save (plugin, save_settings, data);
 
         /* destroy the properties dialog */
         gtk_widget_destroy (dialog);

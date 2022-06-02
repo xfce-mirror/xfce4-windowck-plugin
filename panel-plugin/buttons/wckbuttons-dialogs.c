@@ -369,7 +369,7 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
 static void
 wckbuttons_configure_response (GtkWidget *dialog, gint response, WBPlugin *wb)
 {
-    wck_configure_response (wb->plugin, dialog, response, (WckSave)wckbuttons_save, wb);
+    wck_configure_response (wb->plugin, dialog, response, (WckSettingsSave) wckbuttons_settings_save, wb->prefs);
 }
 
 

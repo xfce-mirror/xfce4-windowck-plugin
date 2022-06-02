@@ -101,7 +101,7 @@ typedef struct {
     XfconfChannel *x_channel;       // xsettings chanel
 } WindowckPlugin;
 
-void windowck_save(XfcePanelPlugin *plugin, WindowckPlugin *wckp);
+void wcktitle_settings_save (XfceRc *rc, const WCKPreferences *prefs);
 void reset_symbol (WindowckPlugin *wckp);
 
 G_END_DECLS

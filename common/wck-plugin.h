@@ -27,7 +27,6 @@
 
 G_BEGIN_DECLS
 
-typedef void (*WckSave)(XfcePanelPlugin *plugin, gpointer data);
 typedef void (*WckSettingsSave) (XfceRc *rc, gconstpointer prefs);
 
 XfconfChannel *
@@ -36,7 +35,7 @@ void wck_about (XfcePanelPlugin *plugin, const gchar *icon_name);
 GtkWidget *show_refresh_item (XfcePanelPlugin *plugin);
 void wck_settings_save (XfcePanelPlugin *plugin, WckSettingsSave save_settings, gconstpointer prefs);
 void wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response_cb, gpointer data);
-void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSave wck_save, gpointer data);
+void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsSave save_settings, gconstpointer data);
 
 G_END_DECLS
 

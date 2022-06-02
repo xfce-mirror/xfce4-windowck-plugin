@@ -51,7 +51,7 @@ static void
 wckbuttons_construct (XfcePanelPlugin *plugin);
 
 
-static void
+void
 wckbuttons_settings_save (XfceRc *rc, const WBPreferences *prefs)
 {
     xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
@@ -64,7 +64,7 @@ wckbuttons_settings_save (XfceRc *rc, const WBPreferences *prefs)
         xfce_rc_write_entry (rc, "theme", prefs->theme);
 }
 
-void
+static void
 wckbuttons_save (XfcePanelPlugin *plugin,
              WBPlugin    *wb)
 {
