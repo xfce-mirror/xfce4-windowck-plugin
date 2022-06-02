@@ -28,14 +28,13 @@
 G_BEGIN_DECLS
 
 typedef void (*WckSettingsCb) (XfceRc *rc, gpointer prefs);
-typedef void (*WckSettingsSetDefault) (gpointer prefs);
 
 XfconfChannel *
 wck_properties_get_channel (GObject *object_for_weak_ref, const gchar *channel_name);
 void wck_about (XfcePanelPlugin *plugin, const gchar *icon_name);
 GtkWidget *show_refresh_item (XfcePanelPlugin *plugin);
 void wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs);
-void wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, WckSettingsSetDefault set_default, gpointer prefs);
+void wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs);
 void wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response_cb, gpointer data);
 void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data);
 

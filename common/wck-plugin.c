@@ -135,7 +135,7 @@ wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointe
 }
 
 void
-wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, WckSettingsSetDefault set_default, gpointer prefs)
+wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs)
 {
     /* get the plugin config file location */
     gchar *file = xfce_panel_plugin_save_location (plugin, TRUE);
@@ -163,7 +163,7 @@ wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, WckSett
 
     /* something went wrong, apply default values */
     DBG ("Applying default settings");
-    set_default (prefs);
+    load_settings (NULL, prefs);
 }
 
 void
