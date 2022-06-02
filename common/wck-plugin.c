@@ -105,6 +105,36 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
 }
 
 void
+wck_settings_save (XfcePanelPlugin *plugin, WckSettingsSave save_settings, gconstpointer prefs)
+{
+    XfceRc *rc;
+    gchar *file;
+
+    /* get the config file location */
+    file = xfce_panel_plugin_save_location (plugin, TRUE);
+
+    if (G_UNLIKELY (file == NULL))
+    {
+        DBG ("Failed to open config file");
+        return;
+    }
+
+    /* open the config file, read/write */
+    rc = xfce_rc_simple_open (file, FALSE);
+    g_free (file);
+
+    if (G_LIKELY (rc != NULL))
+    {
+        /* save the settings */
+        DBG (".");
+        save_settings (rc, prefs);
+
+        /* close the rc file */
+        xfce_rc_close (rc);
+    }
+}
+
+void
 wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response_cb, gpointer data)
 {
     GtkWidget *dialog;

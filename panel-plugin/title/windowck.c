@@ -57,53 +57,35 @@
 static void windowck_construct(XfcePanelPlugin *plugin);
 
 
+static void
+wcktitle_settings_save (XfceRc *rc, const WCKPreferences *prefs)
+{
+    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
+    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
+    xfce_rc_write_bool_entry(rc, "show_app_icon", prefs->show_app_icon);
+    xfce_rc_write_bool_entry(rc, "icon_on_right", prefs->icon_on_right);
+    xfce_rc_write_bool_entry(rc, "show_window_menu", prefs->show_window_menu);
+    xfce_rc_write_bool_entry(rc, "full_name", prefs->full_name);
+    xfce_rc_write_bool_entry(rc, "two_lines", prefs->two_lines);
+    xfce_rc_write_bool_entry(rc, "show_tooltips", prefs->show_tooltips);
+    xfce_rc_write_int_entry(rc, "size_mode", prefs->size_mode);
+    xfce_rc_write_int_entry(rc, "title_size", prefs->title_size);
+    xfce_rc_write_bool_entry(rc, "sync_wm_font", prefs->sync_wm_font);
+    if (prefs->title_font)
+        xfce_rc_write_entry(rc, "title_font", prefs->title_font);
+
+    if (prefs->subtitle_font)
+        xfce_rc_write_entry(rc, "subtitle_font", prefs->subtitle_font);
+
+    xfce_rc_write_int_entry(rc, "title_alignment", prefs->title_alignment);
+    xfce_rc_write_int_entry(rc, "title_padding", prefs->title_padding);
+    xfce_rc_write_int_entry(rc, "inactive_text_alpha", prefs->inactive_text_alpha);
+    xfce_rc_write_int_entry(rc, "inactive_text_shade", prefs->inactive_text_shade);
+}
+
 void windowck_save(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 {
-    XfceRc *rc;
-    gchar *file;
-
-    /* get the config file location */
-    file = xfce_panel_plugin_save_location(plugin, TRUE);
-
-    if (G_UNLIKELY (file == NULL))
-    {
-        DBG("Failed to open config file");
-        return;
-    }
-
-    /* open the config file, read/write */
-    rc = xfce_rc_simple_open(file, FALSE);
-    g_free(file);
-
-    if (G_LIKELY (rc != NULL))
-    {
-        /* save the settings */
-        DBG(".");
-        xfce_rc_write_bool_entry(rc, "only_maximized", wckp->prefs->only_maximized);
-        xfce_rc_write_bool_entry(rc, "show_on_desktop", wckp->prefs->show_on_desktop);
-        xfce_rc_write_bool_entry(rc, "show_app_icon", wckp->prefs->show_app_icon);
-        xfce_rc_write_bool_entry(rc, "icon_on_right", wckp->prefs->icon_on_right);
-        xfce_rc_write_bool_entry(rc, "show_window_menu", wckp->prefs->show_window_menu);
-        xfce_rc_write_bool_entry(rc, "full_name", wckp->prefs->full_name);
-        xfce_rc_write_bool_entry(rc, "two_lines", wckp->prefs->two_lines);
-        xfce_rc_write_bool_entry(rc, "show_tooltips", wckp->prefs->show_tooltips);
-        xfce_rc_write_int_entry(rc, "size_mode", wckp->prefs->size_mode);
-        xfce_rc_write_int_entry(rc, "title_size", wckp->prefs->title_size);
-        xfce_rc_write_bool_entry(rc, "sync_wm_font", wckp->prefs->sync_wm_font);
-        if (wckp->prefs->title_font)
-            xfce_rc_write_entry(rc, "title_font", wckp->prefs->title_font);
-
-        if (wckp->prefs->subtitle_font)
-            xfce_rc_write_entry(rc, "subtitle_font", wckp->prefs->subtitle_font);
-
-        xfce_rc_write_int_entry(rc, "title_alignment", wckp->prefs->title_alignment);
-        xfce_rc_write_int_entry(rc, "title_padding", wckp->prefs->title_padding);
-        xfce_rc_write_int_entry(rc, "inactive_text_alpha", wckp->prefs->inactive_text_alpha);
-        xfce_rc_write_int_entry(rc, "inactive_text_shade", wckp->prefs->inactive_text_shade);
-
-        /* close the rc file */
-        xfce_rc_close(rc);
-    }
+    wck_settings_save (plugin, (WckSettingsSave) wcktitle_settings_save, wckp->prefs);
 }
 
 
