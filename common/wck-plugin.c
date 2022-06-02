@@ -105,7 +105,7 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
 }
 
 void
-wck_settings_save (XfcePanelPlugin *plugin, WckSettingsSave save_settings, gconstpointer prefs)
+wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs)
 {
     XfceRc *rc;
     gchar *file;
@@ -132,6 +132,38 @@ wck_settings_save (XfcePanelPlugin *plugin, WckSettingsSave save_settings, gcons
         /* close the rc file */
         xfce_rc_close (rc);
     }
+}
+
+void
+wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, WckSettingsSetDefault set_default, gpointer prefs)
+{
+    /* get the plugin config file location */
+    gchar *file = xfce_panel_plugin_save_location (plugin, TRUE);
+
+    if (G_LIKELY (file != NULL))
+    {
+        /* open the config file, readonly */
+        XfceRc *rc = xfce_rc_simple_open (file, TRUE);
+
+        /* cleanup */
+        g_free (file);
+
+        if (G_LIKELY (rc != NULL))
+        {
+            /* read the settings */
+            load_settings (rc, prefs);
+
+            /* cleanup */
+            xfce_rc_close (rc);
+
+            /* leave the function, everything went well */
+            return;
+        }
+    }
+
+    /* something went wrong, apply default values */
+    DBG ("Applying default settings");
+    set_default (prefs);
 }
 
 void
@@ -179,7 +211,7 @@ wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response
 }
 
 void
-wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsSave save_settings, gconstpointer data)
+wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data)
 {
     if (response == GTK_RESPONSE_HELP)
     {

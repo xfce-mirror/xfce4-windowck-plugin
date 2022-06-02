@@ -486,7 +486,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 static void
 windowck_configure_response(GtkWidget *dialog, gint response, WindowckPlugin *wckp)
 {
-    wck_configure_response (wckp->plugin, dialog, response, (WckSettingsSave) wcktitle_settings_save, wckp->prefs);
+    wck_configure_response (wckp->plugin, dialog, response, (WckSettingsCb) wcktitle_settings_save, wckp->prefs);
 }
 
 
