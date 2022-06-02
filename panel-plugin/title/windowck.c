@@ -57,127 +57,98 @@
 static void windowck_construct(XfcePanelPlugin *plugin);
 
 
-void windowck_save(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
+void
+wcktitle_settings_save (XfceRc *rc, WCKPreferences *prefs)
 {
-    XfceRc *rc;
-    gchar *file;
+    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
+    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
+    xfce_rc_write_bool_entry(rc, "show_app_icon", prefs->show_app_icon);
+    xfce_rc_write_bool_entry(rc, "icon_on_right", prefs->icon_on_right);
+    xfce_rc_write_bool_entry(rc, "show_window_menu", prefs->show_window_menu);
+    xfce_rc_write_bool_entry(rc, "full_name", prefs->full_name);
+    xfce_rc_write_bool_entry(rc, "two_lines", prefs->two_lines);
+    xfce_rc_write_bool_entry(rc, "show_tooltips", prefs->show_tooltips);
+    xfce_rc_write_int_entry(rc, "size_mode", prefs->size_mode);
+    xfce_rc_write_int_entry(rc, "title_size", prefs->title_size);
+    xfce_rc_write_bool_entry(rc, "sync_wm_font", prefs->sync_wm_font);
+    if (prefs->title_font)
+        xfce_rc_write_entry(rc, "title_font", prefs->title_font);
 
-    /* get the config file location */
-    file = xfce_panel_plugin_save_location(plugin, TRUE);
+    if (prefs->subtitle_font)
+        xfce_rc_write_entry(rc, "subtitle_font", prefs->subtitle_font);
 
-    if (G_UNLIKELY (file == NULL))
-    {
-        DBG("Failed to open config file");
-        return;
-    }
+    xfce_rc_write_int_entry(rc, "title_alignment", prefs->title_alignment);
+    xfce_rc_write_int_entry(rc, "title_padding", prefs->title_padding);
+    xfce_rc_write_int_entry(rc, "inactive_text_alpha", prefs->inactive_text_alpha);
+    xfce_rc_write_int_entry(rc, "inactive_text_shade", prefs->inactive_text_shade);
+}
 
-    /* open the config file, read/write */
-    rc = xfce_rc_simple_open(file, FALSE);
-    g_free(file);
-
-    if (G_LIKELY (rc != NULL))
-    {
-        /* save the settings */
-        DBG(".");
-        xfce_rc_write_bool_entry(rc, "only_maximized", wckp->prefs->only_maximized);
-        xfce_rc_write_bool_entry(rc, "show_on_desktop", wckp->prefs->show_on_desktop);
-        xfce_rc_write_bool_entry(rc, "show_app_icon", wckp->prefs->show_app_icon);
-        xfce_rc_write_bool_entry(rc, "icon_on_right", wckp->prefs->icon_on_right);
-        xfce_rc_write_bool_entry(rc, "show_window_menu", wckp->prefs->show_window_menu);
-        xfce_rc_write_bool_entry(rc, "full_name", wckp->prefs->full_name);
-        xfce_rc_write_bool_entry(rc, "two_lines", wckp->prefs->two_lines);
-        xfce_rc_write_bool_entry(rc, "show_tooltips", wckp->prefs->show_tooltips);
-        xfce_rc_write_int_entry(rc, "size_mode", wckp->prefs->size_mode);
-        xfce_rc_write_int_entry(rc, "title_size", wckp->prefs->title_size);
-        xfce_rc_write_bool_entry(rc, "sync_wm_font", wckp->prefs->sync_wm_font);
-        if (wckp->prefs->title_font)
-            xfce_rc_write_entry(rc, "title_font", wckp->prefs->title_font);
-
-        if (wckp->prefs->subtitle_font)
-            xfce_rc_write_entry(rc, "subtitle_font", wckp->prefs->subtitle_font);
-
-        xfce_rc_write_int_entry(rc, "title_alignment", wckp->prefs->title_alignment);
-        xfce_rc_write_int_entry(rc, "title_padding", wckp->prefs->title_padding);
-        xfce_rc_write_int_entry(rc, "inactive_text_alpha", wckp->prefs->inactive_text_alpha);
-        xfce_rc_write_int_entry(rc, "inactive_text_shade", wckp->prefs->inactive_text_shade);
-
-        /* close the rc file */
-        xfce_rc_close(rc);
-    }
+static void
+windowck_save (XfcePanelPlugin *plugin, WindowckPlugin *wckp)
+{
+    wck_settings_save (plugin, (WckSettingsCb) wcktitle_settings_save, wckp->prefs);
 }
 
 
-static void windowck_read(WindowckPlugin *wckp)
+static void
+wcktitle_settings_load (XfceRc *rc, WCKPreferences *prefs)
 {
-    XfceRc *rc;
-    gchar *file;
-    const gchar *title_font, *subtitle_font;
-
-    /* allocate memory for the preferences structure */
-    wckp->prefs = g_slice_new0(WCKPreferences);
-
-    /* get the plugin config file location */
-    file = xfce_panel_plugin_save_location(wckp->plugin, TRUE);
-
-    if (G_LIKELY (file != NULL))
+    if (rc != NULL)
     {
-        /* open the config file, readonly */
-        rc = xfce_rc_simple_open(file, TRUE);
+        const gchar *title_font;
+        const gchar *subtitle_font;
 
-        /* cleanup */
-        g_free(file);
-
-        if (G_LIKELY (rc != NULL))
-        {
-            /* read the settings */
-            wckp->prefs->only_maximized = xfce_rc_read_bool_entry(rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
-            wckp->prefs->show_on_desktop = xfce_rc_read_bool_entry(rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
-            wckp->prefs->show_app_icon = xfce_rc_read_bool_entry(rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
-            wckp->prefs->icon_on_right = xfce_rc_read_bool_entry(rc, "icon_on_right", DEFAULT_ICON_ON_RIGHT);
-            wckp->prefs->show_window_menu = xfce_rc_read_bool_entry(rc, "show_window_menu", DEFAULT_SHOW_WINDOW_MENU);
-            wckp->prefs->full_name = xfce_rc_read_bool_entry(rc, "full_name", DEFAULT_FULL_NAME);
-            wckp->prefs->two_lines = xfce_rc_read_bool_entry(rc, "two_lines", DEFAULT_TWO_LINES);
-            wckp->prefs->show_tooltips = xfce_rc_read_bool_entry(rc, "show_tooltips", DEFAULT_SHOW_TOOLTIPS);
-            wckp->prefs->size_mode = xfce_rc_read_int_entry (rc, "size_mode", DEFAULT_SIZE_MODE);
-            wckp->prefs->title_size = xfce_rc_read_int_entry(rc, "title_size", DEFAULT_TITLE_SIZE);
-            wckp->prefs->sync_wm_font = xfce_rc_read_bool_entry(rc, "sync_wm_font", DEFAULT_SYNC_WM_FONT);
-            title_font = xfce_rc_read_entry(rc, "title_font", DEFAULT_TITLE_FONT);
-            wckp->prefs->title_font = g_strdup(title_font);
-            subtitle_font = xfce_rc_read_entry(rc, "subtitle_font", DEFAULT_SUBTITLE_FONT);
-            wckp->prefs->subtitle_font = g_strdup(subtitle_font);
-            wckp->prefs->title_alignment = xfce_rc_read_int_entry(rc, "title_alignment", DEFAULT_TITLE_ALIGNMENT);
-            wckp->prefs->title_padding = xfce_rc_read_int_entry(rc, "title_padding", DEFAULT_TITLE_PADDING);
-            wckp->prefs->inactive_text_alpha = xfce_rc_read_int_entry(rc, "inactive_text_alpha", DEFAULT_INACTIVE_TEXT_ALPHA);
-            wckp->prefs->inactive_text_shade = xfce_rc_read_int_entry(rc, "inactive_text_shade", DEFAULT_INACTIVE_TEXT_SHADE);
-
-            /* cleanup */
-            xfce_rc_close(rc);
-
-            /* leave the function, everything went well */
-            return;
-        }
+        prefs->only_maximized = xfce_rc_read_bool_entry(rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
+        prefs->show_on_desktop = xfce_rc_read_bool_entry(rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
+        prefs->show_app_icon = xfce_rc_read_bool_entry(rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
+        prefs->icon_on_right = xfce_rc_read_bool_entry(rc, "icon_on_right", DEFAULT_ICON_ON_RIGHT);
+        prefs->show_window_menu = xfce_rc_read_bool_entry(rc, "show_window_menu", DEFAULT_SHOW_WINDOW_MENU);
+        prefs->full_name = xfce_rc_read_bool_entry(rc, "full_name", DEFAULT_FULL_NAME);
+        prefs->two_lines = xfce_rc_read_bool_entry(rc, "two_lines", DEFAULT_TWO_LINES);
+        prefs->show_tooltips = xfce_rc_read_bool_entry(rc, "show_tooltips", DEFAULT_SHOW_TOOLTIPS);
+        prefs->size_mode = xfce_rc_read_int_entry (rc, "size_mode", DEFAULT_SIZE_MODE);
+        prefs->title_size = xfce_rc_read_int_entry(rc, "title_size", DEFAULT_TITLE_SIZE);
+        prefs->sync_wm_font = xfce_rc_read_bool_entry(rc, "sync_wm_font", DEFAULT_SYNC_WM_FONT);
+        title_font = xfce_rc_read_entry(rc, "title_font", DEFAULT_TITLE_FONT);
+        prefs->title_font = g_strdup(title_font);
+        subtitle_font = xfce_rc_read_entry(rc, "subtitle_font", DEFAULT_SUBTITLE_FONT);
+        prefs->subtitle_font = g_strdup(subtitle_font);
+        prefs->title_alignment = xfce_rc_read_int_entry(rc, "title_alignment", DEFAULT_TITLE_ALIGNMENT);
+        prefs->title_padding = xfce_rc_read_int_entry(rc, "title_padding", DEFAULT_TITLE_PADDING);
+        prefs->inactive_text_alpha = xfce_rc_read_int_entry(rc, "inactive_text_alpha", DEFAULT_INACTIVE_TEXT_ALPHA);
+        prefs->inactive_text_shade = xfce_rc_read_int_entry(rc, "inactive_text_shade", DEFAULT_INACTIVE_TEXT_SHADE);
     }
+    else
+    {
+        prefs->only_maximized = DEFAULT_ONLY_MAXIMIZED;
+        prefs->show_on_desktop = DEFAULT_SHOW_ON_DESKTOP;
+        prefs->show_app_icon = DEFAULT_SHOW_APP_ICON;
+        prefs->icon_on_right = DEFAULT_ICON_ON_RIGHT;
+        prefs->show_window_menu = DEFAULT_SHOW_WINDOW_MENU;
+        prefs->full_name = DEFAULT_FULL_NAME;
+        prefs->two_lines = DEFAULT_TWO_LINES;
+        prefs->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
+        prefs->size_mode = DEFAULT_SIZE_MODE;
+        prefs->title_size = DEFAULT_TITLE_SIZE;
+        prefs->sync_wm_font = DEFAULT_SYNC_WM_FONT;
+        prefs->title_font = g_strdup (DEFAULT_TITLE_FONT);
+        prefs->subtitle_font = g_strdup (DEFAULT_SUBTITLE_FONT);
+        prefs->title_alignment = DEFAULT_TITLE_ALIGNMENT;
+        prefs->title_padding = DEFAULT_TITLE_PADDING;
+        prefs->inactive_text_alpha = DEFAULT_INACTIVE_TEXT_ALPHA;
+        prefs->inactive_text_shade = DEFAULT_INACTIVE_TEXT_SHADE;
+    }
+}
 
-    /* something went wrong, apply default values */
-    DBG("Applying default settings");
+static WCKPreferences *
+windowck_read (XfcePanelPlugin *plugin)
+{
+    /* allocate memory for the preferences structure */
+    WCKPreferences *prefs = g_slice_new0(WCKPreferences);
 
-    wckp->prefs->only_maximized = DEFAULT_ONLY_MAXIMIZED;
-    wckp->prefs->show_on_desktop = DEFAULT_SHOW_ON_DESKTOP;
-    wckp->prefs->show_app_icon = DEFAULT_SHOW_APP_ICON;
-    wckp->prefs->icon_on_right = DEFAULT_ICON_ON_RIGHT;
-    wckp->prefs->show_window_menu = DEFAULT_SHOW_WINDOW_MENU;
-    wckp->prefs->full_name = DEFAULT_FULL_NAME;
-    wckp->prefs->two_lines = DEFAULT_TWO_LINES;
-    wckp->prefs->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
-    wckp->prefs->size_mode = DEFAULT_SIZE_MODE;
-    wckp->prefs->title_size = DEFAULT_TITLE_SIZE;
-    wckp->prefs->sync_wm_font = DEFAULT_SYNC_WM_FONT;
-    wckp->prefs->title_font = g_strdup(DEFAULT_TITLE_FONT);
-    wckp->prefs->subtitle_font = g_strdup(DEFAULT_SUBTITLE_FONT);
-    wckp->prefs->title_alignment = DEFAULT_TITLE_ALIGNMENT;
-    wckp->prefs->title_padding = DEFAULT_TITLE_PADDING;
-    wckp->prefs->inactive_text_alpha = DEFAULT_INACTIVE_TEXT_ALPHA;
-    wckp->prefs->inactive_text_shade = DEFAULT_INACTIVE_TEXT_SHADE;
+    wck_settings_load (plugin, (WckSettingsCb) wcktitle_settings_load, prefs);
+
+    return prefs;
 }
 
 
@@ -234,7 +205,7 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
     wckp->plugin = plugin;
 
     /* read the user settings */
-    windowck_read(wckp);
+    wckp->prefs = windowck_read(wckp->plugin);
 
     /* get the current orientation */
     orientation = xfce_panel_plugin_get_orientation(plugin);

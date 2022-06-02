@@ -105,14 +105,65 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
 }
 
 void
-show_help (void)
+wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs)
 {
-    gboolean result;
+    XfceRc *rc;
+    gchar *file;
 
-    result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
+    /* get the config file location */
+    file = xfce_panel_plugin_save_location (plugin, TRUE);
 
-    if (G_UNLIKELY (result == FALSE))
-        g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
+    if (G_UNLIKELY (file == NULL))
+    {
+        DBG ("Failed to open config file");
+        return;
+    }
+
+    /* open the config file, read/write */
+    rc = xfce_rc_simple_open (file, FALSE);
+    g_free (file);
+
+    if (G_LIKELY (rc != NULL))
+    {
+        /* save the settings */
+        DBG (".");
+        save_settings (rc, prefs);
+
+        /* close the rc file */
+        xfce_rc_close (rc);
+    }
+}
+
+void
+wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs)
+{
+    /* get the plugin config file location */
+    gchar *file = xfce_panel_plugin_save_location (plugin, TRUE);
+
+    if (G_LIKELY (file != NULL))
+    {
+        /* open the config file, readonly */
+        XfceRc *rc = xfce_rc_simple_open (file, TRUE);
+
+        /* cleanup */
+        g_free (file);
+
+        if (G_LIKELY (rc != NULL))
+        {
+            /* read the settings */
+            load_settings (rc, prefs);
+
+            /* cleanup */
+            xfce_rc_close (rc);
+
+            /* leave the function, everything went well */
+            return;
+        }
+    }
+
+    /* something went wrong, apply default values */
+    DBG ("Applying default settings");
+    load_settings (NULL, prefs);
 }
 
 void
@@ -157,4 +208,32 @@ wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response
 
     /* show the entire dialog */
     gtk_widget_show (dialog);
+}
+
+void
+wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data)
+{
+    if (response == GTK_RESPONSE_HELP)
+    {
+        gboolean result;
+
+        result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
+
+        if (G_UNLIKELY (result == FALSE))
+            g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
+    }
+    else
+    {
+        /* remove the dialog data from the plugin */
+        g_object_set_data (G_OBJECT (plugin), "dialog", NULL);
+
+        /* unlock the panel menu */
+        xfce_panel_plugin_unblock_menu (plugin);
+
+        /* save the plugin */
+        wck_settings_save (plugin, save_settings, data);
+
+        /* destroy the properties dialog */
+        gtk_widget_destroy (dialog);
+    }
 }
