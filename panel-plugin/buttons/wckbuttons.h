@@ -97,7 +97,7 @@ typedef struct {
     gulong wph;                     // xfwm chanel property changed handler id
 } WBPlugin;
 
-void wckbuttons_save (XfcePanelPlugin *plugin, WBPlugin *wb);
+void wckbuttons_settings_save (XfceRc *rc, WBPreferences *prefs);
 
 G_END_DECLS
 

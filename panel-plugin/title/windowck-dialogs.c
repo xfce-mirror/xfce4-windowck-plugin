@@ -486,24 +486,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 static void
 windowck_configure_response(GtkWidget *dialog, gint response, WindowckPlugin *wckp)
 {
-    if (response == GTK_RESPONSE_HELP)
-    {
-        show_help();
-    }
-    else
-    {
-        /* remove the dialog data from the plugin */
-        g_object_set_data (G_OBJECT (wckp->plugin), "dialog", NULL);
-
-        /* unlock the panel menu */
-        xfce_panel_plugin_unblock_menu (wckp->plugin);
-
-        /* save the plugin */
-        windowck_save (wckp->plugin, wckp);
-
-        /* destroy the properties dialog */
-        gtk_widget_destroy (dialog);
-    }
+    wck_configure_response (wckp->plugin, dialog, response, (WckSettingsCb) wcktitle_settings_save, wckp->prefs);
 }
 
 

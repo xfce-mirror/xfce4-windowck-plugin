@@ -369,24 +369,7 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
 static void
 wckbuttons_configure_response (GtkWidget *dialog, gint response, WBPlugin *wb)
 {
-    if (response == GTK_RESPONSE_HELP)
-    {
-        show_help();
-    }
-    else
-    {
-        /* remove the dialog data from the plugin */
-        g_object_set_data (G_OBJECT (wb->plugin), "dialog", NULL);
-
-        /* unlock the panel menu */
-        xfce_panel_plugin_unblock_menu (wb->plugin);
-
-        /* save the plugin */
-        wckbuttons_save (wb->plugin, wb);
-
-        /* destroy the properties dialog */
-        gtk_widget_destroy (dialog);
-    }
+    wck_configure_response (wb->plugin, dialog, response, (WckSettingsCb) wckbuttons_settings_save, wb->prefs);
 }
 
 
