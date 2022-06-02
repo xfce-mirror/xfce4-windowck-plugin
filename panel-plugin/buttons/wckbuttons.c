@@ -51,42 +51,24 @@ static void
 wckbuttons_construct (XfcePanelPlugin *plugin);
 
 
+static void
+wckbuttons_settings_save (XfceRc *rc, const WBPreferences *prefs)
+{
+    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
+    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
+    xfce_rc_write_bool_entry(rc, "sync_wm_theme", prefs->sync_wm_theme);
+    if (prefs->button_layout)
+        xfce_rc_write_entry (rc, "button_layout", prefs->button_layout);
+
+    if (prefs->theme)
+        xfce_rc_write_entry (rc, "theme", prefs->theme);
+}
+
 void
 wckbuttons_save (XfcePanelPlugin *plugin,
              WBPlugin    *wb)
 {
-    XfceRc *rc;
-    gchar  *file;
-
-    /* get the config file location */
-    file = xfce_panel_plugin_save_location (plugin, TRUE);
-
-    if (G_UNLIKELY (file == NULL))
-    {
-       DBG ("Failed to open config file");
-       return;
-    }
-
-    /* open the config file, read/write */
-    rc = xfce_rc_simple_open (file, FALSE);
-    g_free (file);
-
-    if (G_LIKELY (rc != NULL))
-    {
-        /* save the settings */
-        DBG(".");
-        xfce_rc_write_bool_entry(rc, "only_maximized", wb->prefs->only_maximized);
-        xfce_rc_write_bool_entry(rc, "show_on_desktop", wb->prefs->show_on_desktop);
-        xfce_rc_write_bool_entry(rc, "sync_wm_theme", wb->prefs->sync_wm_theme);
-        if (wb->prefs->button_layout)
-            xfce_rc_write_entry (rc, "button_layout", wb->prefs->button_layout);
-
-        if (wb->prefs->theme)
-            xfce_rc_write_entry (rc, "theme", wb->prefs->theme);
-
-        /* close the rc file */
-        xfce_rc_close (rc);
-    }
+    wck_settings_save (plugin, (WckSettingsSave) wckbuttons_settings_save, wb->prefs);
 }
 
 
