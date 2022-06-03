@@ -20,9 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import shutil
-import subprocess
 from dataclasses import dataclass
 from os import linesep
+from pathlib import Path
+
+from xpm2png import xpm2png
 
 
 @dataclass
@@ -137,10 +139,7 @@ def build_xfwm4(icons: dict, active: IconMap, inactive: IconMap):
 def build_unity(icons: dict):
     for name, icon in icons.items():
         generate(name, icon)
-        try:
-            subprocess.call(["convert", f"{name}.xpm", f"{name}.png"])
-        except FileNotFoundError as e:
-            print(f"Can't convert {name}.xpm to {name}.png: {e.strerror} '{e.filename}'" )
+        xpm2png(Path(f"{name}.xpm"), Path(f"{name}.png"))
 
     for i in ("close", "maximize", "minimize", "menu", "unmaximize"):
         try:
