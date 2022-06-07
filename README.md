@@ -15,7 +15,7 @@ Q: How do I hide the window decorations on maximized windows on Xfce?
 A: Xfce 4.12 now support Titileless feature! Enable it in Window manager tweaks → Accessibility.
 
 This code is derived from original 'Window Applets' from Andrej Belcijan.
-See <http://gnome-look.org/content/show.php?content=103732> for infos.
+See <https://www.gnome-look.org/p/1115400> for infos.
 
 ## Screenshots
 

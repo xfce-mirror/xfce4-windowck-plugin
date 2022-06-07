@@ -67,7 +67,7 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
         "Pavel Zlámal <zlamal@cesnet.cz>",
         "",
         "This code is derived from 'Window Applets' from Andrej Belcijan.",
-        "See http://gnome-look.org/content/show.php?content=103732 for details.",
+        "See https://www.gnome-look.org/p/1115400 for details.",
         NULL
     };
 
