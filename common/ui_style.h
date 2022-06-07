@@ -29,7 +29,6 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <pango/pango-font.h>
 
 gchar                   *mix_bg_fg                              (GtkWidget * win,
                                                                  GtkStateFlags state,
@@ -38,7 +37,5 @@ gchar                   *mix_bg_fg                              (GtkWidget * win
 gchar                   *get_ui_color                           (GtkWidget *,
                                                                  const gchar *,
                                                                  GtkStateFlags);
-PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);
-PangoContext            *getUIPangoContext                      (GtkWidget *);
 
 #endif /* INC_UI_STYLE_H */
