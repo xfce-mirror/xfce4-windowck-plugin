@@ -87,7 +87,6 @@ typedef struct {
     /* Widgets */
     GtkWidget *ebox;
     GtkWidget *box;
-    GtkWidget *alignment;
     GtkLabel *title;
     WindowIcon  *icon;              // Icon widget
 
