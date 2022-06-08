@@ -145,7 +145,8 @@ static void track_controled_window (WckUtils *win)
             && (!win->activeworkspace
                 || wnck_window_is_in_viewport(win->activewindow, win->activeworkspace))
             && !wnck_window_is_minimized(win->activewindow)
-            && !wnck_window_is_sticky(win->activewindow))
+            && (wnck_window_get_window_type (win->activewindow) == WNCK_WINDOW_DESKTOP
+                || !wnck_window_is_sticky(win->activewindow)))
     {
             win->controlwindow = win->activewindow;
     }
@@ -223,7 +224,8 @@ static void active_window_changed (WnckScreen *screen,
 
     win->activewindow = wnck_screen_get_active_window(screen);
 
-    if (win->activewindow != previous)
+    if (win->activewindow
++       && (win->activewindow != previous))
     {
         wck_signal_handler_disconnect (G_OBJECT(previous), win->ash);
 
