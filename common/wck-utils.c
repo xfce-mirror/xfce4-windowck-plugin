@@ -145,7 +145,8 @@ static void track_controled_window (WckUtils *win)
             && (!win->activeworkspace
                 || wnck_window_is_in_viewport(win->activewindow, win->activeworkspace))
             && !wnck_window_is_minimized(win->activewindow)
-            && !wnck_window_is_sticky(win->activewindow))
+            && (wnck_window_get_window_type (win->activewindow) == WNCK_WINDOW_DESKTOP
+                || !wnck_window_is_sticky(win->activewindow)))
     {
             win->controlwindow = win->activewindow;
     }
