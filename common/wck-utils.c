@@ -224,8 +224,7 @@ static void active_window_changed (WnckScreen *screen,
 
     win->activewindow = wnck_screen_get_active_window(screen);
 
-    if (win->activewindow
-+       && (win->activewindow != previous))
+    if (win->activewindow != previous)
     {
         wck_signal_handler_disconnect (G_OBJECT(previous), win->ash);
 
