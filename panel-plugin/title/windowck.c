@@ -165,7 +165,7 @@ void reset_symbol (WindowckPlugin *wckp)
         if (wckp->prefs->show_app_icon)
             wckp->icon->symbol = xfce_panel_image_new();
         else
-            wckp->icon->symbol = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+            wckp->icon->symbol = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
 
         gtk_container_add (GTK_CONTAINER (wckp->icon->eventbox), wckp->icon->symbol);
         gtk_widget_show_all (GTK_WIDGET(wckp->icon->eventbox));
@@ -219,10 +219,10 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
     gtk_event_box_set_visible_window(GTK_EVENT_BOX(wckp->ebox), FALSE);
     gtk_widget_set_name(wckp->ebox, "XfceWindowckPlugin");
 
-    wckp->alignment = gtk_alignment_new (0.5, 0.5, 1, 1);
-
     wckp->box = gtk_box_new (orientation, 2);
     gtk_box_set_homogeneous (GTK_BOX (wckp->box), FALSE);
+    gtk_widget_set_halign (wckp->box, GTK_ALIGN_CENTER);
+    gtk_widget_set_valign (wckp->box, GTK_ALIGN_CENTER);
 
 
     /* some wckp widgets */
@@ -241,12 +241,10 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
 
     reset_symbol (wckp);
 
-    gtk_container_add(GTK_CONTAINER(wckp->alignment), GTK_WIDGET(wckp->box));
-    gtk_container_add(GTK_CONTAINER(wckp->ebox), wckp->alignment);
+    gtk_container_add(GTK_CONTAINER(wckp->ebox), GTK_WIDGET(wckp->box));
 
     /* show widgets */
     gtk_widget_show(wckp->ebox);
-    gtk_widget_show(wckp->alignment);
     gtk_widget_show(wckp->box);
     gtk_widget_show(GTK_WIDGET (wckp->title));
 
