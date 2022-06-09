@@ -27,6 +27,9 @@
 #include "windowck.h"
 #include "windowck-title.h"
 
+#define ICON_PADDING 3
+#define XFCE_PANEL_IS_SMALL (xfce_panel_plugin_get_size (wckp->plugin) < 23)
+
 /* Prototypes */
 static void on_name_changed(WnckWindow *window, WindowckPlugin *);
 
