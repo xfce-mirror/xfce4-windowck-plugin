@@ -363,7 +363,7 @@ static void windowck_construct(XfcePanelPlugin *plugin)
     /* show the about menu item and connect signal */
     xfce_panel_plugin_menu_show_about(plugin);
     g_signal_connect (G_OBJECT (plugin), "about",
-                    G_CALLBACK (wck_about), "windowck-plugin");
+                    G_CALLBACK (wck_about), WCKTITLE_ICON);
 
     /* add custom menu items */
     refresh = show_refresh_item (plugin);

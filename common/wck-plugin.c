@@ -167,7 +167,7 @@ wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointe
 }
 
 void
-wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response_cb, gpointer data)
+wck_configure_dialog (XfcePanelPlugin *plugin, const gchar *icon_name, GtkWidget *ca, GCallback response_cb, gpointer data)
 {
     GtkWidget *dialog;
     GtkWidget *content_area;
@@ -189,7 +189,7 @@ wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
 
     /* set dialog icon */
-    gtk_window_set_icon_name (GTK_WINDOW (dialog), "xfce4-settings");
+    gtk_window_set_icon_name (GTK_WINDOW (dialog), icon_name);
 
     /* link the dialog to the plugin, so we can destroy it when the plugin
     * is closed, but the dialog is still open */
