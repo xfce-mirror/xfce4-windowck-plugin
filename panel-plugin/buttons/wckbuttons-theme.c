@@ -20,12 +20,44 @@
  *
  */
 
-#include <common/mypixmap.h>
 #include <common/theme.h>
 
 #include "wckbuttons-theme.h"
 
 #define XPM_COLOR_SYMBOL_SIZE 22
+
+
+static GdkPixbuf *
+pixbuf_alpha_load (const gchar *dir, const gchar *file)
+{
+    static const char* image_types[] = {
+        "svg",
+        "png",
+        "gif",
+        "jpg",
+        "bmp",
+        NULL };
+    GdkPixbuf *pixbuf = NULL;
+    int i = 0;
+
+    while (!pixbuf && image_types[i])
+    {
+        gchar *image_file = g_strdup_printf ("%s.%s", file, image_types[i]);
+        gchar *filepath = g_build_filename (dir, image_file, NULL);
+
+        g_free (image_file);
+
+        if (g_file_test (filepath, G_FILE_TEST_IS_REGULAR))
+        {
+            pixbuf = gdk_pixbuf_new_from_file (filepath, NULL);
+        }
+        g_free (filepath);
+
+        ++i;
+    }
+
+    return pixbuf;
+}
 
 
 static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
