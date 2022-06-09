@@ -8,8 +8,6 @@ noinst_LTLIBRARIES = \
 	libwck-common.la
 
 libwck_common_la_SOURCES = \
-	mypixmap.c \
-	mypixmap.h \
 	theme.c \
 	theme.h \
 	ui_style.c \
