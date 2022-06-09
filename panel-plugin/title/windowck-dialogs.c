@@ -495,5 +495,5 @@ void windowck_configure(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 
     ca = build_properties_area (wckp, windowck_dialogs_ui, windowck_dialogs_ui_length);
 
-    wck_configure_dialog (plugin, ca, G_CALLBACK(windowck_configure_response), wckp);
+    wck_configure_dialog (plugin, WCKTITLE_ICON, ca, G_CALLBACK(windowck_configure_response), wckp);
 }

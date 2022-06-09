@@ -24,6 +24,8 @@
 #include <common/wck-utils.h>
 #include <common/wck-plugin.h>
 
+#define WCKBUTTONS_ICON "wckbuttons-plugin"
+
 G_BEGIN_DECLS
 
 /* indexing of buttons */

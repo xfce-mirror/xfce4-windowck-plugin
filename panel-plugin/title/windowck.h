@@ -36,6 +36,7 @@
 
 #define ICON_PADDING 3
 #define XFCE_PANEL_IS_SMALL (xfce_panel_plugin_get_size (wckp->plugin) < 23)
+#define WCKTITLE_ICON "windowck-plugin"
 
 G_BEGIN_DECLS
 

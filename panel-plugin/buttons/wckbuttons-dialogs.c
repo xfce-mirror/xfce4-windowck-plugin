@@ -379,5 +379,5 @@ void wckbuttons_configure (XfcePanelPlugin *plugin, WBPlugin *wb)
 
     ca = build_properties_area (wb, wckbuttons_dialogs_ui, wckbuttons_dialogs_ui_length);
 
-    wck_configure_dialog (plugin, ca, G_CALLBACK(wckbuttons_configure_response), wb);
+    wck_configure_dialog (plugin, WCKBUTTONS_ICON, ca, G_CALLBACK(wckbuttons_configure_response), wb);
 }

@@ -35,7 +35,7 @@ void wck_about (XfcePanelPlugin *plugin, const gchar *icon_name);
 GtkWidget *show_refresh_item (XfcePanelPlugin *plugin);
 void wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs);
 void wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs);
-void wck_configure_dialog (XfcePanelPlugin *plugin, GtkWidget *ca, GCallback response_cb, gpointer data);
+void wck_configure_dialog (XfcePanelPlugin *plugin, const gchar *icon_name, GtkWidget *ca, GCallback response_cb, gpointer data);
 void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data);
 
 G_END_DECLS
