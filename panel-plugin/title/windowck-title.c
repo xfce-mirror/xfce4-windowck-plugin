@@ -27,6 +27,9 @@
 #include "windowck.h"
 #include "windowck-title.h"
 
+#define ICON_PADDING 3
+#define XFCE_PANEL_IS_SMALL (xfce_panel_plugin_get_size (wckp->plugin) < 23)
+
 /* Prototypes */
 static void on_name_changed(WnckWindow *window, WindowckPlugin *);
 
@@ -323,6 +326,13 @@ void resize_title(WindowckPlugin *wckp)
 }
 
 
+void set_title_padding (WindowckPlugin *wckp)
+{
+    gtk_alignment_set_padding (GTK_ALIGNMENT (wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
+    gtk_box_set_spacing (GTK_BOX (wckp->box), wckp->prefs->title_padding);
+}
+
+
 gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp)
 {
 
@@ -490,8 +500,7 @@ void init_title (WindowckPlugin *wckp)
         g_signal_connect (wckp->wm_channel, "property-changed", G_CALLBACK (on_xfwm_channel_property_changed), wckp);
     }
 
-    gtk_alignment_set_padding(GTK_ALIGNMENT(wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
-    gtk_box_set_spacing (GTK_BOX(wckp->box), wckp->prefs->title_padding);
+    set_title_padding (wckp);
 
     /* get the xsettings chanel to update the gtk theme */
     wckp->x_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xsettings");
