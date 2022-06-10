@@ -20,9 +20,9 @@
  *
  */
 
-#include <common/theme.h>
 #include <common/wck-plugin.h>
 
+#include "theme.h"
 #include "wckbuttons-theme.h"
 
 

@@ -25,9 +25,9 @@
 #include <string.h>
 #include <gtk/gtk.h>
 
-#include <common/theme.h>
 #include <common/wck-plugin.h>
 
+#include "theme.h"
 #include "wckbuttons.h"
 #include "wckbuttons-theme.h"
 #include "wckbuttons-dialogs.h"

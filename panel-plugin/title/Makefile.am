@@ -19,6 +19,8 @@ libwindowck_built_sources = \
 	
 libwindowck_la_SOURCES = \
 	$(libwindowck_built_sources) \
+	ui_style.c \
+	ui_style.h \
 	windowck.c \
 	windowck.h \
 	windowck-dialogs.c \
