@@ -87,7 +87,7 @@ static void on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp)
     }
     else if (id == 1)
     {
-        wckp->prefs->size_mode = FIXE;
+        wckp->prefs->size_mode = FIXED;
         xfce_panel_plugin_set_shrink (wckp->plugin, TRUE);
         gtk_widget_set_sensitive(titlesize, TRUE);
         gtk_widget_set_sensitive(width_unit, TRUE);
@@ -452,7 +452,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                 if ( wckp->prefs->size_mode == SHRINK ) {
                     gtk_combo_box_set_active(size_mode, 0);
                 }
-                else if( wckp->prefs->size_mode == FIXE ) {
+                else if( wckp->prefs->size_mode == FIXED ) {
                     gtk_combo_box_set_active(size_mode, 1);
                 }
                 else if( wckp->prefs->size_mode == EXPAND ) {
