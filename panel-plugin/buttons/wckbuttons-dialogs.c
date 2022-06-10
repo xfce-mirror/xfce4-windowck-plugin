@@ -25,10 +25,8 @@
 #include <string.h>
 #include <gtk/gtk.h>
 
-#include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4panel/libxfce4panel.h>
-
 #include <common/theme.h>
+#include <common/wck-plugin.h>
 
 #include "wckbuttons.h"
 #include "wckbuttons-theme.h"

@@ -21,10 +21,9 @@
  */
 
 #include <common/theme.h>
+#include <common/wck-plugin.h>
 
 #include "wckbuttons-theme.h"
-
-#define XPM_COLOR_SYMBOL_SIZE 22
 
 
 static GdkPixbuf *

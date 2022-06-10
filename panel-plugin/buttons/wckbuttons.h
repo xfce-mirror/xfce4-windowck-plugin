@@ -21,8 +21,11 @@
 #ifndef __WCKBUTTONS_H__
 #define __WCKBUTTONS_H__
 
+#include <libxfce4panel/libxfce4panel.h>
+#include <libxfce4util/libxfce4util.h>
+#include <xfconf/xfconf.h>
+
 #include <common/wck-utils.h>
-#include <common/wck-plugin.h>
 
 #define WCKBUTTONS_ICON "wckbuttons-plugin"
 

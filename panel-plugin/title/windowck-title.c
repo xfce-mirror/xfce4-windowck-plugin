@@ -18,11 +18,11 @@
  *
  */
 
-#include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/libxfce4panel.h>
-#include <common/wck-utils.h>
+
 #include <common/ui_style.h>
-#include <common/theme.h>
+#include <common/wck-plugin.h>
+#include <common/wck-utils.h>
 
 #include "windowck.h"
 #include "windowck-title.h"

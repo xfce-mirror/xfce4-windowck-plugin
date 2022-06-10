@@ -28,7 +28,6 @@
 void init_title (WindowckPlugin *wckp);
 void resize_title(WindowckPlugin *wckp);
 void reload_wnck_title (WindowckPlugin *wckp);
-void update_font(WindowckPlugin *wckp);
 void set_title_padding (WindowckPlugin *wckp);
 gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
 gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);

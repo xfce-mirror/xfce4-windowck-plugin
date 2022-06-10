@@ -23,21 +23,14 @@
 #ifndef __WCKBUTTONS_THEME_H__
 #define __WCKBUTTONS_THEME_H__
 
-#include <gtk/gtk.h>
+#include <glib.h>
+
 #include "wckbuttons.h"
 
 /* default settings */
 #define DEFAULT_THEME "Windowck"
 
 G_BEGIN_DECLS
-
-typedef struct {
-    gchar  *option;
-    GValue *value;
-    GType   type;
-    gboolean required;
-} Settings;
-
 
 void init_theme (WBPlugin *wb);
 void load_theme (const gchar *theme, WBPlugin *wb);
