@@ -36,7 +36,7 @@ static void on_name_changed(WnckWindow *window, WindowckPlugin *);
 
 void reload_wnck_title (WindowckPlugin *wckp)
 {
-    /* disconnect controled window name and icon signal handlers */
+    /* disconnect controlled window name and icon signal handlers */
     wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cnh);
     wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cih);
 

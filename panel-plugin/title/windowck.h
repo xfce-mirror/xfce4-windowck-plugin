@@ -93,8 +93,8 @@ typedef struct {
     WCKPreferences     *prefs;
     WckUtils *win;
 
-    gulong cnh;                     // controled window name handler id
-    gulong cih;                     // controled window icon handler id
+    gulong cnh;                     // controlled window name handler id
+    gulong cih;                     // controlled window icon handler id
 
     XfconfChannel *wm_channel;      // window manager chanel
     XfconfChannel *x_channel;       // xsettings chanel
