@@ -24,20 +24,13 @@
 #include "config.h"
 #endif
 
-#ifdef HAVE_MEMORY_H
-#include <memory.h>
-#endif
 #include <stdio.h>
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
-#include <pango/pango-font.h>
-
 #include <libxfce4util/libxfce4util.h>
+
 #include "ui_style.h"
 
 static GdkRGBA
@@ -200,31 +193,4 @@ mix_bg_fg (GtkWidget * win, GtkStateFlags state, float alpha, float beta)
 
     TRACE ("mix_bg_fg[%d]=%s", state, s);
     return s;
-}
-
-PangoFontDescription *
-getUIPangoFontDesc (GtkWidget * win)
-{
-    GtkStyle *style;
-
-    TRACE ("entering getUIPangoFontDesc");
-
-    g_return_val_if_fail (win != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
-
-    style = gtk_widget_get_style (win);
-    return (style->font_desc);
-}
-
-PangoContext *
-getUIPangoContext (GtkWidget * win)
-{
-    TRACE ("entering getUIPangoContext");
-
-    g_return_val_if_fail (win != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
-
-    return (gtk_widget_get_pango_context (win));
 }

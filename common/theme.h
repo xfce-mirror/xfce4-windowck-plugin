@@ -23,7 +23,7 @@
 #ifndef __THEME_H__
 #define __THEME_H__
 
-#include <gtk/gtk.h>
+#include <glib.h>
 
 /* default settings */
 #define THEMERC "themerc"
