@@ -8,9 +8,7 @@ noinst_LTLIBRARIES = \
 	libwck-common.la
 
 libwck_common_la_SOURCES = \
-	theme.c \
-	theme.h \
-	ui_style.c \
+        ui_style.c \
 	ui_style.h \
 	wck-plugin.c \
 	wck-plugin.h \
