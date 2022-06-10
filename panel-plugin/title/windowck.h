@@ -26,13 +26,12 @@
 #include <config.h>
 #endif
 
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
-
 #include <gtk/gtk.h>
+#include <libxfce4panel/libxfce4panel.h>
+#include <libxfce4util/libxfce4util.h>
+#include <xfconf/xfconf.h>
+
 #include <common/wck-utils.h>
-#include <common/wck-plugin.h>
 
 #define WCKTITLE_ICON "windowck-plugin"
 

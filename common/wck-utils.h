@@ -26,7 +26,6 @@
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
 #endif
 #include <libwnck/libwnck.h>
-#include <libxfce4panel/libxfce4panel.h>
 
 G_BEGIN_DECLS
 

@@ -23,7 +23,8 @@
 #ifndef __WCKBUTTONS_THEME_H__
 #define __WCKBUTTONS_THEME_H__
 
-#include <gtk/gtk.h>
+#include <glib.h>
+
 #include "wckbuttons.h"
 
 /* default settings */

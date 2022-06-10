@@ -24,13 +24,7 @@
 #include "config.h"
 #endif
 
-#ifdef HAVE_MEMORY_H
-#include <memory.h>
-#endif
 #include <stdio.h>
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
