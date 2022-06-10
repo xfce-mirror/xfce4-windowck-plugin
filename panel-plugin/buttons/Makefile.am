@@ -18,6 +18,8 @@ libwindowck_built_sources = \
 
 libwckbuttons_la_SOURCES = \
 	$(libwckbuttons_built_sources) \
+	theme.c \
+	theme.h \
 	wckbuttons.c \
 	wckbuttons.h \
 	wckbuttons-theme.c \
