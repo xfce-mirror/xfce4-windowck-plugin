@@ -45,7 +45,7 @@ typedef enum Alignment
 
 typedef enum SizeMode
 {
-    SHRINK = 1, FIXE = 2, EXPAND = 3
+    SHRINK = 1, FIXED = 2, EXPAND = 3
 } SizeMode;
 
 typedef struct {
@@ -64,7 +64,7 @@ typedef struct {
     gboolean two_lines;             // [T/F] Display the title on two lines
     gboolean show_tooltips;         // [T/F] Show tooltips
 
-    SizeMode size_mode;             // Size mode : Length=[MINIMAL,FIXE,EXPAND]
+    SizeMode size_mode;             // Size mode : Length=[MINIMAL,FIXED,EXPAND]
 
     gint title_size;                // Title size in chars
     gint title_padding;             // Title padding
@@ -93,8 +93,8 @@ typedef struct {
     WCKPreferences     *prefs;
     WckUtils *win;
 
-    gulong cnh;                     // controled window name handler id
-    gulong cih;                     // controled window icon handler id
+    gulong cnh;                     // controlled window name handler id
+    gulong cih;                     // controlled window icon handler id
 
     XfconfChannel *wm_channel;      // window manager chanel
     XfconfChannel *x_channel;       // xsettings chanel
