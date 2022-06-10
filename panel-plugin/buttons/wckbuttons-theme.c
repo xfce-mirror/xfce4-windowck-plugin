@@ -25,8 +25,6 @@
 
 #include "wckbuttons-theme.h"
 
-#define XPM_COLOR_SYMBOL_SIZE 22
-
 
 static GdkPixbuf *
 pixbuf_alpha_load (const gchar *dir, const gchar *file)
