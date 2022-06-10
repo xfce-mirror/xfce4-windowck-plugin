@@ -32,14 +32,6 @@
 
 G_BEGIN_DECLS
 
-typedef struct {
-    gchar  *option;
-    GValue *value;
-    GType   type;
-    gboolean required;
-} Settings;
-
-
 void init_theme (WBPlugin *wb);
 void load_theme (const gchar *theme, WBPlugin *wb);
 void replace_buttons (const gchar *button_layout, WBPlugin *wb);
