@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef WINDOWCK_TITLE_H_
-#define WINDOWCK_TITLE_H_
+#ifndef __WINDOWCK_TITLE_H__
+#define __WINDOWCK_TITLE_H__
 
 #include "windowck.h"
 
@@ -33,4 +33,4 @@ gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
 gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
 
-#endif /* WINDOWCK_TITLE_H_ */
+#endif /* __WINDOWCK_TITLE_H__ */

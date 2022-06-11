@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef WCK_PLUGIN_H_
-#define WCK_PLUGIN_H_
+#ifndef __WCK_PLUGIN_H__
+#define __WCK_PLUGIN_H__
 
 #include <xfconf/xfconf.h>
 #include <libxfce4panel/libxfce4panel.h>
@@ -40,4 +40,4 @@ void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint re
 
 G_END_DECLS
 
-#endif /* WCK_PLUGIN_H_ */
+#endif /* __WCK_PLUGIN_H__ */
