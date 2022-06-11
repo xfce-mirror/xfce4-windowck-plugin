@@ -19,8 +19,8 @@
  *  This code is derived from original 'Window Applets' from Andrej Belcijan.
  */
 
-#ifndef WCK_UTILS_H_
-#define WCK_UTILS_H_
+#ifndef __WCK_UTILS_H__
+#define __WCK_UTILS_H__
 
 #ifndef WNCK_I_KNOW_THIS_IS_UNSTABLE
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
@@ -68,4 +68,4 @@ window_is_desktop (WnckWindow *window)
 
 G_END_DECLS
 
-#endif /* WCK_UTILS_H_ */
+#endif /* __WCK_UTILS_H__ */

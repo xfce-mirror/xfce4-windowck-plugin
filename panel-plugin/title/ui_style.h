@@ -20,8 +20,8 @@
         xfwm4-windowck-plugin - (c) 2013 Cedric leporcq
  */
 
-#ifndef INC_UI_STYLE_H
-#define INC_UI_STYLE_H
+#ifndef __UI_STYLE_H__
+#define __UI_STYLE_H__
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -38,4 +38,4 @@ gchar                   *get_ui_color                           (GtkWidget *,
                                                                  const gchar *,
                                                                  GtkStateFlags);
 
-#endif /* INC_UI_STYLE_H */
+#endif /* __UI_STYLE_H__ */
