@@ -58,7 +58,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
     {
         gtk_widget_set_sensitive (wckp->icon->symbol, TRUE);
 
-        if (wnck_window_get_window_type (controlwindow) == WNCK_WINDOW_DESKTOP)
+        if (window_is_desktop (controlwindow))
         {
             if (!wnck_window_is_active(controlwindow))
                 gtk_widget_set_sensitive (wckp->icon->symbol, FALSE);
@@ -68,7 +68,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
     }
 
     if (controlwindow
-        && wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
+        && !window_is_desktop (controlwindow))
     {
         /* This only returns a pointer - it SHOULDN'T be unrefed! */
         if (XFCE_PANEL_IS_SMALL)
@@ -128,12 +128,12 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
 static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 {
     gint i, n;
-    
+
     const gchar *title_text;
 
     if (controlwindow
-	&& wnck_window_get_pid(controlwindow)  // if active window has been closed, pid is 0
-        && ((wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
+        && wnck_window_get_pid(controlwindow)  /* if active window has been closed, pid is 0 */
+        && (!window_is_desktop (controlwindow)
             || wckp->prefs->show_on_desktop))
     {
         const gchar *title_color, *title_font, *subtitle_font;
@@ -245,7 +245,7 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
             GdkRGBA rgba;
 
             if (controlwindow
-                && ((wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
+                && (!window_is_desktop (controlwindow)
                     || wckp->prefs->show_on_desktop))
             {
                 if (wnck_window_is_active(controlwindow)
@@ -273,8 +273,8 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
     on_wck_state_changed (controlwindow, wckp);
 
     if (!controlwindow
-        || ((wnck_window_get_window_type (controlwindow) == WNCK_WINDOW_DESKTOP)
-        && !wckp->prefs->show_on_desktop))
+        || (window_is_desktop (controlwindow)
+            && !wckp->prefs->show_on_desktop))
     {
         if (gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
             gtk_widget_hide(GTK_WIDGET(wckp->box));
@@ -287,7 +287,7 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
 
     if (controlwindow)
     {
-        if (wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
+        if (!window_is_desktop (controlwindow))
         {
             wckp->cnh = g_signal_connect(G_OBJECT(controlwindow), "name-changed", G_CALLBACK(on_name_changed), wckp);
             if (!gtk_widget_get_visible(GTK_WIDGET(wckp->icon->eventbox)))
@@ -340,7 +340,7 @@ gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugi
         return FALSE;
 
     if (event->button == 1
-        && (wnck_window_get_window_type (wckp->win->controlwindow) != WNCK_WINDOW_DESKTOP))
+        && !window_is_desktop (wckp->win->controlwindow))
     {
         /* double/tripple click */
         if (event->type == GDK_2BUTTON_PRESS || event->type == GDK_3BUTTON_PRESS)
@@ -388,7 +388,7 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
     GtkWidget *menu;
 
     if ((event->button != 1)
-        || (wnck_window_get_window_type (wckp->win->controlwindow) == WNCK_WINDOW_DESKTOP))
+        || window_is_desktop (wckp->win->controlwindow))
         return FALSE;
 
     menu = wnck_action_menu_new (wckp->win->controlwindow);
