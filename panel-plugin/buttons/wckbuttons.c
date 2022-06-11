@@ -272,8 +272,8 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
     gint i;
 
     if (!controlwindow
-        || ((wnck_window_get_window_type (controlwindow) == WNCK_WINDOW_DESKTOP)
-        && !wb->prefs->show_on_desktop))
+        || (window_is_desktop (controlwindow)
+            && !wb->prefs->show_on_desktop))
     {
         if (gtk_widget_get_visible(GTK_WIDGET(wb->box)))
             gtk_widget_hide(GTK_WIDGET(wb->box));
@@ -286,7 +286,7 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
 
     if (controlwindow)
     {
-        if (wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
+        if (!window_is_desktop (controlwindow))
         {
             for (i=0; i<BUTTONS; i++)
                 gtk_widget_set_sensitive(GTK_WIDGET(wb->button[i]->eventbox), TRUE);

@@ -52,7 +52,7 @@ static WnckWindow *get_root_window (WnckScreen *screen)
 {
     GList *winstack = wnck_screen_get_windows_stacked(screen);
     // we can't access data directly because sometimes we will get NULL or not desktop window
-    if (winstack && wnck_window_get_window_type (winstack->data) == WNCK_WINDOW_DESKTOP)
+    if (winstack && window_is_desktop (winstack->data))
         return winstack->data;
     else
         return NULL;
@@ -145,7 +145,7 @@ static void track_controlled_window (WckUtils *win)
             && (!win->activeworkspace
                 || wnck_window_is_in_viewport(win->activewindow, win->activeworkspace))
             && !wnck_window_is_minimized(win->activewindow)
-            && (wnck_window_get_window_type (win->activewindow) == WNCK_WINDOW_DESKTOP
+            && (window_is_desktop (win->activewindow)
                 || !wnck_window_is_sticky(win->activewindow)))
     {
             win->controlwindow = win->activewindow;
@@ -234,7 +234,7 @@ static void active_window_changed (WnckScreen *screen,
 
     if (win->activewindow
         && (win->activewindow != previous)
-        && (wnck_window_get_window_type (win->activewindow) != WNCK_WINDOW_DESKTOP))
+        && !window_is_desktop (win->activewindow))
     {
         /* Start tracking the new active window */
         win->ash = g_signal_connect(G_OBJECT (win->activewindow), "state-changed", G_CALLBACK (track_changed_max_state), win);
