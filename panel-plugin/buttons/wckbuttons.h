@@ -91,7 +91,7 @@ typedef struct {
     GtkWidget *ebox;
     GtkWidget *box;
 
-    WindowButton  **button;         // Array of buttons
+    WindowButton  *button[BUTTONS]; // Array of buttons
 
     WBPreferences *prefs;           // Main properties
     WckUtils *win;

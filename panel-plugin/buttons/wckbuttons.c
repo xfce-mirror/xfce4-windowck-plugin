@@ -108,27 +108,24 @@ wckbuttons_read (XfcePanelPlugin *plugin)
     return prefs;
 }
 
-static WindowButton **create_buttons (WBPlugin *wb)
+static WindowButton *
+window_button_new (WBPlugin *wb)
 {
-    WindowButton **button = g_new(WindowButton*, BUTTONS);
-    gint i;
+    WindowButton *button = g_new0 (WindowButton, 1);
 
-    for (i=0; i<BUTTONS; i++)
-    {
-        button[i] = g_new0 (WindowButton, 1);
-        button[i]->eventbox = GTK_EVENT_BOX (gtk_event_box_new());
-        button[i]->image = GTK_IMAGE (gtk_image_new());
+    button->eventbox = GTK_EVENT_BOX (gtk_event_box_new ());
+    button->image = GTK_IMAGE (gtk_image_new ());
 
-        gtk_widget_set_can_focus (GTK_WIDGET(button[i]->eventbox), TRUE);
+    gtk_widget_set_can_focus (GTK_WIDGET (button->eventbox), TRUE);
 
-        gtk_container_add (GTK_CONTAINER (button[i]->eventbox), GTK_WIDGET(button[i]->image));
-        gtk_event_box_set_visible_window (button[i]->eventbox, FALSE);
-        gtk_box_pack_start (GTK_BOX (wb->box), GTK_WIDGET(button[i]->eventbox), TRUE, TRUE, 0);
+    gtk_container_add (GTK_CONTAINER (button->eventbox), GTK_WIDGET (button->image));
+    gtk_event_box_set_visible_window (button->eventbox, FALSE);
+    gtk_box_pack_start (GTK_BOX (wb->box), GTK_WIDGET (button->eventbox), TRUE, TRUE, 0);
 
-        /* Add hover events to eventboxes */
-        gtk_widget_add_events (GTK_WIDGET (button[i]->eventbox), GDK_ENTER_NOTIFY_MASK); //add the "enter" signal
-        gtk_widget_add_events (GTK_WIDGET (button[i]->eventbox), GDK_LEAVE_NOTIFY_MASK); //add the "leave" signal
-    }
+    /* Add hover events to eventboxes */
+    gtk_widget_add_events (GTK_WIDGET (button->eventbox), GDK_ENTER_NOTIFY_MASK); //add the "enter" signal
+    gtk_widget_add_events (GTK_WIDGET (button->eventbox), GDK_LEAVE_NOTIFY_MASK); //add the "leave" signal
+
     return button;
 }
 
@@ -169,7 +166,10 @@ wckbuttons_new (XfcePanelPlugin *plugin)
     gtk_box_set_homogeneous (GTK_BOX (wb->box), FALSE);
 
     /* create buttons */
-    wb->button = create_buttons (wb);
+    for (gint i = 0; i < BUTTONS; i++)
+    {
+        wb->button[i] = window_button_new (wb);
+    }
 
     gtk_widget_show (wb->ebox);
     gtk_widget_show (wb->box);
