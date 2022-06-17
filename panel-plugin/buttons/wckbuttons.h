@@ -56,7 +56,7 @@ typedef enum {
     IMAGE_CLOSE,
 
     IMAGES_BUTTONS
-} ImageStates;
+} WBImageButton;
 
 /* we will also index image states for convenience */
 typedef enum {
@@ -66,7 +66,7 @@ typedef enum {
     IMAGE_PRESSED,
 
     IMAGES_STATES
-} WBImageIndices;
+} WBImageState;
 
 typedef struct {
     GtkBuilder *builder;
