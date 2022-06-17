@@ -238,7 +238,7 @@ wckbuttons_size_changed (XfcePanelPlugin *plugin,
     return TRUE;
 }
 
-static void set_maximize_button_image (WBPlugin *wb, gushort image_state)
+static void set_maximize_button_image (WBPlugin *wb, WBImageState image_state)
 {
     if (wb->win->controlwindow && wnck_window_is_maximized(wb->win->controlwindow)) {
         gtk_image_set_from_pixbuf (wb->button[MAXIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_UNMAXIMIZE][image_state]);
@@ -251,12 +251,12 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 {
     WBPlugin *wb = data;
 
-    gushort image_state;
+    WBImageState image_state;
 
-    if (controlwindow && (wnck_window_is_active(controlwindow)))
-        image_state = 1;
+    if (controlwindow && wnck_window_is_active (controlwindow))
+        image_state = IMAGE_FOCUSED;
     else
-        image_state = 0;
+        image_state = IMAGE_UNFOCUSED;
 
     /* update buttons images */
     gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][image_state]);
@@ -391,7 +391,7 @@ static gboolean on_maximize_button_hover_leave (GtkWidget *widget,
                          WBPlugin *wb)
 {
     if (wb->win->controlwindow) {
-        set_maximize_button_image (wb, wnck_window_is_active(wb->win->controlwindow));
+        set_maximize_button_image (wb, wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED);
     }
 
     return TRUE;
