@@ -246,17 +246,10 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 
             if (controlwindow
                 && (!window_is_desktop (controlwindow)
-                    || wckp->prefs->show_on_desktop))
+                    || wckp->prefs->show_on_desktop)
+                && gdk_rgba_parse (&rgba, wnck_window_is_active (controlwindow) ? wckp->prefs->active_text_color : wckp->prefs->inactive_text_color))
             {
-                if (wnck_window_is_active(controlwindow)
-                    && gdk_rgba_parse (&rgba, wckp->prefs->active_text_color))
-                {
-                    gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
-                }
-                else if (gdk_rgba_parse (&rgba, wckp->prefs->inactive_text_color))
-                {
-                    gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
-                }
+                gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
             }
         }
     }
