@@ -326,10 +326,10 @@ static gboolean on_minimize_button_hover_leave (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    gboolean image_state;
-    image_state = wnck_window_is_active(wb->win->controlwindow);
+    WBImageState image_state = wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED;
 
     gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][image_state]);
+
     return TRUE;
 }
 
@@ -426,10 +426,10 @@ static gboolean on_close_button_hover_leave (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    gboolean image_state;
-    image_state = wnck_window_is_active(wb->win->controlwindow);
+    WBImageState image_state = wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED;
 
     gtk_image_set_from_pixbuf (wb->button[CLOSE_BUTTON]->image, wb->pixbufs[IMAGE_CLOSE][image_state]);
+
     return TRUE;
 }
 
