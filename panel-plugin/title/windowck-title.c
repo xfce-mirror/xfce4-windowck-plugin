@@ -46,15 +46,13 @@ void reload_wnck_title (WindowckPlugin *wckp)
 
 static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
 {
-    GdkPixbuf *pixbuf = NULL;
-    GdkPixbuf *grayscale = NULL;
-
-
     if (!controlwindow)
     {
         xfce_panel_image_clear(XFCE_PANEL_IMAGE (wckp->icon->symbol));
+        return;
     }
-    else if (wckp->prefs->show_on_desktop)
+
+    if (wckp->prefs->show_on_desktop)
     {
         gtk_widget_set_sensitive (wckp->icon->symbol, TRUE);
 
@@ -67,9 +65,11 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
         }
     }
 
-    if (controlwindow
-        && !window_is_desktop (controlwindow))
+    if (!window_is_desktop (controlwindow))
     {
+        GdkPixbuf *pixbuf = NULL;
+        GdkPixbuf *grayscale = NULL;
+
         /* This only returns a pointer - it SHOULDN'T be unrefed! */
         if (XFCE_PANEL_IS_SMALL)
             pixbuf = wnck_window_get_mini_icon(controlwindow);
@@ -93,10 +93,10 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
         }
 
         xfce_panel_image_set_from_pixbuf(XFCE_PANEL_IMAGE (wckp->icon->symbol), pixbuf);
-    }
 
-    if (grayscale != NULL && grayscale != pixbuf)
-        g_object_unref (G_OBJECT (grayscale));
+        if (grayscale != NULL && grayscale != pixbuf)
+            g_object_unref (G_OBJECT (grayscale));
+    }
 }
 
 
