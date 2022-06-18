@@ -99,6 +99,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
         g_object_unref (G_OBJECT (grayscale));
 }
 
+
 static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_above(WnckWindow *window)
 {
     WnckWorkspace *workspace = wnck_window_get_workspace(window);
@@ -123,12 +124,32 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
     return TRUE;
 }
 
+
+static gchar *
+get_title_color (WnckWindow *controlwindow, WindowckPlugin *wckp)
+{
+    if (wnck_window_is_active (controlwindow))
+    {
+        /* window focused */
+        /*~ gtk_widget_set_sensitive(GTK_WIDGET(wckp->title), TRUE); */
+        return wckp->prefs->active_text_color;
+    }
+
+    if (is_window_on_active_workspace_and_no_other_maximized_windows_above (controlwindow))
+    {
+        /* window unfocused */
+        /*~ gtk_widget_set_sensitive(GTK_WIDGET(wckp->title), FALSE); */
+        return wckp->prefs->inactive_text_color;
+    }
+
+    return NULL;
+}
+
+
 /* Triggers when controlwindow's name changes */
 /* Warning! This function is called very often, so it should only do the most necessary things! */
 static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 {
-    gint i, n;
-
     const gchar *title_text;
 
     if (controlwindow
@@ -136,27 +157,16 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
         && (!window_is_desktop (controlwindow)
             || wckp->prefs->show_on_desktop))
     {
-        const gchar *title_color, *title_font, *subtitle_font;
-        gchar **part, *title_markup;
+        const gchar *title_color;
+        gchar *title_markup;
 
-        title_text = wnck_window_get_name(controlwindow);
-
-        if (wnck_window_is_active(controlwindow))
+        title_color = get_title_color (controlwindow, wckp);
+        if (!title_color)
         {
-            /* window focused */
-            //~ gtk_widget_set_sensitive(GTK_WIDGET(wckp->title), TRUE);
-            title_color = wckp->prefs->active_text_color;
-        }
-        else if (is_window_on_active_workspace_and_no_other_maximized_windows_above(controlwindow)) {
-            /* window unfocused */
-            //~ gtk_widget_set_sensitive(GTK_WIDGET(wckp->title), FALSE);
-            title_color = wckp->prefs->inactive_text_color;
-        } else {
             return;
         }
 
-        title_font = wckp->prefs->title_font;
-        subtitle_font = wckp->prefs->subtitle_font;
+        title_text = wnck_window_get_name (controlwindow);
 
         /* Set tooltips */
         if (wckp->prefs->show_tooltips)
@@ -167,40 +177,40 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
         /* get application and instance names */
         if (wckp->prefs->full_name && !wckp->prefs->two_lines)
         {
-            title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", title_font, title_color, title_text);
+            title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", wckp->prefs->title_font, title_color, title_text);
         }
         else {
             /* split title text */
-            part = g_strsplit (title_text, " - ", 0);
-            n=0;
-            for (i=0; part[i]; i++) n++;
+            gchar **part = g_strsplit (title_text, " - ", 0);
+            const gint n = g_strv_length (part);
+            gchar *title = g_strdup (part[n - 1]);
 
-            if (n > 1)
+            if (n > 1 && wckp->prefs->two_lines)
             {
-                if (wckp->prefs->two_lines)
+                gchar *subtitle;
+
+                if (wckp->prefs->full_name)
                 {
-                    gchar *subtitle = g_malloc( sizeof(gchar) * ( strlen(title_text) + 1 ) );
-                    strcpy (subtitle, part[0]);
-                    if (wckp->prefs->full_name)
-                    {
-                        for (i=1; i < n - 1; i++)
-                        {
-                            strcat (subtitle, " - ");
-                            strcat (subtitle, part[i]);
-                        }
-                    }
-                    title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span><span font=\"%s\" color=\"%s\">\n%s</span>", title_font, title_color, part[n-1], subtitle_font, title_color,  subtitle);
-                    g_free (subtitle);
+                    g_free (part[n - 1]);
+                    part[n - 1] = NULL;
+                    subtitle = g_strjoinv (" - ", part);
                 }
                 else
                 {
-                    title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", title_font, title_color, part[n-1]);
+                    subtitle = g_strdup (part[0]);
                 }
+
+                title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span><span font=\"%s\" color=\"%s\">\n%s</span>",
+                                                       wckp->prefs->title_font, title_color, title, wckp->prefs->subtitle_font, title_color, subtitle);
+                g_free (subtitle);
             }
-            else {
-                title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", title_font, title_color, part[0]);
+            else
+            {
+                title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", wckp->prefs->title_font, title_color, title);
             }
-            g_strfreev(part);
+
+            g_free (title);
+            g_strfreev (part);
         }
 
         gtk_label_set_markup(wckp->title, title_markup);
