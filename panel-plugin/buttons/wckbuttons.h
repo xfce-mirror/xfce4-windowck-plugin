@@ -38,7 +38,7 @@ typedef enum {
     CLOSE_BUTTON,       // close button
 
     BUTTONS             // number of buttons
-} WindowButtonIndices;
+} WBButton;
 
 typedef enum {
     BUTTON_STATE_NORMAL =  0,
