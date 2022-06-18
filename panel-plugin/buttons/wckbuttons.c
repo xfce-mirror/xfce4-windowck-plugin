@@ -41,7 +41,7 @@
 #define BUTTONS_SIGNALS_CONNECT(name, id) \
         g_signal_connect (G_OBJECT (wb->button[id]->eventbox), "button-press-event", G_CALLBACK (name##_button_pressed), wb); \
         g_signal_connect (G_OBJECT (wb->button[id]->eventbox), "button-release-event", G_CALLBACK (name##_button_release), wb); \
-        g_signal_connect (G_OBJECT (wb->button[id]->eventbox), "enter-notify-event", ((GCallback) (name##_button_hover_enter)), wb); \
+        g_signal_connect (G_OBJECT (wb->button[id]->eventbox), "enter-notify-event", G_CALLBACK (name##_button_hover_enter), wb); \
         g_signal_connect (G_OBJECT (wb->button[id]->eventbox), "leave-notify-event", G_CALLBACK (name##_button_hover_leave), wb);
 
 
@@ -238,19 +238,16 @@ wckbuttons_size_changed (XfcePanelPlugin *plugin,
     return TRUE;
 }
 
-static void set_maximize_button_image (WBPlugin *wb, WBImageState image_state)
+static WBImageButton
+get_maximize_button_image (WBPlugin *wb)
 {
-    if (wb->win->controlwindow && wnck_window_is_maximized(wb->win->controlwindow)) {
-        gtk_image_set_from_pixbuf (wb->button[MAXIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_UNMAXIMIZE][image_state]);
-    } else {
-        gtk_image_set_from_pixbuf (wb->button[MAXIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MAXIMIZE][image_state]);
-    }
+    return (wb->win->controlwindow && wnck_window_is_maximized (wb->win->controlwindow)) ? IMAGE_UNMAXIMIZE : IMAGE_MAXIMIZE;
 }
 
 void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 {
     WBPlugin *wb = data;
-
+    WBImageButton image_button = get_maximize_button_image (wb);
     WBImageState image_state;
 
     if (controlwindow && wnck_window_is_active (controlwindow))
@@ -260,9 +257,7 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 
     /* update buttons images */
     gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][image_state]);
-
-    set_maximize_button_image (wb, image_state);
-
+    gtk_image_set_from_pixbuf (wb->button[MAXIMIZE_BUTTON]->image, wb->pixbufs[image_button][image_state]);
     gtk_image_set_from_pixbuf (wb->button[CLOSE_BUTTON]->image, wb->pixbufs[IMAGE_CLOSE][image_state]);
 }
 
@@ -293,12 +288,46 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
 }
 
 
+/* Called when we click on a button */
+static gboolean
+on_button_pressed (GdkEventButton *event, WBPlugin *wb, WBButton button, WBImageButton image_button)
+{
+    if (event->button != 1)
+        return FALSE;
+
+    gtk_image_set_from_pixbuf (wb->button[button]->image, wb->pixbufs[image_button][IMAGE_PRESSED]);
+
+    return TRUE;
+}
+
+
+/* Makes the button 'glow' when the mouse enters it */
+static gboolean
+on_button_hover_enter (WBPlugin *wb, WBButton button, WBImageButton image_button)
+{
+    gtk_image_set_from_pixbuf (wb->button[button]->image, wb->pixbufs[image_button][IMAGE_PRELIGHT]);
+
+    return TRUE;
+}
+
+
+/* Makes the button stop 'glowing' when the mouse leaves it */
+static gboolean
+on_button_hover_leave (WBPlugin *wb, WBButton button, WBImageButton image_button)
+{
+    WBImageState image_state = wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED;
+
+    gtk_image_set_from_pixbuf (wb->button[button]->image, wb->pixbufs[image_button][image_state]);
+
+    return TRUE;
+}
+
+
 /* Called when we release the click on a button */
 static gboolean on_minimize_button_release (GtkWidget *event_box,
                                GdkEventButton *event,
                                WBPlugin *wb)
 {
-
     if (event->button != 1) return FALSE;
 
     wnck_window_minimize(wb->win->controlwindow);
@@ -312,12 +341,7 @@ static gboolean on_minimize_button_pressed (GtkWidget *event_box,
                              GdkEventButton *event,
                              WBPlugin *wb)
 {
-
-    if (event->button != 1) return FALSE;
-
-    gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][IMAGE_PRESSED]);
-
-    return TRUE;
+    return on_button_pressed (event, wb, MINIMIZE_BUTTON, IMAGE_MINIMIZE);
 }
 
 
@@ -326,11 +350,7 @@ static gboolean on_minimize_button_hover_leave (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    WBImageState image_state = wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED;
-
-    gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][image_state]);
-
-    return TRUE;
+    return on_button_hover_leave (wb, MINIMIZE_BUTTON, IMAGE_MINIMIZE);
 }
 
 
@@ -339,9 +359,7 @@ static gboolean on_minimize_button_hover_enter (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][IMAGE_PRELIGHT]);
-
-    return TRUE;
+    return on_button_hover_enter (wb, MINIMIZE_BUTTON, IMAGE_MINIMIZE);
 }
 
 
@@ -363,11 +381,9 @@ static gboolean on_maximize_button_pressed (GtkWidget *event_box,
                              GdkEventButton *event,
                              WBPlugin *wb)
 {
-    if (event->button != 1) return FALSE;
+    WBImageButton image_button = get_maximize_button_image (wb);
 
-    set_maximize_button_image (wb, IMAGE_PRESSED);
-
-    return TRUE;
+    return on_button_pressed (event, wb, MAXIMIZE_BUTTON, image_button);
 }
 
 
@@ -376,11 +392,9 @@ static gboolean on_maximize_button_hover_leave (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    if (wb->win->controlwindow) {
-        set_maximize_button_image (wb, wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED);
-    }
+    WBImageButton image_button = get_maximize_button_image (wb);
 
-    return TRUE;
+    return on_button_hover_leave (wb, MAXIMIZE_BUTTON, image_button);
 }
 
 
@@ -389,9 +403,9 @@ static gboolean on_maximize_button_hover_enter (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    set_maximize_button_image (wb, IMAGE_PRELIGHT);
+    WBImageButton image_button = get_maximize_button_image (wb);
 
-    return TRUE;
+    return on_button_hover_enter (wb, MAXIMIZE_BUTTON, image_button);
 }
 
 
@@ -413,11 +427,7 @@ static gboolean on_close_button_pressed (GtkWidget *event_box,
                              GdkEventButton *event,
                              WBPlugin *wb)
 {
-    if (event->button != 1) return FALSE;
-
-    gtk_image_set_from_pixbuf (wb->button[CLOSE_BUTTON]->image, wb->pixbufs[IMAGE_CLOSE][IMAGE_PRESSED]);
-
-    return TRUE;
+    return on_button_pressed (event, wb, CLOSE_BUTTON, IMAGE_CLOSE);
 }
 
 
@@ -426,11 +436,7 @@ static gboolean on_close_button_hover_leave (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    WBImageState image_state = wnck_window_is_active (wb->win->controlwindow) ? IMAGE_FOCUSED : IMAGE_UNFOCUSED;
-
-    gtk_image_set_from_pixbuf (wb->button[CLOSE_BUTTON]->image, wb->pixbufs[IMAGE_CLOSE][image_state]);
-
-    return TRUE;
+    return on_button_hover_leave (wb, CLOSE_BUTTON, IMAGE_CLOSE);
 }
 
 
@@ -439,9 +445,7 @@ static gboolean on_close_button_hover_enter (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb)
 {
-    gtk_image_set_from_pixbuf (wb->button[CLOSE_BUTTON]->image, wb->pixbufs[IMAGE_CLOSE][IMAGE_PRELIGHT]);
-
-    return TRUE;
+    return on_button_hover_enter (wb, CLOSE_BUTTON, IMAGE_CLOSE);
 }
 
 
