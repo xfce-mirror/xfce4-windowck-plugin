@@ -269,7 +269,6 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, gpointer data)
 {
     WBPlugin *wb = data;
-    gint i;
 
     if (!controlwindow
         || (window_is_desktop (controlwindow)
@@ -280,29 +279,16 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
     }
     else
     {
+        const gboolean is_desktop = window_is_desktop (controlwindow);
+
+        gtk_widget_set_sensitive (GTK_WIDGET (wb->button[MINIMIZE_BUTTON]->eventbox), !is_desktop);
+        gtk_widget_set_sensitive (GTK_WIDGET (wb->button[MAXIMIZE_BUTTON]->eventbox), !is_desktop);
+        gtk_widget_set_sensitive (GTK_WIDGET (wb->button[CLOSE_BUTTON]->eventbox), TRUE);
+
+        on_wck_state_changed (controlwindow, wb);
+
         if (!gtk_widget_get_visible(GTK_WIDGET(wb->box)))
             gtk_widget_show_all(GTK_WIDGET(wb->box));
-    }
-
-    if (controlwindow)
-    {
-        if (!window_is_desktop (controlwindow))
-        {
-            for (i=0; i<BUTTONS; i++)
-                gtk_widget_set_sensitive(GTK_WIDGET(wb->button[i]->eventbox), TRUE);
-
-            on_wck_state_changed (controlwindow, wb);
-            if (!gtk_widget_get_visible(GTK_WIDGET(wb->box)))
-                gtk_widget_show_all(GTK_WIDGET(wb->box));
-        }
-        else if (wb->prefs->show_on_desktop)
-        {
-            gtk_widget_set_sensitive(GTK_WIDGET(wb->button[MINIMIZE_BUTTON]->eventbox), FALSE);
-            gtk_widget_set_sensitive(GTK_WIDGET(wb->button[MAXIMIZE_BUTTON]->eventbox), FALSE);
-            gtk_widget_set_sensitive(GTK_WIDGET(wb->button[CLOSE_BUTTON]->eventbox), TRUE);
-
-            on_wck_state_changed (controlwindow, wb);
-        }
     }
 }
 
