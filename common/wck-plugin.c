@@ -103,6 +103,7 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
     return refresh;
 }
 
+
 void
 wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs)
 {
@@ -132,6 +133,7 @@ wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointe
         xfce_rc_close (rc);
     }
 }
+
 
 void
 wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs)
@@ -163,6 +165,18 @@ wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointe
     /* something went wrong, apply default values */
     DBG ("Applying default settings");
     load_settings (NULL, prefs);
+}
+
+
+GtkWidget *
+wck_dialog_get_widget (GtkBuilder *builder, const gchar *name)
+{
+    GtkWidget *widget = GTK_WIDGET (gtk_builder_get_object (builder, name));
+
+    if (G_UNLIKELY (widget == NULL))
+        DBG ("No widget with the name \"%s\" found", name);
+
+    return widget;
 }
 
 void
@@ -208,6 +222,7 @@ wck_configure_dialog (XfcePanelPlugin *plugin, const gchar *icon_name, GtkWidget
     /* show the entire dialog */
     gtk_widget_show (dialog);
 }
+
 
 void
 wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data)

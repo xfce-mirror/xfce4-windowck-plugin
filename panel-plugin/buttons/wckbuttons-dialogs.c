@@ -256,73 +256,68 @@ static void on_sync_wm_theme_toggled(GtkToggleButton *sync_wm_theme, WBPlugin *w
 
 static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsize length) {
     GError *error = NULL;
-    GObject *area = NULL;
-    GtkRadioButton *only_maximized, *active_window;
-    GtkToggleButton *show_on_desktop, *sync_wm_theme;
-    GtkTreeSelection *selection;
-    GtkCellRenderer *renderer;
-    GtkListStore *list_store;
-    GtkWidget *theme_name_treeview;
-    GtkEntry *button_layout;
 
     wb->prefs->builder = gtk_builder_new();
 
     if (gtk_builder_add_from_string(wb->prefs->builder, buffer, length, &error)) {
-        area = gtk_builder_get_object(wb->prefs->builder, "vbox0");
+        GObject *area = gtk_builder_get_object(wb->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
         {
-            only_maximized = GTK_RADIO_BUTTON(gtk_builder_get_object(wb->prefs->builder, "only_maximized"));
-            active_window = GTK_RADIO_BUTTON(gtk_builder_get_object(wb->prefs->builder, "active_window"));
+            GtkRadioButton *only_maximized, *active_window;
+            GtkToggleButton *show_on_desktop, *sync_wm_theme;
+            GtkWidget *theme_name_treeview;
+            GtkEntry *button_layout;
 
-            if (G_LIKELY (only_maximized != NULL))
+            only_maximized = GTK_RADIO_BUTTON (wck_dialog_get_widget (wb->prefs->builder, "only_maximized"));
+            active_window = GTK_RADIO_BUTTON (wck_dialog_get_widget (wb->prefs->builder, "active_window"));
+            if (G_LIKELY (only_maximized != NULL && active_window != NULL))
             {
                 gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(only_maximized), wb->prefs->only_maximized);
                 gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(active_window), !wb->prefs->only_maximized);
                 g_signal_connect(only_maximized, "toggled", G_CALLBACK(on_only_maximized_toggled), wb);
             }
-            else {
-                DBG("No widget with the name \"only_maximized\" found");
-            }
 
-            show_on_desktop = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wb->prefs->builder, "show_on_desktop"));
-
-            if (G_LIKELY (show_on_desktop != NULL)) {
+            show_on_desktop = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wb->prefs->builder, "show_on_desktop"));
+            if (G_LIKELY (show_on_desktop != NULL))
+            {
                 gtk_toggle_button_set_active(show_on_desktop, wb->prefs->show_on_desktop);
                 g_signal_connect(show_on_desktop, "toggled", G_CALLBACK(on_show_on_desktop_toggled), wb);
             }
-            else {
-                DBG("No widget with the name \"show_on_desktop\" found");
-            }
 
             /* Style widgets */
-            theme_name_treeview = GTK_WIDGET (gtk_builder_get_object (wb->prefs->builder, "theme_name_treeview"));
 
             /* theme name */
+            theme_name_treeview = wck_dialog_get_widget (wb->prefs->builder, "theme_name_treeview");
+            if (G_LIKELY (theme_name_treeview != NULL))
             {
-            list_store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
-            gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME,
-                                             wckbuttons_theme_sort_func,
-                                             NULL, NULL);
-            gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME, GTK_SORT_ASCENDING);
-            gtk_tree_view_set_model (GTK_TREE_VIEW (theme_name_treeview), GTK_TREE_MODEL (list_store));
-            g_object_unref (G_OBJECT (list_store));
+                GtkTreeSelection *selection;
+                GtkCellRenderer *renderer;
+                GtkListStore *list_store;
 
-            renderer = gtk_cell_renderer_text_new ();
+                list_store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
+                gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME,
+                                                 wckbuttons_theme_sort_func,
+                                                 NULL, NULL);
+                gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME, GTK_SORT_ASCENDING);
+                gtk_tree_view_set_model (GTK_TREE_VIEW (theme_name_treeview), GTK_TREE_MODEL (list_store));
+                g_object_unref (G_OBJECT (list_store));
 
-            gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview),
-                                                         0, _("Directory"), renderer, "text", 1, NULL);
-            gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview),
-                                                         0, _("Themes usable"), renderer, "text", 0, NULL);
-            selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview));
-            g_signal_connect (selection, "changed", G_CALLBACK (wckbuttons_theme_selection_changed),
-                              wb);
-            gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
-            wckbuttons_load_themes (theme_name_treeview, wb);
+                renderer = gtk_cell_renderer_text_new ();
+                gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview),
+                                                             0, _("Directory"), renderer, "text", 1, NULL);
+                gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview),
+                                                             0, _("Themes usable"), renderer, "text", 0, NULL);
+
+                selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview));
+                g_signal_connect (selection, "changed", G_CALLBACK (wckbuttons_theme_selection_changed),
+                                  wb);
+                gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
+
+                wckbuttons_load_themes (theme_name_treeview, wb);
             }
 
-            sync_wm_theme = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wb->prefs->builder, "sync_wm_theme"));
-
+            sync_wm_theme = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wb->prefs->builder, "sync_wm_theme"));
             if (G_LIKELY (sync_wm_theme != NULL))
             {
                 if (wb->wm_channel)
@@ -334,25 +329,18 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
                     gtk_widget_set_sensitive (GTK_WIDGET(sync_wm_theme), FALSE);
                 }
             }
-            else {
-                DBG("No widget with the name \"sync_wm_theme\" found");
-            }
 
-            button_layout = GTK_ENTRY(gtk_builder_get_object(wb->prefs->builder, "button_layout"));
-
+            button_layout = GTK_ENTRY (wck_dialog_get_widget (wb->prefs->builder, "button_layout"));
             if (G_LIKELY (button_layout != NULL))
             {
                 gtk_entry_set_text(button_layout, wb->prefs->button_layout);
                 g_signal_connect(GTK_EDITABLE(button_layout), "changed", G_CALLBACK(on_button_layout_changed), wb);
             }
-            else {
-                DBG("No widget with the name \"button_layout\" found");
-            }
 
-            return GTK_WIDGET(area) ;
+            return GTK_WIDGET(area);
         }
         else {
-            g_set_error_literal(&error, 0, 0, "No widget with the name \"contentarea\" found");
+            g_set_error_literal (&error, 0, 0, "No widget with the name \"vbox0\" found");
         }
     }
 
@@ -360,7 +348,7 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
     g_error_free(error);
     g_object_unref(G_OBJECT (wb->prefs->builder) );
 
-    return NULL ;
+    return NULL;
 }
 
 

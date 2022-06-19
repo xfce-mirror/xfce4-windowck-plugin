@@ -263,15 +263,6 @@ static void on_title_padding_changed(GtkSpinButton *title_padding, WindowckPlugi
 static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buffer, gsize length)
 {
     GError *error = NULL;
-    GObject *area = NULL;
-    GtkSpinButton *titlesize, *title_padding;
-    GtkComboBox *size_mode, *title_alignment;
-    GtkToggleButton *sync_wm_font;
-    GtkRadioButton *only_maximized, *active_window;
-    GtkToggleButton *show_on_desktop, *full_name, *two_lines;
-    GtkToggleButton *show_app_icon, *icon_on_right, *show_window_menu;
-    GtkFontButton *title_font, *subtitle_font;
-    GtkWidget *width_unit, *subtitle_font_label;
 
     if (wckp->prefs->builder)
         g_object_unref(G_OBJECT (wckp->prefs->builder));
@@ -279,93 +270,73 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
     wckp->prefs->builder = gtk_builder_new();
 
     if (gtk_builder_add_from_string(wckp->prefs->builder, buffer, length, &error)) {
-        area = gtk_builder_get_object(wckp->prefs->builder, "vbox0");
+        GObject *area = gtk_builder_get_object(wckp->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
         {
-            only_maximized = GTK_RADIO_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "only_maximized"));
-            active_window = GTK_RADIO_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "active_window"));
+            GtkSpinButton *titlesize, *title_padding;
+            GtkComboBox *size_mode, *title_alignment;
+            GtkToggleButton *sync_wm_font;
+            GtkRadioButton *only_maximized, *active_window;
+            GtkToggleButton *show_on_desktop, *full_name, *two_lines;
+            GtkToggleButton *show_app_icon, *icon_on_right, *show_window_menu;
+            GtkFontButton *title_font, *subtitle_font;
+            GtkWidget *subtitle_font_label;
 
-            if (G_LIKELY (only_maximized != NULL))
+            only_maximized = GTK_RADIO_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "only_maximized"));
+            active_window = GTK_RADIO_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "active_window"));
+            if (G_LIKELY (only_maximized != NULL && active_window != NULL))
             {
                 gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(only_maximized), wckp->prefs->only_maximized);
                 gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(active_window), !wckp->prefs->only_maximized);
                 g_signal_connect(only_maximized, "toggled", G_CALLBACK(on_only_maximized_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"only_maximized\" found");
-            }
 
-            show_on_desktop = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "show_on_desktop"));
-
-            if (G_LIKELY (show_on_desktop != NULL)) {
+            show_on_desktop = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "show_on_desktop"));
+            if (G_LIKELY (show_on_desktop != NULL))
+            {
                 gtk_toggle_button_set_active(show_on_desktop, wckp->prefs->show_on_desktop);
                 g_signal_connect(show_on_desktop, "toggled", G_CALLBACK(on_show_on_desktop_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"show_on_desktop\" found");
-            }
 
-            full_name = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "full_name"));
-
+            full_name = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "full_name"));
             if (G_LIKELY (full_name != NULL))
             {
                 gtk_toggle_button_set_active(full_name, wckp->prefs->full_name);
                 g_signal_connect(full_name, "toggled", G_CALLBACK(on_full_name_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"full_name\" found");
-            }
 
-            two_lines = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "two_lines"));
-
+            two_lines = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "two_lines"));
             if (G_LIKELY (two_lines != NULL))
             {
                 gtk_toggle_button_set_active(two_lines, wckp->prefs->two_lines);
                 g_signal_connect(two_lines, "toggled", G_CALLBACK(on_two_lines_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"two_lines\" found");
-            }
 
-            show_app_icon = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "show_app_icon"));
-
+            show_app_icon = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "show_app_icon"));
             if (G_LIKELY (show_app_icon != NULL))
             {
                 gtk_widget_set_sensitive (GTK_WIDGET (show_app_icon), wckp->prefs->show_window_menu);
                 gtk_toggle_button_set_active(show_app_icon, wckp->prefs->show_app_icon);
                 g_signal_connect(show_app_icon, "toggled", G_CALLBACK(on_show_app_icon_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"show_app_icon\" found");
-            }
 
-            icon_on_right = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "icon_on_right"));
-
+            icon_on_right = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "icon_on_right"));
             if (G_LIKELY (icon_on_right != NULL))
             {
                 gtk_widget_set_sensitive (GTK_WIDGET (icon_on_right), wckp->prefs->show_window_menu);
                 gtk_toggle_button_set_active(icon_on_right, wckp->prefs->icon_on_right);
                 g_signal_connect(icon_on_right, "toggled", G_CALLBACK(on_icon_on_right_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"icon_on_right\" found");
-            }
 
-            show_window_menu = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "show_window_menu"));
-
+            show_window_menu = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "show_window_menu"));
             if (G_LIKELY (show_window_menu != NULL))
             {
                 gtk_toggle_button_set_active(show_window_menu, wckp->prefs->show_window_menu);
                 g_signal_connect(show_window_menu, "toggled", G_CALLBACK(on_show_window_menu_toggled), wckp);
             }
-            else {
-                DBG("No widget with the name \"show_window_menu\" found");
-            }
 
-            titlesize = GTK_SPIN_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "titlesize"));
-            width_unit = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "width_unit"));
-
+            titlesize = GTK_SPIN_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "titlesize"));
             if (G_LIKELY (titlesize != NULL))
             {
                 gtk_spin_button_set_range(titlesize, TITLE_SIZE_MIN, TITLE_SIZE_MAX);
@@ -373,13 +344,8 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                 gtk_spin_button_set_value(titlesize, wckp->prefs->title_size);
                 g_signal_connect(titlesize, "value-changed", G_CALLBACK(on_titlesize_changed), wckp);
             }
-            else {
-                DBG("No widget with the name \"titlesize\" found");
-            }
 
-            sync_wm_font = GTK_TOGGLE_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "sync_wm_font"));
-            title_font = GTK_FONT_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "title_font"));
-
+            sync_wm_font = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "sync_wm_font"));
             if (G_LIKELY (sync_wm_font != NULL))
             {
                 if (wckp->wm_channel)
@@ -391,34 +357,27 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                     gtk_widget_set_sensitive (GTK_WIDGET(sync_wm_font), FALSE);
                 }
             }
-            else {
-                DBG("No widget with the name \"sync_wm_font\" found");
-            }
 
+            title_font = GTK_FONT_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "title_font"));
             if (G_LIKELY (title_font != NULL))
             {
                 gtk_font_button_set_font_name(title_font, wckp->prefs->title_font);
                 g_signal_connect(title_font, "font-set", G_CALLBACK(on_title_font_set), wckp);
             }
-            else {
-                DBG("No widget with the name \"title_font\" found");
-            }
 
-            subtitle_font = GTK_FONT_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "subtitle_font"));
-            subtitle_font_label = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "subtitle_font_label"));
-            if (G_LIKELY (subtitle_font != NULL))
+            subtitle_font = GTK_FONT_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "subtitle_font"));
+            subtitle_font_label = wck_dialog_get_widget (wckp->prefs->builder, "subtitle_font_label");
+            if (G_LIKELY (subtitle_font != NULL && subtitle_font_label != NULL))
             {
                 gtk_font_button_set_font_name(subtitle_font, wckp->prefs->subtitle_font);
                 gtk_widget_set_sensitive (GTK_WIDGET(subtitle_font), wckp->prefs->two_lines);
                 gtk_widget_set_sensitive (subtitle_font_label, wckp->prefs->two_lines);
                 g_signal_connect(subtitle_font, "font-set", G_CALLBACK(on_subtitle_font_set), wckp);
             }
-            else {
-                DBG("No widget with the name \"title_font\" found");
-            }
 
-            title_alignment = GTK_COMBO_BOX(gtk_builder_get_object(wckp->prefs->builder, "title_alignment"));
-            if (G_LIKELY (title_alignment != NULL)) {
+            title_alignment = GTK_COMBO_BOX (wck_dialog_get_widget (wckp->prefs->builder, "title_alignment"));
+            if (G_LIKELY (title_alignment != NULL))
+            {
                 /* set active item */
                 if ( wckp->prefs->title_alignment == LEFT ) {
                     gtk_combo_box_set_active(title_alignment, 0);
@@ -430,22 +389,20 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                     gtk_combo_box_set_active(title_alignment, 2);
                 }
                 g_signal_connect(title_alignment, "changed", G_CALLBACK(on_title_alignment_changed), wckp);
-            } else {
-                DBG("No widget with the name \"title_alignment\" found");
             }
 
-            title_padding = GTK_SPIN_BUTTON(gtk_builder_get_object(wckp->prefs->builder, "title_padding"));
-            if (G_LIKELY (title_padding != NULL)) {
+            title_padding = GTK_SPIN_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "title_padding"));
+            if (G_LIKELY (title_padding != NULL))
+            {
                 gtk_spin_button_set_range(title_padding, 0, 99);
                 gtk_spin_button_set_increments(title_padding, 1, 1);
                 gtk_spin_button_set_value(title_padding, wckp->prefs->title_padding);
                 g_signal_connect(title_padding, "value-changed", G_CALLBACK(on_title_padding_changed), wckp);
-            } else {
-                DBG("No widget with the name \"title_padding\" found");
             }
 
-            size_mode = GTK_COMBO_BOX(gtk_builder_get_object(wckp->prefs->builder, "size_mode"));
-            if (G_LIKELY (size_mode != NULL)) {
+            size_mode = GTK_COMBO_BOX (wck_dialog_get_widget (wckp->prefs->builder, "size_mode"));
+            if (G_LIKELY (size_mode != NULL))
+            {
                 /* set active item */
                 if ( wckp->prefs->size_mode == SHRINK ) {
                     gtk_combo_box_set_active(size_mode, 0);
@@ -454,26 +411,35 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                     gtk_combo_box_set_active(size_mode, 1);
                 }
                 else if( wckp->prefs->size_mode == EXPAND ) {
+                    GtkWidget *width_unit;
+
                     gtk_combo_box_set_active(size_mode, 2);
-                    gtk_widget_set_sensitive(GTK_WIDGET(titlesize), FALSE);
-                    gtk_widget_set_sensitive(width_unit, FALSE);
+
+                    if (G_LIKELY (titlesize != NULL))
+                    {
+                        gtk_widget_set_sensitive (GTK_WIDGET (titlesize), FALSE);
+                    }
+
+                    width_unit = wck_dialog_get_widget (wckp->prefs->builder, "width_unit");
+                    if (G_LIKELY (width_unit != NULL))
+                    {
+                        gtk_widget_set_sensitive (width_unit, FALSE);
+                    }
                 }
 
                 g_signal_connect(size_mode, "changed", G_CALLBACK(on_size_mode_changed), wckp);
-            } else {
-                DBG("No widget with the name \"size_mode\" found");
             }
 
             return GTK_WIDGET(area);
         }
         else {
-            g_set_error_literal(&error, 0, 0, "No widget with the name \"contentarea\" found");
+            g_set_error_literal (&error, 0, 0, "No widget with the name \"vbox0\" found");
         }
     }
 
     g_critical("Faild to construct the wckp->prefs->builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wckp->plugin), xfce_panel_plugin_get_unique_id (wckp->plugin), error->message);
     g_error_free(error);
-    g_object_unref(G_OBJECT (wckp->prefs->builder) );
+    g_object_unref (G_OBJECT (wckp->prefs->builder));
 
     return NULL;
 }
