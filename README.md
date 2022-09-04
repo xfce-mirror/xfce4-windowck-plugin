@@ -12,7 +12,7 @@ Original plugin's features:
 
 FAQ:  
 Q: How do I hide the window decorations on maximized windows on Xfce?  
-A: Xfce 4.12 now support Titileless feature! Enable it in Window manager tweaks → Accessibility.
+A: Xfce 4.12 now support Titleless feature! Enable it in Window manager tweaks → Accessibility.
 
 This code is derived from original 'Window Applets' from Andrej Belcijan.
 See <https://www.gnome-look.org/p/1115400> for infos.
@@ -30,6 +30,7 @@ For Arch Linux users [AUR package](https://aur.archlinux.org/packages/xfce4-wind
 ### Debian/Ubuntu
 
 * Install dependencies:
+
   ```bash
   sudo apt update
   sudo apt install xfce4-dev-tools intltool libgtk-3-dev libpango1.0-dev libwnck-3-dev libxfce4panel-2.0-dev libxfce4ui-2-dev libxfce4util-dev libxfconf-0-dev
