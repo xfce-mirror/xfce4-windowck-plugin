@@ -20,10 +20,10 @@
 
 #include <libxfce4panel/libxfce4panel.h>
 
+#include <common/ui_style.h>
 #include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
-#include "ui_style.h"
 #include "windowck.h"
 #include "windowck-title.h"
 

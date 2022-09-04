@@ -18,8 +18,6 @@ libwckmenu_built_sources = \
 
 libwckmenu_la_SOURCES = \
 	$(libwckmenu_built_sources) \
-	ui_style.c \
-	ui_style.h \
 	wckmenu.c \
 	wckmenu.h \
 	wckmenu-dialogs.c \
