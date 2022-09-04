@@ -1,3 +1,24 @@
+0.5.0
+    Port to GTK3
+    Add basic GitLab pipeline
+    Update project urls
+    Fix some memory leaks
+    A lot of code cleanup
+    Disconnect signal handlers before plugin exit
+    Fix buttons sensitivity on configure dialog creation
+    Fix crash on closing last active window
+    Fix title showing on desktop
+    Use plugin icon in preferences dialog
+    Replace ImageMagick convert with pure Python xpm2png
+    Fix deprecation warnings
+    Remove the debian directory
+    Move Window Menu to its own plugin
+    Translation updates:
+        Albanian, Bulgarian, Chinese (China), Chinese (Taiwan), Czech,
+        Dutch, Estonian, French, German, Hebrew, Interlingue, Italian,
+        Japanese, Korean, Lithuanian, Malay, Norwegian Bokmål, Polish,
+        Portuguese, Portuguese (Brazil), Russian, Russian (Russia), Serbian,
+        Slovak, Slovenian, Spanish, Swedish, Turkish. Ukrainian
 0.4.6
     Fix #51: Build warnings
     Fix #56: add some checks while processing changes of unfocused window title
