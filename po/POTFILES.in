@@ -1,7 +1,9 @@
 common/wck-plugin.c
-panel-plugin/title/windowck-dialogs.c
-panel-plugin/title/windowck-dialogs.glade
-panel-plugin/title/windowck-plugin.desktop.in
 panel-plugin/buttons/wckbuttons-dialogs.c
 panel-plugin/buttons/wckbuttons-dialogs.glade
 panel-plugin/buttons/wckbuttons.desktop.in
+panel-plugin/menu/wckmenu-dialogs.glade
+panel-plugin/menu/wckmenu-plugin.desktop.in
+panel-plugin/title/windowck-dialogs.c
+panel-plugin/title/windowck-dialogs.glade
+panel-plugin/title/windowck-plugin.desktop.in
