@@ -14,22 +14,20 @@
  *  with this program; if not, write to the Free Software Foundation, Inc.,
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
- *  Copyright (C) 2013 Cedric Leporcq  <cedl38@gmail.com>
+ *  Copyright (C) 2013 Alessio Piccoli <alepic@geckoblu.net>
+ *                     Cedric Leporcq  <cedl38@gmail.com>
  *
  */
 
-#ifndef __WINDOWCK_TITLE_H__
-#define __WINDOWCK_TITLE_H__
+#ifndef __WCKMENU_DIALOGS_H__
+#define __WCKMENU_DIALOGS_H__
 
-#include "windowck.h"
+#include "wckmenu.h"
 
-#define TITLE_SIZE_MAX 999 /* title size max for expand option in characters */
+G_BEGIN_DECLS
 
-void init_title (WindowckPlugin *wckp);
-void resize_title(WindowckPlugin *wckp);
-void reload_wnck_title (WindowckPlugin *wckp);
-void set_title_padding (WindowckPlugin *wckp);
-gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
-gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
+void wckmenu_configure(XfcePanelPlugin *plugin, WckMenuPlugin *wmp);
 
-#endif /* __WINDOWCK_TITLE_H__ */
+G_END_DECLS
+
+#endif /* !__WCKMENU_DIALOGS_H__ */
