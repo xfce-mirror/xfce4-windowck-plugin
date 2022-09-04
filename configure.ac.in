@@ -103,8 +103,9 @@ icons/Makefile
 icons/48x48/Makefile
 common/Makefile
 panel-plugin/Makefile
-panel-plugin/title/Makefile
 panel-plugin/buttons/Makefile
+panel-plugin/menu/Makefile
+panel-plugin/title/Makefile
 themes/Makefile
 themes/windowck/Makefile
 themes/windowck/xfwm4/Makefile

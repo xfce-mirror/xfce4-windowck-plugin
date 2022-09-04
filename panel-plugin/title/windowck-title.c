@@ -20,15 +20,12 @@
 
 #include <libxfce4panel/libxfce4panel.h>
 
+#include <common/ui_style.h>
 #include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
-#include "ui_style.h"
 #include "windowck.h"
 #include "windowck-title.h"
-
-#define ICON_PADDING 3
-#define XFCE_PANEL_IS_SMALL (xfce_panel_plugin_get_size (wckp->plugin) < 23)
 
 /* Prototypes */
 static void on_name_changed(WnckWindow *window, WindowckPlugin *);
@@ -36,67 +33,10 @@ static void on_name_changed(WnckWindow *window, WindowckPlugin *);
 
 void reload_wnck_title (WindowckPlugin *wckp)
 {
-    /* disconnect controlled window name and icon signal handlers */
+    /* disconnect controlled window name signal handler */
     wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cnh);
-    wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cih);
 
     reload_wnck (wckp->win, wckp->prefs->only_maximized, wckp);
-}
-
-
-static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
-{
-    if (!controlwindow)
-    {
-        xfce_panel_image_clear(XFCE_PANEL_IMAGE (wckp->icon->symbol));
-        return;
-    }
-
-    if (wckp->prefs->show_on_desktop)
-    {
-        gtk_widget_set_sensitive (wckp->icon->symbol, TRUE);
-
-        if (window_is_desktop (controlwindow))
-        {
-            if (!wnck_window_is_active(controlwindow))
-                gtk_widget_set_sensitive (wckp->icon->symbol, FALSE);
-
-            xfce_panel_image_set_from_source (XFCE_PANEL_IMAGE (wckp->icon->symbol), "go-home");
-        }
-    }
-
-    if (!window_is_desktop (controlwindow))
-    {
-        GdkPixbuf *pixbuf = NULL;
-        GdkPixbuf *grayscale = NULL;
-
-        /* This only returns a pointer - it SHOULDN'T be unrefed! */
-        if (XFCE_PANEL_IS_SMALL)
-            pixbuf = wnck_window_get_mini_icon(controlwindow);
-        else
-            pixbuf = wnck_window_get_icon(controlwindow);
-
-        /* leave when there is no valid pixbuf */
-        if (G_UNLIKELY (pixbuf == NULL))
-        {
-            xfce_panel_image_clear (XFCE_PANEL_IMAGE (wckp->icon->symbol));
-            return;
-        }
-
-        if (!wnck_window_is_active(controlwindow))
-        {
-            /* icon color is set to grayscale */
-            grayscale = gdk_pixbuf_copy(pixbuf);
-            gdk_pixbuf_saturate_and_pixelate(grayscale, grayscale, 0, FALSE);
-            if (G_UNLIKELY (grayscale != NULL))
-                pixbuf = grayscale;
-        }
-
-        xfce_panel_image_set_from_pixbuf(XFCE_PANEL_IMAGE (wckp->icon->symbol), pixbuf);
-
-        if (grayscale != NULL && grayscale != pixbuf)
-            g_object_unref (G_OBJECT (grayscale));
-    }
 }
 
 
@@ -238,51 +178,11 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 }
 
 
-static void
-set_icon_color (GtkWidget *widget, const gchar *color)
-{
-    GtkStyleContext *style_ctx = gtk_widget_get_style_context (widget);
-    GtkCssProvider *provider;
-    const gchar *data_name = "color_provider";
-    gpointer current_provider = g_object_get_data (G_OBJECT (widget), data_name);
-    gchar *style;
-
-    if (current_provider)
-        gtk_style_context_remove_provider (style_ctx, GTK_STYLE_PROVIDER (current_provider));
-
-    provider = gtk_css_provider_new ();
-    style = g_strdup_printf ("* { color: %s; }", color);
-    gtk_css_provider_load_from_data (provider, style, strlen (style), NULL);
-    g_free (style);
-    gtk_style_context_add_provider (style_ctx, GTK_STYLE_PROVIDER (provider), G_MAXUINT);
-
-    /* Store the provider inside widget */
-    g_object_set_data_full (G_OBJECT (widget), data_name, provider, g_object_unref);
-}
-
-
 void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 {
     WindowckPlugin *wckp = data;
 
     on_name_changed (controlwindow, wckp);
-
-    if (wckp->prefs->show_window_menu)
-    {
-        if (wckp->prefs->show_app_icon)
-        {
-            on_icon_changed (wckp->win->controlwindow, wckp);
-        }
-        else
-        {
-            if (controlwindow
-                && (!window_is_desktop (controlwindow)
-                    || wckp->prefs->show_on_desktop))
-            {
-                set_icon_color (wckp->icon->symbol, wnck_window_is_active (controlwindow) ? wckp->prefs->active_text_color : wckp->prefs->inactive_text_color);
-            }
-        }
-    }
 }
 
 
@@ -308,27 +208,9 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
             gtk_widget_show_all(GTK_WIDGET(wckp->box));
     }
 
-    if (controlwindow)
+    if (controlwindow && !window_is_desktop (controlwindow))
     {
-        if (!window_is_desktop (controlwindow))
-        {
-            wckp->cnh = g_signal_connect(G_OBJECT(controlwindow), "name-changed", G_CALLBACK(on_name_changed), wckp);
-            if (!gtk_widget_get_visible(GTK_WIDGET(wckp->icon->eventbox)))
-                gtk_widget_show_all (GTK_WIDGET(wckp->icon->eventbox));
-        }
-        else if (wckp->prefs->show_on_desktop && !wckp->prefs->show_app_icon)
-        {
-            if (gtk_widget_get_visible(GTK_WIDGET(wckp->icon->eventbox)))
-                gtk_widget_hide (GTK_WIDGET(wckp->icon->eventbox));
-        }
-    }
-
-    if (wckp->prefs->show_app_icon && wckp->prefs->show_window_menu)
-    {
-        wck_signal_handler_disconnect (G_OBJECT(previous), wckp->cih);
-
-        if (controlwindow)
-            wckp->cih = g_signal_connect(G_OBJECT(controlwindow), "icon-changed", G_CALLBACK(on_icon_changed), wckp);
+        wckp->cnh = g_signal_connect(G_OBJECT(controlwindow), "name-changed", G_CALLBACK(on_name_changed), wckp);
     }
 }
 
@@ -351,8 +233,6 @@ void resize_title(WindowckPlugin *wckp)
 
 void set_title_padding (WindowckPlugin *wckp)
 {
-    gtk_widget_set_margin_top (wckp->box, ICON_PADDING);
-    gtk_widget_set_margin_bottom (wckp->box, ICON_PADDING);
     gtk_widget_set_margin_start (wckp->box, wckp->prefs->title_padding);
     gtk_widget_set_margin_end (wckp->box, wckp->prefs->title_padding);
     gtk_box_set_spacing (GTK_BOX (wckp->box), wckp->prefs->title_padding);
@@ -406,24 +286,6 @@ gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlug
     }
 
     return FALSE;
-}
-
-
-gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp)
-{
-    GtkWidget *menu;
-
-    if ((event->button != 1)
-        || window_is_desktop (wckp->win->controlwindow))
-        return FALSE;
-
-    menu = wnck_action_menu_new (wckp->win->controlwindow);
-
-    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(wckp->icon->eventbox), NULL);
-    gtk_menu_popup_at_widget (GTK_MENU (menu), GTK_WIDGET(wckp->icon->eventbox),
-                              GDK_GRAVITY_STATIC, GDK_GRAVITY_STATIC, NULL);
-
-    return TRUE;
 }
 
 
@@ -486,7 +348,7 @@ static void on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const g
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "title_font") || !strcmp (name, "show_app_icon"))
+                if (!strcmp (name, "title_font"))
                 {
                     apply_wm_settings (wckp);
                 }

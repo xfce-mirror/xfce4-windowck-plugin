@@ -47,8 +47,6 @@ static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, Windowc
 {
     wckp->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
 
-    if (wckp->icon->symbol)
-        gtk_widget_set_sensitive (wckp->icon->symbol, TRUE);
     reload_wnck_title (wckp);
 }
 
@@ -131,55 +129,6 @@ static void on_two_lines_toggled(GtkToggleButton *two_lines, WindowckPlugin *wck
     gtk_widget_set_sensitive (subtitle_font, wckp->prefs->two_lines);
     gtk_widget_set_sensitive (subtitle_font_label, wckp->prefs->two_lines);
     gtk_widget_set_sensitive (sync_wm_font, !wckp->prefs->two_lines);
-}
-
-
-static void on_show_app_icon_toggled(GtkToggleButton *show_app_icon, WindowckPlugin *wckp)
-{
-    wckp->prefs->show_app_icon = gtk_toggle_button_get_active(show_app_icon);
-
-    reset_symbol (wckp);
-
-    if (!wckp->prefs->show_app_icon)
-        wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cih);
-
-    on_wck_state_changed (wckp->win->controlwindow, wckp);
-}
-
-
-static void on_icon_on_right_toggled(GtkToggleButton *icon_on_right, WindowckPlugin *wckp)
-{
-    wckp->prefs->icon_on_right = gtk_toggle_button_get_active(icon_on_right);
-
-    if (wckp->prefs->icon_on_right)
-        gtk_box_reorder_child (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), 1);
-    else
-        gtk_box_reorder_child (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), 0);
-}
-
-
-static void on_show_window_menu_toggled(GtkToggleButton *show_window_menu, WindowckPlugin *wckp)
-{
-    GtkWidget *show_app_icon;
-    GtkWidget *icon_on_right;
-
-    wckp->prefs->show_window_menu = gtk_toggle_button_get_active(show_window_menu);
-    show_app_icon = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "show_app_icon"));
-    icon_on_right = GTK_WIDGET(gtk_builder_get_object(wckp->prefs->builder, "icon_on_right"));
-
-    reset_symbol (wckp);
-
-    gtk_widget_set_sensitive (show_app_icon, wckp->prefs->show_window_menu);
-    gtk_widget_set_sensitive (icon_on_right, wckp->prefs->show_window_menu);
-
-    if (wckp->prefs->show_window_menu)
-    {
-        on_wck_state_changed (wckp->win->controlwindow, wckp);
-    }
-    else if (wckp->prefs->show_app_icon)
-    {
-        wck_signal_handler_disconnect (G_OBJECT (wckp->win->controlwindow), wckp->cih);
-    }
 }
 
 
@@ -284,7 +233,6 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
             GtkToggleButton *sync_wm_font;
             GtkRadioButton *only_maximized, *active_window;
             GtkToggleButton *show_on_desktop, *full_name, *two_lines;
-            GtkToggleButton *show_app_icon, *icon_on_right, *show_window_menu;
             GtkFontButton *title_font, *subtitle_font;
             GtkWidget *subtitle_font_label;
 
@@ -316,29 +264,6 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
             {
                 gtk_toggle_button_set_active(two_lines, wckp->prefs->two_lines);
                 g_signal_connect(two_lines, "toggled", G_CALLBACK(on_two_lines_toggled), wckp);
-            }
-
-            show_app_icon = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "show_app_icon"));
-            if (G_LIKELY (show_app_icon != NULL))
-            {
-                gtk_widget_set_sensitive (GTK_WIDGET (show_app_icon), wckp->prefs->show_window_menu);
-                gtk_toggle_button_set_active(show_app_icon, wckp->prefs->show_app_icon);
-                g_signal_connect(show_app_icon, "toggled", G_CALLBACK(on_show_app_icon_toggled), wckp);
-            }
-
-            icon_on_right = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "icon_on_right"));
-            if (G_LIKELY (icon_on_right != NULL))
-            {
-                gtk_widget_set_sensitive (GTK_WIDGET (icon_on_right), wckp->prefs->show_window_menu);
-                gtk_toggle_button_set_active(icon_on_right, wckp->prefs->icon_on_right);
-                g_signal_connect(icon_on_right, "toggled", G_CALLBACK(on_icon_on_right_toggled), wckp);
-            }
-
-            show_window_menu = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "show_window_menu"));
-            if (G_LIKELY (show_window_menu != NULL))
-            {
-                gtk_toggle_button_set_active(show_window_menu, wckp->prefs->show_window_menu);
-                g_signal_connect(show_window_menu, "toggled", G_CALLBACK(on_show_window_menu_toggled), wckp);
             }
 
             titlesize = GTK_SPIN_BUTTON (wck_dialog_get_widget (wckp->prefs->builder, "titlesize"));

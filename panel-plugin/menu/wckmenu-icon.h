@@ -18,18 +18,13 @@
  *
  */
 
-#ifndef __WINDOWCK_TITLE_H__
-#define __WINDOWCK_TITLE_H__
+#ifndef __WCKMENU_ICON_H__
+#define __WCKMENU_ICON_H__
 
-#include "windowck.h"
+#include "wckmenu.h"
 
-#define TITLE_SIZE_MAX 999 /* title size max for expand option in characters */
+void init_icon_colors (WckMenuPlugin *wmp);
+void reload_wnck_icon (WckMenuPlugin *wmp);
+gboolean on_icon_released(GtkWidget *icon, GdkEventButton *event, WckMenuPlugin *wmp);
 
-void init_title (WindowckPlugin *wckp);
-void resize_title(WindowckPlugin *wckp);
-void reload_wnck_title (WindowckPlugin *wckp);
-void set_title_padding (WindowckPlugin *wckp);
-gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
-gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
-
-#endif /* __WINDOWCK_TITLE_H__ */
+#endif /* __WCKMENU_ICON_H__ */

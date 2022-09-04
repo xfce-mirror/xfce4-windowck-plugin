@@ -1,2 +1,2 @@
 
-SUBDIRS =	title buttons
+SUBDIRS =	buttons menu title
