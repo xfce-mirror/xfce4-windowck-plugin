@@ -27,8 +27,6 @@
 #include "windowck.h"
 #include "windowck-title.h"
 
-#define ICON_PADDING 3
-
 /* Prototypes */
 static void on_name_changed(WnckWindow *window, WindowckPlugin *);
 
@@ -235,8 +233,6 @@ void resize_title(WindowckPlugin *wckp)
 
 void set_title_padding (WindowckPlugin *wckp)
 {
-    gtk_widget_set_margin_top (wckp->box, ICON_PADDING);
-    gtk_widget_set_margin_bottom (wckp->box, ICON_PADDING);
     gtk_widget_set_margin_start (wckp->box, wckp->prefs->title_padding);
     gtk_widget_set_margin_end (wckp->box, wckp->prefs->title_padding);
     gtk_box_set_spacing (GTK_BOX (wckp->box), wckp->prefs->title_padding);

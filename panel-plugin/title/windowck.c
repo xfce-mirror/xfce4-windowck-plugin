@@ -172,7 +172,8 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
     gtk_box_set_homogeneous (GTK_BOX (wckp->box), FALSE);
     gtk_widget_set_halign (wckp->box, GTK_ALIGN_CENTER);
     gtk_widget_set_valign (wckp->box, GTK_ALIGN_CENTER);
-
+    gtk_widget_set_margin_top (wckp->box, DEFAULT_TITLE_PADDING);
+    gtk_widget_set_margin_bottom (wckp->box, DEFAULT_TITLE_PADDING);
 
     /* some wckp widgets */
     wckp->title = GTK_LABEL (gtk_label_new (""));
