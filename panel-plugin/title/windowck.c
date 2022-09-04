@@ -41,9 +41,6 @@
 #define DEFAULT_FULL_NAME TRUE
 #define DEFAULT_TWO_LINES FALSE
 #define DEFAULT_SHOW_TOOLTIPS TRUE
-#define DEFAULT_SHOW_APP_ICON TRUE
-#define DEFAULT_ICON_ON_RIGHT FALSE
-#define DEFAULT_SHOW_WINDOW_MENU TRUE
 #define DEFAULT_SIZE_MODE FIXED
 #define DEFAULT_TITLE_SIZE 80
 #define DEFAULT_TITLE_ALIGNMENT CENTER
@@ -63,9 +60,6 @@ wcktitle_settings_save (XfceRc *rc, WCKPreferences *prefs)
 {
     xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
     xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
-    xfce_rc_write_bool_entry(rc, "show_app_icon", prefs->show_app_icon);
-    xfce_rc_write_bool_entry(rc, "icon_on_right", prefs->icon_on_right);
-    xfce_rc_write_bool_entry(rc, "show_window_menu", prefs->show_window_menu);
     xfce_rc_write_bool_entry(rc, "full_name", prefs->full_name);
     xfce_rc_write_bool_entry(rc, "two_lines", prefs->two_lines);
     xfce_rc_write_bool_entry(rc, "show_tooltips", prefs->show_tooltips);
@@ -101,9 +95,6 @@ wcktitle_settings_load (XfceRc *rc, WCKPreferences *prefs)
 
         prefs->only_maximized = xfce_rc_read_bool_entry(rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
         prefs->show_on_desktop = xfce_rc_read_bool_entry(rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
-        prefs->show_app_icon = xfce_rc_read_bool_entry(rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
-        prefs->icon_on_right = xfce_rc_read_bool_entry(rc, "icon_on_right", DEFAULT_ICON_ON_RIGHT);
-        prefs->show_window_menu = xfce_rc_read_bool_entry(rc, "show_window_menu", DEFAULT_SHOW_WINDOW_MENU);
         prefs->full_name = xfce_rc_read_bool_entry(rc, "full_name", DEFAULT_FULL_NAME);
         prefs->two_lines = xfce_rc_read_bool_entry(rc, "two_lines", DEFAULT_TWO_LINES);
         prefs->show_tooltips = xfce_rc_read_bool_entry(rc, "show_tooltips", DEFAULT_SHOW_TOOLTIPS);
@@ -123,9 +114,6 @@ wcktitle_settings_load (XfceRc *rc, WCKPreferences *prefs)
     {
         prefs->only_maximized = DEFAULT_ONLY_MAXIMIZED;
         prefs->show_on_desktop = DEFAULT_SHOW_ON_DESKTOP;
-        prefs->show_app_icon = DEFAULT_SHOW_APP_ICON;
-        prefs->icon_on_right = DEFAULT_ICON_ON_RIGHT;
-        prefs->show_window_menu = DEFAULT_SHOW_WINDOW_MENU;
         prefs->full_name = DEFAULT_FULL_NAME;
         prefs->two_lines = DEFAULT_TWO_LINES;
         prefs->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
@@ -150,46 +138,6 @@ windowck_read (XfcePanelPlugin *plugin)
     wck_settings_load (plugin, (WckSettingsCb) wcktitle_settings_load, prefs);
 
     return prefs;
-}
-
-
-void reset_symbol (WindowckPlugin *wckp)
-{
-    if (wckp->icon->symbol)
-    {
-        gtk_widget_destroy (wckp->icon->symbol);
-        wckp->icon->symbol = NULL;
-    }
-
-    if (wckp->prefs->show_window_menu)
-    {
-        if (wckp->prefs->show_app_icon)
-            wckp->icon->symbol = xfce_panel_image_new();
-        else
-            wckp->icon->symbol = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
-
-        gtk_container_add (GTK_CONTAINER (wckp->icon->eventbox), wckp->icon->symbol);
-        gtk_widget_show_all (GTK_WIDGET(wckp->icon->eventbox));
-    }
-    else
-    {
-        gtk_widget_hide (GTK_WIDGET(wckp->icon->eventbox));
-    }
-}
-
-
-static WindowIcon *
-window_icon_new (void)
-{
-    WindowIcon *icon = g_slice_new0 (WindowIcon);
-
-    icon->eventbox = GTK_EVENT_BOX (gtk_event_box_new ());
-    gtk_widget_set_can_focus (GTK_WIDGET (icon->eventbox), TRUE);
-    gtk_event_box_set_visible_window (icon->eventbox, FALSE);
-
-    icon->symbol = NULL;
-
-    return icon;
 }
 
 
@@ -227,20 +175,8 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
 
 
     /* some wckp widgets */
-    wckp->icon = window_icon_new ();
     wckp->title = GTK_LABEL (gtk_label_new (""));
-    if (wckp->prefs->icon_on_right)
-    {
-        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
-        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
-    }
-    else
-    {
-        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->icon->eventbox), FALSE, FALSE, 0);
-        gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
-    }
-
-    reset_symbol (wckp);
+    gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
 
     gtk_container_add(GTK_CONTAINER(wckp->ebox), GTK_WIDGET(wckp->box));
 
@@ -268,7 +204,6 @@ static void windowck_free(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
     gtk_widget_destroy(wckp->box);
 
     /* free the plugin structure */
-    g_slice_free(WindowIcon, wckp->icon);
     g_slice_free(WckUtils, wckp->win);
     g_slice_free(WCKPreferences, wckp->prefs);
     g_slice_free(WindowckPlugin, wckp);
@@ -336,12 +271,10 @@ static void windowck_construct(XfcePanelPlugin *plugin)
     /* show the panel's right-click menu on this ebox */
     xfce_panel_plugin_add_action_widget(plugin, wckp->ebox);
 
-    // Set event handling (icon & title clicks)
+    /* Set event handling (title clicks) */
     g_signal_connect(G_OBJECT (wckp->ebox), "button-press-event", G_CALLBACK (on_title_pressed), wckp);
 
     g_signal_connect(G_OBJECT (wckp->ebox), "button-release-event", G_CALLBACK (on_title_released), wckp);
-
-    g_signal_connect(G_OBJECT (wckp->icon->eventbox), "button-release-event", G_CALLBACK (on_icon_released), wckp);
 
     /* connect plugin signals */
 

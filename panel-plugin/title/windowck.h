@@ -48,17 +48,9 @@ typedef enum SizeMode
 } SizeMode;
 
 typedef struct {
-    GtkEventBox     *eventbox;
-    GtkWidget        *symbol;
-} WindowIcon;
-
-typedef struct {
     GtkBuilder *builder;
     gboolean only_maximized;        // [T/F] Only track maximized windows
     gboolean show_on_desktop;       // [T/F] Show the plugin on desktop
-    gboolean show_app_icon;         // [T/F] Show the window icon
-    gboolean icon_on_right;         // [T/F] Place icon on the right
-    gboolean show_window_menu;      // [T/F] Show window action menu
     gboolean full_name;             // [T/F] Show full name
     gboolean two_lines;             // [T/F] Display the title on two lines
     gboolean show_tooltips;         // [T/F] Show tooltips
@@ -86,20 +78,17 @@ typedef struct {
     GtkWidget *ebox;
     GtkWidget *box;
     GtkLabel *title;
-    WindowIcon  *icon;              // Icon widget
 
     WCKPreferences     *prefs;
     WckUtils *win;
 
     gulong cnh;                     // controlled window name handler id
-    gulong cih;                     // controlled window icon handler id
 
     XfconfChannel *wm_channel;      // window manager chanel
     XfconfChannel *x_channel;       // xsettings chanel
 } WindowckPlugin;
 
 void wcktitle_settings_save (XfceRc *rc, WCKPreferences *prefs);
-void reset_symbol (WindowckPlugin *wckp);
 
 G_END_DECLS
 
