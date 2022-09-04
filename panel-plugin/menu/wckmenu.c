@@ -1,0 +1,297 @@
+/*  $Id$
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ *  Copyright (C) 2013 Alessio Piccoli <alepic@geckoblu.net>
+ *                     Cedric Leporcq  <cedl38@gmail.com>
+ *
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <string.h>
+
+#include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
+#include <libxfce4panel/libxfce4panel.h>
+
+#include <common/wck-plugin.h>
+
+#include "wckmenu.h"
+#include "wckmenu-dialogs.h"
+#include "wckmenu-icon.h"
+
+#define ICON_PADDING 3
+
+/* default settings */
+#define DEFAULT_ONLY_MAXIMIZED TRUE
+#define DEFAULT_SHOW_ON_DESKTOP FALSE
+#define DEFAULT_SHOW_APP_ICON TRUE
+#define DEFAULT_INACTIVE_ALPHA 60
+#define DEFAULT_INACTIVE_SHADE 110
+
+/* prototypes */
+static void wckmenu_construct(XfcePanelPlugin *plugin);
+
+
+void
+wckmenu_settings_save (XfceRc *rc, WckMenuPreferences *prefs)
+{
+    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
+    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
+    xfce_rc_write_bool_entry(rc, "show_app_icon", prefs->show_app_icon);
+    xfce_rc_write_int_entry(rc, "inactive_alpha", prefs->inactive_alpha);
+    xfce_rc_write_int_entry(rc, "inactive_shade", prefs->inactive_shade);
+}
+
+static void
+wckmenu_save (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
+{
+    wck_settings_save (plugin, (WckSettingsCb) wckmenu_settings_save, wmp->prefs);
+}
+
+
+static void
+wckmenu_settings_load (XfceRc *rc, WckMenuPreferences *prefs)
+{
+    if (rc != NULL)
+    {
+        prefs->only_maximized = xfce_rc_read_bool_entry(rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
+        prefs->show_on_desktop = xfce_rc_read_bool_entry(rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
+        prefs->show_app_icon = xfce_rc_read_bool_entry(rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
+        prefs->inactive_alpha = xfce_rc_read_int_entry(rc, "inactive_alpha", DEFAULT_INACTIVE_ALPHA);
+        prefs->inactive_shade = xfce_rc_read_int_entry(rc, "inactive_shade", DEFAULT_INACTIVE_SHADE);
+    }
+    else
+    {
+        prefs->only_maximized = DEFAULT_ONLY_MAXIMIZED;
+        prefs->show_on_desktop = DEFAULT_SHOW_ON_DESKTOP;
+        prefs->show_app_icon = DEFAULT_SHOW_APP_ICON;
+        prefs->inactive_alpha = DEFAULT_INACTIVE_ALPHA;
+        prefs->inactive_shade = DEFAULT_INACTIVE_SHADE;
+    }
+}
+
+static WckMenuPreferences *
+wckmenu_read (XfcePanelPlugin *plugin)
+{
+    /* allocate memory for the preferences structure */
+    WckMenuPreferences *prefs = g_slice_new0(WckMenuPreferences);
+
+    wck_settings_load (plugin, (WckSettingsCb) wckmenu_settings_load, prefs);
+
+    return prefs;
+}
+
+
+void reset_symbol (WckMenuPlugin *wmp)
+{
+    if (wmp->icon->symbol)
+    {
+        gtk_widget_destroy (wmp->icon->symbol);
+        wmp->icon->symbol = NULL;
+    }
+
+    if (wmp->prefs->show_app_icon)
+        wmp->icon->symbol = xfce_panel_image_new();
+    else
+        wmp->icon->symbol = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
+
+    gtk_container_add (GTK_CONTAINER (wmp->icon->eventbox), wmp->icon->symbol);
+    gtk_widget_show_all (GTK_WIDGET(wmp->icon->eventbox));
+}
+
+
+static WindowIcon *
+window_icon_new (void)
+{
+    WindowIcon *icon = g_slice_new0 (WindowIcon);
+
+    icon->eventbox = GTK_EVENT_BOX (gtk_event_box_new ());
+    gtk_widget_set_can_focus (GTK_WIDGET (icon->eventbox), TRUE);
+    gtk_event_box_set_visible_window (icon->eventbox, FALSE);
+
+    icon->symbol = NULL;
+
+    return icon;
+}
+
+
+static WckMenuPlugin *
+wckmenu_new (XfcePanelPlugin *plugin)
+{
+    WckMenuPlugin *wmp;
+
+    GtkOrientation orientation;
+
+    /* allocate memory for the plugin structure */
+    wmp = g_slice_new0 (WckMenuPlugin);
+
+    /* pointer to plugin */
+    wmp->plugin = plugin;
+
+    /* read the user settings */
+    wmp->prefs = wckmenu_read(wmp->plugin);
+
+    /* get the current orientation */
+    orientation = xfce_panel_plugin_get_orientation(plugin);
+
+    /* not needed for shrink mode */
+    xfce_panel_plugin_set_shrink (plugin, TRUE);
+
+    /* create some panel widgets */
+    wmp->ebox = gtk_event_box_new();
+    gtk_event_box_set_visible_window(GTK_EVENT_BOX(wmp->ebox), FALSE);
+    gtk_widget_set_name(wmp->ebox, "XfceWindowckPlugin");
+
+    wmp->box = gtk_box_new (orientation, 2);
+    gtk_box_set_homogeneous (GTK_BOX (wmp->box), FALSE);
+    gtk_widget_set_halign (wmp->box, GTK_ALIGN_CENTER);
+    gtk_widget_set_valign (wmp->box, GTK_ALIGN_CENTER);
+
+    gtk_widget_set_margin_top (wmp->box, ICON_PADDING);
+    gtk_widget_set_margin_bottom (wmp->box, ICON_PADDING);
+    gtk_widget_set_margin_start (wmp->box, ICON_PADDING);
+    gtk_widget_set_margin_end (wmp->box, ICON_PADDING);
+
+    /* some wckp widgets */
+    wmp->icon = window_icon_new ();
+    gtk_box_pack_start (GTK_BOX (wmp->box), GTK_WIDGET (wmp->icon->eventbox), FALSE, FALSE, 0);
+
+    reset_symbol (wmp);
+
+    gtk_container_add(GTK_CONTAINER(wmp->ebox), GTK_WIDGET(wmp->box));
+
+    /* show widgets */
+    gtk_widget_show(wmp->ebox);
+    gtk_widget_show(wmp->box);
+
+    return wmp;
+}
+
+
+static void
+wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
+{
+    GtkWidget *dialog;
+
+    disconnect_wnck (wmp->win);
+
+    /* check if the dialog is still open. if so, destroy it */
+    dialog = g_object_get_data(G_OBJECT (plugin), "dialog");
+    if (G_UNLIKELY (dialog != NULL))
+        gtk_widget_destroy(dialog);
+
+    /* destroy the panel widgets */
+    gtk_widget_destroy(wmp->box);
+
+    /* free the plugin structure */
+    g_slice_free(WindowIcon, wmp->icon);
+    g_slice_free(WckUtils, wmp->win);
+    g_slice_free(WckMenuPreferences, wmp->prefs);
+    g_slice_free(WckMenuPlugin, wmp);
+}
+
+
+static void
+wckmenu_orientation_changed (XfcePanelPlugin *plugin, GtkOrientation orientation, WckMenuPlugin *wmp)
+{
+    /* change the orienation of the box */
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (wmp->box), orientation);
+}
+
+
+static gboolean
+wckmenu_size_changed (XfcePanelPlugin *plugin, gint size, WckMenuPlugin *wmp)
+{
+    GtkOrientation orientation;
+
+    /* get the orientation of the plugin */
+    orientation = xfce_panel_plugin_get_orientation(plugin);
+
+    /* set the widget size */
+    if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        gtk_widget_set_size_request(GTK_WIDGET (plugin), -1, size);
+    else
+        gtk_widget_set_size_request(GTK_WIDGET (plugin), size, -1);
+
+    /* we handled the orientation */
+    return TRUE;
+}
+
+
+static void on_refresh_item_activated (GtkMenuItem *refresh, WckMenuPlugin *wmp)
+{
+    init_icon_colors (wmp);
+    reload_wnck_icon (wmp);
+}
+
+
+static void wckmenu_construct(XfcePanelPlugin *plugin)
+{
+    WckMenuPlugin *wmp;
+    GtkWidget *refresh;
+
+    /* setup transation domain */
+    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
+    /* create the plugin */
+    wmp = wckmenu_new(plugin);
+
+    /* add the ebox to the panel */
+    gtk_container_add(GTK_CONTAINER (plugin), wmp->ebox);
+
+    /* show the panel's right-click menu on this ebox */
+    xfce_panel_plugin_add_action_widget(plugin, wmp->ebox);
+
+    /* Set event handling (icon clicks) */
+    g_signal_connect(G_OBJECT (wmp->icon->eventbox), "button-release-event", G_CALLBACK (on_icon_released), wmp);
+
+    /* connect plugin signals */
+
+    g_signal_connect(G_OBJECT (plugin), "free-data", G_CALLBACK (wckmenu_free), wmp);
+
+    g_signal_connect(G_OBJECT (plugin), "save", G_CALLBACK (wckmenu_save), wmp);
+
+    g_signal_connect(G_OBJECT (plugin), "size-changed", G_CALLBACK (wckmenu_size_changed), wmp);
+
+    g_signal_connect(G_OBJECT (plugin), "orientation-changed", G_CALLBACK (wckmenu_orientation_changed), wmp);
+
+    /* show the configure menu item and connect signal */
+    xfce_panel_plugin_menu_show_configure(plugin);
+    g_signal_connect(G_OBJECT (plugin), "configure-plugin", G_CALLBACK (wckmenu_configure), wmp);
+
+    /* show the about menu item and connect signal */
+    xfce_panel_plugin_menu_show_about(plugin);
+    g_signal_connect (G_OBJECT (plugin), "about",
+                    G_CALLBACK (wck_about), WCKMENU_ICON);
+
+    /* add custom menu items */
+    refresh = show_refresh_item (plugin);
+    g_signal_connect (G_OBJECT (refresh), "activate", G_CALLBACK (on_refresh_item_activated), wmp);
+
+    /* start tracking */
+    wmp->win = g_slice_new0 (WckUtils);
+    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp);
+
+    /* start tracking icon color */
+    init_icon_colors (wmp);
+}
+
+
+/* register the plugin */
+XFCE_PANEL_PLUGIN_REGISTER(wckmenu_construct);

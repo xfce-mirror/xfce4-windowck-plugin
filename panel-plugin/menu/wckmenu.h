@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef __WINDOWCK_H__
-#define __WINDOWCK_H__
+#ifndef __WCKMENU_H__
+#define __WCKMENU_H__
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -33,42 +33,26 @@
 
 #include <common/wck-utils.h>
 
-#define WCKTITLE_ICON "windowck-plugin"
+#define WCKMENU_ICON "windowwck-plugin"
 
 G_BEGIN_DECLS
 
-typedef enum Alignment
-{
-    LEFT = 0, CENTER = 5, RIGHT = 10
-} Alignment;
-
-typedef enum SizeMode
-{
-    SHRINK = 1, FIXED = 2, EXPAND = 3
-} SizeMode;
+typedef struct {
+    GtkEventBox     *eventbox;
+    GtkWidget       *symbol;
+} WindowIcon;
 
 typedef struct {
     GtkBuilder *builder;
     gboolean only_maximized;        // [T/F] Only track maximized windows
     gboolean show_on_desktop;       // [T/F] Show the plugin on desktop
-    gboolean full_name;             // [T/F] Show full name
-    gboolean two_lines;             // [T/F] Display the title on two lines
-    gboolean show_tooltips;         // [T/F] Show tooltips
+    gboolean show_app_icon;         // [T/F] Show the window icon
 
-    SizeMode size_mode;             // Size mode : Length=[MINIMAL,FIXED,EXPAND]
-
-    gint title_size;                // Title size in chars
-    gint title_padding;             // Title padding
-
-    gboolean sync_wm_font;          // [T/F] Try to use xfwm4 active theme if possible.
-    gchar *title_font;              // Title font
-    gchar *subtitle_font;           // Subtitle font
-    gint title_alignment;           // Title alignment [LEFT, CENTER, RIGHT]
-    gint inactive_text_alpha;       // Title inactive alpha
-    gint inactive_text_shade;       // Title inactive shade
-    gchar *active_text_color;       // active text color
-    gchar *inactive_text_color;     // inactive text color
-} WCKPreferences;
+    gint inactive_alpha;            // Alpha for inactive window
+    gint inactive_shade;            // Shade for inactive window
+    gchar *active_color;            // Color for active window
+    gchar *inactive_color;          // Color for inactive window
+} WckMenuPreferences;
 
 /* plugin structure */
 typedef struct {
@@ -77,19 +61,20 @@ typedef struct {
     /* Widgets */
     GtkWidget *ebox;
     GtkWidget *box;
-    GtkLabel *title;
+    WindowIcon  *icon;              // Icon widget
 
-    WCKPreferences     *prefs;
+    WckMenuPreferences     *prefs;
     WckUtils *win;
 
-    gulong cnh;                     // controlled window name handler id
+    gulong cih;                     // controlled window icon handler id
 
     XfconfChannel *wm_channel;      // window manager chanel
     XfconfChannel *x_channel;       // xsettings chanel
-} WindowckPlugin;
+} WckMenuPlugin;
 
-void wcktitle_settings_save (XfceRc *rc, WCKPreferences *prefs);
+void wckmenu_settings_save (XfceRc *rc, WckMenuPreferences *prefs);
+void reset_symbol (WckMenuPlugin *wmp);
 
 G_END_DECLS
 
-#endif /* !__WINDOWCK_H__ */
+#endif /* !__WCKMENU_H__ */
