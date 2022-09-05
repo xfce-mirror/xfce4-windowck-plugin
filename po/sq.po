@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 00:54+0200\n"
+"POT-Creation-Date: 2022-09-05 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2022\n"
 "Language-Team: Albanian (https://www.transifex.com/xfce/teams/16840/sq/)\n"
@@ -22,146 +22,42 @@ msgstr ""
 "Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../common/wck-plugin.c:97
+#: ../common/wck-plugin.c:96
 msgid "_Refresh"
 msgstr "_Rifreskoje"
 
-#: ../common/wck-plugin.c:115
+#: ../common/wck-plugin.c:197
+msgid "Help"
+msgstr "Ndihmë"
+
+#: ../common/wck-plugin.c:198
+msgid "_Close"
+msgstr "_Mbylle"
+
+#: ../common/wck-plugin.c:237
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "S’arrihet të hapet url-ja vijuese: %s"
 
-#: ../common/wck-plugin.c:133
-msgid "Help"
-msgstr "Ndihmë"
-
-#: ../common/wck-plugin.c:134
-msgid "_Close"
-msgstr "_Mbylle"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:1
-msgid "at most"
-msgstr "e shumta"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:2
-msgid "fixed to"
-msgstr "fiksuar në"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:3
-msgid "expand"
-msgstr "zgjeroje"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:4
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-msgid "Control maximized windows."
-msgstr "Kontrolloni dritare të maksimizuara."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:5
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-msgid "Control active windows."
-msgstr "Kontrolloni dritare aktive."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:6
-msgid "Show the plugin on desktop."
-msgstr "Shfaqe shtojcën në desktop."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:7
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-msgid "<b>Behaviour</b>"
-msgstr "<b>Sjellje</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:8
-msgid "Width:"
-msgstr "Gjerësi:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:9
-msgid "chars"
-msgstr "shenja"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:10
-msgid "Padding:"
-msgstr "Mbushje:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:11
-msgid "pixels"
-msgstr "piksela"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:12
-msgid "Show the full title name"
-msgstr "Shfaq emër të plotë titulli"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:13
-msgid "Display the title in two lines"
-msgstr "Shfaqe titullin në dy rreshta"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:14
-msgid "Sync the font with the window manager."
-msgstr "Njëkohëso shkronjat me përgjegjësin e dritareve."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:15
-msgid "Subtitle font:"
-msgstr "Shkronja nëntitulli:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:16
-msgid "Title font:"
-msgstr "Shkronja titulli:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:17
-msgid "Alignment:"
-msgstr "Drejtim:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:18
-msgid "Title"
-msgstr "Titull"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:19
-msgid "Show the window menu."
-msgstr "Shfaq menunë e dritareve."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:20
-msgid "Show the window Icon."
-msgstr "Shfaq Ikonën e dritareve."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:21
-msgid "Place the menu icon on right."
-msgstr "Vendose djathtas ikonën e menuve."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:22
-msgid "Menu"
-msgstr "Menu"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:23
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-msgid "<b>Appearance</b>"
-msgstr "<b>Dukje</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:24
-msgid "left"
-msgstr "majtas"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:25
-msgid "center"
-msgstr "në qendër"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:26
-msgid "right"
-msgstr "djathtas"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Krye Dritareje - Titull"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Titullin e dritares së maksimizuar vendose te paneli."
-
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:308
 msgid "Directory"
 msgstr "Drejtori"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:310
 msgid "Themes usable"
 msgstr "Tema të përdorshme"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "Kontrolloni dritare të maksimizuara."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "Kontrolloni dritare aktive."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
@@ -170,6 +66,12 @@ msgstr "Shfaqi butonat në desktop."
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
 msgstr "Bëj daljen, kur shtypet butoni i mbylljes në desktop."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>Sjellje</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
@@ -189,6 +91,12 @@ msgstr ""
 "Shembull: [HMC]\n"
 "H=Fshihe, M=Maksimizoje/Çmaksimizoje, C=Mbylle"
 
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:7
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "<b>Appearance</b>"
+msgstr "<b>Dukje</b>"
+
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
 msgstr "Krye Dritareje - Butona"
@@ -196,3 +104,100 @@ msgstr "Krye Dritareje - Butona"
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
 msgstr "Butonat e dritares së maksimizuar vendosi te paneli."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr "Shfaqe shtojcën në desktop."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr "Shfaq Ikonën e dritareve."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+msgid "Menu"
+msgstr "Menu"
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
+msgid "Window Header - Menu"
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
+msgid "Put the maximized window menu on the panel."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "e shumta"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "fiksuar në"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "zgjeroje"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "left"
+msgstr "majtas"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "center"
+msgstr "në qendër"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "right"
+msgstr "djathtas"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Width:"
+msgstr "Gjerësi:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "chars"
+msgstr "shenja"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Padding:"
+msgstr "Mbushje:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "pixels"
+msgstr "piksela"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "Shfaq emër të plotë titulli"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "Shfaqe titullin në dy rreshta"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr "Njëkohëso shkronjat me përgjegjësin e dritareve."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "Shkronja titulli:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "Shkronja nëntitulli:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "Drejtim:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Title"
+msgstr "Titull"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "Krye Dritareje - Titull"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr "Titullin e dritares së maksimizuar vendose te paneli."
