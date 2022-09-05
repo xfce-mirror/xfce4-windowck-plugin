@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-windowck-plugin\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-20 13:57+0200\n"
+"POT-Creation-Date: 2022-09-05 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
 "Language-Team: Russian (Russia) (https://www.transifex.com/xfce/teams/16840/ru_RU/)\n"
@@ -21,135 +21,42 @@ msgstr ""
 "Language: ru_RU\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../panel-plugin/title/windowck-dialogs.c:493
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:380
+#: ../common/wck-plugin.c:96
+msgid "_Refresh"
+msgstr ""
+
+#: ../common/wck-plugin.c:197
+msgid "Help"
+msgstr ""
+
+#: ../common/wck-plugin.c:198
+msgid "_Close"
+msgstr ""
+
+#: ../common/wck-plugin.c:237
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Невозможно открыть адрес: %s"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:1
-msgid "at most"
-msgstr "не более чем"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:2
-msgid "fixed to"
-msgstr "фиксировать к"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:3
-msgid "expand"
-msgstr "расширить до"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:4
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-msgid "Control maximized windows."
-msgstr "Работать с развёрнутыми окнами."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:5
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-msgid "Control active windows."
-msgstr "Работать с активными окнами."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:6
-msgid "Show the plugin on desktop."
-msgstr "Показать плагин на рабочем столе."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:7
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-msgid "<b>Behaviour</b>"
-msgstr "<b>Поведение</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:8
-msgid "Width:"
-msgstr "Ширина:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:9
-msgid "chars"
-msgstr "символов"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:10
-msgid "Padding:"
-msgstr "Отступ:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:11
-msgid "pixels"
-msgstr "пикселов"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:12
-msgid "Show the full title name"
-msgstr "Показывать полный заголовок"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:13
-msgid "Display the title in two lines"
-msgstr "Показывать заголовок в две линии"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:14
-msgid "Sync the font with the window manager."
-msgstr "Использовать системный шрифт."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:15
-msgid "Subtitle font:"
-msgstr "Шрифт субтитров:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:16
-msgid "Title font:"
-msgstr "Шрифт заголовка:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:17
-msgid "Alignment:"
-msgstr "Выравнивание:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:18
-msgid "Title"
-msgstr "Заголовок"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:19
-msgid "Show the window menu."
-msgstr "Показать меню окна."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:20
-msgid "Show the window Icon."
-msgstr "Показать иконку окна."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:21
-msgid "Place the menu icon on right."
-msgstr "Поместить иконку окна справа."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:22
-msgid "Menu"
-msgstr "Меню"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:23
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-msgid "<b>Appearance</b>"
-msgstr "<b>Внешний вид</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:24
-msgid "left"
-msgstr "слева"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:25
-msgid "center"
-msgstr "по центру"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:26
-msgid "right"
-msgstr "справа"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Шапка окна - Заголовок"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Поместить заголовок развёрнутого окна на панель."
-
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:308
 msgid "Directory"
 msgstr "Директория"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:310
 msgid "Themes usable"
 msgstr "Доступные темы"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "Работать с развёрнутыми окнами."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "Работать с активными окнами."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
@@ -158,6 +65,12 @@ msgstr "Показать кнопки на рабочем столе."
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
 msgstr "Выйти при закрытии кнопок на рабочем столе."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>Поведение</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
@@ -177,6 +90,12 @@ msgstr ""
 "Например: [HMC]\n"
 "H=Скрыть, M=Свернуть/Развернуть, C=закрыть"
 
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:7
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "<b>Appearance</b>"
+msgstr "<b>Внешний вид</b>"
+
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
 msgstr "Шапка окна - кнопки"
@@ -184,3 +103,100 @@ msgstr "Шапка окна - кнопки"
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
 msgstr "Поместить кнопки развёрнутого окна на панель."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr "Показать плагин на рабочем столе."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr "Показать иконку окна."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+msgid "Menu"
+msgstr "Меню"
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
+msgid "Window Header - Menu"
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
+msgid "Put the maximized window menu on the panel."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "не более чем"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "фиксировать к"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "расширить до"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "left"
+msgstr "слева"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "center"
+msgstr "по центру"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "right"
+msgstr "справа"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Width:"
+msgstr "Ширина:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "chars"
+msgstr "символов"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Padding:"
+msgstr "Отступ:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "pixels"
+msgstr "пикселов"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "Показывать полный заголовок"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "Показывать заголовок в две линии"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr "Использовать системный шрифт."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "Шрифт заголовка:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "Шрифт субтитров:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "Выравнивание:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Title"
+msgstr "Заголовок"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "Шапка окна - Заголовок"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr "Поместить заголовок развёрнутого окна на панель."
