@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 00:54+0200\n"
+"POT-Creation-Date: 2022-09-05 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/xfce/teams/16840/es/)\n"
@@ -22,148 +22,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: ../common/wck-plugin.c:97
+#: ../common/wck-plugin.c:96
 msgid "_Refresh"
 msgstr "_Recargar"
 
-#: ../common/wck-plugin.c:115
+#: ../common/wck-plugin.c:197
+msgid "Help"
+msgstr "Ayuda"
+
+#: ../common/wck-plugin.c:198
+msgid "_Close"
+msgstr "_Cerrar"
+
+#: ../common/wck-plugin.c:237
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "No se puede abrir el URL siguiente: %s"
 
-#: ../common/wck-plugin.c:133
-msgid "Help"
-msgstr "Ayuda"
-
-#: ../common/wck-plugin.c:134
-msgid "_Close"
-msgstr "_Cerrar"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:1
-msgid "at most"
-msgstr "como máximo"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:2
-msgid "fixed to"
-msgstr "fijado en"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:3
-msgid "expand"
-msgstr "expandir"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:4
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-msgid "Control maximized windows."
-msgstr "Controlar las ventanas maximizadas."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:5
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-msgid "Control active windows."
-msgstr "Controlar las ventanas activas."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:6
-msgid "Show the plugin on desktop."
-msgstr "Mostrar el complemento en el escritorio."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:7
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-msgid "<b>Behaviour</b>"
-msgstr "<b>Comportamiento</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:8
-msgid "Width:"
-msgstr "Anchura:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:9
-msgid "chars"
-msgstr "caracteres"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:10
-msgid "Padding:"
-msgstr "Relleno:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:11
-msgid "pixels"
-msgstr "píxeles"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:12
-msgid "Show the full title name"
-msgstr "Mostrar el título completo."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:13
-msgid "Display the title in two lines"
-msgstr "Mostrar el título en dos líneas"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:14
-msgid "Sync the font with the window manager."
-msgstr "Sincronizar la tipografía con el gestor de ventanas"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:15
-msgid "Subtitle font:"
-msgstr "Tipografía del subtítulo"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:16
-msgid "Title font:"
-msgstr "Tipografía del título"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:17
-msgid "Alignment:"
-msgstr "Alineación"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:18
-msgid "Title"
-msgstr "Título"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:19
-msgid "Show the window menu."
-msgstr "Mostrar el menú de la ventana."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:20
-msgid "Show the window Icon."
-msgstr "Mostrar el icono de la ventana."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:21
-msgid "Place the menu icon on right."
-msgstr "Colocar el icono del menú a la derecha."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:22
-msgid "Menu"
-msgstr "Menú"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:23
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-msgid "<b>Appearance</b>"
-msgstr "<b>Apariencia</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:24
-msgid "left"
-msgstr "izquierda"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:25
-msgid "center"
-msgstr "centro"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:26
-msgid "right"
-msgstr "derecha"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Encabezado de la ventana: título"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Colocar el título de las ventanas maximizadas en el panel."
-
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:308
 msgid "Directory"
 msgstr "Carpeta"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:310
 msgid "Themes usable"
 msgstr "Temas disponibles"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "Controlar las ventanas maximizadas."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "Controlar las ventanas activas."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
@@ -172,6 +68,12 @@ msgstr "Mostrar los botones en el escritorio."
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
 msgstr "Salir de la sesión con el botón de cerrar del escritorio."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>Comportamiento</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
@@ -191,6 +93,12 @@ msgstr ""
 "Ejemplo: [HMC]\n"
 "H=Ocultar, M=Maximizar/desmaximizar, C=Cerrar"
 
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:7
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "<b>Appearance</b>"
+msgstr "<b>Apariencia</b>"
+
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
 msgstr "Encabezado de las ventanas: botones"
@@ -198,3 +106,100 @@ msgstr "Encabezado de las ventanas: botones"
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
 msgstr "Colocar los botones de las ventanas maximizadas en el panel."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr "Mostrar el complemento en el escritorio."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr "Mostrar el icono de la ventana."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+msgid "Menu"
+msgstr "Menú"
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
+msgid "Window Header - Menu"
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
+msgid "Put the maximized window menu on the panel."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "como máximo"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "fijado en"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "expandir"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "left"
+msgstr "izquierda"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "center"
+msgstr "centro"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "right"
+msgstr "derecha"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Width:"
+msgstr "Anchura:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "chars"
+msgstr "caracteres"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Padding:"
+msgstr "Relleno:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "pixels"
+msgstr "píxeles"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "Mostrar el título completo."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "Mostrar el título en dos líneas"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr "Sincronizar la tipografía con el gestor de ventanas"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "Tipografía del título"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "Tipografía del subtítulo"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "Alineación"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Title"
+msgstr "Título"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "Encabezado de la ventana: título"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr "Colocar el título de las ventanas maximizadas en el panel."
