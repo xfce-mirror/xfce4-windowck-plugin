@@ -121,11 +121,11 @@ msgstr "Menu"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Cabeçalho da janela - Menu"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Colocar o menu da janela maximizada no painel."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
