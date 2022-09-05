@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 00:54+0200\n"
+"POT-Creation-Date: 2022-09-05 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/xfce/teams/16840/ko/)\n"
@@ -23,146 +23,42 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/wck-plugin.c:97
+#: ../common/wck-plugin.c:96
 msgid "_Refresh"
 msgstr "새로 고침(_R)"
 
-#: ../common/wck-plugin.c:115
+#: ../common/wck-plugin.c:197
+msgid "Help"
+msgstr "도움말"
+
+#: ../common/wck-plugin.c:198
+msgid "_Close"
+msgstr "닫기(_C)"
+
+#: ../common/wck-plugin.c:237
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "다음 URL을 열 수 없습니다: %s"
 
-#: ../common/wck-plugin.c:133
-msgid "Help"
-msgstr "도움말"
-
-#: ../common/wck-plugin.c:134
-msgid "_Close"
-msgstr "닫기(_C)"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:1
-msgid "at most"
-msgstr "많아야"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:2
-msgid "fixed to"
-msgstr "로 고정"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:3
-msgid "expand"
-msgstr "확장"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:4
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-msgid "Control maximized windows."
-msgstr "윈도우 최대화"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:5
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-msgid "Control active windows."
-msgstr "활성 윈도우 제어"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:6
-msgid "Show the plugin on desktop."
-msgstr "데스크탑에서 플러그인 보기"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:7
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-msgid "<b>Behaviour</b>"
-msgstr "<b>행동</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:8
-msgid "Width:"
-msgstr "폭:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:9
-msgid "chars"
-msgstr "문자"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:10
-msgid "Padding:"
-msgstr "패딩:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:11
-msgid "pixels"
-msgstr "픽셀"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:12
-msgid "Show the full title name"
-msgstr "상세한 타이틀 명 보기"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:13
-msgid "Display the title in two lines"
-msgstr "타이틀 다중 라인 표시"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:14
-msgid "Sync the font with the window manager."
-msgstr "윈도우 매니저와 글꼴 동기화"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:15
-msgid "Subtitle font:"
-msgstr "자막 글꼴:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:16
-msgid "Title font:"
-msgstr "제목 글꼴:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:17
-msgid "Alignment:"
-msgstr "정렬:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:18
-msgid "Title"
-msgstr "제목"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:19
-msgid "Show the window menu."
-msgstr "윈도우 메뉴 보기"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:20
-msgid "Show the window Icon."
-msgstr "윈도우 아이콘 보기"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:21
-msgid "Place the menu icon on right."
-msgstr "오른쪽에 메뉴 아이콘 놓기"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:22
-msgid "Menu"
-msgstr "메뉴"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:23
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-msgid "<b>Appearance</b>"
-msgstr "<b>모양새</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:24
-msgid "left"
-msgstr "왼쪽"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:25
-msgid "center"
-msgstr "중앙"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:26
-msgid "right"
-msgstr "오른쪽"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "윈도우 헤더 - 제목"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "최대화된 창 제목 패널에 넣기"
-
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:308
 msgid "Directory"
 msgstr "디렉토리"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:310
 msgid "Themes usable"
 msgstr "사용 불가능한 테마"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "윈도우 최대화"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "활성 윈도우 제어"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
@@ -171,6 +67,12 @@ msgstr "데스크탑에서 버튼 보이기"
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
 msgstr "닫기 버튼 바탕 화면에서 로그아웃"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>행동</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
@@ -190,10 +92,113 @@ msgstr ""
 "예: [HMC]\n"
 "H=숨기기, M=최대화/최대화 안함, C=닫기"
 
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:7
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "<b>Appearance</b>"
+msgstr "<b>모양새</b>"
+
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
 msgstr "윈도우 헤더 - 버튼들"
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
+msgstr "최대화된 창 제목 패널에 넣기"
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr "데스크탑에서 플러그인 보기"
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr "윈도우 아이콘 보기"
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+msgid "Menu"
+msgstr "메뉴"
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
+msgid "Window Header - Menu"
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
+msgid "Put the maximized window menu on the panel."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "많아야"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "로 고정"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "확장"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "left"
+msgstr "왼쪽"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "center"
+msgstr "중앙"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "right"
+msgstr "오른쪽"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Width:"
+msgstr "폭:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "chars"
+msgstr "문자"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Padding:"
+msgstr "패딩:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "pixels"
+msgstr "픽셀"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "상세한 타이틀 명 보기"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "타이틀 다중 라인 표시"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr "윈도우 매니저와 글꼴 동기화"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "제목 글꼴:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "자막 글꼴:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "정렬:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Title"
+msgstr "제목"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "윈도우 헤더 - 제목"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
 msgstr "최대화된 창 제목 패널에 넣기"
