@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 00:54+0200\n"
+"POT-Creation-Date: 2022-09-05 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2022\n"
 "Language-Team: Malay (https://www.transifex.com/xfce/teams/16840/ms/)\n"
@@ -21,146 +21,42 @@ msgstr ""
 "Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/wck-plugin.c:97
+#: ../common/wck-plugin.c:96
 msgid "_Refresh"
 msgstr "Se_gar Semula"
 
-#: ../common/wck-plugin.c:115
+#: ../common/wck-plugin.c:197
+msgid "Help"
+msgstr "Bantuan"
+
+#: ../common/wck-plugin.c:198
+msgid "_Close"
+msgstr "_Tutup"
+
+#: ../common/wck-plugin.c:237
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Tidak boleh buka url berikut: %s"
 
-#: ../common/wck-plugin.c:133
-msgid "Help"
-msgstr "Bantuan"
-
-#: ../common/wck-plugin.c:134
-msgid "_Close"
-msgstr "_Tutup"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:1
-msgid "at most"
-msgstr "hampir"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:2
-msgid "fixed to"
-msgstr "dikekalkan ke"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:3
-msgid "expand"
-msgstr "kembang"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:4
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-msgid "Control maximized windows."
-msgstr "Kawal tetingkap dimaksimumkan"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:5
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-msgid "Control active windows."
-msgstr "Kawal tetingkap aktif."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:6
-msgid "Show the plugin on desktop."
-msgstr "Tunjuk pemalam di atas meja."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:7
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-msgid "<b>Behaviour</b>"
-msgstr "<b>Kelakuan</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:8
-msgid "Width:"
-msgstr "Lebar:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:9
-msgid "chars"
-msgstr "aksr"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:10
-msgid "Padding:"
-msgstr "Pemadatan:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:11
-msgid "pixels"
-msgstr "piksel"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:12
-msgid "Show the full title name"
-msgstr "Tunjuk nama tajuk penuh"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:13
-msgid "Display the title in two lines"
-msgstr "Papar tajuk dalam dua baris"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:14
-msgid "Sync the font with the window manager."
-msgstr "Segerak fon dengan pengurus tetingkap."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:15
-msgid "Subtitle font:"
-msgstr "Fon sari kata:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:16
-msgid "Title font:"
-msgstr "Fon tajuk:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:17
-msgid "Alignment:"
-msgstr "Jajaran:"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:18
-msgid "Title"
-msgstr "Tajuk"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:19
-msgid "Show the window menu."
-msgstr "Tunjuk menu tetingkap."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:20
-msgid "Show the window Icon."
-msgstr "Tunjuk ikon tetingkap."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:21
-msgid "Place the menu icon on right."
-msgstr "Letak ikon menu di sebelah kanan."
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:22
-msgid "Menu"
-msgstr "Menu"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:23
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-msgid "<b>Appearance</b>"
-msgstr "<b>Penampilan</b>"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:24
-msgid "left"
-msgstr "kiri"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:25
-msgid "center"
-msgstr "tengah"
-
-#: ../panel-plugin/title/windowck-dialogs.glade.h:26
-msgid "right"
-msgstr "kanan"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Pengepala Tetingkap - Tajuk"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Letak tajuk tetingkap maksimum di atas panel."
-
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:316
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:308
 msgid "Directory"
 msgstr "Direktori"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:310
 msgid "Themes usable"
 msgstr "Tema boleh guna"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "Kawal tetingkap dimaksimumkan"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "Kawal tetingkap aktif."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
@@ -169,6 +65,12 @@ msgstr "Tunjuk butang atas desktop"
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
 msgstr "Daftar keluar pada butang tutup di atas meja."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>Kelakuan</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
@@ -188,6 +90,12 @@ msgstr ""
 "Contoh: [HMC]\n"
 "H=Hide, M=Maximize/unMaximize, C=Close"
 
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:7
+#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+msgid "<b>Appearance</b>"
+msgstr "<b>Penampilan</b>"
+
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
 msgstr "Pengepala Tetingkap - Butang"
@@ -195,3 +103,100 @@ msgstr "Pengepala Tetingkap - Butang"
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
 msgstr "Letak butang tetingkap maksimum di atas panel."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr "Tunjuk pemalam di atas meja."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr "Tunjuk ikon tetingkap."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+msgid "Menu"
+msgstr "Menu"
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
+msgid "Window Header - Menu"
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
+msgid "Put the maximized window menu on the panel."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "at most"
+msgstr "hampir"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "dikekalkan ke"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "expand"
+msgstr "kembang"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "left"
+msgstr "kiri"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "center"
+msgstr "tengah"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "right"
+msgstr "kanan"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Width:"
+msgstr "Lebar:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "chars"
+msgstr "aksr"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Padding:"
+msgstr "Pemadatan:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "pixels"
+msgstr "piksel"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "Tunjuk nama tajuk penuh"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "Papar tajuk dalam dua baris"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr "Segerak fon dengan pengurus tetingkap."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "Fon tajuk:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "Fon sari kata:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "Jajaran:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "Title"
+msgstr "Tajuk"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "Pengepala Tetingkap - Tajuk"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr "Letak tajuk tetingkap maksimum di atas panel."
