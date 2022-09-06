@@ -103,7 +103,7 @@ msgstr "Lango antraštė - Mygtukai"
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
-msgstr "Išdėstyti išskleisto lango mygtukus skydelyje."
+msgstr "Išdėstyti skydelyje išskleisto lango mygtukus."
 
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/windowck-dialogs.glade.h:9
@@ -120,11 +120,11 @@ msgstr "Meniu"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Lango antraštė - Meniu"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Išdėstyti skydelyje išskleisto lango meniu."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
@@ -200,4 +200,4 @@ msgstr "Lango antraštė - Pavadinimas"
 
 #: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
 msgid "Put the maximized window title on the panel."
-msgstr "Išdėstyti išskleisto lango pavadinimą skydelyje."
+msgstr "Išdėstyti skydelyje išskleisto lango pavadinimą."
