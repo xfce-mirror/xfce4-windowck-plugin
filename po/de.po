@@ -7,9 +7,9 @@
 # Vinzenz Vietzke <vinz@vinzv.de>, 2022
 # Michael John <amstelchen@gmail.com>, 2022
 # Joerg Schachner, 2022
-# Andreas Eitel <github-aneitel@online.de>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Tobias Bannert <tobannert@gmail.com>, 2022
+# Andreas Eitel <github-aneitel@online.de>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 00:54+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2022\n"
+"Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2022\n"
 "Language-Team: German (https://www.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,11 +124,11 @@ msgstr "Menü"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Fensterüberschrift - Menü"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Legen Sie das Menü des maximierten Fensters auf die Leiste."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
