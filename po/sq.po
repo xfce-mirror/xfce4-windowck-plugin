@@ -120,11 +120,11 @@ msgstr "Menu"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Krye Dritareje - Menu"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Vëre menunë e maksimizuar të dritare te paneli."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
