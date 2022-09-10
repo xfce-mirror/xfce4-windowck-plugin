@@ -367,7 +367,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
         }
     }
 
-    g_critical("Failed to construct the wckp->prefs->builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wckp->plugin), xfce_panel_plugin_get_unique_id (wckp->plugin), error->message);
+    g_critical("Failed to construct the builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wckp->plugin), xfce_panel_plugin_get_unique_id (wckp->plugin), error->message);
     g_error_free(error);
     g_object_unref (G_OBJECT (wckp->prefs->builder));
 
