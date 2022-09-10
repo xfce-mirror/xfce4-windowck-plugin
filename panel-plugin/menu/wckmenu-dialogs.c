@@ -113,7 +113,7 @@ build_properties_area (WckMenuPlugin *wmp, const gchar *buffer, gsize length)
         }
     }
 
-    g_critical("Faild to construct the wckp->prefs->builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wmp->plugin), xfce_panel_plugin_get_unique_id (wmp->plugin), error->message);
+    g_critical("Failed to construct the builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wmp->plugin), xfce_panel_plugin_get_unique_id (wmp->plugin), error->message);
     g_error_free(error);
     g_object_unref (G_OBJECT (wmp->prefs->builder));
 

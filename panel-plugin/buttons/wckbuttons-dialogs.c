@@ -344,7 +344,7 @@ static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsiz
         }
     }
 
-    g_critical("Faild to construct the builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wb->plugin), xfce_panel_plugin_get_unique_id (wb->plugin), error->message);
+    g_critical("Failed to construct the builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wb->plugin), xfce_panel_plugin_get_unique_id (wb->plugin), error->message);
     g_error_free(error);
     g_object_unref(G_OBJECT (wb->prefs->builder) );
 
