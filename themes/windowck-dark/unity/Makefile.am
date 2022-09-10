@@ -4,7 +4,7 @@ all: generate all-am
 
 generate:
 	@echo -e "Going to convert xpm to png files"
-	$(srcdir)/generator.py
+	$(PYTHON) $(srcdir)/generator.py
 
 install-data: install-data-local
 

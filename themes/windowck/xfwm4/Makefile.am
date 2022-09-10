@@ -4,7 +4,7 @@ all: refresh all-am
 
 refresh:
 	@echo -e "Going to refresh xpm files"
-	$(srcdir)/generator.py
+	$(PYTHON) $(srcdir)/generator.py
 
 install-data: install-data-local
 
