@@ -294,7 +294,7 @@ static void set_title_colors(WindowckPlugin *wckp)
     /* get plugin widget style */
     g_free (wckp->prefs->active_text_color);
     g_free (wckp->prefs->inactive_text_color);
-    wckp->prefs->active_text_color = get_ui_color (GTK_WIDGET(wckp->plugin), GTK_STYLE_PROPERTY_COLOR, GTK_STATE_FLAG_NORMAL);
+    wckp->prefs->active_text_color = get_ui_color (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL);
     wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL, wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
 }
 
