@@ -27,7 +27,7 @@
 #include "wckmenu.h"
 #include "wckmenu-icon.h"
 
-#define XFCE_PANEL_SMALL_SIZE 22
+#define XFCE_PANEL_SMALL_ICON_SIZE 31
 
 
 void reload_wnck_icon (WckMenuPlugin *wmp)
@@ -64,9 +64,11 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
     {
         GdkPixbuf *pixbuf = NULL;
         GdkPixbuf *grayscale = NULL;
+        gint icon_size;
 
+        icon_size = xfce_panel_plugin_get_icon_size (wmp->plugin);
         /* This only returns a pointer - it SHOULDN'T be unrefed! */
-        if (xfce_panel_plugin_get_size (wmp->plugin) <= XFCE_PANEL_SMALL_SIZE)
+        if (icon_size <= XFCE_PANEL_SMALL_ICON_SIZE)
             pixbuf = wnck_window_get_mini_icon(controlwindow);
         else
             pixbuf = wnck_window_get_icon(controlwindow);
@@ -87,6 +89,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
                 pixbuf = grayscale;
         }
 
+        xfce_panel_image_set_size (XFCE_PANEL_IMAGE (wmp->icon->symbol), icon_size);
         xfce_panel_image_set_from_pixbuf(XFCE_PANEL_IMAGE (wmp->icon->symbol), pixbuf);
 
         if (grayscale != NULL && grayscale != pixbuf)
