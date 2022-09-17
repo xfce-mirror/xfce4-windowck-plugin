@@ -201,7 +201,7 @@ set_icon_colors (WckMenuPlugin *wmp)
 {
     /* get plugin widget style */
     g_free (wmp->prefs->active_color);
-    wmp->prefs->active_color = get_ui_color (GTK_WIDGET(wmp->plugin), GTK_STYLE_PROPERTY_COLOR, GTK_STATE_FLAG_NORMAL);
+    wmp->prefs->active_color = get_ui_color (GTK_WIDGET(wmp->plugin), GTK_STATE_FLAG_NORMAL);
 
     g_free (wmp->prefs->inactive_color);
     wmp->prefs->inactive_color = mix_bg_fg (GTK_WIDGET(wmp->plugin), GTK_STATE_FLAG_NORMAL, wmp->prefs->inactive_alpha / 100.0, wmp->prefs->inactive_shade / 100.0);

@@ -35,7 +35,6 @@ gchar                   *mix_bg_fg                              (GtkWidget * win
                                                                  float alpha,
                                                                  float beta);
 gchar                   *get_ui_color                           (GtkWidget *,
-                                                                 const gchar *,
                                                                  GtkStateFlags);
 
 #endif /* __UI_STYLE_H__ */

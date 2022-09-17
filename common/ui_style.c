@@ -64,10 +64,10 @@ rgba_to_hex_string (const GdkRGBA * rgba)
 }
 
 gchar *
-get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
+get_ui_color (GtkWidget *win, GtkStateFlags state)
 {
     GtkStyleContext *style;
-    GdkRGBA *rgba;
+    GdkRGBA rgba;
     gchar *s;
 
     TRACE ("entering get_ui_color");
@@ -75,13 +75,11 @@ get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
     g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
-    g_return_val_if_fail (name != NULL, NULL);
 
     style = gtk_widget_get_style_context (win);
-    gtk_style_context_get (style, state, name, &rgba, NULL);
-    s = rgba_to_hex_string (rgba);
-    gdk_rgba_free (rgba);
-    TRACE ("%s[%d]=%s", name, state, s);
+    gtk_style_context_get_color (style, state, &rgba);
+    s = rgba_to_hex_string (&rgba);
+    TRACE ("color[%d]=%s", state, s);
     return s;
 }
 
