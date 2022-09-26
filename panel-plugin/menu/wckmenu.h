@@ -33,7 +33,7 @@
 
 #include <common/wck-utils.h>
 
-#define WCKMENU_ICON "windowck-plugin"
+#define WCKMENU_ICON "wckmenu-plugin"
 
 G_BEGIN_DECLS
 
