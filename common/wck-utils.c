@@ -282,7 +282,10 @@ void init_wnck (WckUtils *win, gboolean only_maximized, gpointer data)
     win->data = data;
 
     /* get window proprieties */
-    win->activescreen = wnck_screen_get_default();
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    /* TODO switch to wnck_handle_get_default_screen() */
+    win->activescreen = wnck_screen_get_default ();
+G_GNUC_END_IGNORE_DEPRECATIONS
     win->activeworkspace = wnck_screen_get_active_workspace(win->activescreen);
     if (!win->activeworkspace)
         win->activeworkspace = wnck_screen_get_workspace(win->activescreen, 0);
