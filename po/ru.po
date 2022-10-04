@@ -139,7 +139,7 @@ msgstr "фиксировать к"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:3
 msgid "expand"
-msgstr "расширить до"
+msgstr "расширить"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:4
 msgid "left"
