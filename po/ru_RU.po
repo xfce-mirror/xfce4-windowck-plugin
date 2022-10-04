@@ -24,15 +24,15 @@ msgstr ""
 
 #: ../common/wck-plugin.c:96
 msgid "_Refresh"
-msgstr ""
+msgstr "О_бновить"
 
 #: ../common/wck-plugin.c:197
 msgid "Help"
-msgstr ""
+msgstr "Помощь"
 
 #: ../common/wck-plugin.c:198
 msgid "_Close"
-msgstr ""
+msgstr "_Закрыть"
 
 #: ../common/wck-plugin.c:237
 #, c-format
@@ -120,11 +120,11 @@ msgstr "Меню"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Шапка окна - Меню"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Поместить меню развёрнутого окна на панель."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
