@@ -122,11 +122,11 @@ msgstr "Meni"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Glava okna - meni"
 
 #: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Postavi meni povečanega okna na pano."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 msgid "at most"
