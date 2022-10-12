@@ -68,23 +68,13 @@ wckmenu_save (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 static void
 wckmenu_settings_load (XfceRc *rc, WckMenuPreferences *prefs)
 {
-    if (rc != NULL)
-    {
-        prefs->only_maximized = xfce_rc_read_bool_entry(rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
-        prefs->show_on_desktop = xfce_rc_read_bool_entry(rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
-        prefs->show_app_icon = xfce_rc_read_bool_entry(rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
-        prefs->inactive_alpha = xfce_rc_read_int_entry(rc, "inactive_alpha", DEFAULT_INACTIVE_ALPHA);
-        prefs->inactive_shade = xfce_rc_read_int_entry(rc, "inactive_shade", DEFAULT_INACTIVE_SHADE);
-    }
-    else
-    {
-        prefs->only_maximized = DEFAULT_ONLY_MAXIMIZED;
-        prefs->show_on_desktop = DEFAULT_SHOW_ON_DESKTOP;
-        prefs->show_app_icon = DEFAULT_SHOW_APP_ICON;
-        prefs->inactive_alpha = DEFAULT_INACTIVE_ALPHA;
-        prefs->inactive_shade = DEFAULT_INACTIVE_SHADE;
-    }
+    prefs->only_maximized = xfce_rc_read_bool_entry (rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
+    prefs->show_on_desktop = xfce_rc_read_bool_entry (rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
+    prefs->show_app_icon = xfce_rc_read_bool_entry (rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
+    prefs->inactive_alpha = xfce_rc_read_int_entry (rc, "inactive_alpha", DEFAULT_INACTIVE_ALPHA);
+    prefs->inactive_shade = xfce_rc_read_int_entry (rc, "inactive_shade", DEFAULT_INACTIVE_SHADE);
 }
+
 
 static WckMenuPreferences *
 wckmenu_read (XfcePanelPlugin *plugin)
