@@ -88,26 +88,24 @@ static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
 }
 
 
+static gboolean
+is_layout_button (gchar c)
+{
+    return c == 'H' || c == 'M' || c == 'C';
+}
+
+
 gchar *button_layout_filter (const gchar *string, const gchar *default_layout)
 {
-    guint i, j;
+    const size_t n = strlen (string);
+    guint j = 0;
     gchar layout[BUTTONS+1] = {0};
 
-    /* WARNING : beware of bluffer overflow !!!  */
-    j = 0;
-    for (i = 0; i < strlen (string) && j < BUTTONS; i++)
+    /* WARNING: beware of buffer overflow !!! */
+    for (size_t i = 0; i < n && j < BUTTONS; i++)
     {
-        switch (string[i])
-        {
-            case 'H':
-                layout[j++] = 'H';
-                break;
-            case 'M':
-                layout[j++] = 'M';
-                break;
-            case 'C':
-                layout[j++] = 'C';
-        }
+        if (is_layout_button (string[i]))
+            layout[j++] = string[i];
     }
 
     layout[j] = '\0';
@@ -122,22 +120,13 @@ gchar *button_layout_filter (const gchar *string, const gchar *default_layout)
 gchar *opposite_layout_filter (const gchar *string)
 {
     const size_t n = strlen (string);
-    size_t i, j;
+    size_t j = 0;
     gchar layout[n+1];
 
-    j = 0;
-    for (i = 0; i < n; i++)
+    for (size_t i = 0; i < n; i++)
     {
-        switch (string[i])
-        {
-            case 'H':
-            case 'M':
-            case 'C':
-                break;
-            default:
-                layout[j] = string[i];
-                j++;
-        }
+        if (!is_layout_button (string[i]))
+            layout[j++] = string[i];
     }
 
     g_assert (j < n+1);
