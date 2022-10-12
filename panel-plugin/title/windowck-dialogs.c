@@ -58,10 +58,28 @@ static void on_titlesize_changed(GtkSpinButton *titlesize, WindowckPlugin *wckp)
 }
 
 
+static void
+set_titlesize_sensitive (const WindowckPlugin *wckp, gboolean sensitive)
+{
+    GtkWidget *titlesize;
+    GtkWidget *width_unit;
+
+    titlesize = GTK_WIDGET (gtk_builder_get_object (wckp->prefs->builder, "titlesize"));
+    if (G_LIKELY (titlesize != NULL))
+    {
+        gtk_widget_set_sensitive (titlesize, sensitive);
+    }
+
+    width_unit = GTK_WIDGET (gtk_builder_get_object (wckp->prefs->builder, "width_unit"));
+    if (G_LIKELY (width_unit != NULL))
+    {
+        gtk_widget_set_sensitive (width_unit, sensitive);
+    }
+}
+
 static void on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp)
 {
     gint id;
-    GtkWidget *titlesize, *width_unit;
 
     id = gtk_combo_box_get_active (size_mode);
 
@@ -71,30 +89,21 @@ static void on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp)
       return;
     }
 
-    titlesize = GTK_WIDGET (gtk_builder_get_object (wckp->prefs->builder, "titlesize"));
-    width_unit = GTK_WIDGET (gtk_builder_get_object (wckp->prefs->builder, "width_unit"));
-
     if (id == 0)
     {
         wckp->prefs->size_mode = SHRINK;
-        xfce_panel_plugin_set_shrink (wckp->plugin, FALSE);
-        gtk_widget_set_sensitive (titlesize, TRUE);
-        gtk_widget_set_sensitive (width_unit, TRUE);
     }
     else if (id == 1)
     {
         wckp->prefs->size_mode = FIXED;
-        xfce_panel_plugin_set_shrink (wckp->plugin, TRUE);
-        gtk_widget_set_sensitive(titlesize, TRUE);
-        gtk_widget_set_sensitive(width_unit, TRUE);
     }
     else if (id == 2)
     {
         wckp->prefs->size_mode = EXPAND;
-        xfce_panel_plugin_set_shrink (wckp->plugin, TRUE);
-        gtk_widget_set_sensitive (titlesize, FALSE);
-        gtk_widget_set_sensitive (width_unit, FALSE);
     }
+
+    xfce_panel_plugin_set_shrink (wckp->plugin, wckp->prefs->size_mode != SHRINK);
+    set_titlesize_sensitive (wckp, wckp->prefs->size_mode != EXPAND);
 
     /* dynamic resizing */
     /* don't work for title shrinking -> need to restart the applet */
@@ -341,20 +350,9 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
                     gtk_combo_box_set_active(size_mode, 1);
                 }
                 else if( wckp->prefs->size_mode == EXPAND ) {
-                    GtkWidget *width_unit;
-
                     gtk_combo_box_set_active(size_mode, 2);
 
-                    if (G_LIKELY (titlesize != NULL))
-                    {
-                        gtk_widget_set_sensitive (GTK_WIDGET (titlesize), FALSE);
-                    }
-
-                    width_unit = wck_dialog_get_widget (wckp->prefs->builder, "width_unit");
-                    if (G_LIKELY (width_unit != NULL))
-                    {
-                        gtk_widget_set_sensitive (width_unit, FALSE);
-                    }
+                    set_titlesize_sensitive (wckp, FALSE);
                 }
 
                 g_signal_connect(size_mode, "changed", G_CALLBACK(on_size_mode_changed), wckp);
