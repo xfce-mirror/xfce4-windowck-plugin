@@ -33,8 +33,6 @@
 #include "wckbuttons-theme.h"
 
 /* default settings */
-#define DEFAULT_ONLY_MAXIMIZED TRUE
-#define DEFAULT_SHOW_ON_DESKTOP FALSE
 #define DEFAULT_SYNC_WM_THEME TRUE
 #define DEFAULT_BUTTON_LAYOUT "HMC"
 

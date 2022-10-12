@@ -27,6 +27,10 @@
 
 G_BEGIN_DECLS
 
+/* default settings */
+#define DEFAULT_ONLY_MAXIMIZED TRUE
+#define DEFAULT_SHOW_ON_DESKTOP FALSE
+
 typedef void (*WckSettingsCb) (XfceRc *rc, gpointer prefs);
 
 XfconfChannel *

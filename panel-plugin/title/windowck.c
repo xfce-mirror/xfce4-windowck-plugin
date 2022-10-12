@@ -36,8 +36,6 @@
 #include "windowck-title.h"
 
 /* default settings */
-#define DEFAULT_ONLY_MAXIMIZED TRUE
-#define DEFAULT_SHOW_ON_DESKTOP FALSE
 #define DEFAULT_FULL_NAME TRUE
 #define DEFAULT_TWO_LINES FALSE
 #define DEFAULT_SHOW_TOOLTIPS TRUE
