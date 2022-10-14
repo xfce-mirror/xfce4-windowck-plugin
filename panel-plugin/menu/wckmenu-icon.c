@@ -27,9 +27,6 @@
 #include "wckmenu.h"
 #include "wckmenu-icon.h"
 
-#define XFCE_PANEL_SMALL_ICON_SIZE 31
-
-
 void reload_wnck_icon (WckMenuPlugin *wmp)
 {
     /* disconnect controlled window icon signal handler */
@@ -68,7 +65,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
 
         icon_size = xfce_panel_plugin_get_icon_size (wmp->plugin);
         /* This only returns a pointer - it SHOULDN'T be unrefed! */
-        if (icon_size <= XFCE_PANEL_SMALL_ICON_SIZE)
+        if (icon_size < WNCK_DEFAULT_ICON_SIZE)
             pixbuf = wnck_window_get_mini_icon(controlwindow);
         else
             pixbuf = wnck_window_get_icon(controlwindow);
