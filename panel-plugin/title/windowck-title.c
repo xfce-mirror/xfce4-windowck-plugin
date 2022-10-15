@@ -90,14 +90,13 @@ get_title_color (WnckWindow *controlwindow, WindowckPlugin *wckp)
 /* Warning! This function is called very often, so it should only do the most necessary things! */
 static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 {
-    const gchar *title_text;
-
     if (controlwindow
         && wnck_window_get_pid(controlwindow)  /* if active window has been closed, pid is 0 */
         && (!window_is_desktop (controlwindow)
             || wckp->prefs->show_on_desktop))
     {
         const gchar *title_color;
+        const gchar *title_text;
         gchar *title_markup;
 
         title_color = get_title_color (controlwindow, wckp);
@@ -170,10 +169,10 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 
         g_free (title_markup);
     }
-    else {
+    else
+    {
         /* hide text */
-        title_text = "";
-        gtk_label_set_text(wckp->title, title_text);
+        gtk_label_set_text (wckp->title, "");
     }
 }
 

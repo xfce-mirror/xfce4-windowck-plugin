@@ -95,11 +95,12 @@ wckbuttons_theme_selection_changed (GtkTreeSelection *selection,
 {
     GtkTreeModel *model;
     GtkTreeIter   iter;
-    const gchar *theme;
-    GtkWidget    *entry;
 
     if (gtk_tree_selection_get_selected (selection, &model, &iter))
     {
+        const gchar *theme;
+        GtkWidget   *entry;
+
         gtk_tree_model_get (model, &iter, COL_THEME_NAME, &theme, -1);
 
         /* set the theme name */
@@ -141,11 +142,7 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WBPlugin *wb)
 {
     GtkTreeModel *model;
     GHashTable   *themes;
-    GDir         *dir;
-    const gchar  *file;
     gchar       **theme_dirs;
-    gchar        *themedir;
-    gint          i;
 
     themes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
@@ -158,20 +155,23 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WBPlugin *wb)
     theme_dirs = xfce_resource_dirs (XFCE_RESOURCE_THEMES);
     xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
 
-    for (i = 0; theme_dirs[i] != NULL; ++i)
+    for (gint i = 0; theme_dirs[i] != NULL; ++i)
     {
-        dir = g_dir_open (theme_dirs[i], 0, NULL);
+        GDir         *dir;
+        const gchar  *file;
 
+        dir = g_dir_open (theme_dirs[i], 0, NULL);
         if (G_UNLIKELY (dir == NULL))
             continue;
 
         while ((file = g_dir_read_name (dir)) != NULL)
         {
             /* check if there is not already a theme with the
-            * same name in the database */
+             * same name in the database */
             if (g_hash_table_lookup (themes, file) == NULL)
             {
                 GtkTreeIter   iter;
+                gchar        *themedir;
 
                 if (wb->prefs->sync_wm_theme)
                 {
@@ -191,25 +191,26 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WBPlugin *wb)
                                   COL_THEME_NAME, file,
                                   COL_THEME_RC, g_path_get_basename (themedir), -1);
 
-                    if (G_UNLIKELY (g_str_equal (wb->prefs->theme, file)))
-                    {
-                        GtkTreePath *path = gtk_tree_model_get_path (model, &iter);
+                if (G_UNLIKELY (g_str_equal (wb->prefs->theme, file)))
+                {
+                    GtkTreePath *path = gtk_tree_model_get_path (model, &iter);
 
-                        gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview)),
-                                                      &iter);
-                        gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (theme_name_treeview), path, NULL, TRUE, 0.5, 0.5);
+                    gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview)),
+                                                  &iter);
+                    gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (theme_name_treeview), path, NULL, TRUE, 0.5, 0.5);
 
-                        gtk_tree_path_free (path);
-                    }
+                    gtk_tree_path_free (path);
+                }
+
                 g_free (themedir);
             }
         }
 
-      g_dir_close (dir);
+        g_dir_close (dir);
     }
 
-  g_strfreev (theme_dirs);
-  g_hash_table_destroy (themes);
+    g_strfreev (theme_dirs);
+    g_hash_table_destroy (themes);
 }
 
 
