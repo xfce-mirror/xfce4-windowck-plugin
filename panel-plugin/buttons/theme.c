@@ -29,7 +29,7 @@
 
 
 gchar *test_theme_dir (const gchar *theme, const char *themedir, const gchar *file) {
-    gchar *test_file, *abs_path, *path;
+    gchar *test_file, *path;
 
     path = g_build_filename (theme, themedir, file, NULL);
 
@@ -42,10 +42,10 @@ gchar *test_theme_dir (const gchar *theme, const char *themedir, const gchar *fi
 
     if (test_file)
     {
-        abs_path = g_path_get_dirname (test_file);
+        path = g_path_get_dirname (test_file);
         g_free (test_file);
 
-        return abs_path;
+        return path;
     }
 
     return NULL;

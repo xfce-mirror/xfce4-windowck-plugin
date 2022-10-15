@@ -60,7 +60,6 @@ pixbuf_alpha_load (const gchar *dir, const gchar *file)
 
 
 static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
-    gint i,j;
     gchar imagename[40];
 
     static const char *button_names[] = {
@@ -77,9 +76,9 @@ static void get_unity_pixbuf (const gchar *themedir, WBPlugin *wb) {
       "focused_pressed"
     };
 
-    for (i = 0; i < IMAGES_BUTTONS; i++)
+    for (gint i = 0; i < IMAGES_BUTTONS; i++)
     {
-        for (j = 0; j < IMAGES_STATES; j++)
+        for (gint j = 0; j < IMAGES_STATES; j++)
         {
             g_snprintf(imagename, sizeof (imagename), "%s_%s", button_names[i], button_state_names[j]);
             wb->pixbufs[i][j] = pixbuf_alpha_load (themedir, imagename);
@@ -158,16 +157,15 @@ static int get_button_from_letter (char chr)
 /* Replace buttons accordingly to button_layout and visible state */
 void replace_buttons (const gchar *button_layout, WBPlugin *wb)
 {
-    guint i, j;
-    gint button;
+    const size_t n = strlen (button_layout);
+    guint j = 0;
 
-    for (i = 0; i < BUTTONS; i++)
+    for (guint i = 0; i < BUTTONS; i++)
         gtk_widget_hide(GTK_WIDGET(wb->button[i]->eventbox));
 
-    j = 0;
-    for (i = 0; i < strlen (button_layout); i++)
+    for (guint i = 0; i < n; i++)
     {
-        button = get_button_from_letter (button_layout[i]);
+        gint button = get_button_from_letter (button_layout[i]);
         if (button >= 0 && wb->button[button]->image)
         {
             gtk_box_reorder_child (GTK_BOX (wb->box), GTK_WIDGET(wb->button[button]->eventbox), j);
@@ -215,7 +213,6 @@ gchar *get_rc_button_layout (const gchar *theme)
 /* load the theme according to xfwm4 theme format */
 void load_theme (const gchar *theme, WBPlugin *wb)
 {
-    gint i;
     gchar *themedir;
 
     /* get theme dir */
@@ -226,28 +223,29 @@ void load_theme (const gchar *theme, WBPlugin *wb)
         get_unity_pixbuf (themedir, wb);
         g_free (themedir);
 
-            /* try to replace missing images */
-        
-            for (i = 0; i < IMAGES_STATES; i++)
-            {
-                if (!wb->pixbufs[IMAGE_UNMAXIMIZE][i])
-                    wb->pixbufs[IMAGE_UNMAXIMIZE][i] = wb->pixbufs[IMAGE_MAXIMIZE][i];
-            }
-            for (i = 0; i < IMAGES_BUTTONS; i++)
-            {
-                if (!wb->pixbufs[i][IMAGE_UNFOCUSED] || !wb->pixbufs[i][IMAGE_PRESSED])
-                    wb->pixbufs[i][IMAGE_UNFOCUSED] = wb->pixbufs[i][IMAGE_FOCUSED];
-        
-                if (!wb->pixbufs[i][IMAGE_PRELIGHT])
-                    wb->pixbufs[i][IMAGE_PRELIGHT] = wb->pixbufs[i][IMAGE_PRESSED];
-            }
+        /* try to replace missing images */
+
+        for (gint i = 0; i < IMAGES_STATES; i++)
+        {
+            if (!wb->pixbufs[IMAGE_UNMAXIMIZE][i])
+                wb->pixbufs[IMAGE_UNMAXIMIZE][i] = wb->pixbufs[IMAGE_MAXIMIZE][i];
+        }
+
+        for (gint i = 0; i < IMAGES_BUTTONS; i++)
+        {
+            if (!wb->pixbufs[i][IMAGE_UNFOCUSED] || !wb->pixbufs[i][IMAGE_PRESSED])
+                wb->pixbufs[i][IMAGE_UNFOCUSED] = wb->pixbufs[i][IMAGE_FOCUSED];
+
+            if (!wb->pixbufs[i][IMAGE_PRELIGHT])
+                wb->pixbufs[i][IMAGE_PRELIGHT] = wb->pixbufs[i][IMAGE_PRESSED];
+        }
     }
 }
 
 
 static void apply_wm_theme (WBPlugin *wb)
 {
-   const gchar *wm_theme = xfconf_channel_get_string (wb->wm_channel, "/general/theme", NULL);
+    const gchar *wm_theme = xfconf_channel_get_string (wb->wm_channel, "/general/theme", NULL);
 
     if (G_LIKELY(wm_theme))
     {
