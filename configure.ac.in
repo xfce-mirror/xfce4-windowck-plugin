@@ -11,7 +11,7 @@ m4_define([windowck_version_minor], [5])
 m4_define([windowck_version_micro], [0])
 m4_define([windowck_version_nano],  []) dnl leave this empty to have no nano version
 m4_define([windowck_version_build], [@REVISION@])
-m4_define([windowck_version_tag],   [])
+m4_define([windowck_version_tag],   [git])
 m4_define([windowck_version], [windowck_version_major().windowck_version_minor().windowck_version_micro()ifelse(windowck_version_nano(), [], [], [.windowck_version_nano()])ifelse(windowck_version_tag(), [git], [windowck_version_tag()-windowck_version_build()], [windowck_version_tag()])])
 
 dnl ***************************
@@ -19,7 +19,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (C) 2015
         Alessio Piccoli, Cedric Leporcq. All rights reserved.])
-AC_INIT([xfce4-windowck-plugin],[windowck_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin])
+AC_INIT([xfce4-windowck-plugin],[windowck_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/])
 AC_PREREQ([2.69])
 AC_REVISION([xfce4_panel_version_build])
 
