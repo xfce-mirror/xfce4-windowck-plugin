@@ -19,7 +19,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (C) 2015
         Alessio Piccoli, Cedric Leporcq. All rights reserved.])
-AC_INIT([xfce4-windowck-plugin],[windowck_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin])
+AC_INIT([xfce4-windowck-plugin],[windowck_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/])
 AC_PREREQ([2.69])
 AC_REVISION([xfce4_panel_version_build])
 
