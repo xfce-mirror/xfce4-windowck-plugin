@@ -1,53 +1,43 @@
 # xfce4-windowck-plugin
 
-Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel.
-
-Original plugin's features:
-
-* Show the title and buttons of the maximized window on the panel.
-* Allow window actions on buttons and title clicks (activate, (un)maximize, close).
-* Allow window action menu on left button click.
-* Title formatting options.
-* xfwm4/unity theming support for buttons.
-
-FAQ:  
-Q: How do I hide the window decorations on maximized windows on Xfce?  
-A: Xfce 4.12 now support Titleless feature! Enable it in Window manager tweaks → Accessibility.
-
+An Xfce panel plugin which allows putting buttons, title and menu of active or maximized windows on the panel.
 This code is derived from [Window Applets](https://www.gnome-look.org/p/1115400) by Andrej Belcijan.
 
-## Screenshots
+### Homepage
 
-See [this page](https://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin) for screenshots.
+[xfce4-windowck-plugin documentation](https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/start)
 
-## Installation
+### Changelog
 
-### Arch Linux
+See [NEWS](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/blob/master/NEWS) for details on changes and fixes made in the current release.
 
-For Arch Linux users [AUR package](https://aur.archlinux.org/packages/xfce4-windowck-plugin/) is available.
+### Source Code Repository
 
-### Debian/Ubuntu
+[xfce4-windowck-plugin source code](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin)
 
-* Install dependencies:
+### Download a Release Tarball
 
-  ```bash
-  sudo apt update
-  sudo apt install xfce4-dev-tools intltool libgtk-3-dev libpango1.0-dev libwnck-3-dev libxfce4panel-2.0-dev libxfce4ui-2-dev libxfce4util-dev libxfconf-0-dev
-  ```
+[xfce4-windowck-plugin archive](https://archive.xfce.org/src/panel-plugins/xfce4-windowck-plugin)
+    or
+[xfce4-windowck-plugin tags](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/tags)
 
-* Generate common makefiles:
-  
-  ```bash
-  ./autogen.sh --prefix=/usr --libdir=/usr/lib/$(uname -m)-linux-gnu
-  ```
+### Installation
 
-* Compile and install the plugin:
+From source code repository:
 
-  ```bash
-  make
-  sudo make install
-  ```
+    $ cd xfce4-windowck-plugin
+    $ ./autogen.sh
+    $ make
+    # make install
 
-## How to report bugs?
+From release tarball:
 
-Bugs should be reported right to [this page](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues).
+    $ tar xf xfce4-windowck-plugin-<version>.tar.bz2
+    $ cd xfce4-windowck-plugin-<version>
+    $ ./configure
+    $ make
+    # make install
+
+### Reporting Bugs
+
+Visit the [reporting bugs](https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
