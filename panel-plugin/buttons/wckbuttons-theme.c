@@ -216,7 +216,7 @@ void load_theme (const gchar *theme, WBPlugin *wb)
     gchar *themedir;
 
     /* get theme dir */
-    themedir = get_unity_theme_dir (wb->prefs->theme, DEFAULT_THEME);
+    themedir = get_unity_theme_dir (theme, DEFAULT_THEME);
 
     if (themedir)
     {
