@@ -13,7 +13,7 @@ plugin_LTLIBRARIES = \
 plugindir = \
 	$(libdir)/xfce4/panel/plugins
 
-libwindowck_built_sources = \
+libwckbuttons_built_sources = \
 	wckbuttons-dialogs_ui.h
 
 libwckbuttons_la_SOURCES = \
@@ -75,10 +75,10 @@ CLEANFILES =								\
 	$(desktop_DATA)
 
 BUILT_SOURCES = \
-	$(libwindowck_built_sources)
+	$(libwckbuttons_built_sources)
 
 CLEANFILES += \
-	$(libwindowck_built_sources)
+	$(libwckbuttons_built_sources)
 
 wckbuttons-dialogs_ui.h: wckbuttons-dialogs.glade
 	$(AM_V_GEN) xdt-csource --static --strip-comments --strip-content --name=wckbuttons_dialogs_ui $< >$@
