@@ -45,7 +45,7 @@ AM_PROG_CC_C_O()
 LT_PATH_LD([])
 AC_PROG_INSTALL()
 IT_PROG_INTLTOOL([0.35.0])
-AM_PATH_PYTHON([3.7])
+AM_PATH_PYTHON([3.7],, [:])
 
 dnl **************************
 dnl *** Initialize libtool ***
