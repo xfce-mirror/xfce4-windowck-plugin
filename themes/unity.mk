@@ -25,7 +25,7 @@ theme_DATA = \
 	unmaximize.png \
 	unmaximize_unfocused.png
 
-$(theme_DATA):
+$(theme_DATA) &:
 	@echo -e "Going to generate xpm and convert to png files"
 	$(PYTHON) $(srcdir)/generator.py
 

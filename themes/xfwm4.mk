@@ -61,7 +61,7 @@ theme_DATA = \
 	top-right-active.xpm \
 	top-right-inactive.xpm
 
-$(theme_DATA):
+$(theme_DATA) &:
 	@echo -e "Going to generate xpm files"
 	$(PYTHON) $(srcdir)/generator.py
 
