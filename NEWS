@@ -1,3 +1,19 @@
+0.5.1
+    Add new icon for Window Menu plugin
+    Fix window icon showing
+    Remove redundant widgets from Menu and Title settings dialogs
+    Remove TODO
+    Update README consistent with common template
+    Update project url to one in docs.xfce.org
+    Code cleanups
+    Add Croatian translation
+    Can build from tarball without xfce4-dev-tools and Python
+    Translation updates:
+        Albanian, Bulgarian, Chinese (China), Chinese (Taiwan), Czech,
+        Dutch, Estonian, French, German, Hebrew, Interlingue, Italian,
+        Japanese, Korean, Lithuanian, Malay, Norwegian Bokmål, Polish,
+        Portuguese, Portuguese (Brazil), Russian, Russian (Russia), Serbian,
+        Slovak, Slovenian, Spanish, Swedish, Turkish, Ukrainian
 0.5.0
     Port to GTK3
     Add basic GitLab pipeline
