@@ -222,39 +222,6 @@ wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointe
 }
 
 
-void
-wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs)
-{
-    /* get the plugin config file location */
-    gchar *file = xfce_panel_plugin_save_location (plugin, TRUE);
-
-    if (G_LIKELY (file != NULL))
-    {
-        /* open the config file, readonly */
-        XfceRc *rc = xfce_rc_simple_open (file, TRUE);
-
-        /* cleanup */
-        g_free (file);
-
-        if (G_LIKELY (rc != NULL))
-        {
-            /* read the settings */
-            load_settings (rc, prefs);
-
-            /* cleanup */
-            xfce_rc_close (rc);
-
-            /* leave the function, everything went well */
-            return;
-        }
-    }
-
-    /* something went wrong, apply default values */
-    DBG ("Applying default settings");
-    load_settings (NULL, prefs);
-}
-
-
 GtkWidget *
 wck_dialog_get_widget (GtkBuilder *builder, const gchar *name)
 {
