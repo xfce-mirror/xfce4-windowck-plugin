@@ -67,7 +67,7 @@ static void windowck_construct(XfcePanelPlugin *plugin);
 
 
 void
-wcktitle_settings_save (XfceRc *rc, WCKPreferences *prefs)
+wcktitle_settings_save (WCKPreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
@@ -90,9 +90,9 @@ wcktitle_settings_save (XfceRc *rc, WCKPreferences *prefs)
 }
 
 static void
-windowck_save (XfcePanelPlugin *plugin, WindowckPlugin *wckp)
+windowck_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 {
-    wck_settings_save (plugin, (WckSettingsCb) wcktitle_settings_save, wckp->prefs);
+    wcktitle_settings_save (wckp->prefs);
 }
 
 

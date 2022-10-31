@@ -28,7 +28,6 @@
 
 #include <gtk/gtk.h>
 #include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 
 #include <common/wck-plugin.h>
@@ -74,7 +73,7 @@ typedef struct {
     XfconfChannel *x_channel;       // xsettings chanel
 } WckMenuPlugin;
 
-void wckmenu_settings_save (XfceRc *rc, WckMenuPreferences *prefs);
+void wckmenu_settings_save (WckMenuPreferences *prefs);
 void reset_symbol (WckMenuPlugin *wmp);
 
 G_END_DECLS

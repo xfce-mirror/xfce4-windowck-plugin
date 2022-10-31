@@ -191,37 +191,6 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
 }
 
 
-void
-wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs)
-{
-    XfceRc *rc;
-    gchar *file;
-
-    /* get the config file location */
-    file = xfce_panel_plugin_save_location (plugin, TRUE);
-
-    if (G_UNLIKELY (file == NULL))
-    {
-        DBG ("Failed to open config file");
-        return;
-    }
-
-    /* open the config file, read/write */
-    rc = xfce_rc_simple_open (file, FALSE);
-    g_free (file);
-
-    if (G_LIKELY (rc != NULL))
-    {
-        /* save the settings */
-        DBG (".");
-        save_settings (rc, prefs);
-
-        /* close the rc file */
-        xfce_rc_close (rc);
-    }
-}
-
-
 GtkWidget *
 wck_dialog_get_widget (GtkBuilder *builder, const gchar *name)
 {
@@ -299,7 +268,7 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
         xfce_panel_plugin_unblock_menu (plugin);
 
         /* save the plugin */
-        wck_settings_save (plugin, save_settings, data);
+        save_settings (data);
 
         /* destroy the properties dialog */
         gtk_widget_destroy (dialog);
