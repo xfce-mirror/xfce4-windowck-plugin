@@ -74,7 +74,7 @@ wckbuttons_save (XfcePanelPlugin *plugin,
 
 
 static void
-wckbuttons_settings_load (XfceRc *rc, WBPreferences *prefs)
+wckbuttons_settings_load (WBPreferences *prefs)
 {
     gchar *button_layout;
 
@@ -97,7 +97,7 @@ wckbuttons_read (XfcePanelPlugin *plugin)
     WBPreferences *prefs = g_slice_new0(WBPreferences);
 
     prefs->conf = wck_conf_new (plugin);
-    wck_settings_load (plugin, (WckSettingsCb) wckbuttons_settings_load, prefs);
+    wckbuttons_settings_load (prefs);
 
     return prefs;
 }

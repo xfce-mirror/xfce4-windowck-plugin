@@ -97,7 +97,7 @@ windowck_save (XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 
 
 static void
-wcktitle_settings_load (XfceRc *rc, WCKPreferences *prefs)
+wcktitle_settings_load (WCKPreferences *prefs)
 {
     prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
     prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
@@ -123,7 +123,7 @@ windowck_read (XfcePanelPlugin *plugin)
     WCKPreferences *prefs = g_slice_new0(WCKPreferences);
 
     prefs->conf = wck_conf_new (plugin);
-    wck_settings_load (plugin, (WckSettingsCb) wcktitle_settings_load, prefs);
+    wcktitle_settings_load (prefs);
 
     return prefs;
 }
