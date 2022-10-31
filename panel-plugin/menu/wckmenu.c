@@ -37,9 +37,9 @@
 
 #define ICON_PADDING 3
 
-#define SETTING_SHOW_APP_ICON  "/show_app_icon"
-#define SETTING_INACTIVE_ALPHA "/inactive_alpha"
-#define SETTING_INACTIVE_SHADE "/inactive_shade"
+#define SETTING_SHOW_APP_ICON  "/show-app-icon"
+#define SETTING_INACTIVE_ALPHA "/inactive-alpha"
+#define SETTING_INACTIVE_SHADE "/inactive-shade"
 
 /* default settings */
 #define DEFAULT_SHOW_APP_ICON TRUE
