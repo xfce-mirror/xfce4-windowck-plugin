@@ -68,7 +68,7 @@ wckmenu_save (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 
 
 static void
-wckmenu_settings_load (XfceRc *rc, WckMenuPreferences *prefs)
+wckmenu_settings_load (WckMenuPreferences *prefs)
 {
     prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
     prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
@@ -85,7 +85,7 @@ wckmenu_read (XfcePanelPlugin *plugin)
     WckMenuPreferences *prefs = g_slice_new0(WckMenuPreferences);
 
     prefs->conf = wck_conf_new (plugin);
-    wck_settings_load (plugin, (WckSettingsCb) wckmenu_settings_load, prefs);
+    wckmenu_settings_load (prefs);
 
     return prefs;
 }
