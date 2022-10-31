@@ -32,8 +32,8 @@
 #include "wckbuttons-dialogs.h"
 #include "wckbuttons-theme.h"
 
-#define SETTING_SYNC_WM_THEME "/sync_wm_theme"
-#define SETTING_BUTTON_LAYOUT "/button_layout"
+#define SETTING_SYNC_WM_THEME "/sync-wm-theme"
+#define SETTING_BUTTON_LAYOUT "/button-layout"
 #define SETTING_THEME         "/theme"
 
 /* default settings */
