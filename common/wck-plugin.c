@@ -51,6 +51,93 @@ wck_properties_get_channel (GObject *object_for_weak_ref, const gchar *channel_n
 }
 
 
+WckConf *
+wck_conf_new (XfcePanelPlugin *plugin)
+{
+    WckConf *conf = g_slice_new0 (WckConf);
+
+    conf->channel = wck_properties_get_channel (G_OBJECT (plugin), "xfce4-panel");
+    conf->property_base = xfce_panel_plugin_get_property_base (plugin);
+
+    return conf;
+}
+
+
+gboolean
+wck_conf_get_bool (const WckConf *conf, const gchar *setting, gboolean default_value)
+{
+    gchar    *property;
+    gboolean  value;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    value = xfconf_channel_get_bool (conf->channel, property, default_value);
+    g_free (property);
+
+    return value;
+}
+
+
+gint
+wck_conf_get_int (const WckConf *conf, const gchar *setting, gint default_value)
+{
+    gchar *property;
+    gint   value;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    value = xfconf_channel_get_int (conf->channel, property, default_value);
+    g_free (property);
+
+    return value;
+}
+
+
+gchar *
+wck_conf_get_string (const WckConf *conf, const gchar *setting, const gchar *default_value)
+{
+    gchar *property;
+    gchar *value;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    value = xfconf_channel_get_string (conf->channel, property, default_value);
+    g_free (property);
+
+    return value;
+}
+
+
+void
+wck_conf_set_bool (const WckConf *conf, const gchar *setting, gboolean value)
+{
+    gchar *property;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    xfconf_channel_set_bool (conf->channel, property, value);
+    g_free (property);
+}
+
+
+void
+wck_conf_set_int (const WckConf *conf, const gchar *setting, gint value)
+{
+    gchar *property;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    xfconf_channel_set_int (conf->channel, property, value);
+    g_free (property);
+}
+
+
+void
+wck_conf_set_string (const WckConf *conf, const gchar *setting, const gchar *value)
+{
+    gchar *property;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    xfconf_channel_set_string (conf->channel, property, value);
+    g_free (property);
+}
+
+
 void
 wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
 {
