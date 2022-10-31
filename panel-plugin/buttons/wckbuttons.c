@@ -32,6 +32,10 @@
 #include "wckbuttons-dialogs.h"
 #include "wckbuttons-theme.h"
 
+#define SETTING_SYNC_WM_THEME "sync_wm_theme"
+#define SETTING_BUTTON_LAYOUT "button_layout"
+#define SETTING_THEME         "theme"
+
 /* default settings */
 #define DEFAULT_SYNC_WM_THEME TRUE
 #define DEFAULT_BUTTON_LAYOUT "HMC"
@@ -51,14 +55,14 @@ wckbuttons_construct (XfcePanelPlugin *plugin);
 void
 wckbuttons_settings_save (XfceRc *rc, WBPreferences *prefs)
 {
-    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
-    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
-    xfce_rc_write_bool_entry(rc, "sync_wm_theme", prefs->sync_wm_theme);
+    xfce_rc_write_bool_entry(rc, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
+    xfce_rc_write_bool_entry(rc, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
+    xfce_rc_write_bool_entry(rc, SETTING_SYNC_WM_THEME, prefs->sync_wm_theme);
     if (prefs->button_layout)
-        xfce_rc_write_entry (rc, "button_layout", prefs->button_layout);
+        xfce_rc_write_entry (rc, SETTING_BUTTON_LAYOUT, prefs->button_layout);
 
     if (prefs->theme)
-        xfce_rc_write_entry (rc, "theme", prefs->theme);
+        xfce_rc_write_entry (rc, SETTING_THEME, prefs->theme);
 }
 
 static void
@@ -75,14 +79,14 @@ wckbuttons_settings_load (XfceRc *rc, WBPreferences *prefs)
     const gchar *button_layout;
     const gchar *theme;
 
-    prefs->only_maximized = xfce_rc_read_bool_entry (rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
-    prefs->show_on_desktop = xfce_rc_read_bool_entry (rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
-    prefs->sync_wm_theme = xfce_rc_read_bool_entry (rc, "sync_wm_theme", DEFAULT_SYNC_WM_THEME);
+    prefs->only_maximized = xfce_rc_read_bool_entry (rc, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
+    prefs->show_on_desktop = xfce_rc_read_bool_entry (rc, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
+    prefs->sync_wm_theme = xfce_rc_read_bool_entry (rc, SETTING_SYNC_WM_THEME, DEFAULT_SYNC_WM_THEME);
 
-    button_layout = xfce_rc_read_entry (rc, "button_layout", DEFAULT_BUTTON_LAYOUT);
+    button_layout = xfce_rc_read_entry (rc, SETTING_BUTTON_LAYOUT, DEFAULT_BUTTON_LAYOUT);
     prefs->button_layout = button_layout_filter (button_layout, DEFAULT_BUTTON_LAYOUT);
 
-    theme = xfce_rc_read_entry (rc, "theme", DEFAULT_THEME);
+    theme = xfce_rc_read_entry (rc, SETTING_THEME, DEFAULT_THEME);
     prefs->theme = g_strdup (theme);
 }
 
