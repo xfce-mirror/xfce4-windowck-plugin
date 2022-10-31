@@ -23,7 +23,6 @@
 
 #include <xfconf/xfconf.h>
 #include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4util/libxfce4util.h>
 
 G_BEGIN_DECLS
 
@@ -34,7 +33,7 @@ G_BEGIN_DECLS
 #define DEFAULT_ONLY_MAXIMIZED TRUE
 #define DEFAULT_SHOW_ON_DESKTOP FALSE
 
-typedef void (*WckSettingsCb) (XfceRc *rc, gpointer prefs);
+typedef void (*WckSettingsCb) (gpointer prefs);
 
 typedef struct {
     XfconfChannel *channel;
@@ -53,7 +52,6 @@ void wck_conf_set_string (const WckConf *conf, const gchar *setting, const gchar
 
 void wck_about (XfcePanelPlugin *plugin, const gchar *icon_name);
 GtkWidget *show_refresh_item (XfcePanelPlugin *plugin);
-void wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs);
 GtkWidget *wck_dialog_get_widget (GtkBuilder *builder, const gchar *name);
 void wck_configure_dialog (XfcePanelPlugin *plugin, const gchar *icon_name, GtkWidget *ca, GCallback response_cb, gpointer data);
 void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data);

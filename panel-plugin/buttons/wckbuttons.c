@@ -53,7 +53,7 @@ wckbuttons_construct (XfcePanelPlugin *plugin);
 
 
 void
-wckbuttons_settings_save (XfceRc *rc, WBPreferences *prefs)
+wckbuttons_settings_save (WBPreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
@@ -66,10 +66,9 @@ wckbuttons_settings_save (XfceRc *rc, WBPreferences *prefs)
 }
 
 static void
-wckbuttons_save (XfcePanelPlugin *plugin,
-             WBPlugin    *wb)
+wckbuttons_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WBPlugin *wb)
 {
-    wck_settings_save (plugin, (WckSettingsCb) wckbuttons_settings_save, wb->prefs);
+    wckbuttons_settings_save (wb->prefs);
 }
 
 
