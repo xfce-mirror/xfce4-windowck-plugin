@@ -238,6 +238,13 @@ void set_title_padding (WindowckPlugin *wckp)
 }
 
 
+void set_title_alignment (WindowckPlugin *wckp)
+{
+    gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 10.0);
+    gtk_label_set_yalign (wckp->title, 0.5);
+}
+
+
 gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp)
 {
 
@@ -374,8 +381,7 @@ void init_title (WindowckPlugin *wckp)
 
     if (wckp->prefs->size_mode != SHRINK)
     {
-        gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 10.0);
-        gtk_label_set_yalign (wckp->title, 0.5);
+        set_title_alignment (wckp);
     }
 
     /* get the xfwm4 chanel */
