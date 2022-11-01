@@ -37,6 +37,10 @@
 
 #define ICON_PADDING 3
 
+#define SETTING_SHOW_APP_ICON  "/show-app-icon"
+#define SETTING_INACTIVE_ALPHA "/inactive-alpha"
+#define SETTING_INACTIVE_SHADE "/inactive-shade"
+
 /* default settings */
 #define DEFAULT_SHOW_APP_ICON TRUE
 #define DEFAULT_INACTIVE_ALPHA 60
@@ -47,30 +51,30 @@ static void wckmenu_construct(XfcePanelPlugin *plugin);
 
 
 void
-wckmenu_settings_save (XfceRc *rc, WckMenuPreferences *prefs)
+wckmenu_settings_save (WckMenuPreferences *prefs)
 {
-    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
-    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
-    xfce_rc_write_bool_entry(rc, "show_app_icon", prefs->show_app_icon);
-    xfce_rc_write_int_entry(rc, "inactive_alpha", prefs->inactive_alpha);
-    xfce_rc_write_int_entry(rc, "inactive_shade", prefs->inactive_shade);
+    wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
+    wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
+    wck_conf_set_bool (prefs->conf, SETTING_SHOW_APP_ICON, prefs->show_app_icon);
+    wck_conf_set_int (prefs->conf, SETTING_INACTIVE_ALPHA, prefs->inactive_alpha);
+    wck_conf_set_int (prefs->conf, SETTING_INACTIVE_SHADE, prefs->inactive_shade);
 }
 
 static void
-wckmenu_save (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
+wckmenu_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
-    wck_settings_save (plugin, (WckSettingsCb) wckmenu_settings_save, wmp->prefs);
+    wckmenu_settings_save (wmp->prefs);
 }
 
 
 static void
-wckmenu_settings_load (XfceRc *rc, WckMenuPreferences *prefs)
+wckmenu_settings_load (WckMenuPreferences *prefs)
 {
-    prefs->only_maximized = xfce_rc_read_bool_entry (rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
-    prefs->show_on_desktop = xfce_rc_read_bool_entry (rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
-    prefs->show_app_icon = xfce_rc_read_bool_entry (rc, "show_app_icon", DEFAULT_SHOW_APP_ICON);
-    prefs->inactive_alpha = xfce_rc_read_int_entry (rc, "inactive_alpha", DEFAULT_INACTIVE_ALPHA);
-    prefs->inactive_shade = xfce_rc_read_int_entry (rc, "inactive_shade", DEFAULT_INACTIVE_SHADE);
+    prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
+    prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
+    prefs->show_app_icon = wck_conf_get_bool (prefs->conf, SETTING_SHOW_APP_ICON, DEFAULT_SHOW_APP_ICON);
+    prefs->inactive_alpha = wck_conf_get_int (prefs->conf, SETTING_INACTIVE_ALPHA, DEFAULT_INACTIVE_ALPHA);
+    prefs->inactive_shade = wck_conf_get_int (prefs->conf, SETTING_INACTIVE_SHADE, DEFAULT_INACTIVE_SHADE);
 }
 
 
@@ -80,7 +84,8 @@ wckmenu_read (XfcePanelPlugin *plugin)
     /* allocate memory for the preferences structure */
     WckMenuPreferences *prefs = g_slice_new0(WckMenuPreferences);
 
-    wck_settings_load (plugin, (WckSettingsCb) wckmenu_settings_load, prefs);
+    prefs->conf = wck_conf_new (plugin);
+    wckmenu_settings_load (prefs);
 
     return prefs;
 }
