@@ -23,7 +23,9 @@
 #endif
 
 #include <string.h>
+
 #include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include <common/wck-plugin.h>
 
