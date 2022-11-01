@@ -22,9 +22,9 @@
 #define __WCKBUTTONS_H__
 
 #include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 
+#include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
 #define WCKBUTTONS_ICON "wckbuttons-plugin"
@@ -69,6 +69,7 @@ typedef enum {
 } WBImageState;
 
 typedef struct {
+    WckConf *conf;
     GtkBuilder *builder;
     gboolean only_maximized;        // [T/F] Only track maximized windows
     gboolean show_on_desktop;       // [T/F] Show the plugin on desktop
@@ -102,7 +103,7 @@ typedef struct {
     gulong wph;                     // xfwm chanel property changed handler id
 } WBPlugin;
 
-void wckbuttons_settings_save (XfceRc *rc, WBPreferences *prefs);
+void wckbuttons_settings_save (WBPreferences *prefs);
 
 G_END_DECLS
 
