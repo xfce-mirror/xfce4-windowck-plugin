@@ -240,7 +240,7 @@ void set_title_padding (WindowckPlugin *wckp)
 
 void set_title_alignment (WindowckPlugin *wckp)
 {
-    gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 10.0);
+    gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 2.0);
     gtk_label_set_yalign (wckp->title, 0.5);
 }
 

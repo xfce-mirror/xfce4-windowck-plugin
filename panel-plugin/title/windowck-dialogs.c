@@ -188,18 +188,7 @@ static void on_title_alignment_changed (GtkComboBox *title_alignment, WindowckPl
         return;
     }
 
-    if (id == 0)
-    {
-        wckp->prefs->title_alignment = LEFT;
-    }
-    else if (id == 1)
-    {
-        wckp->prefs->title_alignment = CENTER;
-    }
-    else if (id == 2)
-    {
-        wckp->prefs->title_alignment = RIGHT;
-    }
+    wckp->prefs->title_alignment = id;
 
     set_title_alignment (wckp);
     on_wck_state_changed (wckp->win->controlwindow, wckp);
@@ -307,16 +296,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
             title_alignment = GTK_COMBO_BOX (wck_dialog_get_widget (wckp->prefs->builder, "title_alignment"));
             if (G_LIKELY (title_alignment != NULL))
             {
-                /* set active item */
-                if ( wckp->prefs->title_alignment == LEFT ) {
-                    gtk_combo_box_set_active(title_alignment, 0);
-                }
-                else if( wckp->prefs->title_alignment == CENTER ) {
-                    gtk_combo_box_set_active(title_alignment, 1);
-                }
-                else if( wckp->prefs->title_alignment == RIGHT ) {
-                    gtk_combo_box_set_active(title_alignment, 2);
-                }
+                gtk_combo_box_set_active (title_alignment, wckp->prefs->title_alignment);
                 g_signal_connect(title_alignment, "changed", G_CALLBACK(on_title_alignment_changed), wckp);
             }
 

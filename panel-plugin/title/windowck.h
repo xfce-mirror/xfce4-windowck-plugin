@@ -39,7 +39,9 @@ G_BEGIN_DECLS
 
 typedef enum Alignment
 {
-    LEFT = 0, CENTER = 5, RIGHT = 10
+    LEFT = 0,
+    CENTER = 1,
+    RIGHT = 2
 } Alignment;
 
 typedef enum SizeMode
