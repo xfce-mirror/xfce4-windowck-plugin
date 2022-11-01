@@ -26,8 +26,8 @@
 
 G_BEGIN_DECLS
 
-#define SETTING_ONLY_MAXIMIZED  "/only_maximized"
-#define SETTING_SHOW_ON_DESKTOP "/show_on_desktop"
+#define SETTING_ONLY_MAXIMIZED  "/only-maximized"
+#define SETTING_SHOW_ON_DESKTOP "/show-on-desktop"
 
 /* default settings */
 #define DEFAULT_ONLY_MAXIMIZED TRUE
