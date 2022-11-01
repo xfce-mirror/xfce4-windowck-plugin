@@ -77,7 +77,9 @@ set_titlesize_sensitive (const WindowckPlugin *wckp, gboolean sensitive)
     }
 }
 
-static void on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp)
+
+static void
+on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp)
 {
     gint id;
 
@@ -85,22 +87,11 @@ static void on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp)
 
     if (id < 0 || id > 2)
     {
-      g_critical ("Trying to set a default size but got an invalid item");
-      return;
+        g_critical ("Trying to set a default size but got an invalid item");
+        return;
     }
 
-    if (id == 0)
-    {
-        wckp->prefs->size_mode = SHRINK;
-    }
-    else if (id == 1)
-    {
-        wckp->prefs->size_mode = FIXED;
-    }
-    else if (id == 2)
-    {
-        wckp->prefs->size_mode = EXPAND;
-    }
+    wckp->prefs->size_mode = id;
 
     xfce_panel_plugin_set_shrink (wckp->plugin, wckp->prefs->size_mode != SHRINK);
     set_titlesize_sensitive (wckp, wckp->prefs->size_mode != EXPAND);
@@ -197,21 +188,9 @@ static void on_title_alignment_changed (GtkComboBox *title_alignment, WindowckPl
         return;
     }
 
-    if (id == 0)
-    {
-        wckp->prefs->title_alignment = LEFT;
-    }
-    else if (id == 1)
-    {
-        wckp->prefs->title_alignment = CENTER;
-    }
-    else if (id == 2)
-    {
-        wckp->prefs->title_alignment = RIGHT;
-    }
+    wckp->prefs->title_alignment = id;
 
-    gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 10.0);
-    gtk_label_set_yalign (wckp->title, 0.5);
+    set_title_alignment (wckp);
     on_wck_state_changed (wckp->win->controlwindow, wckp);
 }
 
@@ -317,16 +296,7 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
             title_alignment = GTK_COMBO_BOX (wck_dialog_get_widget (wckp->prefs->builder, "title_alignment"));
             if (G_LIKELY (title_alignment != NULL))
             {
-                /* set active item */
-                if ( wckp->prefs->title_alignment == LEFT ) {
-                    gtk_combo_box_set_active(title_alignment, 0);
-                }
-                else if( wckp->prefs->title_alignment == CENTER ) {
-                    gtk_combo_box_set_active(title_alignment, 1);
-                }
-                else if( wckp->prefs->title_alignment == RIGHT ) {
-                    gtk_combo_box_set_active(title_alignment, 2);
-                }
+                gtk_combo_box_set_active (title_alignment, wckp->prefs->title_alignment);
                 g_signal_connect(title_alignment, "changed", G_CALLBACK(on_title_alignment_changed), wckp);
             }
 
@@ -342,16 +312,10 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
             size_mode = GTK_COMBO_BOX (wck_dialog_get_widget (wckp->prefs->builder, "size_mode"));
             if (G_LIKELY (size_mode != NULL))
             {
-                /* set active item */
-                if ( wckp->prefs->size_mode == SHRINK ) {
-                    gtk_combo_box_set_active(size_mode, 0);
-                }
-                else if( wckp->prefs->size_mode == FIXED ) {
-                    gtk_combo_box_set_active(size_mode, 1);
-                }
-                else if( wckp->prefs->size_mode == EXPAND ) {
-                    gtk_combo_box_set_active(size_mode, 2);
+                gtk_combo_box_set_active (size_mode, wckp->prefs->size_mode);
 
+                if (wckp->prefs->size_mode == EXPAND)
+                {
                     set_titlesize_sensitive (wckp, FALSE);
                 }
 

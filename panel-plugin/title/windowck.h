@@ -39,12 +39,16 @@ G_BEGIN_DECLS
 
 typedef enum Alignment
 {
-    LEFT = 0, CENTER = 5, RIGHT = 10
+    LEFT = 0,
+    CENTER = 1,
+    RIGHT = 2
 } Alignment;
 
 typedef enum SizeMode
 {
-    SHRINK = 1, FIXED = 2, EXPAND = 3
+    SHRINK = 0,
+    FIXED = 1,
+    EXPAND = 2
 } SizeMode;
 
 typedef struct {
@@ -55,15 +59,14 @@ typedef struct {
     gboolean two_lines;             // [T/F] Display the title on two lines
     gboolean show_tooltips;         // [T/F] Show tooltips
 
-    SizeMode size_mode;             // Size mode : Length=[MINIMAL,FIXED,EXPAND]
-
+    SizeMode size_mode;             // Size mode [SHRINK, FIXED, EXPAND]
     gint title_size;                // Title size in chars
-    gint title_padding;             // Title padding
+    gint title_padding;             // Title padding in pixels
+    Alignment title_alignment;      // Title alignment [LEFT, CENTER, RIGHT]
 
     gboolean sync_wm_font;          // [T/F] Try to use xfwm4 active theme if possible.
     gchar *title_font;              // Title font
     gchar *subtitle_font;           // Subtitle font
-    gint title_alignment;           // Title alignment [LEFT, CENTER, RIGHT]
     gint inactive_text_alpha;       // Title inactive alpha
     gint inactive_text_shade;       // Title inactive shade
     gchar *active_text_color;       // active text color
