@@ -54,11 +54,7 @@ wck_properties_get_channel (GObject *object_for_weak_ref, const gchar *channel_n
 void
 wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
 {
-    /* about dialog code. you can use the GtkAboutDialog
-    * or the XfceAboutInfo widget */
-    GdkPixbuf *icon;
-
-    const gchar *auth[] =
+    const gchar *authors[] =
     {
         "Alessio Piccoli <alepic@geckoblu.net>",
         "Cedric Leporcq <cedl38@gmail.com>",
@@ -70,22 +66,17 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
         NULL
     };
 
-    icon = xfce_panel_pixbuf_from_source(icon_name, NULL, 32);
-
+    /* TODO: add translators. */
     gtk_show_about_dialog (NULL,
-            "logo", icon,
-            "license", xfce_get_license_text(XFCE_LICENSE_TEXT_GPL),
-            "version", PACKAGE_VERSION,
-            "program-name", xfce_panel_plugin_get_display_name (plugin),
-            "comments", xfce_panel_plugin_get_comment (plugin),
-            "website", PACKAGE_URL,
-            "copyright", "Copyright \302\251 2013-2015\n",
-            "authors", auth,
-            NULL );
-    // TODO: add translators.
-
-    if (icon)
-        g_object_unref(G_OBJECT(icon) );
+                           "logo-icon-name", icon_name,
+                           "license", xfce_get_license_text (XFCE_LICENSE_TEXT_GPL),
+                           "version", PACKAGE_VERSION,
+                           "program-name", xfce_panel_plugin_get_display_name (plugin),
+                           "comments", xfce_panel_plugin_get_comment (plugin),
+                           "website", PACKAGE_URL,
+                           "copyright", "Copyright \302\251 2013-2022\n",
+                           "authors", authors,
+                           NULL);
 }
 
 
