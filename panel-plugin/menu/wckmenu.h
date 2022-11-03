@@ -28,9 +28,9 @@
 
 #include <gtk/gtk.h>
 #include <libxfce4panel/libxfce4panel.h>
-#include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 
+#include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
 #define WCKMENU_ICON "wckmenu-plugin"
@@ -43,6 +43,7 @@ typedef struct {
 } WindowIcon;
 
 typedef struct {
+    WckConf *conf;
     GtkBuilder *builder;
     gboolean only_maximized;        // [T/F] Only track maximized windows
     gboolean show_on_desktop;       // [T/F] Show the plugin on desktop
@@ -72,7 +73,7 @@ typedef struct {
     XfconfChannel *x_channel;       // xsettings chanel
 } WckMenuPlugin;
 
-void wckmenu_settings_save (XfceRc *rc, WckMenuPreferences *prefs);
+void wckmenu_settings_save (WckMenuPreferences *prefs);
 void reset_symbol (WckMenuPlugin *wmp);
 
 G_END_DECLS

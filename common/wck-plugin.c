@@ -51,6 +51,93 @@ wck_properties_get_channel (GObject *object_for_weak_ref, const gchar *channel_n
 }
 
 
+WckConf *
+wck_conf_new (XfcePanelPlugin *plugin)
+{
+    WckConf *conf = g_slice_new0 (WckConf);
+
+    conf->channel = wck_properties_get_channel (G_OBJECT (plugin), "xfce4-panel");
+    conf->property_base = xfce_panel_plugin_get_property_base (plugin);
+
+    return conf;
+}
+
+
+gboolean
+wck_conf_get_bool (const WckConf *conf, const gchar *setting, gboolean default_value)
+{
+    gchar    *property;
+    gboolean  value;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    value = xfconf_channel_get_bool (conf->channel, property, default_value);
+    g_free (property);
+
+    return value;
+}
+
+
+gint
+wck_conf_get_int (const WckConf *conf, const gchar *setting, gint default_value)
+{
+    gchar *property;
+    gint   value;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    value = xfconf_channel_get_int (conf->channel, property, default_value);
+    g_free (property);
+
+    return value;
+}
+
+
+gchar *
+wck_conf_get_string (const WckConf *conf, const gchar *setting, const gchar *default_value)
+{
+    gchar *property;
+    gchar *value;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    value = xfconf_channel_get_string (conf->channel, property, default_value);
+    g_free (property);
+
+    return value;
+}
+
+
+void
+wck_conf_set_bool (const WckConf *conf, const gchar *setting, gboolean value)
+{
+    gchar *property;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    xfconf_channel_set_bool (conf->channel, property, value);
+    g_free (property);
+}
+
+
+void
+wck_conf_set_int (const WckConf *conf, const gchar *setting, gint value)
+{
+    gchar *property;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    xfconf_channel_set_int (conf->channel, property, value);
+    g_free (property);
+}
+
+
+void
+wck_conf_set_string (const WckConf *conf, const gchar *setting, const gchar *value)
+{
+    gchar *property;
+
+    property = g_strconcat (conf->property_base, setting, NULL);
+    xfconf_channel_set_string (conf->channel, property, value);
+    g_free (property);
+}
+
+
 void
 wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
 {
@@ -92,70 +179,6 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
     gtk_widget_show (refresh);
 
     return refresh;
-}
-
-
-void
-wck_settings_save (XfcePanelPlugin *plugin, WckSettingsCb save_settings, gpointer prefs)
-{
-    XfceRc *rc;
-    gchar *file;
-
-    /* get the config file location */
-    file = xfce_panel_plugin_save_location (plugin, TRUE);
-
-    if (G_UNLIKELY (file == NULL))
-    {
-        DBG ("Failed to open config file");
-        return;
-    }
-
-    /* open the config file, read/write */
-    rc = xfce_rc_simple_open (file, FALSE);
-    g_free (file);
-
-    if (G_LIKELY (rc != NULL))
-    {
-        /* save the settings */
-        DBG (".");
-        save_settings (rc, prefs);
-
-        /* close the rc file */
-        xfce_rc_close (rc);
-    }
-}
-
-
-void
-wck_settings_load (XfcePanelPlugin *plugin, WckSettingsCb load_settings, gpointer prefs)
-{
-    /* get the plugin config file location */
-    gchar *file = xfce_panel_plugin_save_location (plugin, TRUE);
-
-    if (G_LIKELY (file != NULL))
-    {
-        /* open the config file, readonly */
-        XfceRc *rc = xfce_rc_simple_open (file, TRUE);
-
-        /* cleanup */
-        g_free (file);
-
-        if (G_LIKELY (rc != NULL))
-        {
-            /* read the settings */
-            load_settings (rc, prefs);
-
-            /* cleanup */
-            xfce_rc_close (rc);
-
-            /* leave the function, everything went well */
-            return;
-        }
-    }
-
-    /* something went wrong, apply default values */
-    DBG ("Applying default settings");
-    load_settings (NULL, prefs);
 }
 
 
@@ -236,7 +259,7 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
         xfce_panel_plugin_unblock_menu (plugin);
 
         /* save the plugin */
-        wck_settings_save (plugin, save_settings, data);
+        save_settings (data);
 
         /* destroy the properties dialog */
         gtk_widget_destroy (dialog);
