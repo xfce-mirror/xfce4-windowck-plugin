@@ -25,12 +25,12 @@
 
 #define TITLE_SIZE_MAX 999 /* title size max for expand option in characters */
 
-void init_title (WindowckPlugin *wckp);
-void resize_title(WindowckPlugin *wckp);
-void reload_wnck_title (WindowckPlugin *wckp);
-void set_title_padding (WindowckPlugin *wckp);
-void set_title_alignment (WindowckPlugin *wckp);
-gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
-gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp);
+void init_title (WckTitlePlugin *wtp);
+void resize_title (WckTitlePlugin *wtp);
+void reload_wnck_title (WckTitlePlugin *wtp);
+void set_title_padding (WckTitlePlugin *wtp);
+void set_title_alignment (WckTitlePlugin *wtp);
+gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlugin *wtp);
+gboolean on_title_released (GtkWidget *title, GdkEventButton *event, WckTitlePlugin *wtp);
 
 #endif /* __WINDOWCK_TITLE_H__ */

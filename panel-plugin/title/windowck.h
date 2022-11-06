@@ -72,7 +72,7 @@ typedef struct {
     gint inactive_text_shade;       // Title inactive shade
     gchar *active_text_color;       // active text color
     gchar *inactive_text_color;     // inactive text color
-} WCKPreferences;
+} WckTitlePreferences;
 
 /* plugin structure */
 typedef struct {
@@ -83,16 +83,16 @@ typedef struct {
     GtkWidget *box;
     GtkLabel *title;
 
-    WCKPreferences     *prefs;
+    WckTitlePreferences     *prefs;
     WckUtils *win;
 
     gulong cnh;                     // controlled window name handler id
 
     XfconfChannel *wm_channel;      // window manager chanel
     XfconfChannel *x_channel;       // xsettings chanel
-} WindowckPlugin;
+} WckTitlePlugin;
 
-void wcktitle_settings_save (WCKPreferences *prefs);
+void wcktitle_settings_save (WckTitlePreferences *prefs);
 
 G_END_DECLS
 

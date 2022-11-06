@@ -22,10 +22,12 @@
 #ifndef __WINDOWCK_DIALOGS_H__
 #define __WINDOWCK_DIALOGS_H__
 
+#include "windowck.h"
+
 G_BEGIN_DECLS
 
-void windowck_configure(XfcePanelPlugin *plugin, WindowckPlugin *wckp);
+void wcktitle_configure (XfcePanelPlugin *plugin, WckTitlePlugin *wtp);
 
 G_END_DECLS
 
-#endif /* !__WINDOWCK_DIALOGS_H__ */
+#endif /* __WINDOWCK_DIALOGS_H__ */
