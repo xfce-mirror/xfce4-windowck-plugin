@@ -24,19 +24,15 @@
 #include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
-#include "windowck.h"
-#include "windowck-title.h"
+#include "wcktitle.h"
+#include "wcktitle-title.h"
 
-/* Prototypes */
-static void on_name_changed(WnckWindow *window, WindowckPlugin *);
-
-
-void reload_wnck_title (WindowckPlugin *wckp)
+void reload_wnck_title (WckTitlePlugin *wtp)
 {
     /* disconnect controlled window name signal handler */
-    wck_signal_handler_disconnect (G_OBJECT(wckp->win->controlwindow), wckp->cnh);
+    wck_signal_handler_disconnect (G_OBJECT (wtp->win->controlwindow), wtp->cnh);
 
-    reload_wnck (wckp->win, wckp->prefs->only_maximized, wckp);
+    reload_wnck (wtp->win, wtp->prefs->only_maximized, wtp);
 }
 
 
@@ -66,20 +62,20 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
 
 
 static gchar *
-get_title_color (WnckWindow *controlwindow, WindowckPlugin *wckp)
+get_title_color (WnckWindow *controlwindow, WckTitlePlugin *wtp)
 {
     if (wnck_window_is_active (controlwindow))
     {
         /* window focused */
         /*~ gtk_widget_set_sensitive(GTK_WIDGET(wckp->title), TRUE); */
-        return wckp->prefs->active_text_color;
+        return wtp->prefs->active_text_color;
     }
 
     if (is_window_on_active_workspace_and_no_other_maximized_windows_above (controlwindow))
     {
         /* window unfocused */
         /*~ gtk_widget_set_sensitive(GTK_WIDGET(wckp->title), FALSE); */
-        return wckp->prefs->inactive_text_color;
+        return wtp->prefs->inactive_text_color;
     }
 
     return NULL;
@@ -88,18 +84,19 @@ get_title_color (WnckWindow *controlwindow, WindowckPlugin *wckp)
 
 /* Triggers when controlwindow's name changes */
 /* Warning! This function is called very often, so it should only do the most necessary things! */
-static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
+static void
+on_name_changed (WnckWindow *controlwindow, WckTitlePlugin *wtp)
 {
     if (controlwindow
         && wnck_window_get_pid(controlwindow)  /* if active window has been closed, pid is 0 */
         && (!window_is_desktop (controlwindow)
-            || wckp->prefs->show_on_desktop))
+            || wtp->prefs->show_on_desktop))
     {
         const gchar *title_color;
         const gchar *title_text;
         gchar *title_markup;
 
-        title_color = get_title_color (controlwindow, wckp);
+        title_color = get_title_color (controlwindow, wtp);
         if (!title_color)
         {
             return;
@@ -108,15 +105,15 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
         title_text = wnck_window_get_name (controlwindow);
 
         /* Set tooltips */
-        if (wckp->prefs->show_tooltips)
+        if (wtp->prefs->show_tooltips)
         {
-            gtk_widget_set_tooltip_text(GTK_WIDGET(wckp->title), title_text);
+            gtk_widget_set_tooltip_text (GTK_WIDGET (wtp->title), title_text);
         }
 
         /* get application and instance names */
-        if (wckp->prefs->full_name && !wckp->prefs->two_lines)
+        if (wtp->prefs->full_name && !wtp->prefs->two_lines)
         {
-            title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", wckp->prefs->title_font, title_color, title_text);
+            title_markup = g_markup_printf_escaped ("<span font=\"%s\" color=\"%s\">%s</span>", wtp->prefs->title_font, title_color, title_text);
         }
         else {
             /* split title text */
@@ -124,11 +121,11 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
             const gint n = g_strv_length (part);
             gchar *title = g_strdup (part[n - 1]);
 
-            if (n > 1 && wckp->prefs->two_lines)
+            if (n > 1 && wtp->prefs->two_lines)
             {
                 gchar *subtitle;
 
-                if (wckp->prefs->full_name)
+                if (wtp->prefs->full_name)
                 {
                     g_free (part[n - 1]);
                     part[n - 1] = NULL;
@@ -139,32 +136,32 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
                     subtitle = g_strdup (part[0]);
                 }
 
-                title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span><span font=\"%s\" color=\"%s\">\n%s</span>",
-                                                       wckp->prefs->title_font, title_color, title, wckp->prefs->subtitle_font, title_color, subtitle);
+                title_markup = g_markup_printf_escaped ("<span font=\"%s\" color=\"%s\">%s</span><span font=\"%s\" color=\"%s\">\n%s</span>",
+                                                        wtp->prefs->title_font, title_color, title, wtp->prefs->subtitle_font, title_color, subtitle);
                 g_free (subtitle);
             }
             else
             {
-                title_markup = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", wckp->prefs->title_font, title_color, title);
+                title_markup = g_markup_printf_escaped ("<span font=\"%s\" color=\"%s\">%s</span>", wtp->prefs->title_font, title_color, title);
             }
 
             g_free (title);
             g_strfreev (part);
         }
 
-        gtk_label_set_markup(wckp->title, title_markup);
+        gtk_label_set_markup(wtp->title, title_markup);
 
-        if (wckp->prefs->title_alignment == LEFT)
+        if (wtp->prefs->title_alignment == LEFT)
         {
-            gtk_label_set_justify(wckp->title, GTK_JUSTIFY_LEFT);
+            gtk_label_set_justify (wtp->title, GTK_JUSTIFY_LEFT);
         }
-        else if (wckp->prefs->title_alignment == CENTER)
+        else if (wtp->prefs->title_alignment == CENTER)
         {
-            gtk_label_set_justify(wckp->title, GTK_JUSTIFY_CENTER);
+            gtk_label_set_justify (wtp->title, GTK_JUSTIFY_CENTER);
         }
-        else if (wckp->prefs->title_alignment == RIGHT)
+        else if (wtp->prefs->title_alignment == RIGHT)
         {
-            gtk_label_set_justify(wckp->title, GTK_JUSTIFY_RIGHT);
+            gtk_label_set_justify (wtp->title, GTK_JUSTIFY_RIGHT);
         }
 
         g_free (title_markup);
@@ -172,96 +169,97 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
     else
     {
         /* hide text */
-        gtk_label_set_text (wckp->title, "");
+        gtk_label_set_text (wtp->title, "");
     }
 }
 
 
 void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
 {
-    WindowckPlugin *wckp = data;
+    WckTitlePlugin *wtp = data;
 
-    on_name_changed (controlwindow, wckp);
+    on_name_changed (controlwindow, wtp);
 }
 
 
 void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, gpointer data)
 {
-    WindowckPlugin *wckp = data;
+    WckTitlePlugin *wtp = data;
 
     /* disconect previous window title signal */
-    wck_signal_handler_disconnect (G_OBJECT(previous), wckp->cnh);
+    wck_signal_handler_disconnect (G_OBJECT(previous), wtp->cnh);
 
-    on_wck_state_changed (controlwindow, wckp);
+    on_wck_state_changed (controlwindow, wtp);
 
     if (!controlwindow
         || (window_is_desktop (controlwindow)
-            && !wckp->prefs->show_on_desktop))
+            && !wtp->prefs->show_on_desktop))
     {
-        if (gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
-            gtk_widget_hide(GTK_WIDGET(wckp->box));
+        if (gtk_widget_get_visible (GTK_WIDGET (wtp->box)))
+            gtk_widget_hide (GTK_WIDGET (wtp->box));
     }
     else
     {
-        if (!gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
-            gtk_widget_show_all(GTK_WIDGET(wckp->box));
+        if (!gtk_widget_get_visible (GTK_WIDGET (wtp->box)))
+            gtk_widget_show_all (GTK_WIDGET (wtp->box));
     }
 
     if (controlwindow && !window_is_desktop (controlwindow))
     {
-        wckp->cnh = g_signal_connect(G_OBJECT(controlwindow), "name-changed", G_CALLBACK(on_name_changed), wckp);
+        wtp->cnh = g_signal_connect (G_OBJECT (controlwindow), "name-changed",
+                                     G_CALLBACK (on_name_changed), wtp);
     }
 }
 
 
-void resize_title(WindowckPlugin *wckp)
+void resize_title (WckTitlePlugin *wtp)
 {
-    switch (wckp->prefs->size_mode)
+    switch (wtp->prefs->size_mode)
     {
         case SHRINK:
-            gtk_label_set_max_width_chars(wckp->title, wckp->prefs->title_size);
+            gtk_label_set_max_width_chars (wtp->title, wtp->prefs->title_size);
             break;
         case EXPAND:
-            gtk_label_set_width_chars(wckp->title, TITLE_SIZE_MAX);
+            gtk_label_set_width_chars (wtp->title, TITLE_SIZE_MAX);
             break;
         default:
-            gtk_label_set_width_chars(wckp->title, wckp->prefs->title_size);
+            gtk_label_set_width_chars (wtp->title, wtp->prefs->title_size);
     }
 }
 
 
-void set_title_padding (WindowckPlugin *wckp)
+void set_title_padding (WckTitlePlugin *wtp)
 {
-    gtk_widget_set_margin_start (wckp->box, wckp->prefs->title_padding);
-    gtk_widget_set_margin_end (wckp->box, wckp->prefs->title_padding);
-    gtk_box_set_spacing (GTK_BOX (wckp->box), wckp->prefs->title_padding);
+    gtk_widget_set_margin_start (wtp->box, wtp->prefs->title_padding);
+    gtk_widget_set_margin_end (wtp->box, wtp->prefs->title_padding);
+    gtk_box_set_spacing (GTK_BOX (wtp->box), wtp->prefs->title_padding);
 }
 
 
-void set_title_alignment (WindowckPlugin *wckp)
+void set_title_alignment (WckTitlePlugin *wtp)
 {
-    gtk_label_set_xalign (wckp->title, wckp->prefs->title_alignment / 2.0);
-    gtk_label_set_yalign (wckp->title, 0.5);
+    gtk_label_set_xalign (wtp->title, wtp->prefs->title_alignment / 2.0);
+    gtk_label_set_yalign (wtp->title, 0.5);
 }
 
 
-gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp)
+gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlugin *wtp)
 {
 
-    if (!wckp->win->controlwindow)
+    if (!wtp->win->controlwindow)
         return FALSE;
 
     if (event->button == 1
-        && !window_is_desktop (wckp->win->controlwindow))
+        && !window_is_desktop (wtp->win->controlwindow))
     {
         /* double/tripple click */
         if (event->type == GDK_2BUTTON_PRESS || event->type == GDK_3BUTTON_PRESS)
         {
-            toggle_maximize(wckp->win->controlwindow);
+            toggle_maximize (wtp->win->controlwindow);
         }
         else /* left-click */
         {
-            wnck_window_activate(wckp->win->controlwindow, gtk_get_current_event_time());
+            wnck_window_activate (wtp->win->controlwindow, gtk_get_current_event_time());
         }
         return TRUE;
     }
@@ -269,7 +267,7 @@ gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugi
     if (event->button == 3)
     {
         /* right-click */
-        wnck_window_activate(wckp->win->controlwindow, gtk_get_current_event_time());
+        wnck_window_activate (wtp->win->controlwindow, gtk_get_current_event_time());
 
         /* let the panel show the menu */
         return TRUE;
@@ -279,15 +277,15 @@ gboolean on_title_pressed(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 }
 
 
-gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlugin *wckp)
+gboolean on_title_released (GtkWidget *title, GdkEventButton *event, WckTitlePlugin *wtp)
 {
-    if (!wckp->win->controlwindow)
+    if (!wtp->win->controlwindow)
         return FALSE;
 
     if (event->button == 2)
     {
         /* middle-click */
-        wnck_window_close(wckp->win->controlwindow, GDK_CURRENT_TIME);
+        wnck_window_close(wtp->win->controlwindow, GDK_CURRENT_TIME);
         return TRUE;
     }
 
@@ -295,28 +293,30 @@ gboolean on_title_released(GtkWidget *title, GdkEventButton *event, WindowckPlug
 }
 
 
-static void set_title_colors(WindowckPlugin *wckp)
+static void
+set_title_colors (WckTitlePlugin *wtp)
 {
     /* get plugin widget style */
-    g_free (wckp->prefs->active_text_color);
-    g_free (wckp->prefs->inactive_text_color);
-    wckp->prefs->active_text_color = get_ui_color (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL);
-    wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL, wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
+    g_free (wtp->prefs->active_text_color);
+    g_free (wtp->prefs->inactive_text_color);
+    wtp->prefs->active_text_color = get_ui_color (GTK_WIDGET (wtp->plugin), GTK_STATE_FLAG_NORMAL);
+    wtp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET (wtp->plugin), GTK_STATE_FLAG_NORMAL, wtp->prefs->inactive_text_alpha / 100.0, wtp->prefs->inactive_text_shade / 100.0);
 }
 
 
-static void apply_wm_settings (WindowckPlugin *wckp)
+static void
+apply_wm_settings (WckTitlePlugin *wtp)
 {
-    gchar *wm_theme = xfconf_channel_get_string (wckp->wm_channel, "/general/theme", NULL);
+    gchar *wm_theme = xfconf_channel_get_string (wtp->wm_channel, "/general/theme", NULL);
 
     if (G_LIKELY(wm_theme))
     {
-        gchar *wm_title_font = xfconf_channel_get_string (wckp->wm_channel, "/general/title_font", wckp->prefs->title_font);
+        gchar *wm_title_font = xfconf_channel_get_string (wtp->wm_channel, "/general/title_font", wtp->prefs->title_font);
 
-        g_free (wckp->prefs->title_font);
-        wckp->prefs->title_font = wm_title_font;
+        g_free (wtp->prefs->title_font);
+        wtp->prefs->title_font = wm_title_font;
 
-        on_name_changed (wckp->win->controlwindow, wckp);
+        on_name_changed (wtp->win->controlwindow, wtp);
 
         g_free (wm_theme);
     }
@@ -324,7 +324,7 @@ static void apply_wm_settings (WindowckPlugin *wckp)
 
 
 static void
-on_x_chanel_property_changed (XfconfChannel *x_channel, const gchar *property_name, const GValue *value, WindowckPlugin *wckp)
+on_x_channel_property_changed (XfconfChannel *x_channel, const gchar *property_name, const GValue *value, WckTitlePlugin *wtp)
 {
     if (g_str_has_prefix(property_name, "/Net/") == TRUE)
     {
@@ -334,8 +334,8 @@ on_x_chanel_property_changed (XfconfChannel *x_channel, const gchar *property_na
             case G_TYPE_STRING:
                 if (!strcmp (name, "ThemeName"))
                 {
-                    set_title_colors(wckp);
-                    on_name_changed (wckp->win->controlwindow, wckp);
+                    set_title_colors (wtp);
+                    on_name_changed (wtp->win->controlwindow, wtp);
                 }
                 break;
             default:
@@ -346,7 +346,8 @@ on_x_chanel_property_changed (XfconfChannel *x_channel, const gchar *property_na
 }
 
 
-static void on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *property_name, const GValue *value, WindowckPlugin *wckp)
+static void
+on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *property_name, const GValue *value, WckTitlePlugin *wtp)
 {
     if (g_str_has_prefix(property_name, "/general/") == TRUE)
     {
@@ -356,12 +357,12 @@ static void on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const g
             case G_TYPE_STRING:
                 if (!strcmp (name, "title_font"))
                 {
-                    apply_wm_settings (wckp);
+                    apply_wm_settings (wtp);
                 }
                 else if (!strcmp (name, "theme"))
                 {
-                    init_title(wckp);
-                    reload_wnck_title (wckp);
+                    init_title (wtp);
+                    reload_wnck_title (wtp);
                 }
                 break;
             default:
@@ -372,33 +373,35 @@ static void on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const g
 }
 
 
-void init_title (WindowckPlugin *wckp)
+void init_title (WckTitlePlugin *wtp)
 {
-    set_title_colors(wckp);
-    resize_title(wckp);
+    set_title_colors (wtp);
+    resize_title (wtp);
 
-    gtk_label_set_ellipsize(wckp->title, PANGO_ELLIPSIZE_END);
+    gtk_label_set_ellipsize (wtp->title, PANGO_ELLIPSIZE_END);
 
-    if (wckp->prefs->size_mode != SHRINK)
+    if (wtp->prefs->size_mode != SHRINK)
     {
-        set_title_alignment (wckp);
+        set_title_alignment (wtp);
     }
 
     /* get the xfwm4 chanel */
-    wckp->wm_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xfwm4");
+    wtp->wm_channel = wck_properties_get_channel (G_OBJECT (wtp->plugin), "xfwm4");
 
     /* try to set title settings from the xfwm4 theme */
-    if (wckp->wm_channel && wckp->prefs->sync_wm_font)
+    if (wtp->wm_channel && wtp->prefs->sync_wm_font)
     {
-        apply_wm_settings (wckp);
-        g_signal_connect (wckp->wm_channel, "property-changed", G_CALLBACK (on_xfwm_channel_property_changed), wckp);
+        apply_wm_settings (wtp);
+        g_signal_connect (wtp->wm_channel, "property-changed",
+                          G_CALLBACK (on_xfwm_channel_property_changed), wtp);
     }
 
-    set_title_padding (wckp);
+    set_title_padding (wtp);
 
     /* get the xsettings chanel to update the gtk theme */
-    wckp->x_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xsettings");
+    wtp->x_channel = wck_properties_get_channel (G_OBJECT (wtp->plugin), "xsettings");
 
-    if (wckp->x_channel)
-        g_signal_connect (wckp->x_channel, "property-changed", G_CALLBACK (on_x_chanel_property_changed), wckp);
+    if (wtp->x_channel)
+        g_signal_connect (wtp->x_channel, "property-changed",
+                          G_CALLBACK (on_x_channel_property_changed), wtp);
 }

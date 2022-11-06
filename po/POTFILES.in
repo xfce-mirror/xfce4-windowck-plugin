@@ -4,6 +4,6 @@ panel-plugin/buttons/wckbuttons-dialogs.glade
 panel-plugin/buttons/wckbuttons.desktop.in
 panel-plugin/menu/wckmenu-dialogs.glade
 panel-plugin/menu/wckmenu.desktop.in
-panel-plugin/title/windowck-dialogs.c
-panel-plugin/title/windowck-dialogs.glade
-panel-plugin/title/windowck.desktop.in
+panel-plugin/title/wcktitle-dialogs.c
+panel-plugin/title/wcktitle-dialogs.glade
+panel-plugin/title/wcktitle.desktop.in
