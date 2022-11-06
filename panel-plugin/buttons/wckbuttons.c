@@ -25,12 +25,17 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include <common/wck-plugin.h>
 
 #include "wckbuttons.h"
 #include "wckbuttons-dialogs.h"
 #include "wckbuttons-theme.h"
+
+#define SETTING_SYNC_WM_THEME "/sync-wm-theme"
+#define SETTING_BUTTON_LAYOUT "/button-layout"
+#define SETTING_THEME         "/theme"
 
 /* default settings */
 #define DEFAULT_SYNC_WM_THEME TRUE
@@ -49,41 +54,39 @@ wckbuttons_construct (XfcePanelPlugin *plugin);
 
 
 void
-wckbuttons_settings_save (XfceRc *rc, WBPreferences *prefs)
+wckbuttons_settings_save (WBPreferences *prefs)
 {
-    xfce_rc_write_bool_entry(rc, "only_maximized", prefs->only_maximized);
-    xfce_rc_write_bool_entry(rc, "show_on_desktop", prefs->show_on_desktop);
-    xfce_rc_write_bool_entry(rc, "sync_wm_theme", prefs->sync_wm_theme);
+    wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
+    wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
+    wck_conf_set_bool (prefs->conf, SETTING_SYNC_WM_THEME, prefs->sync_wm_theme);
     if (prefs->button_layout)
-        xfce_rc_write_entry (rc, "button_layout", prefs->button_layout);
+        wck_conf_set_string (prefs->conf, SETTING_BUTTON_LAYOUT, prefs->button_layout);
 
     if (prefs->theme)
-        xfce_rc_write_entry (rc, "theme", prefs->theme);
+        wck_conf_set_string (prefs->conf, SETTING_THEME, prefs->theme);
 }
 
 static void
-wckbuttons_save (XfcePanelPlugin *plugin,
-             WBPlugin    *wb)
+wckbuttons_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WBPlugin *wb)
 {
-    wck_settings_save (plugin, (WckSettingsCb) wckbuttons_settings_save, wb->prefs);
+    wckbuttons_settings_save (wb->prefs);
 }
 
 
 static void
-wckbuttons_settings_load (XfceRc *rc, WBPreferences *prefs)
+wckbuttons_settings_load (WBPreferences *prefs)
 {
-    const gchar *button_layout;
-    const gchar *theme;
+    gchar *button_layout;
 
-    prefs->only_maximized = xfce_rc_read_bool_entry (rc, "only_maximized", DEFAULT_ONLY_MAXIMIZED);
-    prefs->show_on_desktop = xfce_rc_read_bool_entry (rc, "show_on_desktop", DEFAULT_SHOW_ON_DESKTOP);
-    prefs->sync_wm_theme = xfce_rc_read_bool_entry (rc, "sync_wm_theme", DEFAULT_SYNC_WM_THEME);
+    prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
+    prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
+    prefs->sync_wm_theme = wck_conf_get_bool (prefs->conf, SETTING_SYNC_WM_THEME, DEFAULT_SYNC_WM_THEME);
 
-    button_layout = xfce_rc_read_entry (rc, "button_layout", DEFAULT_BUTTON_LAYOUT);
+    button_layout = wck_conf_get_string (prefs->conf, SETTING_BUTTON_LAYOUT, DEFAULT_BUTTON_LAYOUT);
     prefs->button_layout = button_layout_filter (button_layout, DEFAULT_BUTTON_LAYOUT);
+    g_free (button_layout);
 
-    theme = xfce_rc_read_entry (rc, "theme", DEFAULT_THEME);
-    prefs->theme = g_strdup (theme);
+    prefs->theme = wck_conf_get_string (prefs->conf, SETTING_THEME, DEFAULT_THEME);
 }
 
 
@@ -93,7 +96,8 @@ wckbuttons_read (XfcePanelPlugin *plugin)
     /* allocate memory for the preferences structure */
     WBPreferences *prefs = g_slice_new0(WBPreferences);
 
-    wck_settings_load (plugin, (WckSettingsCb) wckbuttons_settings_load, prefs);
+    prefs->conf = wck_conf_new (plugin);
+    wckbuttons_settings_load (prefs);
 
     return prefs;
 }
