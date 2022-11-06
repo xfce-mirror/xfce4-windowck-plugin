@@ -60,13 +60,13 @@ desktopdir = \
 	$(datadir)/xfce4/panel/plugins
 
 desktop_DATA = \
-	wckmenu-plugin.desktop
+	wckmenu.desktop
 
 @INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST = \
 	wckmenu-dialogs.glade \
-	wckmenu-plugin.desktop.in
+	wckmenu.desktop.in
 
 CLEANFILES = \
 	$(desktop_DATA)
