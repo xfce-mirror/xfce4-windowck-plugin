@@ -61,13 +61,13 @@ desktopdir =								\
 	$(datadir)/xfce4/panel/plugins
 
 desktop_DATA =								\
-	windowck-plugin.desktop
+	windowck.desktop
 
 @INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST =								\
 	windowck-dialogs.glade                                          \
-	windowck-plugin.desktop.in
+	windowck.desktop.in
 
 CLEANFILES =								\
 	$(desktop_DATA)
