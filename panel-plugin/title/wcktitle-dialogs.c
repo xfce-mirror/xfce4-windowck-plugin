@@ -28,9 +28,9 @@
 
 #include <common/wck-plugin.h>
 
-#include "windowck-title.h"
-#include "windowck-dialogs.h"
-#include "windowck-dialogs_ui.h"
+#include "wcktitle-title.h"
+#include "wcktitle-dialogs.h"
+#include "wcktitle-dialogs_ui.h"
 
 #define TITLE_SIZE_MIN 3
 
@@ -360,17 +360,17 @@ build_properties_area (WckTitlePlugin *wtp, const gchar *buffer, gsize length)
 
 
 static void
-windowck_configure_response(GtkWidget *dialog, gint response, WckTitlePlugin *wtp)
+wcktitle_configure_response (GtkWidget *dialog, gint response, WckTitlePlugin *wtp)
 {
     wck_configure_response (wtp->plugin, dialog, response, (WckSettingsCb) wcktitle_settings_save, wtp->prefs);
 }
 
 
-void wcktitle_configure(XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
+void wcktitle_configure (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 {
     GtkWidget *ca;
 
-    ca = build_properties_area (wtp, windowck_dialogs_ui, windowck_dialogs_ui_length);
+    ca = build_properties_area (wtp, wcktitle_dialogs_ui, wcktitle_dialogs_ui_length);
 
-    wck_configure_dialog (plugin, WCKTITLE_ICON, ca, G_CALLBACK (windowck_configure_response), wtp);
+    wck_configure_dialog (plugin, WCKTITLE_ICON, ca, G_CALLBACK (wcktitle_configure_response), wtp);
 }

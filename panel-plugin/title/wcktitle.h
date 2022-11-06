@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef __WINDOWCK_H__
-#define __WINDOWCK_H__
+#ifndef __WCKTITLE_H__
+#define __WCKTITLE_H__
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -33,7 +33,7 @@
 #include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
-#define WCKTITLE_ICON "windowck-plugin"
+#define WCKTITLE_ICON "wcktitle-plugin"
 
 G_BEGIN_DECLS
 
@@ -96,4 +96,4 @@ void wcktitle_settings_save (WckTitlePreferences *prefs);
 
 G_END_DECLS
 
-#endif /* !__WINDOWCK_H__ */
+#endif /* __WCKTITLE_H__ */

@@ -24,8 +24,8 @@
 #include <common/wck-plugin.h>
 #include <common/wck-utils.h>
 
-#include "windowck.h"
-#include "windowck-title.h"
+#include "wcktitle.h"
+#include "wcktitle-title.h"
 
 void reload_wnck_title (WckTitlePlugin *wtp)
 {

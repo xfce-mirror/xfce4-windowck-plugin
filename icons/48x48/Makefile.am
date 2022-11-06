@@ -4,7 +4,7 @@ iconsdir = $(datadir)/icons/hicolor/48x48/apps
 icons_DATA =			\
 	wckbuttons-plugin.png	\
 	wckmenu-plugin.png	\
-	windowck-plugin.png
+	wcktitle-plugin.png
 
 EXTRA_DIST =								\
 	$(icons_DATA)

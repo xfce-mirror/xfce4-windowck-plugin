@@ -31,9 +31,9 @@
 
 #include <common/wck-plugin.h>
 
-#include "windowck.h"
-#include "windowck-dialogs.h"
-#include "windowck-title.h"
+#include "wcktitle.h"
+#include "wcktitle-dialogs.h"
+#include "wcktitle-title.h"
 
 #define SETTING_FULL_NAME           "/full-name"
 #define SETTING_TWO_LINES           "/two-lines"
