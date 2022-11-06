@@ -149,7 +149,7 @@ wckmenu_new (XfcePanelPlugin *plugin)
     /* create some panel widgets */
     wmp->ebox = gtk_event_box_new();
     gtk_event_box_set_visible_window(GTK_EVENT_BOX(wmp->ebox), FALSE);
-    gtk_widget_set_name(wmp->ebox, "XfceWindowckPlugin");
+    gtk_widget_set_name (wmp->ebox, "XfceWckMenuPlugin");
 
     wmp->box = gtk_box_new (orientation, 2);
     gtk_box_set_homogeneous (GTK_BOX (wmp->box), FALSE);

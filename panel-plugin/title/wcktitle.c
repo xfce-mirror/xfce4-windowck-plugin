@@ -31,9 +31,9 @@
 
 #include <common/wck-plugin.h>
 
-#include "windowck.h"
-#include "windowck-dialogs.h"
-#include "windowck-title.h"
+#include "wcktitle.h"
+#include "wcktitle-dialogs.h"
+#include "wcktitle-title.h"
 
 #define SETTING_FULL_NAME           "/full-name"
 #define SETTING_TWO_LINES           "/two-lines"
@@ -62,12 +62,8 @@
 #define DEFAULT_INACTIVE_TEXT_ALPHA 60
 #define DEFAULT_INACTIVE_TEXT_SHADE 110
 
-/* prototypes */
-static void windowck_construct(XfcePanelPlugin *plugin);
-
-
 void
-wcktitle_settings_save (WCKPreferences *prefs)
+wcktitle_settings_save (WckTitlePreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
@@ -90,14 +86,14 @@ wcktitle_settings_save (WCKPreferences *prefs)
 }
 
 static void
-windowck_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WindowckPlugin *wckp)
+wcktitle_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 {
-    wcktitle_settings_save (wckp->prefs);
+    wcktitle_settings_save (wtp->prefs);
 }
 
 
 static void
-wcktitle_settings_load (WCKPreferences *prefs)
+wcktitle_settings_load (WckTitlePreferences *prefs)
 {
     prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
     prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
@@ -116,11 +112,11 @@ wcktitle_settings_load (WCKPreferences *prefs)
 }
 
 
-static WCKPreferences *
-windowck_read (XfcePanelPlugin *plugin)
+static WckTitlePreferences *
+wcktitle_read (XfcePanelPlugin *plugin)
 {
     /* allocate memory for the preferences structure */
-    WCKPreferences *prefs = g_slice_new0(WCKPreferences);
+    WckTitlePreferences *prefs = g_slice_new0 (WckTitlePreferences);
 
     prefs->conf = wck_conf_new (plugin);
     wcktitle_settings_load (prefs);
@@ -129,60 +125,62 @@ windowck_read (XfcePanelPlugin *plugin)
 }
 
 
-static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
+static WckTitlePlugin *
+wcktitle_new (XfcePanelPlugin *plugin)
 {
-    WindowckPlugin *wckp;
+    WckTitlePlugin *wtp;
 
     GtkOrientation orientation;
 
     /* allocate memory for the plugin structure */
-    wckp = g_slice_new0 (WindowckPlugin);
+    wtp = g_slice_new0 (WckTitlePlugin);
 
     /* pointer to plugin */
-    wckp->plugin = plugin;
+    wtp->plugin = plugin;
 
     /* read the user settings */
-    wckp->prefs = windowck_read(wckp->plugin);
+    wtp->prefs = wcktitle_read (wtp->plugin);
 
     /* get the current orientation */
     orientation = xfce_panel_plugin_get_orientation(plugin);
 
     /* not needed for shrink mode */
-    if (wckp->prefs->size_mode != SHRINK)
+    if (wtp->prefs->size_mode != SHRINK)
         xfce_panel_plugin_set_shrink (plugin, TRUE);
 
     /* create some panel widgets */
-    wckp->ebox = gtk_event_box_new();
-    gtk_event_box_set_visible_window(GTK_EVENT_BOX(wckp->ebox), FALSE);
-    gtk_widget_set_name(wckp->ebox, "XfceWindowckPlugin");
+    wtp->ebox = gtk_event_box_new ();
+    gtk_event_box_set_visible_window (GTK_EVENT_BOX (wtp->ebox), FALSE);
+    gtk_widget_set_name (wtp->ebox, "XfceWckTitlePlugin");
 
-    wckp->box = gtk_box_new (orientation, 2);
-    gtk_box_set_homogeneous (GTK_BOX (wckp->box), FALSE);
-    gtk_widget_set_halign (wckp->box, GTK_ALIGN_CENTER);
-    gtk_widget_set_valign (wckp->box, GTK_ALIGN_CENTER);
-    gtk_widget_set_margin_top (wckp->box, DEFAULT_TITLE_PADDING);
-    gtk_widget_set_margin_bottom (wckp->box, DEFAULT_TITLE_PADDING);
+    wtp->box = gtk_box_new (orientation, 2);
+    gtk_box_set_homogeneous (GTK_BOX (wtp->box), FALSE);
+    gtk_widget_set_halign (wtp->box, GTK_ALIGN_CENTER);
+    gtk_widget_set_valign (wtp->box, GTK_ALIGN_CENTER);
+    gtk_widget_set_margin_top (wtp->box, DEFAULT_TITLE_PADDING);
+    gtk_widget_set_margin_bottom (wtp->box, DEFAULT_TITLE_PADDING);
 
-    /* some wckp widgets */
-    wckp->title = GTK_LABEL (gtk_label_new (""));
-    gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET (wckp->title), TRUE, TRUE, 0);
+    /* some WckTitlePlugin widgets */
+    wtp->title = GTK_LABEL (gtk_label_new (""));
+    gtk_box_pack_start (GTK_BOX (wtp->box), GTK_WIDGET (wtp->title), TRUE, TRUE, 0);
 
-    gtk_container_add(GTK_CONTAINER(wckp->ebox), GTK_WIDGET(wckp->box));
+    gtk_container_add (GTK_CONTAINER (wtp->ebox), GTK_WIDGET (wtp->box));
 
     /* show widgets */
-    gtk_widget_show(wckp->ebox);
-    gtk_widget_show(wckp->box);
-    gtk_widget_show(GTK_WIDGET (wckp->title));
+    gtk_widget_show (wtp->ebox);
+    gtk_widget_show (wtp->box);
+    gtk_widget_show (GTK_WIDGET (wtp->title));
 
-    return wckp;
+    return wtp;
 }
 
 
-static void windowck_free(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
+static void
+wcktitle_free (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 {
     GtkWidget *dialog;
 
-    disconnect_wnck (wckp->win);
+    disconnect_wnck (wtp->win);
 
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data(G_OBJECT (plugin), "dialog");
@@ -190,35 +188,38 @@ static void windowck_free(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
         gtk_widget_destroy(dialog);
 
     /* destroy the panel widgets */
-    gtk_widget_destroy(wckp->box);
+    gtk_widget_destroy (wtp->box);
 
     /* free the plugin structure */
-    g_slice_free(WckUtils, wckp->win);
-    g_slice_free(WCKPreferences, wckp->prefs);
-    g_slice_free(WindowckPlugin, wckp);
+    g_slice_free (WckUtils, wtp->win);
+    g_slice_free (WckTitlePreferences, wtp->prefs);
+    g_slice_free (WckTitlePlugin, wtp);
 }
 
 
-static void windowck_orientation_changed(XfcePanelPlugin *plugin, GtkOrientation orientation, WindowckPlugin *wckp)
+static void
+wcktitle_orientation_changed (XfcePanelPlugin *plugin, GtkOrientation orientation, WckTitlePlugin *wtp)
 {
     /* change the orienation of the box */
-    gtk_orientable_set_orientation (GTK_ORIENTABLE (wckp->box), orientation);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (wtp->box), orientation);
 }
 
 
-static void windowck_screen_position_changed(XfcePanelPlugin *plugin, XfceScreenPosition *position, WindowckPlugin *wckp)
+static void
+wcktitle_screen_position_changed (XfcePanelPlugin *plugin, XfceScreenPosition *position, WckTitlePlugin *wtp)
 {
-    if (wckp->prefs->size_mode != SHRINK)
+    if (wtp->prefs->size_mode != SHRINK)
     {
         xfce_panel_plugin_set_shrink (plugin, FALSE);
-        gtk_label_set_width_chars(wckp->title, 1);
+        gtk_label_set_width_chars (wtp->title, 1);
         xfce_panel_plugin_set_shrink (plugin, TRUE);
-        resize_title(wckp);
+        resize_title (wtp);
     }
 }
 
 
-static gboolean windowck_size_changed(XfcePanelPlugin *plugin, gint size, WindowckPlugin *wckp)
+static gboolean
+wcktitle_size_changed (XfcePanelPlugin *plugin, gint size, WckTitlePlugin *wtp)
 {
     GtkOrientation orientation;
 
@@ -236,68 +237,78 @@ static gboolean windowck_size_changed(XfcePanelPlugin *plugin, gint size, Window
 }
 
 
-static void on_refresh_item_activated (GtkMenuItem *refresh, WindowckPlugin *wckp)
+static void
+on_refresh_item_activated (GtkMenuItem *refresh, WckTitlePlugin *wtp)
 {
-    init_title(wckp);
-    reload_wnck_title (wckp);
+    init_title (wtp);
+    reload_wnck_title (wtp);
 }
 
 
-static void windowck_construct(XfcePanelPlugin *plugin)
+static void
+wcktitle_construct (XfcePanelPlugin *plugin)
 {
-    WindowckPlugin *wckp;
+    WckTitlePlugin *wtp;
     GtkWidget *refresh;
 
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     /* create the plugin */
-    wckp = windowck_new(plugin);
+    wtp = wcktitle_new (plugin);
 
     /* add the ebox to the panel */
-    gtk_container_add(GTK_CONTAINER (plugin), wckp->ebox);
+    gtk_container_add (GTK_CONTAINER (plugin), wtp->ebox);
 
     /* show the panel's right-click menu on this ebox */
-    xfce_panel_plugin_add_action_widget(plugin, wckp->ebox);
+    xfce_panel_plugin_add_action_widget (plugin, wtp->ebox);
 
     /* Set event handling (title clicks) */
-    g_signal_connect(G_OBJECT (wckp->ebox), "button-press-event", G_CALLBACK (on_title_pressed), wckp);
+    g_signal_connect (G_OBJECT (wtp->ebox), "button-press-event",
+                      G_CALLBACK (on_title_pressed), wtp);
 
-    g_signal_connect(G_OBJECT (wckp->ebox), "button-release-event", G_CALLBACK (on_title_released), wckp);
+    g_signal_connect (G_OBJECT (wtp->ebox), "button-release-event",
+                      G_CALLBACK (on_title_released), wtp);
 
     /* connect plugin signals */
+    g_signal_connect (G_OBJECT (plugin), "free-data",
+                      G_CALLBACK (wcktitle_free), wtp);
 
-    g_signal_connect(G_OBJECT (plugin), "free-data", G_CALLBACK (windowck_free), wckp);
+    g_signal_connect (G_OBJECT (plugin), "save",
+                      G_CALLBACK (wcktitle_save), wtp);
 
-    g_signal_connect(G_OBJECT (plugin), "save", G_CALLBACK (windowck_save), wckp);
+    g_signal_connect (G_OBJECT (plugin), "size-changed",
+                      G_CALLBACK (wcktitle_size_changed), wtp);
 
-    g_signal_connect(G_OBJECT (plugin), "size-changed", G_CALLBACK (windowck_size_changed), wckp);
+    g_signal_connect (G_OBJECT (plugin), "screen-position-changed",
+                      G_CALLBACK (wcktitle_screen_position_changed), wtp);
 
-    g_signal_connect(G_OBJECT (plugin), "screen-position-changed", G_CALLBACK (windowck_screen_position_changed), wckp);
-
-    g_signal_connect(G_OBJECT (plugin), "orientation-changed", G_CALLBACK (windowck_orientation_changed), wckp);
+    g_signal_connect (G_OBJECT (plugin), "orientation-changed",
+                      G_CALLBACK (wcktitle_orientation_changed), wtp);
 
     /* show the configure menu item and connect signal */
     xfce_panel_plugin_menu_show_configure(plugin);
-    g_signal_connect(G_OBJECT (plugin), "configure-plugin", G_CALLBACK (windowck_configure), wckp);
+    g_signal_connect (G_OBJECT (plugin), "configure-plugin",
+                      G_CALLBACK (wcktitle_configure), wtp);
 
     /* show the about menu item and connect signal */
     xfce_panel_plugin_menu_show_about(plugin);
     g_signal_connect (G_OBJECT (plugin), "about",
-                    G_CALLBACK (wck_about), WCKTITLE_ICON);
+                      G_CALLBACK (wck_about), WCKTITLE_ICON);
 
     /* add custom menu items */
     refresh = show_refresh_item (plugin);
-    g_signal_connect (G_OBJECT (refresh), "activate", G_CALLBACK (on_refresh_item_activated), wckp);
+    g_signal_connect (G_OBJECT (refresh), "activate",
+                      G_CALLBACK (on_refresh_item_activated), wtp);
 
     /* start tracking title text */
-    wckp->win = g_slice_new0 (WckUtils);
-    init_wnck(wckp->win, wckp->prefs->only_maximized, wckp);
+    wtp->win = g_slice_new0 (WckUtils);
+    init_wnck (wtp->win, wtp->prefs->only_maximized, wtp);
 
     /* start tracking title size */
-    init_title(wckp);
+    init_title (wtp);
 }
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER(windowck_construct);
+XFCE_PANEL_PLUGIN_REGISTER (wcktitle_construct);
