@@ -29,29 +29,29 @@ libwckbuttons_la_SOURCES = \
 
 libwckbuttons_la_CFLAGS = \
 	$(GTK_CFLAGS) \
-	$(LIBXFCE4UTIL_CFLAGS) \
-	$(LIBXFCE4UI_CFLAGS) \
-	$(LIBXFCE4PANEL_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
-	$(XFCONF_CFLAGS) \
+	$(LIBXFCE4PANEL_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
+	$(LIBXFCE4UTIL_CFLAGS) \
+	$(LIBXFCONF_CFLAGS) \
 	$(PLATFORM_CFLAGS) \
 	-DDATADIR=\"$(datadir)\"
 
 libwckbuttons_la_LDFLAGS = \
-       -avoid-version \
-       -module \
-       -no-undefined \
-       -export-symbols-regex '^xfce_panel_module_(preinit|init|construct)' \
-       $(PLATFORM_LDFLAGS)
+	-avoid-version \
+	-module \
+	-no-undefined \
+	-export-symbols-regex '^xfce_panel_module_(preinit|init|construct)' \
+	$(PLATFORM_LDFLAGS)
 
 libwckbuttons_la_LIBADD = \
 	$(top_builddir)/common/libwck-common.la \
 	$(GTK_LIBS) \
-	$(LIBXFCE4UTIL_LIBS) \
-	$(LIBXFCE4UI_LIBS) \
 	$(LIBWNCK_LIBS) \
 	$(LIBXFCE4PANEL_LIBS) \
-	$(XFCONF_LIBS)
+	$(LIBXFCE4UI_LIBS) \
+	$(LIBXFCE4UTIL_LIBS) \
+	$(LIBXFCONF_LIBS)
 
 libwckbuttons_la_DEPENDENCIES = \
 	$(top_builddir)/common/libwck-common.la
@@ -68,7 +68,7 @@ desktop_DATA =								\
 @INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST =								\
-	wckbuttons-dialogs.glade                                          \
+	wckbuttons-dialogs.glade				\
 	wckbuttons.desktop.in
 
 CLEANFILES =								\

@@ -27,11 +27,11 @@ libwckmenu_la_SOURCES = \
 
 libwckmenu_la_CFLAGS = \
 	$(GTK_CFLAGS) \
-	$(LIBXFCE4UTIL_CFLAGS) \
-	$(LIBXFCE4UI_CFLAGS) \
-	$(LIBXFCE4PANEL_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
-	$(XFCONF_CFLAGS) \
+	$(LIBXFCE4PANEL_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
+	$(LIBXFCE4UTIL_CFLAGS) \
+	$(LIBXFCONF_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 libwckmenu_la_LDFLAGS = \
@@ -44,11 +44,11 @@ libwckmenu_la_LDFLAGS = \
 libwckmenu_la_LIBADD = \
 	$(top_builddir)/common/libwck-common.la \
 	$(GTK_LIBS) \
-	$(LIBXFCE4UTIL_LIBS) \
-	$(LIBXFCE4UI_LIBS) \
-	$(LIBXFCE4PANEL_LIBS) \
 	$(LIBWNCK_LIBS) \
-	$(XFCONF_LIBS)
+	$(LIBXFCE4PANEL_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
+	$(LIBXFCE4UTIL_LIBS) \
+	$(LIBXFCONF_LIBS)
 
 libwckmenu_la_DEPENDENCIES = \
 	$(top_builddir)/common/libwck-common.la
