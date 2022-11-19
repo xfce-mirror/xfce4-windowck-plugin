@@ -84,7 +84,7 @@ typedef struct {
     GtkImage        *image;
 } WindowButton;
 
-/* plugin structure for title and buttons*/
+/* plugin structure */
 typedef struct {
     XfcePanelPlugin *plugin;
 
@@ -101,7 +101,7 @@ typedef struct {
     XfconfChannel *wm_channel;      // window manager chanel
     XfconfChannel *x_channel;       // xsettings chanel
     gulong wph;                     // xfwm chanel property changed handler id
-} WBPlugin;
+} WckButtonsPlugin;
 
 void wckbuttons_settings_save (WBPreferences *prefs);
 
