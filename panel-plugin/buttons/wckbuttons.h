@@ -76,7 +76,7 @@ typedef struct {
     gchar       *theme;             // Selected theme path
     gchar      *button_layout;      // Button layout ["XXX"] (example "HMC" : H=Hide, M=Maximize/unMaximize, C=Close)
     gboolean sync_wm_theme;         // [T/F] Try to use xfwm4 active theme if possible.
-} WBPreferences;
+} WckButtonsPreferences;
 
 /* Definition for our button */
 typedef struct {
@@ -94,7 +94,7 @@ typedef struct {
 
     WindowButton  *button[BUTTONS]; // Array of buttons
 
-    WBPreferences *prefs;           // Main properties
+    WckButtonsPreferences *prefs;   // Main properties
     WckUtils *win;
 
     GdkPixbuf *pixbufs[IMAGES_STATES][IMAGES_BUTTONS];
@@ -103,7 +103,7 @@ typedef struct {
     gulong wph;                     // xfwm chanel property changed handler id
 } WckButtonsPlugin;
 
-void wckbuttons_settings_save (WBPreferences *prefs);
+void wckbuttons_settings_save (WckButtonsPreferences *prefs);
 
 G_END_DECLS
 

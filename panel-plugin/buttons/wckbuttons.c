@@ -54,7 +54,7 @@ wckbuttons_construct (XfcePanelPlugin *plugin);
 
 
 void
-wckbuttons_settings_save (WBPreferences *prefs)
+wckbuttons_settings_save (WckButtonsPreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
@@ -74,7 +74,7 @@ wckbuttons_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
 
 
 static void
-wckbuttons_settings_load (WBPreferences *prefs)
+wckbuttons_settings_load (WckButtonsPreferences *prefs)
 {
     gchar *button_layout;
 
@@ -90,11 +90,11 @@ wckbuttons_settings_load (WBPreferences *prefs)
 }
 
 
-static WBPreferences *
+static WckButtonsPreferences *
 wckbuttons_read (XfcePanelPlugin *plugin)
 {
     /* allocate memory for the preferences structure */
-    WBPreferences *prefs = g_slice_new0(WBPreferences);
+    WckButtonsPreferences *prefs = g_slice_new0(WckButtonsPreferences);
 
     prefs->conf = wck_conf_new (plugin);
     wckbuttons_settings_load (prefs);
@@ -193,7 +193,7 @@ static void wckbuttons_free (XfcePanelPlugin *plugin, WckButtonsPlugin    *wbp)
 
     /* free the plugin structure */
     g_slice_free(WckUtils, wbp->win);
-    g_slice_free(WBPreferences, wbp->prefs);
+    g_slice_free(WckButtonsPreferences, wbp->prefs);
     g_slice_free (WckButtonsPlugin, wbp);
 }
 
