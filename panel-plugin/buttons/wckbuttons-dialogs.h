@@ -24,7 +24,7 @@
 G_BEGIN_DECLS
 
 void
-wckbuttons_configure    (XfcePanelPlugin *plugin, WBPlugin *wb);
+wckbuttons_configure    (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp);
 
 G_END_DECLS
 
