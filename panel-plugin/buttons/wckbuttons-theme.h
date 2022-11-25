@@ -32,9 +32,9 @@
 
 G_BEGIN_DECLS
 
-void init_theme (WBPlugin *wb);
-void load_theme (const gchar *theme, WBPlugin *wb);
-void replace_buttons (const gchar *button_layout, WBPlugin *wb);
+void init_theme (WckButtonsPlugin *wbp);
+void load_theme (const gchar *theme, WckButtonsPlugin *wbp);
+void replace_buttons (const gchar *button_layout, WckButtonsPlugin *wbp);
 gchar *get_rc_button_layout (const gchar *theme);
 gchar *button_layout_filter  (const gchar *button_layout, const gchar *default_layout);
 gchar *opposite_layout_filter  (const gchar *string);

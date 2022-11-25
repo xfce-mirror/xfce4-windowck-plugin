@@ -366,7 +366,8 @@ wcktitle_configure_response (GtkWidget *dialog, gint response, WckTitlePlugin *w
 }
 
 
-void wcktitle_configure (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
+void
+wcktitle_configure (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 {
     GtkWidget *ca;
 
