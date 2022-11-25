@@ -61,7 +61,9 @@ pixbuf_alpha_load (const gchar *dir, const gchar *file)
 }
 
 
-static void get_unity_pixbuf (const gchar *themedir, WckButtonsPlugin *wbp) {
+static void
+get_unity_pixbuf (const gchar *themedir, WckButtonsPlugin *wbp)
+{
     gchar imagename[40];
 
     static const char *button_names[] = {
@@ -245,7 +247,8 @@ void load_theme (const gchar *theme, WckButtonsPlugin *wbp)
 }
 
 
-static void apply_wm_theme (WckButtonsPlugin *wbp)
+static void
+apply_wm_theme (WckButtonsPlugin *wbp)
 {
     const gchar *wm_theme = xfconf_channel_get_string (wbp->wm_channel, "/general/theme", NULL);
 
@@ -281,7 +284,8 @@ static void apply_wm_theme (WckButtonsPlugin *wbp)
 static void
 on_x_chanel_property_changed (XfconfChannel *x_channel,
                               const gchar   *property_name,
-                              const GValue  *value, WckButtonsPlugin *wbp)
+                              const GValue  *value,
+                              WckButtonsPlugin *wbp)
 {
     if (g_str_has_prefix (property_name, "/Net/") == TRUE)
     {
@@ -305,7 +309,8 @@ on_x_chanel_property_changed (XfconfChannel *x_channel,
 static void
 on_xfwm_channel_property_changed (XfconfChannel *wm_channel,
                                   const gchar   *property_name,
-                                  const GValue  *value, WckButtonsPlugin *wbp)
+                                  const GValue  *value,
+                                  WckButtonsPlugin *wbp)
 {
     if (g_str_has_prefix (property_name, "/general/") == TRUE)
     {

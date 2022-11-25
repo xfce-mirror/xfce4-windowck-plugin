@@ -365,10 +365,10 @@ on_minimize_button_hover_enter (GtkWidget        *widget,
 
 
 /* Called when we release the click on a button */
-static
-gboolean on_maximize_button_release (GtkWidget        *event_box,
-                                     GdkEventButton   *event,
-                                     WckButtonsPlugin *wbp)
+static gboolean
+on_maximize_button_release (GtkWidget        *event_box,
+                            GdkEventButton   *event,
+                            WckButtonsPlugin *wbp)
 {
     if (event->button != 1) return FALSE;
 
@@ -415,9 +415,10 @@ on_maximize_button_hover_enter (GtkWidget        *widget,
 
 
 /* Called when we release the click on a button */
-static gboolean on_close_button_release (GtkWidget        *event_box,
-                                         GdkEventButton   *event,
-                                         WckButtonsPlugin *wbp)
+static gboolean
+on_close_button_release (GtkWidget        *event_box,
+                         GdkEventButton   *event,
+                         WckButtonsPlugin *wbp)
 {
     if (event->button != 1) return FALSE;
 
@@ -457,7 +458,8 @@ on_close_button_hover_enter (GtkWidget        *widget,
 }
 
 
-static void on_refresh_item_activated (GtkMenuItem *refresh, WckButtonsPlugin *wbp)
+static void
+on_refresh_item_activated (GtkMenuItem *refresh, WckButtonsPlugin *wbp)
 {
     wbp->prefs = wckbuttons_read (wbp->plugin);
     init_theme (wbp);
