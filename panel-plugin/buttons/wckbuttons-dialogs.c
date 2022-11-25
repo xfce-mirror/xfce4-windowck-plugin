@@ -44,21 +44,24 @@ enum
 };
 
 
-static void on_only_maximized_toggled(GtkRadioButton *only_maximized, WckButtonsPlugin *wbp)
+static void
+on_only_maximized_toggled (GtkRadioButton *only_maximized, WckButtonsPlugin *wbp)
 {
-    wbp->prefs->only_maximized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(only_maximized));
+    wbp->prefs->only_maximized = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (only_maximized));
     reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp);
 }
 
 
-static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WckButtonsPlugin *wbp)
+static void
+on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckButtonsPlugin *wbp)
 {
-    wbp->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
+    wbp->prefs->show_on_desktop = gtk_toggle_button_get_active (show_on_desktop);
     reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp);
 }
 
 
-static void on_button_layout_changed (GtkEditable *entry, WckButtonsPlugin *wbp)
+static void
+on_button_layout_changed (GtkEditable *entry, WckButtonsPlugin *wbp)
 {
     if (gtk_widget_get_sensitive (GTK_WIDGET(entry)))
     {
@@ -70,7 +73,9 @@ static void on_button_layout_changed (GtkEditable *entry, WckButtonsPlugin *wbp)
             gchar *part;
             const gchar *layout;
 
-            const gchar *wm_button_layout = xfconf_channel_get_string(wbp->wm_channel, "/general/button_layout", "O|HMC");
+            const gchar *wm_button_layout = xfconf_channel_get_string (wbp->wm_channel,
+                                                                      "/general/button_layout",
+                                                                      "O|HMC");
 
             /* get opposite part of the layout and concatenate it */
             part = opposite_layout_filter (wm_button_layout);
@@ -92,8 +97,7 @@ static void on_button_layout_changed (GtkEditable *entry, WckButtonsPlugin *wbp)
 
 
 static void
-wckbuttons_theme_selection_changed (GtkTreeSelection *selection,
-                                       WckButtonsPlugin *wbp)
+wckbuttons_theme_selection_changed (GtkTreeSelection *selection, WckButtonsPlugin *wbp)
 {
     GtkTreeModel *model;
     GtkTreeIter   iter;
@@ -108,7 +112,7 @@ wckbuttons_theme_selection_changed (GtkTreeSelection *selection,
         /* set the theme name */
         wbp->prefs->theme = g_strdup (theme);
 
-        entry = GTK_WIDGET(gtk_builder_get_object(wbp->prefs->builder, "button_layout"));
+        entry = GTK_WIDGET (gtk_builder_get_object (wbp->prefs->builder, "button_layout"));
 
         if (wbp->prefs->sync_wm_theme)
         {
@@ -190,8 +194,8 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WckButtonsPlugin *wbp)
                 /* insert in the list store */
                 gtk_list_store_append (GTK_LIST_STORE (model), &iter);
                 gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-                                  COL_THEME_NAME, file,
-                                  COL_THEME_RC, g_path_get_basename (themedir), -1);
+                                    COL_THEME_NAME, file,
+                                    COL_THEME_RC, g_path_get_basename (themedir), -1);
 
                 if (G_UNLIKELY (g_str_equal (wbp->prefs->theme, file)))
                 {
@@ -218,9 +222,9 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WckButtonsPlugin *wbp)
 
 static gint
 wckbuttons_theme_sort_func (GtkTreeModel *model,
-                               GtkTreeIter  *iter1,
-                               GtkTreeIter  *iter2,
-                               void *unused)
+                            GtkTreeIter  *iter1,
+                            GtkTreeIter  *iter2,
+                            void *unused)
 {
   gchar *str1 = NULL;
   gchar *str2 = NULL;
@@ -235,13 +239,15 @@ wckbuttons_theme_sort_func (GtkTreeModel *model,
 }
 
 
-static void on_sync_wm_theme_toggled(GtkToggleButton *sync_wm_theme, WckButtonsPlugin *wbp)
+static void
+on_sync_wm_theme_toggled (GtkToggleButton *sync_wm_theme, WckButtonsPlugin *wbp)
 {
     GtkWidget   *theme_name_treeview;
 
-    theme_name_treeview = GTK_WIDGET(gtk_builder_get_object(wbp->prefs->builder, "theme_name_treeview"));
+    theme_name_treeview = GTK_WIDGET (gtk_builder_get_object (wbp->prefs->builder,
+                                                              "theme_name_treeview"));
 
-    wbp->prefs->sync_wm_theme = gtk_toggle_button_get_active(sync_wm_theme);
+    wbp->prefs->sync_wm_theme = gtk_toggle_button_get_active (sync_wm_theme);
 
     init_theme (wbp);
     wckbuttons_load_themes (theme_name_treeview, wbp);
@@ -250,20 +256,22 @@ static void on_sync_wm_theme_toggled(GtkToggleButton *sync_wm_theme, WckButtonsP
     {
         GtkWidget    *entry;
 
-        entry = GTK_WIDGET(gtk_builder_get_object(wbp->prefs->builder, "button_layout"));
+        entry = GTK_WIDGET (gtk_builder_get_object (wbp->prefs->builder, "button_layout"));
         gtk_widget_set_sensitive (entry, TRUE);
         gtk_entry_set_text (GTK_ENTRY(entry), wbp->prefs->button_layout);
     }
 }
 
 
-static GtkWidget * build_properties_area(WckButtonsPlugin *wbp, const gchar *buffer, gsize length) {
+static GtkWidget *
+build_properties_area (WckButtonsPlugin *wbp, const gchar *buffer, gsize length)
+{
     GError *error = NULL;
 
-    wbp->prefs->builder = gtk_builder_new();
+    wbp->prefs->builder = gtk_builder_new ();
 
-    if (gtk_builder_add_from_string(wbp->prefs->builder, buffer, length, &error)) {
-        GObject *area = gtk_builder_get_object(wbp->prefs->builder, "vbox0");
+    if (gtk_builder_add_from_string (wbp->prefs->builder, buffer, length, &error)) {
+        GObject *area = gtk_builder_get_object (wbp->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
         {
@@ -272,20 +280,24 @@ static GtkWidget * build_properties_area(WckButtonsPlugin *wbp, const gchar *buf
             GtkWidget *theme_name_treeview;
             GtkEntry *button_layout;
 
-            only_maximized = GTK_RADIO_BUTTON (wck_dialog_get_widget (wbp->prefs->builder, "only_maximized"));
-            active_window = GTK_RADIO_BUTTON (wck_dialog_get_widget (wbp->prefs->builder, "active_window"));
+            only_maximized = GTK_RADIO_BUTTON (wck_dialog_get_widget (wbp->prefs->builder,
+                                                                      "only_maximized"));
+            active_window = GTK_RADIO_BUTTON (wck_dialog_get_widget (wbp->prefs->builder,
+                                                                     "active_window"));
             if (G_LIKELY (only_maximized != NULL && active_window != NULL))
             {
-                gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(only_maximized), wbp->prefs->only_maximized);
-                gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(active_window), !wbp->prefs->only_maximized);
-                g_signal_connect(only_maximized, "toggled", G_CALLBACK(on_only_maximized_toggled), wbp);
+                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (only_maximized), wbp->prefs->only_maximized);
+                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (active_window), !wbp->prefs->only_maximized);
+                g_signal_connect (only_maximized, "toggled",
+                                  G_CALLBACK (on_only_maximized_toggled), wbp);
             }
 
             show_on_desktop = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wbp->prefs->builder, "show_on_desktop"));
             if (G_LIKELY (show_on_desktop != NULL))
             {
-                gtk_toggle_button_set_active(show_on_desktop, wbp->prefs->show_on_desktop);
-                g_signal_connect(show_on_desktop, "toggled", G_CALLBACK(on_show_on_desktop_toggled), wbp);
+                gtk_toggle_button_set_active (show_on_desktop, wbp->prefs->show_on_desktop);
+                g_signal_connect (show_on_desktop, "toggled",
+                                  G_CALLBACK (on_show_on_desktop_toggled), wbp);
             }
 
             /* Style widgets */
@@ -313,8 +325,8 @@ static GtkWidget * build_properties_area(WckButtonsPlugin *wbp, const gchar *buf
                                                              0, _("Themes usable"), renderer, "text", 0, NULL);
 
                 selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview));
-                g_signal_connect (selection, "changed", G_CALLBACK (wckbuttons_theme_selection_changed),
-                                  wbp);
+                g_signal_connect (selection, "changed",
+                                  G_CALLBACK (wckbuttons_theme_selection_changed), wbp);
                 gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 
                 wckbuttons_load_themes (theme_name_treeview, wbp);
@@ -325,8 +337,9 @@ static GtkWidget * build_properties_area(WckButtonsPlugin *wbp, const gchar *buf
             {
                 if (wbp->wm_channel)
                 {
-                    gtk_toggle_button_set_active(sync_wm_theme, wbp->prefs->sync_wm_theme);
-                    g_signal_connect(sync_wm_theme, "toggled", G_CALLBACK(on_sync_wm_theme_toggled), wbp);
+                    gtk_toggle_button_set_active (sync_wm_theme, wbp->prefs->sync_wm_theme);
+                    g_signal_connect (sync_wm_theme, "toggled",
+                                      G_CALLBACK(on_sync_wm_theme_toggled), wbp);
                 }
                 else {
                     gtk_widget_set_sensitive (GTK_WIDGET(sync_wm_theme), FALSE);
@@ -336,8 +349,9 @@ static GtkWidget * build_properties_area(WckButtonsPlugin *wbp, const gchar *buf
             button_layout = GTK_ENTRY (wck_dialog_get_widget (wbp->prefs->builder, "button_layout"));
             if (G_LIKELY (button_layout != NULL))
             {
-                gtk_entry_set_text(button_layout, wbp->prefs->button_layout);
-                g_signal_connect(GTK_EDITABLE(button_layout), "changed", G_CALLBACK(on_button_layout_changed), wbp);
+                gtk_entry_set_text (button_layout, wbp->prefs->button_layout);
+                g_signal_connect (GTK_EDITABLE(button_layout), "changed",
+                                  G_CALLBACK(on_button_layout_changed), wbp);
             }
 
             return GTK_WIDGET(area);
@@ -347,9 +361,12 @@ static GtkWidget * build_properties_area(WckButtonsPlugin *wbp, const gchar *buf
         }
     }
 
-    g_critical("Failed to construct the builder for plugin %s-%d: %s.", xfce_panel_plugin_get_name (wbp->plugin), xfce_panel_plugin_get_unique_id (wbp->plugin), error->message);
-    g_error_free(error);
-    g_object_unref(G_OBJECT (wbp->prefs->builder) );
+    g_critical ("Failed to construct the builder for plugin %s-%d: %s.",
+                xfce_panel_plugin_get_name (wbp->plugin),
+                xfce_panel_plugin_get_unique_id (wbp->plugin),
+                error->message);
+    g_error_free (error);
+    g_object_unref (G_OBJECT (wbp->prefs->builder));
 
     return NULL;
 }
@@ -362,7 +379,8 @@ wckbuttons_configure_response (GtkWidget *dialog, gint response, WckButtonsPlugi
 }
 
 
-void wckbuttons_configure (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
+void
+wckbuttons_configure (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
 {
     GtkWidget *ca;
 

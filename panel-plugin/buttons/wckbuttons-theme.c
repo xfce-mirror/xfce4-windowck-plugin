@@ -163,7 +163,7 @@ void replace_buttons (const gchar *button_layout, WckButtonsPlugin *wbp)
     guint j = 0;
 
     for (guint i = 0; i < BUTTONS; i++)
-        gtk_widget_hide(GTK_WIDGET(wbp->button[i]->eventbox));
+        gtk_widget_hide (GTK_WIDGET (wbp->button[i]->eventbox));
 
     for (guint i = 0; i < n; i++)
     {
@@ -172,7 +172,7 @@ void replace_buttons (const gchar *button_layout, WckButtonsPlugin *wbp)
         {
             gtk_box_reorder_child (GTK_BOX (wbp->box), GTK_WIDGET(wbp->button[button]->eventbox), j);
 
-            gtk_widget_show_all(GTK_WIDGET(wbp->button[button]->eventbox));
+            gtk_widget_show_all (GTK_WIDGET (wbp->button[button]->eventbox));
             j++;
         }
     }
@@ -249,7 +249,7 @@ static void apply_wm_theme (WckButtonsPlugin *wbp)
 {
     const gchar *wm_theme = xfconf_channel_get_string (wbp->wm_channel, "/general/theme", NULL);
 
-    if (G_LIKELY(wm_theme))
+    if (G_LIKELY (wm_theme))
     {
         gchar *button_layout;
 
@@ -264,7 +264,9 @@ static void apply_wm_theme (WckButtonsPlugin *wbp)
         }
         else
         {
-            const gchar *wm_buttons_layout = xfconf_channel_get_string (wbp->wm_channel, "/general/button_layout", wbp->prefs->button_layout);
+            const gchar *wm_buttons_layout = xfconf_channel_get_string (wbp->wm_channel,
+                                                                        "/general/button_layout",
+                                                                        wbp->prefs->button_layout);
             wbp->prefs->button_layout = button_layout_filter (wm_buttons_layout, wbp->prefs->button_layout);
 
             replace_buttons (wbp->prefs->button_layout, wbp);
@@ -277,9 +279,11 @@ static void apply_wm_theme (WckButtonsPlugin *wbp)
 
 
 static void
-on_x_chanel_property_changed (XfconfChannel *x_channel, const gchar *property_name, const GValue *value, WckButtonsPlugin *wbp)
+on_x_chanel_property_changed (XfconfChannel *x_channel,
+                              const gchar   *property_name,
+                              const GValue  *value, WckButtonsPlugin *wbp)
 {
-    if (g_str_has_prefix(property_name, "/Net/") == TRUE)
+    if (g_str_has_prefix (property_name, "/Net/") == TRUE)
     {
         const gchar *name = &property_name[5];
         switch (G_VALUE_TYPE(value))
@@ -291,7 +295,7 @@ on_x_chanel_property_changed (XfconfChannel *x_channel, const gchar *property_na
                 }
                 break;
             default:
-                g_warning("The property '%s' is not supported", property_name);
+                g_warning ("The property '%s' is not supported", property_name);
                 break;
         }
     }
@@ -299,9 +303,11 @@ on_x_chanel_property_changed (XfconfChannel *x_channel, const gchar *property_na
 
 
 static void
-on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *property_name, const GValue *value, WckButtonsPlugin *wbp)
+on_xfwm_channel_property_changed (XfconfChannel *wm_channel,
+                                  const gchar   *property_name,
+                                  const GValue  *value, WckButtonsPlugin *wbp)
 {
-    if (g_str_has_prefix(property_name, "/general/") == TRUE)
+    if (g_str_has_prefix (property_name, "/general/") == TRUE)
     {
         const gchar *name = &property_name[9];
         switch (G_VALUE_TYPE(value))
@@ -314,14 +320,15 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *proper
                 }
                 break;
             default:
-                g_warning("The property '%s' is not supported", property_name);
+                g_warning ("The property '%s' is not supported", property_name);
                 break;
         }
     }
 }
 
 
-void init_theme (WckButtonsPlugin *wbp)
+void
+init_theme (WckButtonsPlugin *wbp)
 {
     /* get the xfwm4 chanel */
     wbp->wm_channel = wck_properties_get_channel (G_OBJECT (wbp->plugin), "xfwm4");
@@ -331,7 +338,10 @@ void init_theme (WckButtonsPlugin *wbp)
     {
         apply_wm_theme (wbp);
 
-        g_signal_connect (wbp->wm_channel, "property-changed", G_CALLBACK (on_xfwm_channel_property_changed), wbp);
+        g_signal_connect (wbp->wm_channel,
+                          "property-changed",
+                          G_CALLBACK (on_xfwm_channel_property_changed),
+                          wbp);
     }
     else
     {
@@ -343,5 +353,8 @@ void init_theme (WckButtonsPlugin *wbp)
     wbp->x_channel = wck_properties_get_channel (G_OBJECT (wbp->plugin), "xsettings");
 
     if (wbp->x_channel)
-        g_signal_connect (wbp->x_channel, "property-changed", G_CALLBACK (on_x_chanel_property_changed), wbp);
+        g_signal_connect (wbp->x_channel,
+                          "property-changed",
+                          G_CALLBACK (on_x_chanel_property_changed),
+                          wbp);
 }
