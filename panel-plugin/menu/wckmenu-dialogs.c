@@ -34,14 +34,16 @@
 #include "wckmenu-dialogs_ui.h"
 
 
-static void on_only_maximized_toggled(GtkRadioButton *only_maximized, WckMenuPlugin *wmp)
+static void
+on_only_maximized_toggled (GtkRadioButton *only_maximized, WckMenuPlugin *wmp)
 {
     wmp->prefs->only_maximized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(only_maximized));
     reload_wnck_icon (wmp);
 }
 
 
-static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WckMenuPlugin *wmp)
+static void
+on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckMenuPlugin *wmp)
 {
     wmp->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
 
@@ -51,7 +53,8 @@ static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WckMenu
 }
 
 
-static void on_show_app_icon_toggled(GtkToggleButton *show_app_icon, WckMenuPlugin *wmp)
+static void
+on_show_app_icon_toggled (GtkToggleButton *show_app_icon, WckMenuPlugin *wmp)
 {
     wmp->prefs->show_app_icon = gtk_toggle_button_get_active(show_app_icon);
 
@@ -128,7 +131,8 @@ wckmenu_configure_response (GtkWidget *dialog, gint response, WckMenuPlugin *wmp
 }
 
 
-void wckmenu_configure (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
+void
+wckmenu_configure (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
     GtkWidget *ca;
 
