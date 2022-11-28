@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-05 00:54+0200\n"
+"POT-Creation-Date: 2022-11-28 15:08+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/xfce/teams/16840/sv/)\n"
@@ -24,40 +24,40 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../common/wck-plugin.c:96
+#: ../common/wck-plugin.c:174
 msgid "_Refresh"
 msgstr "_Uppdatera"
 
-#: ../common/wck-plugin.c:197
+#: ../common/wck-plugin.c:211
 msgid "Help"
 msgstr "Hjälp"
 
-#: ../common/wck-plugin.c:198
+#: ../common/wck-plugin.c:212
 msgid "_Close"
 msgstr "_Stäng"
 
-#: ../common/wck-plugin.c:237
+#: ../common/wck-plugin.c:251
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Det gick inte att öppna följande url: %s"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:308
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
 msgstr "Katalog"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:310
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
 msgid "Themes usable"
 msgstr "Teman kan användas"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
-#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
 msgid "Control maximized windows."
 msgstr "Kontrollera maximerat fönster."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
-#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
 msgid "Control active windows."
 msgstr "Kontrollera aktivt fönster."
 
@@ -71,7 +71,7 @@ msgstr "Logga ut vid stängning skrivbord."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
-#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
 msgid "<b>Behaviour</b>"
 msgstr "<b>Beteende</b>"
 
@@ -94,8 +94,8 @@ msgstr ""
 "H=Dölj, M=Maximera/avMaximera, C=Stäng"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:7
-#: ../panel-plugin/title/windowck-dialogs.glade.h:22
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
 msgid "<b>Appearance</b>"
 msgstr "<b>Utseende</b>"
 
@@ -108,7 +108,7 @@ msgid "Put the maximized window buttons on the panel."
 msgstr "Visa maximerat fönsters knappar på panelen."
 
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
-#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
 msgstr "Visa insticksprogrammet på skrivbordet."
 
@@ -116,90 +116,82 @@ msgstr "Visa insticksprogrammet på skrivbordet."
 msgid "Show the window Icon."
 msgstr "Visa fönsterikonen."
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
-msgid "Menu"
-msgstr "Meny"
-
-#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:1
+#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
 msgid "Window Header - Menu"
 msgstr "Fönsterhuvud - Meny"
 
-#: ../panel-plugin/menu/wckmenu-plugin.desktop.in.h:2
+#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
 msgid "Put the maximized window menu on the panel."
 msgstr "Placera menyn för maximerat fönster på panelen."
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
 msgstr "som mest"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
 msgid "fixed to"
 msgstr "fast till"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
 msgid "expand"
 msgstr "expandera"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
 msgid "left"
 msgstr "vänster"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
 msgid "center"
 msgstr "mitten"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
 msgid "right"
 msgstr "höger"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
 msgid "Width:"
 msgstr "Bredd:"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
 msgid "chars"
 msgstr "tecken"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
 msgid "Padding:"
 msgstr ""
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
 msgid "pixels"
 msgstr "pixlar"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
 msgid "Show the full title name"
 msgstr "Visa fullständigt titelnamn"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
 msgid "Display the title in two lines"
 msgstr "Visa titeln på två rader"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
 msgid "Sync the font with the window manager."
 msgstr "Synka teckensnitt med fönsterhanteraren."
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
 msgid "Title font:"
 msgstr "Teckensnitt för titel:"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
 msgid "Subtitle font:"
 msgstr "Teckensnitt för textning:"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Justering:"
 
-#: ../panel-plugin/title/windowck-dialogs.glade.h:21
-msgid "Title"
-msgstr "Titel"
-
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+#: ../panel-plugin/title/wcktitle.desktop.in.h:1
 msgid "Window Header - Title"
 msgstr "Fönsterhuvud - Titel"
 
-#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+#: ../panel-plugin/title/wcktitle.desktop.in.h:2
 msgid "Put the maximized window title on the panel."
 msgstr "Visa maximerat fönsters titel på panelen."
