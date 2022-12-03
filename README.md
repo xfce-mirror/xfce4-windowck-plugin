@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/blob/master/COPYING)
+[![License](https://img.shields.io/static/v1?label=License&message=GPL-3.0-or-later&color=blue)](https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/blob/master/COPYING)
 
 # xfce4-windowck-plugin
 
