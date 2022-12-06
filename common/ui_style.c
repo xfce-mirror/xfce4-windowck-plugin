@@ -58,9 +58,9 @@ mix (const GdkRGBA* color1, const GdkRGBA* color2, float a)
 }
 
 static gchar *
-rgba_to_hex_string (const GdkRGBA * rgba)
+rgba_to_hex_string (const GdkRGBA *rgba)
 {
-    return g_strdup_printf ("#%04x%04x%04x", (guint16)(rgba->red * USHRT_MAX), (guint16)(rgba->green * USHRT_MAX), (guint16)(rgba->blue * USHRT_MAX));
+    return g_strdup_printf ("#%02x%02x%02x", (guint8)(rgba->red * UCHAR_MAX), (guint8)(rgba->green * UCHAR_MAX), (guint8)(rgba->blue * UCHAR_MAX));
 }
 
 gchar *
