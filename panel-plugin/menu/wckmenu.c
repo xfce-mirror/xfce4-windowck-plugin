@@ -100,7 +100,7 @@ void reset_symbol (WckMenuPlugin *wmp)
     }
 
     if (wmp->prefs->show_app_icon)
-        wmp->icon->symbol = xfce_panel_image_new();
+        wmp->icon->symbol = gtk_image_new ();
     else
         wmp->icon->symbol = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
 
