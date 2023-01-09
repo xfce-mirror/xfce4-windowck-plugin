@@ -100,7 +100,7 @@ void reset_symbol (WckMenuPlugin *wmp)
     }
 
     if (wmp->prefs->show_app_icon)
-        wmp->icon->symbol = xfce_panel_image_new();
+        wmp->icon->symbol = gtk_image_new ();
     else
         wmp->icon->symbol = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
 
@@ -121,6 +121,17 @@ window_icon_new (void)
     icon->symbol = NULL;
 
     return icon;
+}
+
+
+static void
+wckmenu_scale_factor (XfcePanelPlugin *plugin)
+{
+  gint scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (plugin));
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  wnck_set_default_icon_size (WNCK_DEFAULT_ICON_SIZE * scale_factor);
+  wnck_set_default_mini_icon_size (WNCK_DEFAULT_MINI_ICON_SIZE * scale_factor);
+G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
@@ -172,6 +183,10 @@ wckmenu_new (XfcePanelPlugin *plugin)
     /* show widgets */
     gtk_widget_show(wmp->ebox);
     gtk_widget_show(wmp->box);
+
+    /* adapt wnck default icon size when UI scale changes */
+    wckmenu_scale_factor (plugin);
+    g_signal_connect (plugin, "notify::scale-factor", G_CALLBACK (wckmenu_scale_factor), NULL);
 
     return wmp;
 }
