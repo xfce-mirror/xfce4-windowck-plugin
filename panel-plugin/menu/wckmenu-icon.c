@@ -38,12 +38,15 @@ void reload_wnck_icon (WckMenuPlugin *wmp)
 
 static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
 {
+    gint icon_size;
+
     if (!controlwindow)
     {
-        xfce_panel_image_clear(XFCE_PANEL_IMAGE (wmp->icon->symbol));
+        gtk_image_clear (GTK_IMAGE (wmp->icon->symbol));
         return;
     }
 
+    icon_size = xfce_panel_plugin_get_icon_size (wmp->plugin);
     if (wmp->prefs->show_on_desktop)
     {
         gtk_widget_set_sensitive (wmp->icon->symbol, TRUE);
@@ -53,7 +56,8 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
             if (!wnck_window_is_active(controlwindow))
                 gtk_widget_set_sensitive (wmp->icon->symbol, FALSE);
 
-            xfce_panel_image_set_from_source (XFCE_PANEL_IMAGE (wmp->icon->symbol), "go-home");
+            gtk_image_set_from_icon_name (GTK_IMAGE (wmp->icon->symbol), "go-home", GTK_ICON_SIZE_BUTTON);
+            gtk_image_set_pixel_size (GTK_IMAGE (wmp->icon->symbol), icon_size);
         }
     }
 
@@ -61,9 +65,9 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
     {
         GdkPixbuf *pixbuf = NULL;
         GdkPixbuf *grayscale = NULL;
-        gint icon_size;
+        cairo_surface_t *surface;
+        gint scale_factor;
 
-        icon_size = xfce_panel_plugin_get_icon_size (wmp->plugin);
         /* This only returns a pointer - it SHOULDN'T be unrefed! */
         if (icon_size < WNCK_DEFAULT_ICON_SIZE)
             pixbuf = wnck_window_get_mini_icon(controlwindow);
@@ -73,7 +77,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
         /* leave when there is no valid pixbuf */
         if (G_UNLIKELY (pixbuf == NULL))
         {
-            xfce_panel_image_clear (XFCE_PANEL_IMAGE (wmp->icon->symbol));
+            gtk_image_clear (GTK_IMAGE (wmp->icon->symbol));
             return;
         }
 
@@ -86,8 +90,10 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
                 pixbuf = grayscale;
         }
 
-        xfce_panel_image_set_size (XFCE_PANEL_IMAGE (wmp->icon->symbol), icon_size);
-        xfce_panel_image_set_from_pixbuf(XFCE_PANEL_IMAGE (wmp->icon->symbol), pixbuf);
+        scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (wmp->plugin));
+        surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale_factor, NULL);
+        gtk_image_set_from_surface (GTK_IMAGE (wmp->icon->symbol), surface);
+        cairo_surface_destroy (surface);
 
         if (grayscale != NULL && grayscale != pixbuf)
             g_object_unref (G_OBJECT (grayscale));
