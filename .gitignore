@@ -17,6 +17,7 @@ aclocal.m4
 autom4te.cache
 compile
 config*
+!configure.ac.in
 depcomp
 install-sh
 intltool*
@@ -26,6 +27,7 @@ missing
 mkinstalldirs
 panel-plugin/*/*.desktop
 panel-plugin/*/*-dialogs_ui.h
+m4/
 po/.intltool-merge-cache
 po/.intltool-merge-cache.lock
 po/Makefile.in.in
