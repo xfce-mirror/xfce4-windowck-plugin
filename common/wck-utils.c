@@ -19,6 +19,10 @@
  *  This code is derived from original 'Window Applets' from Andrej Belcijan.
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "wck-utils.h"
 
 /* Prototypes */
