@@ -7,7 +7,7 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # jc1 <jc1.quebecos@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Wallon Wallon, 2022
+# Wallon Wallon, 2023
 # 
 #, fuzzy
 msgid ""
@@ -16,8 +16,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 15:08+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Wallon Wallon, 2022\n"
-"Language-Team: French (https://www.transifex.com/xfce/teams/16840/fr/)\n"
+"Last-Translator: Wallon Wallon, 2023\n"
+"Language-Team: French (https://app.transifex.com/xfce/teams/16840/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,7 +39,7 @@ msgstr "_Fermer"
 #: ../common/wck-plugin.c:251
 #, c-format
 msgid "Unable to open the following url: %s"
-msgstr "Impossible d'ouvrir l'url suivant : %s"
+msgstr "Impossible d’ouvrir l’url suivant : %s"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
@@ -89,7 +89,7 @@ msgid ""
 "Example: [HMC]\n"
 "H=Hide, M=Maximize/unMaximize, C=Close"
 msgstr ""
-"Placer l'identifiant des boutons dans l'ordre choisi.\n"
+"Placer l’identifiant des boutons dans l’ordre choisi.\n"
 "Exemple : [HMC]\n"
 "H=Hide (minimiser), M=Maximize/unMaximize (maximiser/démaximiser), C=Close (fermer)."
 
@@ -114,7 +114,7 @@ msgstr "Afficher le plugin sur le bureau."
 
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
-msgstr "Afficher l'icône des fenêtres."
+msgstr "Afficher l’icône des fenêtres."
 
 #: ../panel-plugin/menu/wckmenu.desktop.in.h:1
 msgid "Window Header - Menu"
