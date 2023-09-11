@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Nick Schermer <nick@xfce.org>, 2022
+# Chris Darnell <chris@cedeel.com>, 2022
+# scootergrisen, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-30 00:55+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: scootergrisen, 2023\n"
+"Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../common/wck-plugin.c:174
+msgid "_Refresh"
+msgstr "_Opdater"
+
+#: ../common/wck-plugin.c:211
+msgid "Help"
+msgstr "Hjælp"
+
+#: ../common/wck-plugin.c:212
+msgid "_Close"
+msgstr "_Luk"
+
+#: ../common/wck-plugin.c:251
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "Kan ikke åbne den følgende url: %s"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
+msgid "Directory"
+msgstr "Mappe"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
+msgid "Themes usable"
+msgstr "Tilgængelig temaer"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "Styr maksimerede vinduer."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "Styr aktive vinduer."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+msgid "Show the buttons on desktop."
+msgstr "Vis knapperne på skrivebordet."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+msgid "Logout on close button desktop."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>Opførsel</b>"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+msgid "Get in sync with the window manager theme."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+msgid "Button layout:"
+msgstr "Layout af knapper:"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"Læg knappernes id'er i den ønskede rækkefølge.\n"
+"Eksempel: [HMC]\n"
+"H=Skjul, M=Maksimer/Afmaksimer, C=Luk"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+msgid "<b>Appearance</b>"
+msgstr "<b>Udseende</b>"
+
+#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
+msgid "Window Header - Buttons"
+msgstr "Vinduesheader - knapper"
+
+#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
+msgid "Put the maximized window buttons on the panel."
+msgstr "Læg knapperne fra det maksimerede vindue på panelet."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr "Vis pluginet på skrivebordet."
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr "Vis vinduets ikon."
+
+#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
+msgid "Window Header - Menu"
+msgstr "Vinduesheader - menu"
+
+#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
+msgid "Put the maximized window menu on the panel."
+msgstr "Læg menuen fra det maksimerede vindue på panelet."
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+msgid "at most"
+msgstr "højst"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+msgid "fixed to"
+msgstr "fastgjort til"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+msgid "expand"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+msgid "left"
+msgstr "venstre"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+msgid "center"
+msgstr "i midten"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+msgid "right"
+msgstr "højre"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+msgid "Width:"
+msgstr "Bredde:"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+msgid "chars"
+msgstr "tegn"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+msgid "Padding:"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+msgid "pixels"
+msgstr "pixels"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "Vis det fulde titelnavn"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "Vis titlen på to linjer"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "Skrifttype for titel:"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "Skrifttype for undertitel:"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "Justering:"
+
+#: ../panel-plugin/title/wcktitle.desktop.in.h:1
+msgid "Window Header - Title"
+msgstr "Vinduesheader - titel"
+
+#: ../panel-plugin/title/wcktitle.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
+msgstr "Læg titlen fra det maksimerede vindue på panelet."
