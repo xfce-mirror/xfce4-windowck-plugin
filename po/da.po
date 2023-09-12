@@ -133,7 +133,7 @@ msgstr "fastgjort til"
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
 msgid "expand"
-msgstr ""
+msgstr "udvid"
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
 msgid "left"
