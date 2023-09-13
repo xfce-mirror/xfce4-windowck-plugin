@@ -76,7 +76,7 @@ msgstr "<b>Opførsel</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
-msgstr ""
+msgstr "Bliv synkroniseret med vindueshåndteringens tema."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
 msgid "Button layout:"
@@ -173,7 +173,7 @@ msgstr "Vis titlen på to linjer"
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
 msgid "Sync the font with the window manager."
-msgstr ""
+msgstr "Synkroniser skrifttypen med vindueshåndteringen."
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
 msgid "Title font:"
