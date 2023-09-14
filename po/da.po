@@ -157,7 +157,7 @@ msgstr "tegn"
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
 msgid "Padding:"
-msgstr ""
+msgstr "Padding:"
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
 msgid "pixels"
