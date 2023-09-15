@@ -66,7 +66,7 @@ msgstr "Vis knapperne på skrivebordet."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Logout on close button desktop."
-msgstr ""
+msgstr "Log ud med luk-knappen på skrivebordet."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
