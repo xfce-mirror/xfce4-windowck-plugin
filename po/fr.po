@@ -68,6 +68,8 @@ msgstr "Afficher le plugin sur le bureau."
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
 msgstr ""
+"Le fait de cliquer sur le bouton de fermeture du bureau entraîne la "
+"déconnexion."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
