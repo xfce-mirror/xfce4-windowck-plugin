@@ -69,6 +69,7 @@ msgstr "Показувати кнопки на стільниці."
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
 msgstr ""
+"Натискання кнопки закриття на стільниці призводить до виходу з системи."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
