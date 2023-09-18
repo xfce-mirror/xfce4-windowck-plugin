@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:55+0200\n"
+"POT-Creation-Date: 2023-09-18 00:52+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: scootergrisen, 2023\n"
 "Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
@@ -65,8 +65,8 @@ msgid "Show the buttons on desktop."
 msgstr "Vis knapperne på skrivebordet."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
-msgid "Logout on close button desktop."
-msgstr "Log ud med luk-knappen på skrivebordet."
+msgid "Clicking the close button on the desktop causes log out."
+msgstr "Klik på luk-knappen på skrivebordet for at logge ud."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
