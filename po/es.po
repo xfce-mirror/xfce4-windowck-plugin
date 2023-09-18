@@ -14,10 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:08+0100\n"
+"POT-Creation-Date: 2023-09-18 00:52+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2022\n"
-"Language-Team: Spanish (https://www.transifex.com/xfce/teams/16840/es/)\n"
+"Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,8 +66,8 @@ msgid "Show the buttons on desktop."
 msgstr "Mostrar los botones en el escritorio."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
-msgid "Logout on close button desktop."
-msgstr "Salir de la sesión con el botón de cerrar del escritorio."
+msgid "Clicking the close button on the desktop causes log out."
+msgstr ""
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
