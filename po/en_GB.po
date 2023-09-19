@@ -66,7 +66,7 @@ msgstr "Show the buttons on desktop."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
-msgstr ""
+msgstr "Clicking the close button on the desktop causes log out."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
