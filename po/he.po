@@ -5,7 +5,7 @@
 # 
 # Translators:
 # 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e <ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2022
-# Elishai Eliyahu <elishai@mailfence.com>, 2022
+# Elishai Eliyahu <elishai@mailfence.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-18 00:52+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2022\n"
+"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2023\n"
 "Language-Team: Hebrew (https://app.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +65,7 @@ msgstr "הצג את הלחצנים על לוח העבודה."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
-msgstr ""
+msgstr "קליק על לחצן סגירה בשולחן עבודה גורם ליציאה מהמערכת."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
