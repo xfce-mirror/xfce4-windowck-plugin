@@ -66,7 +66,7 @@ msgstr "Mostra els botons a l'escriptori."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
-msgstr ""
+msgstr "Fer clic al botó de tancar a l'escriptori provoca una desconnexió."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
