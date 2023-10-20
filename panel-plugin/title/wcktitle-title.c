@@ -231,10 +231,11 @@ void resize_title (WckTitlePlugin *wtp)
             gtk_label_set_max_width_chars (wtp->title, wtp->prefs->title_size);
             break;
         case EXPAND:
-            gtk_label_set_width_chars (wtp->title, TITLE_SIZE_MAX);
+            gtk_label_set_max_width_chars (wtp->title, TITLE_SIZE_MAX);
             break;
         default:
             gtk_label_set_width_chars (wtp->title, wtp->prefs->title_size);
+            break;
     }
 }
 
