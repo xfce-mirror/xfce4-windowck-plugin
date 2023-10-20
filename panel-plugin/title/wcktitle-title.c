@@ -42,11 +42,18 @@ void reload_wnck_title (WckTitlePlugin *wtp)
 
 static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_above(WnckWindow *window)
 {
-    WnckWorkspace *workspace = wnck_window_get_workspace(window);
-    WnckScreen *screen = wnck_workspace_get_screen(workspace);
+    WnckWorkspace *workspace;
+    WnckScreen *screen;
     GList *windows;
     GList *top_window;
     GList *bottom_window;
+
+    if (window_is_desktop(window)) {
+        return TRUE;
+    }
+
+    workspace = wnck_window_get_workspace(window);
+    screen = wnck_workspace_get_screen(workspace);
 
     if (wnck_screen_get_active_workspace(screen) != workspace) {
         return FALSE;
