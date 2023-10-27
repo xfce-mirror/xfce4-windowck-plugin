@@ -63,11 +63,11 @@ msgstr "控制活动窗口"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
-msgstr "在桌面上显示按钮"
+msgstr "桌面时也显示按钮"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
-msgstr "单击桌面的关闭按钮会导致注销。"
+msgstr "显示桌面时单击关闭按钮会导致注销。"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
