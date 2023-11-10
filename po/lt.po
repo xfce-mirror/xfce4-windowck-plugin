@@ -45,7 +45,7 @@ msgstr "Katalogas"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
 msgid "Themes usable"
-msgstr "Galimos naudoti temos"
+msgstr "Galimi naudoti apipavidalinimai"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
@@ -75,7 +75,7 @@ msgstr "<b>Elgsena</b>"
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
-msgstr "Sinchronizuotis su langų tvarkytuvės tema."
+msgstr "Sinchronizuotis su langų tvarkytuvės apipavidalinimu."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
 msgid "Button layout:"
