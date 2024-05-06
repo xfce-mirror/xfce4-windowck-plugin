@@ -6,22 +6,16 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-m4_define([windowck_version_major], [0])
-m4_define([windowck_version_minor], [5])
-m4_define([windowck_version_micro], [1])
-m4_define([windowck_version_nano],  []) dnl leave this empty to have no nano version
-m4_define([windowck_version_build], [@REVISION@])
-m4_define([windowck_version_tag],   [git])
-m4_define([windowck_version], [windowck_version_major().windowck_version_minor().windowck_version_micro()ifelse(windowck_version_nano(), [], [], [.windowck_version_nano()])ifelse(windowck_version_tag(), [git], [windowck_version_tag()-windowck_version_build()], [windowck_version_tag()])])
+XDT_VERSION_INIT([0.5.1], [git])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (C) 2015
         Alessio Piccoli, Cedric Leporcq. All rights reserved.])
-AC_INIT([xfce4-windowck-plugin],[windowck_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/])
+AC_INIT([xfce4-windowck-plugin],[xdt_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/])
 AC_PREREQ([2.69])
-AC_REVISION([xfce4_panel_version_build])
+AC_REVISION([xdt_version_build])
 AC_CONFIG_MACRO_DIRS([m4])
 
 dnl ***************************
@@ -86,7 +80,7 @@ XDT_CHECK_PACKAGE([LIBXFCONF], [libxfconf-0], [4.14.0])
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
-XDT_FEATURE_DEBUG()
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
 dnl *********************************
 dnl *** Substitute platform flags ***
