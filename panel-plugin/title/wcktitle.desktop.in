@@ -1,8 +1,8 @@
 [Xfce Panel]
 Type=X-XFCE-PanelPlugin
 Encoding=UTF-8
-_Name=Window Header - Title
-_Comment=Put the maximized window title on the panel.
+Name=Window Header - Title
+Comment=Put the maximized window title on the panel.
 Icon=wcktitle-plugin
 X-XFCE-Module=wcktitle
 X-XFCE-Internal=false

@@ -1,3 +1,4 @@
+*~
 *.gmo
 *.la
 *.lo
@@ -8,6 +9,7 @@
 .idea
 .libs
 .qtc_clangd
+ABOUT-NLS
 ChangeLog
 INSTALL
 Makefile
@@ -17,10 +19,9 @@ aclocal.m4
 autom4te.cache
 compile
 config*
-!configure.ac.in
+!configure.ac
 depcomp
 install-sh
-intltool*
 libtool
 ltmain.sh
 missing
@@ -28,11 +29,20 @@ mkinstalldirs
 panel-plugin/*/*.desktop
 panel-plugin/*/*-dialogs_ui.h
 m4/
-po/.intltool-merge-cache
-po/.intltool-merge-cache.lock
 po/Makefile.in.in
 po/POTFILES
 po/*.mo
+po/stamp-po
+po/Makevars.template
+po/Rules-quot
+po/boldquot.sed
+po/en@boldquot.header
+po/en@quot.header
+po/insert-header.sin
+po/quot.sed
+po/remove-potcdate.sed
+po/remove-potcdate.sin
+po/*.pot
 stamp-*
 themes/**/*.png
 themes/**/*.xpm
