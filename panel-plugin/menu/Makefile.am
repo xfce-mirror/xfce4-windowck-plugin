@@ -62,7 +62,8 @@ desktopdir = \
 desktop_DATA = \
 	wckmenu.desktop
 
-@INTLTOOL_DESKTOP_RULE@
+%.desktop: %.desktop.in
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST = \
 	wckmenu-dialogs.glade \
