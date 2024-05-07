@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2024\n"
 "Language-Team: Estonian (https://app.transifex.com/xfce/teams/16840/et/)\n"
@@ -96,14 +96,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>Välimus</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "Akna päis - Nupud"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "Lisa täisvaates akna nupud ribale."
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -112,14 +104,6 @@ msgstr "Näita pistikprogrammi töölaual."
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Näita rakenduse akna ikooni."
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr "Akna päis - Menüü"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr "Lisa täisvaates akna menüü ribale."
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -184,11 +168,3 @@ msgstr "Alampealkirja font:"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Joondumine:"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Akna päis - Pealkiri"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Lisa täisvaates akna pealkiri ribale."
