@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/xfce/teams/16840/ja/)\n"
@@ -98,14 +98,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>外観</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "ウィンドウヘッダー - ボタン"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "最大化されたウィンドウボタンをパネルに置く。"
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -114,14 +106,6 @@ msgstr "デスクトップにプラグインを表示する。"
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "ウィンドウアイコンを表示する。"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr "ウィンドウヘッダー - メニュー"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr "最大化したウィンドウ メニューをパネルに配置します。"
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -186,11 +170,3 @@ msgstr "サブタイトルフォント:"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "配置:"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "ウィンドウヘッダー - タイトル"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "最大化されたウィンドウタイトルをパネルに置く。"
