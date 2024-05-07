@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2023\n"
 "Language-Team: Dutch (https://app.transifex.com/xfce/teams/16840/nl/)\n"
@@ -98,14 +98,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>Uiterlijk</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "Vensterkop - Knoppen"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "Plaats de knoppen van het gemaximaliseerde venster op de werkbalk."
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -114,14 +106,6 @@ msgstr "Toon het invoegsel op het bureaublad."
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Toon het vensterpictogram."
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr "Vensterkop - menu"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr "Plaats het gemaximaliseerde venstermenu op de werkbalk."
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -186,11 +170,3 @@ msgstr "Lettertype van subtitel:"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Uitlijning:"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Vensterkop - Titel"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Plaats de titel van het gemaximaliseerde venster op de werkbalk."
