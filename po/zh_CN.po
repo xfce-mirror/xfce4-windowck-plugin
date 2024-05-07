@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2022
-# Cally Mal <zhouxiaobo.500@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# 玉堂白鹤 <yjwork@qq.com>, 2023
+# Xfce Bot <transifex@xfce.org>, 2024
+# 玉堂白鹤 <yjwork@qq.com>, 2024
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 01:03+0200\n"
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-05-07 13:05+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2023\n"
+"Last-Translator: Cally Mal <zhouxiaobo.500@gmail.com>, 2024\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/xfce/teams/16840/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,66 +24,66 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/wck-plugin.c:174
+#: common/wck-plugin.c:174
 msgid "_Refresh"
 msgstr "刷新(_R)"
 
-#: ../common/wck-plugin.c:211
+#: common/wck-plugin.c:211
 msgid "Help"
 msgstr "帮助"
 
-#: ../common/wck-plugin.c:212
+#: common/wck-plugin.c:212
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: ../common/wck-plugin.c:251
+#: common/wck-plugin.c:251
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "无法打开下列网址: %s"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
+#: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
 msgstr "目录"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
+#: panel-plugin/buttons/wckbuttons-dialogs.c:325
 msgid "Themes usable"
 msgstr "可用主题"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
 msgstr "控制最大化的窗口"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
 msgid "Control active windows."
 msgstr "控制活动窗口"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
 msgid "Show the buttons on desktop."
 msgstr "桌面时也显示按钮"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "显示桌面时单击关闭按钮会导致注销。"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
+#: panel-plugin/menu/wckmenu-dialogs.glade:79
+#: panel-plugin/title/wcktitle-dialogs.glade:113
 msgid "<b>Behaviour</b>"
 msgstr "<b>行为</b>"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
 msgid "Get in sync with the window manager theme."
 msgstr "和窗口管理器的主题进行同步"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
 msgid "Button layout:"
 msgstr "按钮布局:"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -93,81 +93,105 @@ msgstr ""
 "例如: [HMC]\n"
 "H=最小化, M=最大化/恢复, C=关闭"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
+#: panel-plugin/menu/wckmenu-dialogs.glade:127
+#: panel-plugin/title/wcktitle-dialogs.glade:427
 msgid "<b>Appearance</b>"
 msgstr "<b>外观</b>"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "Window Header - 按钮"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "将最大化的窗口按钮放在面板上"
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
 msgstr "在桌面时也显示"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+#: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
 msgstr "显示窗口图标"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "窗口标题 - 菜单"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "将最大化的窗口菜单放在面板上。"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
 msgid "at most"
 msgstr "最大"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+#: panel-plugin/title/wcktitle-dialogs.glade:15
 msgid "fixed to"
 msgstr "固定为"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+#: panel-plugin/title/wcktitle-dialogs.glade:18
 msgid "expand"
 msgstr "扩展"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+#: panel-plugin/title/wcktitle-dialogs.glade:29
 msgid "left"
 msgstr "左侧"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+#: panel-plugin/title/wcktitle-dialogs.glade:32
 msgid "center"
 msgstr "中间"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+#: panel-plugin/title/wcktitle-dialogs.glade:35
 msgid "right"
 msgstr "右侧"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+#: panel-plugin/title/wcktitle-dialogs.glade:150
 msgid "Width:"
 msgstr "宽度:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+#: panel-plugin/title/wcktitle-dialogs.glade:201
 msgid "chars"
 msgstr "字符"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+#: panel-plugin/title/wcktitle-dialogs.glade:230
 msgid "Padding:"
 msgstr "边距:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+#: panel-plugin/title/wcktitle-dialogs.glade:260
 msgid "pixels"
 msgstr "像素"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+#: panel-plugin/title/wcktitle-dialogs.glade:281
 msgid "Show the full title name"
 msgstr "显示整个标题"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Display the title in two lines"
 msgstr "使用两行显示标题"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
 msgstr "和窗口管理器同步字体"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+#: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
 msgstr "标题字体:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+#: panel-plugin/title/wcktitle-dialogs.glade:361
 msgid "Subtitle font:"
 msgstr "子标题字体:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+#: panel-plugin/title/wcktitle-dialogs.glade:389
 msgid "Alignment:"
 msgstr "对齐:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "Window Header - 标题"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "将最大化的窗口标题放在面板上"
