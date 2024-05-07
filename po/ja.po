@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2022
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 01:03+0200\n"
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-05-07 13:05+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/xfce/teams/16840/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,66 +23,66 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/wck-plugin.c:174
+#: common/wck-plugin.c:174
 msgid "_Refresh"
 msgstr "更新(_R)"
 
-#: ../common/wck-plugin.c:211
+#: common/wck-plugin.c:211
 msgid "Help"
 msgstr "ヘルプ"
 
-#: ../common/wck-plugin.c:212
+#: common/wck-plugin.c:212
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: ../common/wck-plugin.c:251
+#: common/wck-plugin.c:251
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "次の URL を開くことができません: %s"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
+#: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
 msgstr "ディレクトリ"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
+#: panel-plugin/buttons/wckbuttons-dialogs.c:325
 msgid "Themes usable"
 msgstr "使用できるテーマ"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
 msgstr "最大化されたウィンドウを制御する。"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
 msgid "Control active windows."
 msgstr "アクティブなウィンドウを制御する。"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
 msgid "Show the buttons on desktop."
 msgstr "デスクトップにボタンを表示する。"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "デスクトップ上の閉じるボタンをクリックするとログアウトします。"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
+#: panel-plugin/menu/wckmenu-dialogs.glade:79
+#: panel-plugin/title/wcktitle-dialogs.glade:113
 msgid "<b>Behaviour</b>"
 msgstr "<b>動作</b>"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
 msgid "Get in sync with the window manager theme."
 msgstr "ウィンドウマネージャーのテーマと同期する。"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
 msgid "Button layout:"
 msgstr "ボタンのレイアウト:"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -92,81 +92,105 @@ msgstr ""
 "例: [HMC]\n"
 "H =非表示, M=最大化/非最大化, C=閉じる"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
+#: panel-plugin/menu/wckmenu-dialogs.glade:127
+#: panel-plugin/title/wcktitle-dialogs.glade:427
 msgid "<b>Appearance</b>"
 msgstr "<b>外観</b>"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "ウィンドウヘッダー - ボタン"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "最大化されたウィンドウボタンをパネルに置く。"
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
 msgstr "デスクトップにプラグインを表示する。"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+#: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
 msgstr "ウィンドウアイコンを表示する。"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "ウィンドウヘッダー - メニュー"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "最大化したウィンドウ メニューをパネルに配置します。"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
 msgid "at most"
 msgstr "最大値"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+#: panel-plugin/title/wcktitle-dialogs.glade:15
 msgid "fixed to"
 msgstr "固定値"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+#: panel-plugin/title/wcktitle-dialogs.glade:18
 msgid "expand"
 msgstr "拡げる"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+#: panel-plugin/title/wcktitle-dialogs.glade:29
 msgid "left"
 msgstr "左"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+#: panel-plugin/title/wcktitle-dialogs.glade:32
 msgid "center"
 msgstr "センター"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+#: panel-plugin/title/wcktitle-dialogs.glade:35
 msgid "right"
 msgstr "右"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+#: panel-plugin/title/wcktitle-dialogs.glade:150
 msgid "Width:"
 msgstr "幅:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+#: panel-plugin/title/wcktitle-dialogs.glade:201
 msgid "chars"
 msgstr "文字"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+#: panel-plugin/title/wcktitle-dialogs.glade:230
 msgid "Padding:"
 msgstr "パディング:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+#: panel-plugin/title/wcktitle-dialogs.glade:260
 msgid "pixels"
 msgstr "ピクセル"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+#: panel-plugin/title/wcktitle-dialogs.glade:281
 msgid "Show the full title name"
 msgstr "完全なタイトル名を表示する"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Display the title in two lines"
 msgstr "タイトルを2行で表示する"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
 msgstr "フォントをウィンドウマネージャーと同期する。"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+#: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
 msgstr "タイトルフォント:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+#: panel-plugin/title/wcktitle-dialogs.glade:361
 msgid "Subtitle font:"
 msgstr "サブタイトルフォント:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+#: panel-plugin/title/wcktitle-dialogs.glade:389
 msgid "Alignment:"
 msgstr "配置:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "ウィンドウヘッダー - タイトル"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "最大化されたウィンドウタイトルをパネルに置く。"
