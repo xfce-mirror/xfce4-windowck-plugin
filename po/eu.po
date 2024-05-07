@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Nick Schermer <nick@xfce.org>, 2022
+# Asier Iturralde Sarasola <asier.iturralde@gmail.com>, 2022
+# beriain, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: beriain, 2022\n"
+"Language-Team: Basque (https://app.transifex.com/xfce/teams/16840/eu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../common/wck-plugin.c:174
+msgid "_Refresh"
+msgstr "_Freskatu"
+
+#: ../common/wck-plugin.c:211
+msgid "Help"
+msgstr "Laguntza"
+
+#: ../common/wck-plugin.c:212
+msgid "_Close"
+msgstr "_Itxi"
+
+#: ../common/wck-plugin.c:251
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "Ezin da hurrengo urla ireki: %s"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
+msgid "Directory"
+msgstr "Direktorioa"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
+msgid "Themes usable"
+msgstr "Itxura erabilgarriak"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+msgid "Control maximized windows."
+msgstr "Maximizatutako leihoak kontrolatu."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+msgid "Control active windows."
+msgstr "Leiho aktiboak kontrolatu."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+msgid "Show the buttons on desktop."
+msgstr "Botoiak mahaigainean erakutsi."
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+msgid "Clicking the close button on the desktop causes log out."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+msgid "<b>Behaviour</b>"
+msgstr "<b>Portaera</b>"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+msgid "Get in sync with the window manager theme."
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+msgid "Button layout:"
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+msgid "<b>Appearance</b>"
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+msgid "Show the plugin on desktop."
+msgstr ""
+
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+msgid "Show the window Icon."
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+msgid "at most"
+msgstr "gehienez"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+msgid "fixed to"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+msgid "expand"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+msgid "left"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+msgid "center"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+msgid "right"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+msgid "Width:"
+msgstr "Zabalera"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+msgid "chars"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+msgid "Padding:"
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+msgid "pixels"
+msgstr "pixelak"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+msgid "Show the full title name"
+msgstr "Izenburu izen osoa erakutsi"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+msgid "Display the title in two lines"
+msgstr "Izenburua bi lerrotan erakutsi"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+msgid "Sync the font with the window manager."
+msgstr ""
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+msgid "Title font:"
+msgstr "Izenburuaren letra-mota:"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+msgid "Subtitle font:"
+msgstr "Azpitituluaren letra-mota:"
+
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+msgid "Alignment:"
+msgstr "Lerrokatzea:"
