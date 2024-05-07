@@ -7,16 +7,16 @@
 # Arve Eriksson <031299870@telia.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Påvel Nicklasson <pavel2@frimix.se>, 2022
-# Luna Jernberg <bittin@cafe8bitar.se>, 2022
+# Luna Jernberg <droidbittin@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2022\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2022\n"
 "Language-Team: Swedish (https://app.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -99,14 +99,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>Utseende</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "Fönsterhuvud - Knappar"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "Visa maximerat fönsters knappar på panelen."
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -115,14 +107,6 @@ msgstr "Visa insticksprogrammet på skrivbordet."
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Visa fönsterikonen."
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr "Fönsterhuvud - Meny"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr "Placera menyn för maximerat fönster på panelen."
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -187,11 +171,3 @@ msgstr "Teckensnitt för textning:"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Justering:"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Fönsterhuvud - Titel"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Visa maximerat fönsters titel på panelen."
