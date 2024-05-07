@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: fri, 2022\n"
 "Language-Team: Czech (https://app.transifex.com/xfce/teams/16840/cs/)\n"
@@ -99,14 +99,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>Vzhled</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "Hlavička okna - Tlačítka"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "Vloží tlačítka pro ovládání okna do panelu."
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -115,14 +107,6 @@ msgstr "Zobrazit na ploše."
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Zobrazit ikonu okna."
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr ""
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr ""
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -187,11 +171,3 @@ msgstr "Písmo podtitulku:"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Zarovnání:"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Hlavička okna - Titulek"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Vloží titulek maximalizovaných oken do panelu."
