@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: AlexKoala, 2024\n"
 "Language-Team: Korean (https://app.transifex.com/xfce/teams/16840/ko/)\n"
@@ -99,14 +99,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>모양새</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "윈도우 헤더 - 버튼"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "패널에 최대화 창 단추를 올려둡니다."
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -115,14 +107,6 @@ msgstr "데스크톱에 플러그인을 표시합니다."
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "윈도우 아이콘을 표시합니다."
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr "윈도우 헤더 - 메뉴"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr "패널에 최대화 창 메뉴를 올려둡니다."
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -187,11 +171,3 @@ msgstr "하위 제목 글꼴:"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "정렬:"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "윈도우 헤더 - 제목"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "패널에 최대화 창 제목을 올려둡니다."
