@@ -5,9 +5,8 @@
 # 
 # Translators:
 # emiliano casal chiarotti <emiliano.casal.chiarotti@gmail.com>, 2022
-# Nick Schermer <nick@xfce.org>, 2022
-# Joel Barrios <darkshram@gmail.com>, 2022
 # Toni Estévez <toni.estevez@gmail.com>, 2022
+# Nick Schermer <nick@xfce.org>, 2022
 # Casper, 2023
 # 
 #, fuzzy
@@ -15,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 00:52+0200\n"
+"POT-Creation-Date: 2024-05-07 01:03+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Casper, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
@@ -101,14 +100,6 @@ msgstr ""
 msgid "<b>Appearance</b>"
 msgstr "<b>Apariencia</b>"
 
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
-msgid "Window Header - Buttons"
-msgstr "Encabezado de las ventanas: botones"
-
-#: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
-msgid "Put the maximized window buttons on the panel."
-msgstr "Colocar los botones de las ventanas maximizadas en el panel."
-
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
@@ -117,14 +108,6 @@ msgstr "Mostrar el complemento en el escritorio."
 #: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Mostrar el icono de la ventana."
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:1
-msgid "Window Header - Menu"
-msgstr "Encabezado de ventana: menú"
-
-#: ../panel-plugin/menu/wckmenu.desktop.in.h:2
-msgid "Put the maximized window menu on the panel."
-msgstr "Colocar el menú de la ventana maximizada en el panel."
 
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
@@ -189,11 +172,3 @@ msgstr "Tipografía del subtítulo"
 #: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Alineación"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:1
-msgid "Window Header - Title"
-msgstr "Encabezado de la ventana: título"
-
-#: ../panel-plugin/title/wcktitle.desktop.in.h:2
-msgid "Put the maximized window title on the panel."
-msgstr "Colocar el título de las ventanas maximizadas en el panel."
