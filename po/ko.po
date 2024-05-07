@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Cybertramp <paran_son@outlook.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2022
 # AlexKoala, 2024
+# Cybertramp <paran_son@outlook.com>, 2024
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 01:03+0200\n"
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-05-07 13:05+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: AlexKoala, 2024\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2024\n"
 "Language-Team: Korean (https://app.transifex.com/xfce/teams/16840/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,66 +24,66 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/wck-plugin.c:174
+#: common/wck-plugin.c:174
 msgid "_Refresh"
 msgstr "새로 고침(_R)"
 
-#: ../common/wck-plugin.c:211
+#: common/wck-plugin.c:211
 msgid "Help"
 msgstr "도움말"
 
-#: ../common/wck-plugin.c:212
+#: common/wck-plugin.c:212
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: ../common/wck-plugin.c:251
+#: common/wck-plugin.c:251
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "다음 URL을 열 수 없습니다: %s"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
+#: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
 msgstr "디렉터리"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
+#: panel-plugin/buttons/wckbuttons-dialogs.c:325
 msgid "Themes usable"
 msgstr "사용할 수 있는 테마"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
 msgstr "최대화 창을 다룹니다."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
 msgid "Control active windows."
 msgstr "활성 창을 다룹니다."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
 msgid "Show the buttons on desktop."
 msgstr "데스크톱에 단추를 표시합니다."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "데스크톱의 닫기 버튼을 누르면 로그아웃됩니다."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
+#: panel-plugin/menu/wckmenu-dialogs.glade:79
+#: panel-plugin/title/wcktitle-dialogs.glade:113
 msgid "<b>Behaviour</b>"
 msgstr "<b>동작</b>"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
 msgid "Get in sync with the window manager theme."
 msgstr "창 관리자 테마와 동기화합니다."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
 msgid "Button layout:"
 msgstr "단추 배치:"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -93,81 +93,105 @@ msgstr ""
 "예: [HMC]\n"
 "H=숨기기, M=최대화/최대화 복귀, C=닫기"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
+#: panel-plugin/menu/wckmenu-dialogs.glade:127
+#: panel-plugin/title/wcktitle-dialogs.glade:427
 msgid "<b>Appearance</b>"
 msgstr "<b>모양새</b>"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "윈도우 헤더 - 버튼"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "패널에 최대화 창 단추를 올려둡니다."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
 msgstr "데스크톱에 플러그인을 표시합니다."
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+#: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
 msgstr "윈도우 아이콘을 표시합니다."
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "윈도우 헤더 - 메뉴"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "패널에 최대화 창 메뉴를 올려둡니다."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
 msgid "at most"
 msgstr "최대"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+#: panel-plugin/title/wcktitle-dialogs.glade:15
 msgid "fixed to"
 msgstr "다음으로 고정"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+#: panel-plugin/title/wcktitle-dialogs.glade:18
 msgid "expand"
 msgstr "확장"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+#: panel-plugin/title/wcktitle-dialogs.glade:29
 msgid "left"
 msgstr "왼쪽"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+#: panel-plugin/title/wcktitle-dialogs.glade:32
 msgid "center"
 msgstr "가운데"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+#: panel-plugin/title/wcktitle-dialogs.glade:35
 msgid "right"
 msgstr "오른쪽"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+#: panel-plugin/title/wcktitle-dialogs.glade:150
 msgid "Width:"
 msgstr "너비:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+#: panel-plugin/title/wcktitle-dialogs.glade:201
 msgid "chars"
 msgstr "문자"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+#: panel-plugin/title/wcktitle-dialogs.glade:230
 msgid "Padding:"
 msgstr "패딩:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+#: panel-plugin/title/wcktitle-dialogs.glade:260
 msgid "pixels"
 msgstr "픽셀"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+#: panel-plugin/title/wcktitle-dialogs.glade:281
 msgid "Show the full title name"
 msgstr "상세한 타이틀 명 보기"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Display the title in two lines"
 msgstr "제목을 두 줄로 표시"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
 msgstr "창 관리자와 글골을 맞춥니다."
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+#: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
 msgstr "제목 글꼴:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+#: panel-plugin/title/wcktitle-dialogs.glade:361
 msgid "Subtitle font:"
 msgstr "하위 제목 글꼴:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+#: panel-plugin/title/wcktitle-dialogs.glade:389
 msgid "Alignment:"
 msgstr "정렬:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "윈도우 헤더 - 제목"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "패널에 최대화 창 제목을 올려둡니다."
