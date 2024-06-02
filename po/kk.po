@@ -65,7 +65,7 @@ msgstr "Батырмаларды жұмыс үстелінде көрсету."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
-msgstr ""
+msgstr "Жұмыс үстеліндегі жабу батырмасын шерту жүйеден шығуды іске қосады."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:80
 #: panel-plugin/menu/wckmenu-dialogs.glade:79
