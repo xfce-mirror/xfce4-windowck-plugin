@@ -52,13 +52,13 @@ msgstr "Motywy do wykorzystania"
 #: panel-plugin/menu/wckmenu-dialogs.glade:32
 #: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
-msgstr "Kontrolowanie zmaksymalizowanych okien."
+msgstr "Sterowanie zmaksymalizowanymi oknami."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:46
 #: panel-plugin/menu/wckmenu-dialogs.glade:46
 #: panel-plugin/title/wcktitle-dialogs.glade:80
 msgid "Control active windows."
-msgstr "Kontrolowanie aktywnych okien."
+msgstr "Sterowanie aktywnymi oknami."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:61
 msgid "Show the buttons on desktop."
