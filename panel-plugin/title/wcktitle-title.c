@@ -45,7 +45,6 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
     WnckWorkspace *workspace;
     WnckScreen *screen;
     GList *windows;
-    GList *top_window;
     GList *bottom_window;
 
     if (window_is_desktop(window)) {
@@ -60,14 +59,19 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
     }
 
     windows = wnck_screen_get_windows_stacked(screen);
-    top_window = g_list_last(windows);
+    if (!windows) {
+        return TRUE;
+    }
+
     bottom_window = g_list_first(windows);
-    while (top_window->data != window && top_window != bottom_window) {
+    for (GList *top_window = g_list_last(windows);
+         top_window->data != window && top_window != bottom_window;
+         top_window = top_window->prev) {
         if (wnck_window_is_maximized((WnckWindow *)top_window->data)) {
             return FALSE;
         }
-        top_window = top_window->prev;
     }
+
     return TRUE;
 }
 
