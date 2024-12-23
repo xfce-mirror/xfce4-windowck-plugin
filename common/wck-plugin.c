@@ -170,11 +170,7 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
 GtkWidget *show_refresh_item (XfcePanelPlugin *plugin)
 {
     GtkWidget *refresh;
-#if LIBXFCE4UI_CHECK_VERSION (4, 16, 0)
     refresh = xfce_gtk_image_menu_item_new_from_icon_name (_("_Refresh"), NULL, NULL, NULL, NULL, "view-refresh", NULL);
-#else
-    refresh = gtk_image_menu_item_new_from_stock (GTK_STOCK_REFRESH, NULL);
-#endif
     xfce_panel_plugin_menu_insert_item(plugin, GTK_MENU_ITEM(refresh));
     gtk_widget_show (refresh);
 
