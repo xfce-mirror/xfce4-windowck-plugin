@@ -476,6 +476,10 @@ wckbuttons_construct (XfcePanelPlugin *plugin)
     /* setup transation domain */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
+    /* abort on non X11 environments */
+    if (wck_abort_non_x11_windowing (plugin))
+        return;
+
     /* create the plugin */
     wbp = wckbuttons_new (plugin);
 
