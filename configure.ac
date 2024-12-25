@@ -11,8 +11,8 @@ XDT_VERSION_INIT([0.5.1], [git])
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (C) 2015
-        Alessio Piccoli, Cedric Leporcq. All rights reserved.])
+AC_COPYRIGHT([Copyright (C) 2015 Alessio Piccoli, Cedric Leporcq. All rights reserved.
+              Copyright (C) 2010-2024 The Xfce development team. All rights reserved.])
 AC_INIT([xfce4-windowck-plugin],[xdt_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
