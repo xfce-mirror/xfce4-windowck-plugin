@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-05-07 13:05+0200\n"
+"POT-Creation-Date: 2024-12-26 00:53+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2024\n"
 "Language-Team: Korean (https://app.transifex.com/xfce/teams/16840/ko/)\n"
@@ -24,22 +24,30 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: common/wck-plugin.c:174
+#: common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "새로 고침(_R)"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "도움말"
 
-#: common/wck-plugin.c:212
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: common/wck-plugin.c:251
+#: common/wck-plugin.c:250
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "다음 URL을 열 수 없습니다: %s"
+
+#: common/wck-plugin.c:280
+msgid "Unsupported windowing environment"
+msgstr ""
+
+#: common/wck-plugin.c:281
+msgid "_OK"
+msgstr "확인(_O)"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
