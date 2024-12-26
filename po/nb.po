@@ -43,7 +43,7 @@ msgstr "Klarte ikke å åpne følgende URL: %s"
 
 #: common/wck-plugin.c:280
 msgid "Unsupported windowing environment"
-msgstr ""
+msgstr "Vindusmiljø støttes ikke"
 
 #: common/wck-plugin.c:281
 msgid "_OK"
