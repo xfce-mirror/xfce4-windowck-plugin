@@ -7,17 +7,17 @@
 # Dušan Kazik <prescott66@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Slavko <linux@slavino.sk>, 2022
-# 785411ef824cced88d3e197f5af1b61a_da6a977 <e5fae5b35c0c625157d991b31e113de3_956341>, 2024
 # Jose Riha <jose1711@gmail.com>, 2024
+# 785411ef824cced88d3e197f5af1b61a_da6a977 <e5fae5b35c0c625157d991b31e113de3_956341>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-05-07 13:05+0200\n"
+"POT-Creation-Date: 2024-12-26 00:53+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Jose Riha <jose1711@gmail.com>, 2024\n"
+"Last-Translator: 785411ef824cced88d3e197f5af1b61a_da6a977 <e5fae5b35c0c625157d991b31e113de3_956341>, 2024\n"
 "Language-Team: Slovak (https://app.transifex.com/xfce/teams/16840/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,22 +25,30 @@ msgstr ""
 "Language: sk\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: common/wck-plugin.c:174
+#: common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Obnoviť"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Pomoc"
 
-#: common/wck-plugin.c:212
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Zatvoriť"
 
-#: common/wck-plugin.c:251
+#: common/wck-plugin.c:250
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Nie je možné otvoriť nasledovnú url: %s"
+
+#: common/wck-plugin.c:280
+msgid "Unsupported windowing environment"
+msgstr ""
+
+#: common/wck-plugin.c:281
+msgid "_OK"
+msgstr "_OK"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
