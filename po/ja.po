@@ -42,7 +42,7 @@ msgstr "次の URL を開くことができません: %s"
 
 #: common/wck-plugin.c:280
 msgid "Unsupported windowing environment"
-msgstr ""
+msgstr "サポートされていないウィンドウ環境"
 
 #: common/wck-plugin.c:281
 msgid "_OK"
