@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-05-07 13:05+0200\n"
+"POT-Creation-Date: 2024-12-26 00:53+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2024\n"
 "Language-Team: Estonian (https://app.transifex.com/xfce/teams/16840/et/)\n"
@@ -21,22 +21,30 @@ msgstr ""
 "Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: common/wck-plugin.c:174
+#: common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Laadi uuesti"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Abiteave"
 
-#: common/wck-plugin.c:212
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Sulge"
 
-#: common/wck-plugin.c:251
+#: common/wck-plugin.c:250
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Järgneva urli avamisel tekkis viga: %s"
+
+#: common/wck-plugin.c:280
+msgid "Unsupported windowing environment"
+msgstr ""
+
+#: common/wck-plugin.c:281
+msgid "_OK"
+msgstr "_Sobib"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
