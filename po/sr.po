@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-05-07 13:05+0200\n"
+"POT-Creation-Date: 2024-12-26 00:53+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2024\n"
 "Language-Team: Serbian (https://app.transifex.com/xfce/teams/16840/sr/)\n"
@@ -22,22 +22,30 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: common/wck-plugin.c:174
+#: common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Освежи"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Помоћ"
 
-#: common/wck-plugin.c:212
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Затвори"
 
-#: common/wck-plugin.c:251
+#: common/wck-plugin.c:250
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Нисам успео да отворим следећу адресу: %s"
+
+#: common/wck-plugin.c:280
+msgid "Unsupported windowing environment"
+msgstr ""
+
+#: common/wck-plugin.c:281
+msgid "_OK"
+msgstr "_У реду"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.c:323
 msgid "Directory"
