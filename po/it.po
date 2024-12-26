@@ -44,7 +44,7 @@ msgstr "Impossibile aprire l'url: %s"
 
 #: common/wck-plugin.c:280
 msgid "Unsupported windowing environment"
-msgstr ""
+msgstr "Ambiente di finestre non supportato"
 
 #: common/wck-plugin.c:281
 msgid "_OK"
