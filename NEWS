@@ -1,3 +1,39 @@
+0.5.2 (2024-12-29)
+=====
+- Exit early and remove plugin on non X11 environments
+- Update copyright year
+- build: Bump dependency versions and fix deprecation warnings
+- I18n: Update po/LINGUAS list
+- I18n: Update po/LINGUAS list
+- title: Fix check for maximized window in wnck windows stack
+- I18n: Update po/LINGUAS list
+- build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+- build: Switch from intltool to gettext
+- title: Fix width in expand mode
+- title: Fix crash with visible on desktop enabled
+- buttons: Fix tooltip text of show_on_desktop checkbutton
+- build: Add GLib requirement
+- build: Fix autotools warnings
+- Fix some blurry icons when UI scale > 1
+- common: Convert GdkRGBA to #rrggbb
+- README.md: Fix license badge
+- Rename WBPlugin typedef to WckButtonsPlugin
+- Rename XFCONF to LIBXFCONF and cleanup a little
+- title: Rename windowck to wcktitle
+- Remove -plugin suffix to unify names with other plugins
+- settings: Use Xfconf backend
+- Update About dialog
+- title: Change enums values and simplify handling
+- Fix Makefile rules when running multiple jobs
+- Translation Updates:
+  Albanian, Basque, Bulgarian, Catalan, Chinese (China), Chinese
+  (Taiwan), Croatian, Czech, Danish, Dutch, English (Canada), English
+  (United Kingdom), Estonian, French, Galician, German, Hebrew,
+  Interlingue, Italian, Japanese, Kazakh, Korean, Lithuanian, Malay,
+  Norwegian Bokmål, Polish, Portuguese, Portuguese (Brazil), Romanian,
+  Russian, Russian (Russia), Serbian, Slovak, Slovenian, Spanish,
+  Swedish, Turkish, Ukrainian
+
 0.5.1
     Add new icon for Window Menu plugin
     Fix window icon showing
