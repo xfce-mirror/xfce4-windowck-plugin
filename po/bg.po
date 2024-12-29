@@ -42,7 +42,7 @@ msgstr "Следният адрес не може да бъде отворен: 
 
 #: common/wck-plugin.c:280
 msgid "Unsupported windowing environment"
-msgstr ""
+msgstr "Неподдържана прозоречна среда"
 
 #: common/wck-plugin.c:281
 msgid "_OK"
