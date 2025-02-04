@@ -247,6 +247,10 @@ static void on_refresh_item_activated (GtkMenuItem *refresh, WckMenuPlugin *wmp)
     reload_wnck_icon (wmp);
 }
 
+static XfcePanelPlugin* wckmenu_get_plugin(gpointer wtp) {
+    return ((WckMenuPlugin *) wtp)->plugin;
+}
+
 
 static void wckmenu_construct(XfcePanelPlugin *plugin)
 {
@@ -293,8 +297,8 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
     /* start tracking */
     wmp->win = g_slice_new0 (WckUtils);
-    wmp->win->get_plugin = NULL;
-    init_wnck (wmp->win, wmp->prefs->only_maximized, FALSE, wmp);
+    wmp->win->get_plugin = wckmenu_get_plugin;
+    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
 
     /* start tracking icon color */
     init_icon_colors (wmp);
