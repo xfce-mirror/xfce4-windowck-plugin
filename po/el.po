@@ -85,7 +85,7 @@ msgstr "<b>Συμπεριφορά</b>"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:109
 msgid "Get in sync with the window manager theme."
-msgstr "Αντικατάσταση θέματος στο διαχειριστή παραθύρων."
+msgstr "Συγχρονισμός του θέματος στον διαχειριστή παραθύρων"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:153
 msgid "Button layout:"
@@ -118,7 +118,7 @@ msgstr "Τοποθέτηση κουμπιών του μεγιστοποιημέ�
 #: panel-plugin/menu/wckmenu-dialogs.glade:61
 #: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
-msgstr "Εμφάνιση πρόσθετου στην επιφάνεια εργασάις."
+msgstr "Εμφάνιση πρόσθετου στην επιφάνεια εργασίας."
 
 #: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
@@ -182,7 +182,7 @@ msgstr "Εμφάνιση τίτλου σε δύο γραμμές"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
-msgstr "Αντικατάσταση της γραμματοσειράς τίτλου στο διαχειριστή παραθύρων."
+msgstr "Συγχρονισμός της γραμματοσειράς στο διαχειριστή παραθύρων."
 
 #: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
