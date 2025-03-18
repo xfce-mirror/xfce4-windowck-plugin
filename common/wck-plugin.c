@@ -244,7 +244,11 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
     {
         gboolean result;
 
+#if LIBXFCE4UI_CHECK_VERSION(4, 21, 0)
+        result = g_spawn_command_line_async ("xfce-open --launch WebBrowser " PACKAGE_URL, NULL);
+#else
         result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
+#endif
 
         if (G_UNLIKELY (result == FALSE))
             g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
