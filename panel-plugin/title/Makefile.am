@@ -14,7 +14,7 @@ plugindir = \
 	$(libdir)/xfce4/panel/plugins
 
 libwcktitle_built_sources = \
-	wcktitle-dialogs_ui.h
+	wcktitle-dialogs-resources.c
 
 libwcktitle_la_SOURCES = \
 	$(libwcktitle_built_sources) \
@@ -67,6 +67,7 @@ desktop_DATA = \
 
 EXTRA_DIST = \
 	wcktitle-dialogs.glade \
+	wcktitle-dialogs.gresource.xml \
 	wcktitle.desktop.in
 
 CLEANFILES = \
@@ -78,7 +79,9 @@ BUILT_SOURCES = \
 CLEANFILES += \
 	$(libwcktitle_built_sources)
 
-wcktitle-dialogs_ui.h: wcktitle-dialogs.glade
-	$(AM_V_GEN) xdt-csource --static --strip-comments --strip-content --name=wcktitle_dialogs_ui $< >$@
-	
+wcktitle_dialogs_glade_files = $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/wcktitle-dialogs.gresource.xml)
+
+wcktitle-dialogs-resources.c: $(srcdir)/wcktitle-dialogs.gresource.xml $(wcktitle_dialogs_glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
+
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

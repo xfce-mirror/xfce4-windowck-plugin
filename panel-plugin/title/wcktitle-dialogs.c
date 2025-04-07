@@ -30,7 +30,6 @@
 
 #include "wcktitle-title.h"
 #include "wcktitle-dialogs.h"
-#include "wcktitle-dialogs_ui.h"
 
 #define TITLE_SIZE_MIN 3
 
@@ -213,7 +212,7 @@ on_title_padding_changed (GtkSpinButton *title_padding, WckTitlePlugin *wtp)
 
 
 static GtkWidget *
-build_properties_area (WckTitlePlugin *wtp, const gchar *buffer, gsize length)
+build_properties_area (WckTitlePlugin *wtp)
 {
     GError *error = NULL;
 
@@ -222,7 +221,7 @@ build_properties_area (WckTitlePlugin *wtp, const gchar *buffer, gsize length)
 
     wtp->prefs->builder = gtk_builder_new();
 
-    if (gtk_builder_add_from_string (wtp->prefs->builder, buffer, length, &error)) {
+    if (gtk_builder_add_from_resource (wtp->prefs->builder, "/org/xfce/windowck-plugin/wcktitle/wcktitle-dialogs.glade", &error)) {
         GObject *area = gtk_builder_get_object(wtp->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
@@ -371,7 +370,7 @@ wcktitle_configure (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 {
     GtkWidget *ca;
 
-    ca = build_properties_area (wtp, wcktitle_dialogs_ui, wcktitle_dialogs_ui_length);
+    ca = build_properties_area (wtp);
 
     wck_configure_dialog (plugin, WCKTITLE_ICON, ca, G_CALLBACK (wcktitle_configure_response), wtp);
 }

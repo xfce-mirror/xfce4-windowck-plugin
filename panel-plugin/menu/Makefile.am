@@ -14,7 +14,7 @@ plugindir = \
 	$(libdir)/xfce4/panel/plugins
 
 libwckmenu_built_sources = \
-	wckmenu-dialogs_ui.h
+	wckmenu-dialogs-resources.c
 
 libwckmenu_la_SOURCES = \
 	$(libwckmenu_built_sources) \
@@ -67,6 +67,7 @@ desktop_DATA = \
 
 EXTRA_DIST = \
 	wckmenu-dialogs.glade \
+	wckmenu-dialogs.gresource.xml \
 	wckmenu.desktop.in
 
 CLEANFILES = \
@@ -78,7 +79,9 @@ BUILT_SOURCES = \
 CLEANFILES += \
 	$(libwckmenu_built_sources)
 
-wckmenu-dialogs_ui.h: wckmenu-dialogs.glade
-	$(AM_V_GEN) xdt-csource --static --strip-comments --strip-content --name=wckmenu_dialogs_ui $< >$@
+wckmenu_dialogs_glade_files = $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/wckmenu-dialogs.gresource.xml)
+
+wckmenu-dialogs-resources.c: $(srcdir)/wckmenu-dialogs.gresource.xml $(wckmenu_dialogs_glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

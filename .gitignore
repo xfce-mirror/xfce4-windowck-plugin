@@ -27,7 +27,6 @@ ltmain.sh
 missing
 mkinstalldirs
 panel-plugin/*/*.desktop
-panel-plugin/*/*-dialogs_ui.h
 m4/
 po/Makefile.in.in
 po/POTFILES

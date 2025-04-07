@@ -33,7 +33,6 @@
 #include "wckbuttons.h"
 #include "wckbuttons-theme.h"
 #include "wckbuttons-dialogs.h"
-#include "wckbuttons-dialogs_ui.h"
 
 
 enum
@@ -264,13 +263,13 @@ on_sync_wm_theme_toggled (GtkToggleButton *sync_wm_theme, WckButtonsPlugin *wbp)
 
 
 static GtkWidget *
-build_properties_area (WckButtonsPlugin *wbp, const gchar *buffer, gsize length)
+build_properties_area (WckButtonsPlugin *wbp)
 {
     GError *error = NULL;
 
     wbp->prefs->builder = gtk_builder_new ();
 
-    if (gtk_builder_add_from_string (wbp->prefs->builder, buffer, length, &error)) {
+    if (gtk_builder_add_from_resource (wbp->prefs->builder, "/org/xfce/windowck-plugin/wckbuttons/wckbuttons-dialogs.glade", &error)) {
         GObject *area = gtk_builder_get_object (wbp->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
@@ -384,7 +383,7 @@ wckbuttons_configure (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
 {
     GtkWidget *ca;
 
-    ca = build_properties_area (wbp, wckbuttons_dialogs_ui, wckbuttons_dialogs_ui_length);
+    ca = build_properties_area (wbp);
 
     wck_configure_dialog (plugin, WCKBUTTONS_ICON, ca, G_CALLBACK(wckbuttons_configure_response), wbp);
 }

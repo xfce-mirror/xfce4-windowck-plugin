@@ -31,7 +31,6 @@
 #include "wckmenu.h"
 #include "wckmenu-icon.h"
 #include "wckmenu-dialogs.h"
-#include "wckmenu-dialogs_ui.h"
 
 
 static void
@@ -68,7 +67,7 @@ on_show_app_icon_toggled (GtkToggleButton *show_app_icon, WckMenuPlugin *wmp)
 
 
 static GtkWidget *
-build_properties_area (WckMenuPlugin *wmp, const gchar *buffer, gsize length)
+build_properties_area (WckMenuPlugin *wmp)
 {
     GError *error = NULL;
 
@@ -77,7 +76,7 @@ build_properties_area (WckMenuPlugin *wmp, const gchar *buffer, gsize length)
 
     wmp->prefs->builder = gtk_builder_new();
 
-    if (gtk_builder_add_from_string(wmp->prefs->builder, buffer, length, &error)) {
+    if (gtk_builder_add_from_resource(wmp->prefs->builder, "/org/xfce/windowck-plugin/wckmenu/wckmenu-dialogs.glade", &error)) {
         GObject *area = gtk_builder_get_object(wmp->prefs->builder, "vbox0");
 
         if (G_LIKELY (area != NULL))
@@ -136,7 +135,7 @@ wckmenu_configure (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
     GtkWidget *ca;
 
-    ca = build_properties_area (wmp, wckmenu_dialogs_ui, wckmenu_dialogs_ui_length);
+    ca = build_properties_area (wmp);
 
     wck_configure_dialog (plugin, WCKMENU_ICON, ca, G_CALLBACK(wckmenu_configure_response), wmp);
 }
