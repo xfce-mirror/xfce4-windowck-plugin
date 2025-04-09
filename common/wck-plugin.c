@@ -167,7 +167,7 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
                            "program-name", xfce_panel_plugin_get_display_name (plugin),
                            "comments", xfce_panel_plugin_get_comment (plugin),
                            "website", PACKAGE_URL,
-                           "copyright", "Copyright \302\251 2003-2024 The Xfce development team",
+                           "copyright", "Copyright \302\251 2003-" COPYRIGHT_YEAR " The Xfce development team",
                            "authors", authors,
                            NULL);
 }
