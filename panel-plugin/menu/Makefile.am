@@ -66,6 +66,7 @@ desktop_DATA = \
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST = \
+	meson.build \
 	wckmenu-dialogs.glade \
 	wckmenu-dialogs.gresource.xml \
 	wckmenu.desktop.in

@@ -21,6 +21,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include <string.h>
 #include <gtk/gtk.h>
@@ -160,7 +163,7 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
     gtk_show_about_dialog (NULL,
                            "logo-icon-name", icon_name,
                            "license", xfce_get_license_text (XFCE_LICENSE_TEXT_GPL),
-                           "version", PACKAGE_VERSION,
+                           "version", VERSION_FULL,
                            "program-name", xfce_panel_plugin_get_display_name (plugin),
                            "comments", xfce_panel_plugin_get_comment (plugin),
                            "website", PACKAGE_URL,
