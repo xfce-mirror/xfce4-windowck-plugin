@@ -20,6 +20,7 @@
 
 '''
 
+import os
 import sys
 from pathlib import Path
 
@@ -322,5 +323,8 @@ amap = {
 
 
 if __name__ == "__main__":
+    # This script writes generated files to cwd.
+    if len(sys.argv) > 1 and os.path.isdir(sys.argv[1]):
+        os.chdir(sys.argv[1])
     active_icon = IconMap(active, amap)
     build_xfwm4(icons, active_icon, active_icon)

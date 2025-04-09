@@ -74,4 +74,8 @@ clean-data-local:
 uninstall-local: uninstall-am clean-data-local
 	rm -f $(DESTDIR)$(themedir)/*.xpm $(DESTDIR)$(themedir)/themerc
 
-EXTRA_DIST = $(theme_DATA)
+EXTRA_DIST = \
+	generator.py \
+	meson.build \
+	$(theme_DATA) \
+	$(NULL)

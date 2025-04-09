@@ -6,17 +6,22 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
+m4_define([copyright_year], [2025])
 XDT_VERSION_INIT([0.5.2], [git])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (C) 2015 Alessio Piccoli, Cedric Leporcq. All rights reserved.
-              Copyright (C) 2010-2024 The Xfce development team. All rights reserved.])
+              Copyright (C) 2010-copyright_year() The Xfce development team. All rights reserved.])
 AC_INIT([xfce4-windowck-plugin],[xdt_version],[https://gitlab.xfce.org/panel-plugins/xfce4-windowck-plugin/-/issues],[xfce4-windowck-plugin],[https://docs.xfce.org/panel-plugins/xfce4-windowck-plugin/])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
 AC_CONFIG_MACRO_DIRS([m4])
+AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
+COPYRIGHT_YEAR=copyright_year()
+AC_DEFINE_UNQUOTED([COPYRIGHT_YEAR], ["$COPYRIGHT_YEAR"], [Copyright year])
+AC_SUBST([COPYRIGHT_YEAR])
 
 dnl ***************************
 dnl *** Initialize automake ***
@@ -76,6 +81,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-2.0], [4.16.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.16.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.16.0])
 XDT_CHECK_PACKAGE([LIBXFCONF], [libxfconf-0], [4.16.0])
+XDT_CHECK_PACKAGE_BINARY([GLIB_COMPILE_RESOURCES], [gio-2.0], [glib_compile_resources], [glib-compile-resources])
 
 dnl ***********************************
 dnl *** Check for debugging support ***

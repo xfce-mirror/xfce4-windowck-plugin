@@ -14,7 +14,7 @@ plugindir = \
 	$(libdir)/xfce4/panel/plugins
 
 libwckbuttons_built_sources = \
-	wckbuttons-dialogs_ui.h
+	wckbuttons-dialogs-resources.c
 
 libwckbuttons_la_SOURCES = \
 	$(libwckbuttons_built_sources) \
@@ -69,7 +69,9 @@ desktop_DATA =								\
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST =								\
+	meson.build								\
 	wckbuttons-dialogs.glade				\
+	wckbuttons-dialogs.gresource.xml		\
 	wckbuttons.desktop.in
 
 CLEANFILES =								\
@@ -81,7 +83,9 @@ BUILT_SOURCES = \
 CLEANFILES += \
 	$(libwckbuttons_built_sources)
 
-wckbuttons-dialogs_ui.h: wckbuttons-dialogs.glade
-	$(AM_V_GEN) xdt-csource --static --strip-comments --strip-content --name=wckbuttons_dialogs_ui $< >$@
+wckbuttons_dialogs_glade_files = $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/wckbuttons-dialogs.gresource.xml)
+
+wckbuttons-dialogs-resources.c: $(srcdir)/wckbuttons-dialogs.gresource.xml $(wckbuttons_dialogs_glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
