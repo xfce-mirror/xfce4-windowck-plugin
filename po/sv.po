@@ -75,7 +75,7 @@ msgstr "Visa knapparna på skrivbordet."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
-msgstr ""
+msgstr "Att klicka på stängningsknappen på skrivbordet orsakar utloggning."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:80
 #: panel-plugin/menu/wckmenu-dialogs.glade:79
