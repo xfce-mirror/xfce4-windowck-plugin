@@ -60,7 +60,7 @@ void reload_wnck (WckUtils *win, gboolean only_maximized, gpointer data);
 void toggle_maximize (WnckWindow *window);
 gboolean wck_signal_handler_disconnect (GObject *object, gulong handler);
 
-inline gboolean
+static inline gboolean
 window_is_desktop (WnckWindow *window)
 {
     return wnck_window_get_window_type (window) == WNCK_WINDOW_DESKTOP;
