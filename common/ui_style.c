@@ -20,10 +20,6 @@
         xfwm4-windowck-plugin - (c) 2013 Cedric leporcq
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <stdio.h>
 
 #include <glib.h>
