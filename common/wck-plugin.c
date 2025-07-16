@@ -199,8 +199,11 @@ wck_configure_dialog (XfcePanelPlugin *plugin, const gchar *icon_name, GtkWidget
     GtkWidget *content_area;
     const gchar *name;
 
-    /* block the plugin menu */
-    xfce_panel_plugin_block_menu (plugin);
+    if ((dialog = g_object_get_data (G_OBJECT (plugin), "dialog")) != NULL)
+    {
+        gtk_window_present (GTK_WINDOW (dialog));
+        return;
+    }
 
     /* create the dialog */
     name = xfce_panel_plugin_get_display_name (plugin);
@@ -257,9 +260,6 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
     {
         /* remove the dialog data from the plugin */
         g_object_set_data (G_OBJECT (plugin), "dialog", NULL);
-
-        /* unlock the panel menu */
-        xfce_panel_plugin_unblock_menu (plugin);
 
         /* save the plugin */
         save_settings (data);
