@@ -18,10 +18,6 @@
  *
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <libxfce4panel/libxfce4panel.h>
 
 #include <common/ui_style.h>
