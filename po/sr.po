@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Xfce
-# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
-"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-12-26 00:53+0100\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-17 12:57+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2025\n"
 "Language-Team: Serbian (https://app.transifex.com/xfce/teams/16840/sr/)\n"
@@ -22,74 +22,74 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: common/wck-plugin.c:176
+#: ../common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Освежи"
 
-#: common/wck-plugin.c:210
+#: ../common/wck-plugin.c:213
 msgid "Help"
 msgstr "Помоћ"
 
-#: common/wck-plugin.c:211
+#: ../common/wck-plugin.c:214
 msgid "_Close"
 msgstr "_Затвори"
 
-#: common/wck-plugin.c:250
+#: ../common/wck-plugin.c:257
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Нисам успео да отворим следећу адресу: %s"
 
-#: common/wck-plugin.c:280
+#: ../common/wck-plugin.c:284
 msgid "Unsupported windowing environment"
 msgstr "Неподржана средина стварања прозора"
 
-#: common/wck-plugin.c:281
+#: ../common/wck-plugin.c:285
 msgid "_OK"
 msgstr "_У реду"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:323
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
 msgid "Directory"
 msgstr "Фасцикла"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:325
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:320
 msgid "Themes usable"
 msgstr "Употребљиве теме"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
-#: panel-plugin/menu/wckmenu-dialogs.glade:32
-#: panel-plugin/title/wcktitle-dialogs.glade:66
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
 msgid "Control maximized windows."
 msgstr "Управља увећаним прозорима."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
-#: panel-plugin/menu/wckmenu-dialogs.glade:46
-#: panel-plugin/title/wcktitle-dialogs.glade:80
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
 msgid "Control active windows."
 msgstr "Управља тренутним прозорима."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
 msgstr "Приказуј дугмад на радној површи."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Клик на дугме затварања на радној површи узрокује одјаву."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
 msgid "<b>Behaviour</b>"
 msgstr "<b>Понашање</b>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
 msgstr "Усклади се са темом управника прозора."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
 msgid "Button layout:"
 msgstr "Распоред дугмади:"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -99,105 +99,81 @@ msgstr ""
 "Пример:[HMC]\n"
 "H=Сакриј, M=Увећај/Умањи, C=Затвори"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
 msgid "<b>Appearance</b>"
 msgstr "<b>Изглед</b>"
 
-#: panel-plugin/buttons/wckbuttons.desktop.in:5
-msgid "Window Header - Buttons"
-msgstr "Наслов прозора - дугмад"
-
-#: panel-plugin/buttons/wckbuttons.desktop.in:6
-msgid "Put the maximized window buttons on the panel."
-msgstr "Постави дугмад увећаног прозора на полици."
-
-#: panel-plugin/menu/wckmenu-dialogs.glade:61
-#: panel-plugin/title/wcktitle-dialogs.glade:95
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
 msgstr "Приказуј прикључак на радној површи."
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Приказуј сличицу прозора."
 
-#: panel-plugin/menu/wckmenu.desktop.in:5
-msgid "Window Header - Menu"
-msgstr "Заглавље прозора - изборник"
-
-#: panel-plugin/menu/wckmenu.desktop.in:6
-msgid "Put the maximized window menu on the panel."
-msgstr "Смести изборник увећаних прозора на полицу."
-
-#: panel-plugin/title/wcktitle-dialogs.glade:12
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
 msgstr "углавном"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:15
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
 msgid "fixed to"
 msgstr "везан за"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:18
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
 msgid "expand"
 msgstr "прошири"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:29
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
 msgid "left"
 msgstr "лево"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:32
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
 msgid "center"
 msgstr "средина"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:35
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
 msgid "right"
 msgstr "десно"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
 msgid "Width:"
 msgstr "Ширина:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
 msgid "chars"
 msgstr "знаци"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
 msgid "Padding:"
 msgstr "Попуна:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
 msgid "pixels"
 msgstr "тачке"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
 msgid "Show the full title name"
 msgstr "Приказуј потпуно насловно име"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:295
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
 msgid "Display the title in two lines"
 msgstr "Приказуј налове у две линије"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:309
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
 msgid "Sync the font with the window manager."
 msgstr "Усклади словолик са управником прозора."
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
 msgid "Title font:"
 msgstr "Словолик наслова:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
 msgid "Subtitle font:"
 msgstr "Словолик поднаслова:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Поравнање:"
-
-#: panel-plugin/title/wcktitle.desktop.in:5
-msgid "Window Header - Title"
-msgstr "Заглавље прозора - наслов"
-
-#: panel-plugin/title/wcktitle.desktop.in:6
-msgid "Put the maximized window title on the panel."
-msgstr "Смести наслов увећаног прозора на полицу."
