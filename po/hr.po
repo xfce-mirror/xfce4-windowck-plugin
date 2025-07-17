@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
-# Ivica  Kolić <ikoli@yahoo.com>, 2022
+# Ivica  Kolić <ikoli@yahoo.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 01:03+0200\n"
+"POT-Creation-Date: 2025-07-17 12:57+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2022\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2024\n"
 "Language-Team: Croatian (https://app.transifex.com/xfce/teams/16840/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,28 +22,36 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: ../common/wck-plugin.c:174
+#: ../common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Osvježi"
 
-#: ../common/wck-plugin.c:211
+#: ../common/wck-plugin.c:213
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../common/wck-plugin.c:212
+#: ../common/wck-plugin.c:214
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: ../common/wck-plugin.c:251
+#: ../common/wck-plugin.c:257
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Nije moguće otvoriti slijedeći url: %s"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:323
+#: ../common/wck-plugin.c:284
+msgid "Unsupported windowing environment"
+msgstr ""
+
+#: ../common/wck-plugin.c:285
+msgid "_OK"
+msgstr "_U redu"
+
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
 msgid "Directory"
 msgstr "Direktorij"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:325
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:320
 msgid "Themes usable"
 msgstr ""
 
