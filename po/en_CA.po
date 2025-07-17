@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Xfce
-# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
-"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-12-26 00:53+0100\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-17 12:57+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Steve Harris <steve@jbs.ca>, 2025\n"
 "Language-Team: English (Canada) (https://app.transifex.com/xfce/teams/16840/en_CA/)\n"
@@ -21,74 +21,74 @@ msgstr ""
 "Language: en_CA\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: common/wck-plugin.c:176
+#: ../common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Refresh"
 
-#: common/wck-plugin.c:210
+#: ../common/wck-plugin.c:213
 msgid "Help"
 msgstr "Help"
 
-#: common/wck-plugin.c:211
+#: ../common/wck-plugin.c:214
 msgid "_Close"
 msgstr "_Close"
 
-#: common/wck-plugin.c:250
+#: ../common/wck-plugin.c:257
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Unable to open the following url: %s"
 
-#: common/wck-plugin.c:280
+#: ../common/wck-plugin.c:284
 msgid "Unsupported windowing environment"
 msgstr "Unsupported windowing environment"
 
-#: common/wck-plugin.c:281
+#: ../common/wck-plugin.c:285
 msgid "_OK"
 msgstr "_OK"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:323
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
 msgid "Directory"
 msgstr "Directory"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:325
+#: ../panel-plugin/buttons/wckbuttons-dialogs.c:320
 msgid "Themes usable"
 msgstr "Themes usable"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
-#: panel-plugin/menu/wckmenu-dialogs.glade:32
-#: panel-plugin/title/wcktitle-dialogs.glade:66
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
 msgid "Control maximized windows."
 msgstr "Control maximized windows."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
-#: panel-plugin/menu/wckmenu-dialogs.glade:46
-#: panel-plugin/title/wcktitle-dialogs.glade:80
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
 msgid "Control active windows."
 msgstr "Control active windows."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
 msgstr "Show the buttons on desktop."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Clicking the close button on the desktop causes log out."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
 msgid "<b>Behaviour</b>"
 msgstr "<b>Behaviour</b>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
 msgid "Get in sync with the window manager theme."
 msgstr "Get in sync with the window manager theme."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
 msgid "Button layout:"
 msgstr "Button layout:"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -98,105 +98,81 @@ msgstr ""
 "Example: [HMC]\n"
 "H=Hide, M=Maximize/unMaximize, C=Close"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
 msgid "<b>Appearance</b>"
 msgstr "<b>Appearance</b>"
 
-#: panel-plugin/buttons/wckbuttons.desktop.in:5
-msgid "Window Header - Buttons"
-msgstr "Window Header - Buttons"
-
-#: panel-plugin/buttons/wckbuttons.desktop.in:6
-msgid "Put the maximized window buttons on the panel."
-msgstr "Put the maximized window buttons on the panel."
-
-#: panel-plugin/menu/wckmenu-dialogs.glade:61
-#: panel-plugin/title/wcktitle-dialogs.glade:95
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
 msgid "Show the plugin on desktop."
 msgstr "Show the plugin on desktop."
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
 msgid "Show the window Icon."
 msgstr "Show the window Icon."
 
-#: panel-plugin/menu/wckmenu.desktop.in:5
-msgid "Window Header - Menu"
-msgstr "Window Header - Menu"
-
-#: panel-plugin/menu/wckmenu.desktop.in:6
-msgid "Put the maximized window menu on the panel."
-msgstr "Put the maximized window menu on the panel."
-
-#: panel-plugin/title/wcktitle-dialogs.glade:12
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
 msgid "at most"
 msgstr "at most"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:15
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
 msgid "fixed to"
 msgstr "fixed to"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:18
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
 msgid "expand"
 msgstr "expand"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:29
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
 msgid "left"
 msgstr "left"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:32
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
 msgid "center"
 msgstr "centre"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:35
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
 msgid "right"
 msgstr "right"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
 msgid "Width:"
 msgstr "Width:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
 msgid "chars"
 msgstr "chars"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
 msgid "Padding:"
 msgstr "Padding:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
 msgid "pixels"
 msgstr "pixels"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
 msgid "Show the full title name"
 msgstr "Show the full title name"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:295
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
 msgid "Display the title in two lines"
 msgstr "Display the title in two lines"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:309
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
 msgid "Sync the font with the window manager."
 msgstr "Sync the font with the window manager."
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
 msgid "Title font:"
 msgstr "Title font:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
 msgid "Subtitle font:"
 msgstr "Subtitle font:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
 msgid "Alignment:"
 msgstr "Alignment:"
-
-#: panel-plugin/title/wcktitle.desktop.in:5
-msgid "Window Header - Title"
-msgstr "Window Header - Title"
-
-#: panel-plugin/title/wcktitle.desktop.in:6
-msgid "Put the maximized window title on the panel."
-msgstr "Put the maximized window title on the panel."
