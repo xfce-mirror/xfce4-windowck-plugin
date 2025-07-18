@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Michael John <amstelchen@gmail.com>, 2022
 # Joerg Schachner, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Tobias Bannert <tobannert@gmail.com>, 2022
-# Andreas Eitel <github-aneitel@online.de>, 2024
+# Andreas Eitel <github-aneitel@online.de>, 2025
+# Michael John <amstelchen@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 12:57+0200\n"
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2025-07-18 11:09+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2024\n"
+"Last-Translator: Michael John <amstelchen@gmail.com>, 2025\n"
 "Language-Team: German (https://app.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,74 +25,74 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../common/wck-plugin.c:176
+#: common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_Aktualisieren"
 
-#: ../common/wck-plugin.c:213
+#: common/wck-plugin.c:213
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../common/wck-plugin.c:214
+#: common/wck-plugin.c:214
 msgid "_Close"
 msgstr "_Schließen"
 
-#: ../common/wck-plugin.c:257
+#: common/wck-plugin.c:257
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Die folgende Adresse konnte nicht geöffnet werden: »%s«"
 
-#: ../common/wck-plugin.c:284
+#: common/wck-plugin.c:284
 msgid "Unsupported windowing environment"
 msgstr "Nicht unterstützte Fensterumgebung"
 
-#: ../common/wck-plugin.c:285
+#: common/wck-plugin.c:285
 msgid "_OK"
 msgstr "_OK"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:318
 msgid "Directory"
 msgstr "Verzeichnis"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:320
 msgid "Themes usable"
 msgstr "Verwendbare Themen"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
 msgstr "Steuere maximierte Fenster."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
 msgid "Control active windows."
 msgstr "Steuere aktive Fenster."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
 msgid "Show the buttons on desktop."
 msgstr "Knöpfe auf dem Desktop zeigen."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Ein Klick auf den Knopf Schließen auf dem Desktop führt zum Abmelden."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
+#: panel-plugin/menu/wckmenu-dialogs.glade:79
+#: panel-plugin/title/wcktitle-dialogs.glade:113
 msgid "<b>Behaviour</b>"
 msgstr "<b>Verhalten</b>"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
 msgid "Get in sync with the window manager theme."
 msgstr "Mit dem Fenstermanager synchronisieren."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
 msgid "Button layout:"
 msgstr "Layout der Knöpfe"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -102,81 +102,105 @@ msgstr ""
 "Beispiel; [HMC]\n"
 "H=Versteckt, M=Vergrößern/Verkleinern, C=Schließen"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
+#: panel-plugin/menu/wckmenu-dialogs.glade:127
+#: panel-plugin/title/wcktitle-dialogs.glade:427
 msgid "<b>Appearance</b>"
 msgstr "<b>Erscheinungsbild</b>"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "Fensterleiste - Knöpfe"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "Knöpfe von maximierten Fenstern auf der Leiste zeigen."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
 msgstr "Erweiterung bei aktiviertem Desktop zeigen."
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+#: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
 msgstr "Fenstericon anzeigen."
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "Fensterüberschrift - Menü"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "Legen Sie das Menü des maximierten Fensters auf die Leiste."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
 msgid "at most"
 msgstr "höchstens"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+#: panel-plugin/title/wcktitle-dialogs.glade:15
 msgid "fixed to"
 msgstr "genau"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+#: panel-plugin/title/wcktitle-dialogs.glade:18
 msgid "expand"
 msgstr "ausdehnen"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+#: panel-plugin/title/wcktitle-dialogs.glade:29
 msgid "left"
 msgstr "links"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+#: panel-plugin/title/wcktitle-dialogs.glade:32
 msgid "center"
 msgstr "mittig"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+#: panel-plugin/title/wcktitle-dialogs.glade:35
 msgid "right"
 msgstr "rechts"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+#: panel-plugin/title/wcktitle-dialogs.glade:150
 msgid "Width:"
 msgstr "Breite:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+#: panel-plugin/title/wcktitle-dialogs.glade:201
 msgid "chars"
 msgstr "Zeichen"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+#: panel-plugin/title/wcktitle-dialogs.glade:230
 msgid "Padding:"
 msgstr "Abstand:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+#: panel-plugin/title/wcktitle-dialogs.glade:260
 msgid "pixels"
 msgstr "Pixel"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+#: panel-plugin/title/wcktitle-dialogs.glade:281
 msgid "Show the full title name"
 msgstr "Zeige den vollständigen Titel"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Display the title in two lines"
 msgstr "Zeige den Titel zweizeilig an"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
 msgstr "Mit dem Fenstermanager synchronisieren."
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+#: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
 msgstr "Titelschrift:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+#: panel-plugin/title/wcktitle-dialogs.glade:361
 msgid "Subtitle font:"
 msgstr "Untertitelschrift:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+#: panel-plugin/title/wcktitle-dialogs.glade:389
 msgid "Alignment:"
 msgstr "Ausrichtung:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "Fensterleiste - Titel"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "Setzen des Titels des maximierten Fensters auf die Leiste."
