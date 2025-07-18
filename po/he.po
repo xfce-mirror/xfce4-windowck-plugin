@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 12:57+0200\n"
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2025-07-18 11:09+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2025\n"
 "Language-Team: Hebrew (https://app.transifex.com/xfce/teams/16840/he/)\n"
@@ -22,74 +22,74 @@ msgstr ""
 "Language: he\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 
-#: ../common/wck-plugin.c:176
+#: common/wck-plugin.c:176
 msgid "_Refresh"
 msgstr "_רענון"
 
-#: ../common/wck-plugin.c:213
+#: common/wck-plugin.c:213
 msgid "Help"
 msgstr "עזרה"
 
-#: ../common/wck-plugin.c:214
+#: common/wck-plugin.c:214
 msgid "_Close"
 msgstr "_סגור"
 
-#: ../common/wck-plugin.c:257
+#: common/wck-plugin.c:257
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "לא יכול לפתוח את הכתובת הבאה: %s "
 
-#: ../common/wck-plugin.c:284
+#: common/wck-plugin.c:284
 msgid "Unsupported windowing environment"
 msgstr "סביבת חלונות לא נתמכת"
 
-#: ../common/wck-plugin.c:285
+#: common/wck-plugin.c:285
 msgid "_OK"
 msgstr "_אישור"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:318
 msgid "Directory"
 msgstr "ספריה"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:320
 msgid "Themes usable"
 msgstr "ערכות נושא שמישות"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:1
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
 msgstr "בקר חלונות מוגדלים."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:2
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
 msgid "Control active windows."
 msgstr "בקר חלונות פעילים."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
 msgid "Show the buttons on desktop."
 msgstr "הצג את הלחצנים על לוח העבודה."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "קליק על לחצן סגירה בשולחן עבודה גורם ליציאה מהמערכת."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:5
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:4
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:10
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
+#: panel-plugin/menu/wckmenu-dialogs.glade:79
+#: panel-plugin/title/wcktitle-dialogs.glade:113
 msgid "<b>Behaviour</b>"
 msgstr "<b>התנהגות</b>"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:6
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
 msgid "Get in sync with the window manager theme."
 msgstr "הסתנכרן עם ערכת נושא מנהל חלונות."
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:7
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
 msgid "Button layout:"
 msgstr "סידור לחצנים:"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:8
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -99,81 +99,105 @@ msgstr ""
 "דוגמה: [HMC]\n"
 "H=הסתר, M=הגדל/בטל הגדלה, C=סגור"
 
-#: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:11
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:6
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:21
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
+#: panel-plugin/menu/wckmenu-dialogs.glade:127
+#: panel-plugin/title/wcktitle-dialogs.glade:427
 msgid "<b>Appearance</b>"
 msgstr "<b>הופעה</b>"
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:3
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:9
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "כותרת חלון עליונה - לחצנים"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "שים את לחצני החלון המוגדל על הלוח."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
 msgstr "הצג את התוסף על שולחן העבודה."
 
-#: ../panel-plugin/menu/wckmenu-dialogs.glade.h:5
+#: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
 msgstr "הצג את איקון החלון."
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:1
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "כותרת חלון - תפריט"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "מקם את תפריט החלון המורחב בלוח."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
 msgid "at most"
 msgstr "לכל היותר"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:2
+#: panel-plugin/title/wcktitle-dialogs.glade:15
 msgid "fixed to"
 msgstr "מקובע אל"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:3
+#: panel-plugin/title/wcktitle-dialogs.glade:18
 msgid "expand"
 msgstr "הרחב"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:4
+#: panel-plugin/title/wcktitle-dialogs.glade:29
 msgid "left"
 msgstr "שמאל"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:5
+#: panel-plugin/title/wcktitle-dialogs.glade:32
 msgid "center"
 msgstr "מרכז"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:6
+#: panel-plugin/title/wcktitle-dialogs.glade:35
 msgid "right"
 msgstr "ימין"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:11
+#: panel-plugin/title/wcktitle-dialogs.glade:150
 msgid "Width:"
 msgstr "רוחב:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:12
+#: panel-plugin/title/wcktitle-dialogs.glade:201
 msgid "chars"
 msgstr "chars"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:13
+#: panel-plugin/title/wcktitle-dialogs.glade:230
 msgid "Padding:"
 msgstr "מרווח:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:14
+#: panel-plugin/title/wcktitle-dialogs.glade:260
 msgid "pixels"
 msgstr "פיקסלים"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:15
+#: panel-plugin/title/wcktitle-dialogs.glade:281
 msgid "Show the full title name"
 msgstr "הצג שם כותרת מלאה"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:16
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Display the title in two lines"
 msgstr "הצג את הכותרת בשתי שורות"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:17
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
 msgstr "סנכרן את הגופן עם מנהל החלונות."
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:18
+#: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
 msgstr "גופן כותרת:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:19
+#: panel-plugin/title/wcktitle-dialogs.glade:361
 msgid "Subtitle font:"
 msgstr "גופן כותרת משנה:"
 
-#: ../panel-plugin/title/wcktitle-dialogs.glade.h:20
+#: panel-plugin/title/wcktitle-dialogs.glade:389
 msgid "Alignment:"
 msgstr "ישור:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "כותרת חלון עליונה - כותרת"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "שים את כותרת החלון המוגדל על הלוח."
