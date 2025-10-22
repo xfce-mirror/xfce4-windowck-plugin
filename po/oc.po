@@ -149,7 +149,7 @@ msgstr "centre"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:35
 msgid "right"
-msgstr "drecha"
+msgstr "dreita"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:150
 msgid "Width:"
@@ -181,15 +181,15 @@ msgstr ""
 
 #: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
-msgstr ""
+msgstr "Polissa del títol :"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:361
 msgid "Subtitle font:"
-msgstr ""
+msgstr "Polissa dels sostítols :"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:389
 msgid "Alignment:"
-msgstr ""
+msgstr "Alinhament :"
 
 #: panel-plugin/title/wcktitle.desktop.in:5
 msgid "Window Header - Title"
