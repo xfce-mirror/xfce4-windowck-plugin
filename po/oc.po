@@ -95,6 +95,9 @@ msgid ""
 "Example: [HMC]\n"
 "H=Hide, M=Maximize/unMaximize, C=Close"
 msgstr ""
+"Botatz los ID de boton dins l’òrdre volgut.\n"
+"Per exemple : [HMC]\n"
+"H=Rescondre, M=Maximizar/Reduire, C=Tampar"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:195
 #: panel-plugin/menu/wckmenu-dialogs.glade:127
@@ -104,40 +107,40 @@ msgstr "<b>Aparéncia</b>"
 
 #: panel-plugin/buttons/wckbuttons.desktop.in:5
 msgid "Window Header - Buttons"
-msgstr ""
+msgstr "Entèsta de fenèstra - Botons"
 
 #: panel-plugin/buttons/wckbuttons.desktop.in:6
 msgid "Put the maximized window buttons on the panel."
-msgstr ""
+msgstr "Botar los botons per maximizar la fenèstra sul panèl."
 
 #: panel-plugin/menu/wckmenu-dialogs.glade:61
 #: panel-plugin/title/wcktitle-dialogs.glade:95
 msgid "Show the plugin on desktop."
-msgstr ""
+msgstr "Afichar l’empeuton sul burèu."
 
 #: panel-plugin/menu/wckmenu-dialogs.glade:108
 msgid "Show the window Icon."
-msgstr ""
+msgstr "Afichar l’icòna de la fenèstra."
 
 #: panel-plugin/menu/wckmenu.desktop.in:5
 msgid "Window Header - Menu"
-msgstr ""
+msgstr "Entèsta de fenèstra - Menú"
 
 #: panel-plugin/menu/wckmenu.desktop.in:6
 msgid "Put the maximized window menu on the panel."
-msgstr ""
+msgstr "Botar lo menú de la fenèstra maximizat sul panèl."
 
 #: panel-plugin/title/wcktitle-dialogs.glade:12
 msgid "at most"
-msgstr ""
+msgstr "almens"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:15
 msgid "fixed to"
-msgstr ""
+msgstr "fixat a"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:18
 msgid "expand"
-msgstr ""
+msgstr "espandir"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:29
 msgid "left"
@@ -157,11 +160,11 @@ msgstr "Largor :"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:201
 msgid "chars"
-msgstr ""
+msgstr "caractèr"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:230
 msgid "Padding:"
-msgstr ""
+msgstr "Marge :"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:260
 msgid "pixels"
@@ -169,15 +172,15 @@ msgstr "pixèls"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:281
 msgid "Show the full title name"
-msgstr ""
+msgstr "Afichar lo nom complèt del títol"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Display the title in two lines"
-msgstr ""
+msgstr "Afichar lo títol en doas linhas"
 
 #: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Sync the font with the window manager."
-msgstr ""
+msgstr "Sincronizar la polissa amb lo gestionari de fenèstra."
 
 #: panel-plugin/title/wcktitle-dialogs.glade:333
 msgid "Title font:"
@@ -193,8 +196,8 @@ msgstr "Alinhament :"
 
 #: panel-plugin/title/wcktitle.desktop.in:5
 msgid "Window Header - Title"
-msgstr ""
+msgstr "Entèsta de fenèstra - Títol"
 
 #: panel-plugin/title/wcktitle.desktop.in:6
 msgid "Put the maximized window title on the panel."
-msgstr ""
+msgstr "Botar lo títol de la fenèstra maximizat sul panèl."
