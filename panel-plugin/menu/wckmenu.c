@@ -50,6 +50,7 @@ void
 wckmenu_settings_save (WckMenuPreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
+    wck_conf_set_bool (prefs->conf, SETTING_ONLY_CURRDISPLAY, prefs->only_current_display);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_APP_ICON, prefs->show_app_icon);
     wck_conf_set_int (prefs->conf, SETTING_INACTIVE_ALPHA, prefs->inactive_alpha);
@@ -67,6 +68,7 @@ static void
 wckmenu_settings_load (WckMenuPreferences *prefs)
 {
     prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
+    prefs->only_current_display = wck_conf_get_bool (prefs->conf, SETTING_ONLY_CURRDISPLAY, DEFAULT_ONLY_CURRDISPLAY);
     prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
     prefs->show_app_icon = wck_conf_get_bool (prefs->conf, SETTING_SHOW_APP_ICON, DEFAULT_SHOW_APP_ICON);
     prefs->inactive_alpha = wck_conf_get_int (prefs->conf, SETTING_INACTIVE_ALPHA, DEFAULT_INACTIVE_ALPHA);
@@ -245,6 +247,10 @@ static void on_refresh_item_activated (GtkMenuItem *refresh, WckMenuPlugin *wmp)
     reload_wnck_icon (wmp);
 }
 
+static XfcePanelPlugin* wckmenu_get_plugin(gpointer wtp) {
+    return ((WckMenuPlugin *) wtp)->plugin;
+}
+
 
 static void wckmenu_construct(XfcePanelPlugin *plugin)
 {
@@ -291,7 +297,8 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
     /* start tracking */
     wmp->win = g_slice_new0 (WckUtils);
-    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp);
+    wmp->win->get_plugin = wckmenu_get_plugin;
+    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
 
     /* start tracking icon color */
     init_icon_colors (wmp);
