@@ -32,7 +32,7 @@ void reload_wnck_title (WckTitlePlugin *wtp)
     /* disconnect controlled window name signal handler */
     wck_signal_handler_disconnect (G_OBJECT (wtp->win->controlwindow), wtp->cnh);
 
-    reload_wnck (wtp->win, wtp->prefs->only_maximized, wtp);
+    reload_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
 }
 
 

@@ -54,6 +54,7 @@ wckbuttons_settings_save (WckButtonsPreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
+    wck_conf_set_bool (prefs->conf, SETTING_ONLY_CURRDISPLAY, prefs->only_current_display);
     wck_conf_set_bool (prefs->conf, SETTING_SYNC_WM_THEME, prefs->sync_wm_theme);
     if (prefs->button_layout)
         wck_conf_set_string (prefs->conf, SETTING_BUTTON_LAYOUT, prefs->button_layout);
@@ -76,6 +77,7 @@ wckbuttons_settings_load (WckButtonsPreferences *prefs)
 
     prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
     prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
+    prefs->only_current_display = wck_conf_get_bool (prefs->conf, SETTING_ONLY_CURRDISPLAY, DEFAULT_ONLY_CURRDISPLAY);
     prefs->sync_wm_theme = wck_conf_get_bool (prefs->conf, SETTING_SYNC_WM_THEME, DEFAULT_SYNC_WM_THEME);
 
     button_layout = wck_conf_get_string (prefs->conf, SETTING_BUTTON_LAYOUT, DEFAULT_BUTTON_LAYOUT);
@@ -459,9 +461,12 @@ on_refresh_item_activated (GtkMenuItem *refresh, WckButtonsPlugin *wbp)
 {
     wbp->prefs = wckbuttons_read (wbp->plugin);
     init_theme (wbp);
-    reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp);
+    reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
 }
 
+static XfcePanelPlugin* wckbuttons_get_plugin(gpointer wtp) {
+    return ((WckButtonsPlugin *) wtp)->plugin;
+}
 
 static void
 wckbuttons_construct (XfcePanelPlugin *plugin)
@@ -512,7 +517,8 @@ wckbuttons_construct (XfcePanelPlugin *plugin)
 
     /* start tracking windows */
     wbp->win = g_slice_new0 (WckUtils);
-    init_wnck (wbp->win, wbp->prefs->only_maximized, wbp);
+    wbp->win->get_plugin = wckbuttons_get_plugin;
+    init_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
 
     /* get theme */
     init_theme (wbp);
