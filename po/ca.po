@@ -6,17 +6,17 @@
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2024
-# Davidmp <medipas@gmail.com>, 2025
 # Oscar Perez <oscarpc@gmail.com>, 2025
+# Davidmp <medipas@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:09+0200\n"
+"POT-Creation-Date: 2026-04-14 12:59+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Oscar Perez <oscarpc@gmail.com>, 2025\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2026\n"
 "Language-Team: Catalan (https://app.transifex.com/xfce/teams/16840/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,11 +49,11 @@ msgstr "Entorn de finestres no compatible"
 msgid "_OK"
 msgstr "D'ac_ord"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:332
 msgid "Directory"
 msgstr "Directori<br>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:334
 msgid "Themes usable"
 msgstr "Temes usables"
 
@@ -77,21 +77,27 @@ msgstr "Mostra els botons a l'escriptori."
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Fer clic al botó de tancar a l'escriptori provoca una desconnexió."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr "Ignora les finestres d'altres monitors."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
 msgid "<b>Behaviour</b>"
 msgstr "Comportament"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
 msgid "Get in sync with the window manager theme."
 msgstr "Sincronitza amb el tema del gestor de finestres."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
 msgid "Button layout:"
 msgstr "Disposició dels botons:"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -101,9 +107,9 @@ msgstr ""
 "Exemple: [HMC]\n"
 "H=amaga, M=maximitza/desmaximitza, C=tanca"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
 msgid "<b>Appearance</b>"
 msgstr "Aparença"
 
@@ -120,7 +126,7 @@ msgstr "Col·loca al panell els botons de la finestra maximitzada."
 msgid "Show the plugin on desktop."
 msgstr "Mostra el connector a l'escriptori."
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
 msgid "Show the window Icon."
 msgstr "Mostra la icona de finestra."
 
@@ -156,43 +162,43 @@ msgstr "centre"
 msgid "right"
 msgstr "dreta"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: panel-plugin/title/wcktitle-dialogs.glade:164
 msgid "Width:"
 msgstr "Amplada:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: panel-plugin/title/wcktitle-dialogs.glade:215
 msgid "chars"
 msgstr "caràcters"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: panel-plugin/title/wcktitle-dialogs.glade:244
 msgid "Padding:"
 msgstr "Espaiat:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: panel-plugin/title/wcktitle-dialogs.glade:274
 msgid "pixels"
 msgstr "píxels"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
-msgid "Show the full title name"
-msgstr "Mostra el nom de títol compet"
-
 #: panel-plugin/title/wcktitle-dialogs.glade:295
-msgid "Display the title in two lines"
-msgstr "Mostra el títol en dues línies<br>"
+msgid "Show the full title name"
+msgstr "Mostra el nom complet del títol."
 
 #: panel-plugin/title/wcktitle-dialogs.glade:309
+msgid "Display the title in two lines"
+msgstr "Mostra el títol en dues línies."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:323
 msgid "Sync the font with the window manager."
 msgstr "Sincronitza el tipus de lletra amb el gestor de finestres."
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: panel-plugin/title/wcktitle-dialogs.glade:347
 msgid "Title font:"
 msgstr "Tipus de lletra del títol:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: panel-plugin/title/wcktitle-dialogs.glade:375
 msgid "Subtitle font:"
 msgstr "Tipus de lletra del subtítol:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: panel-plugin/title/wcktitle-dialogs.glade:403
 msgid "Alignment:"
 msgstr "Alineació:"
 
