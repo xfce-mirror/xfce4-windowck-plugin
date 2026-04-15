@@ -6,16 +6,16 @@
 # Translators:
 # Walter Cheuk <wwycheuk@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# 黃柏諺 <s8321414@gmail.com>, 2025
+# 黃柏諺 <s8321414@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:09+0200\n"
+"POT-Creation-Date: 2026-04-14 12:59+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2025\n"
+"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2026\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/xfce/teams/16840/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,11 +48,11 @@ msgstr "不支援的視窗環境"
 msgid "_OK"
 msgstr "確定(_O)"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:332
 msgid "Directory"
 msgstr "目錄"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:334
 msgid "Themes usable"
 msgstr "可用佈景主題"
 
@@ -76,21 +76,27 @@ msgstr "在桌面上顯示按鈕。"
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "點擊桌面上的關閉按鈕會導致登出。"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr "忽略其他螢幕的視窗"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
 msgid "<b>Behaviour</b>"
 msgstr "<b>行為</b>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
 msgid "Get in sync with the window manager theme."
 msgstr "與視窗管理程式的佈景主題同步。"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
 msgid "Button layout:"
 msgstr "按鈕佈局："
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -100,9 +106,9 @@ msgstr ""
 "範例：[HMC]\n"
 "H=隱藏, M=最大化/取消最大化, C=關閉"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
 msgid "<b>Appearance</b>"
 msgstr "<b>外觀</b>"
 
@@ -119,7 +125,7 @@ msgstr "將最大化的視窗按鈕放在面板上。"
 msgid "Show the plugin on desktop."
 msgstr "在桌面時顯示外掛程式。"
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
 msgid "Show the window Icon."
 msgstr "顯示視窗圖示。"
 
@@ -155,43 +161,43 @@ msgstr "中間"
 msgid "right"
 msgstr "右側"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: panel-plugin/title/wcktitle-dialogs.glade:164
 msgid "Width:"
 msgstr "寬："
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: panel-plugin/title/wcktitle-dialogs.glade:215
 msgid "chars"
 msgstr "字元"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: panel-plugin/title/wcktitle-dialogs.glade:244
 msgid "Padding:"
 msgstr "邊距："
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: panel-plugin/title/wcktitle-dialogs.glade:274
 msgid "pixels"
 msgstr "像素"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Show the full title name"
 msgstr "顯示完整標題名稱"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:295
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Display the title in two lines"
 msgstr "分兩行顯示標題"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:309
+#: panel-plugin/title/wcktitle-dialogs.glade:323
 msgid "Sync the font with the window manager."
 msgstr "將字型與視窗管理程式同步。"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: panel-plugin/title/wcktitle-dialogs.glade:347
 msgid "Title font:"
 msgstr "標題字型："
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: panel-plugin/title/wcktitle-dialogs.glade:375
 msgid "Subtitle font:"
 msgstr "子標題字型："
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: panel-plugin/title/wcktitle-dialogs.glade:403
 msgid "Alignment:"
 msgstr "對齊："
 
