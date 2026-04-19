@@ -85,8 +85,8 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
         {
             /* icon color is set to grayscale */
             grayscale = gdk_pixbuf_copy(pixbuf);
-            gdk_pixbuf_saturate_and_pixelate(grayscale, grayscale, 0, FALSE);
-            if (G_UNLIKELY (grayscale != NULL))
+            gdk_pixbuf_saturate_and_pixelate (pixbuf, grayscale, 0, FALSE);
+            if (G_LIKELY (grayscale != NULL))
                 pixbuf = grayscale;
         }
 
@@ -95,8 +95,8 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
         gtk_image_set_from_surface (GTK_IMAGE (wmp->icon->symbol), surface);
         cairo_surface_destroy (surface);
 
-        if (grayscale != NULL && grayscale != pixbuf)
-            g_object_unref (G_OBJECT (grayscale));
+        if (grayscale != NULL)
+            g_object_unref (grayscale);
     }
 }
 

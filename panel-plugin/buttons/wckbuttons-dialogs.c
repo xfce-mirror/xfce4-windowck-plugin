@@ -66,17 +66,18 @@ on_button_layout_changed (GtkEditable *entry, WckButtonsPlugin *wbp)
 {
     if (gtk_widget_get_sensitive (GTK_WIDGET(entry)))
     {
+        g_autofree gchar *old_button_layout = wbp->prefs->button_layout;
         const gchar *button_layout = gtk_entry_get_text (GTK_ENTRY(entry));
         wbp->prefs->button_layout = button_layout_filter (button_layout, wbp->prefs->button_layout);
 
         if (wbp->prefs->sync_wm_theme)
         {
             gchar *part;
-            const gchar *layout;
+            g_autofree gchar *layout = NULL;
 
-            const gchar *wm_button_layout = xfconf_channel_get_string (wbp->wm_channel,
-                                                                      "/general/button_layout",
-                                                                      "O|HMC");
+            g_autofree gchar *wm_button_layout = xfconf_channel_get_string (wbp->wm_channel,
+                                                                            "/general/button_layout",
+                                                                            "O|HMC");
 
             /* get opposite part of the layout and concatenate it */
             part = opposite_layout_filter (wm_button_layout);
@@ -105,13 +106,11 @@ wckbuttons_theme_selection_changed (GtkTreeSelection *selection, WckButtonsPlugi
 
     if (gtk_tree_selection_get_selected (selection, &model, &iter))
     {
-        const gchar *theme;
-        GtkWidget   *entry;
-
-        gtk_tree_model_get (model, &iter, COL_THEME_NAME, &theme, -1);
+        GtkWidget *entry;
 
         /* set the theme name */
-        wbp->prefs->theme = g_strdup (theme);
+        g_free (wbp->prefs->theme);
+        gtk_tree_model_get (model, &iter, COL_THEME_NAME, &wbp->prefs->theme, -1);
 
         entry = GTK_WIDGET (gtk_builder_get_object (wbp->prefs->builder, "button_layout"));
 
@@ -120,7 +119,7 @@ wckbuttons_theme_selection_changed (GtkTreeSelection *selection, WckButtonsPlugi
             gchar *button_layout;
 
             xfconf_channel_set_string (wbp->wm_channel, "/general/theme", wbp->prefs->theme);
-            button_layout = get_rc_button_layout (theme);
+            button_layout = get_rc_button_layout (wbp->prefs->theme);
 
             if (button_layout)
             {
@@ -179,10 +178,12 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WckButtonsPlugin *wbp)
             {
                 GtkTreeIter   iter;
                 gchar        *themedir;
+                g_autofree gchar *theme_rc = NULL;
 
                 if (wbp->prefs->sync_wm_theme)
                 {
-                    if (!test_theme_dir(file, "xfwm4", THEMERC))
+                    g_autofree gchar *theme_dir = test_theme_dir(file, "xfwm4", THEMERC);
+                    if (!theme_dir)
                         continue;
                 }
 
@@ -193,10 +194,12 @@ wckbuttons_load_themes (GtkWidget *theme_name_treeview, WckButtonsPlugin *wbp)
                 g_hash_table_insert (themes, g_strdup (file), GINT_TO_POINTER (1));
 
                 /* insert in the list store */
+                theme_rc = g_path_get_basename (themedir);
                 gtk_list_store_append (GTK_LIST_STORE (model), &iter);
                 gtk_list_store_set (GTK_LIST_STORE (model), &iter,
                                     COL_THEME_NAME, file,
-                                    COL_THEME_RC, g_path_get_basename (themedir), -1);
+                                    COL_THEME_RC, theme_rc,
+                                    -1);
 
                 if (G_UNLIKELY (g_str_equal (wbp->prefs->theme, file)))
                 {
@@ -225,18 +228,18 @@ static gint
 wckbuttons_theme_sort_func (GtkTreeModel *model,
                             GtkTreeIter  *iter1,
                             GtkTreeIter  *iter2,
-                            void *unused)
+                            G_GNUC_UNUSED void *unused)
 {
-  gchar *str1 = NULL;
-  gchar *str2 = NULL;
+    g_autofree gchar *str1 = NULL;
+    g_autofree gchar *str2 = NULL;
 
-  gtk_tree_model_get (model, iter1, 0, &str1, -1);
-  gtk_tree_model_get (model, iter2, 0, &str2, -1);
+    gtk_tree_model_get (model, iter1, COL_THEME_NAME, &str1, -1);
+    gtk_tree_model_get (model, iter2, COL_THEME_NAME, &str2, -1);
 
-  if (str1 == NULL) str1 = g_strdup ("");
-  if (str2 == NULL) str2 = g_strdup ("");
+    if (str1 == NULL) str1 = g_strdup ("");
+    if (str2 == NULL) str2 = g_strdup ("");
 
-  return g_utf8_collate (str1, str2);
+    return g_utf8_collate (str1, str2);
 }
 
 
