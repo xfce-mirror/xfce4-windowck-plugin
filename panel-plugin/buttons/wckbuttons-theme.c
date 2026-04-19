@@ -250,13 +250,15 @@ void load_theme (const gchar *theme, WckButtonsPlugin *wbp)
 static void
 apply_wm_theme (WckButtonsPlugin *wbp)
 {
-    const gchar *wm_theme = xfconf_channel_get_string (wbp->wm_channel, "/general/theme", NULL);
+    gchar *wm_theme = xfconf_channel_get_string (wbp->wm_channel, "/general/theme", NULL);
 
     if (G_LIKELY (wm_theme))
     {
         gchar *button_layout;
 
-        wbp->prefs->theme = g_strdup (wm_theme);
+        g_free (wbp->prefs->theme);
+        wbp->prefs->theme = wm_theme;
+
         load_theme (wbp->prefs->theme, wbp);
 
         button_layout = get_rc_button_layout (wm_theme);
@@ -267,9 +269,10 @@ apply_wm_theme (WckButtonsPlugin *wbp)
         }
         else
         {
-            const gchar *wm_buttons_layout = xfconf_channel_get_string (wbp->wm_channel,
-                                                                        "/general/button_layout",
-                                                                        wbp->prefs->button_layout);
+            g_autofree gchar *old_button_layout = wbp->prefs->button_layout;
+            g_autofree gchar *wm_buttons_layout = xfconf_channel_get_string (wbp->wm_channel,
+                                                                             "/general/button_layout",
+                                                                             wbp->prefs->button_layout);
             wbp->prefs->button_layout = button_layout_filter (wm_buttons_layout, wbp->prefs->button_layout);
 
             replace_buttons (wbp->prefs->button_layout, wbp);
