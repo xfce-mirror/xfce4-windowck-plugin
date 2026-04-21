@@ -303,4 +303,4 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER_WITH_CHECK(wckmenu_construct, wck_check_x11_windowing);
+XFCE_PANEL_PLUGIN_REGISTER (wckmenu_construct);
