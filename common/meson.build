@@ -20,7 +20,7 @@ wck_common = static_library(
   dependencies: [
     glib,
     gtk,
-    libwnck,
+    libxfce4windowing,
     libxfce4panel,
     libxfce4ui,
     libxfce4util,
