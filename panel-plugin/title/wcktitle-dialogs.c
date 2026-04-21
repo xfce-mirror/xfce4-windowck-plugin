@@ -34,7 +34,7 @@ static void
 on_only_maximized_toggled (GtkRadioButton *only_maximized, WckTitlePlugin *wtp)
 {
     wtp->prefs->only_maximized = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (only_maximized));
-    reload_wnck_title (wtp);
+    reload_xfw_title (wtp);
 }
 
 
@@ -43,7 +43,7 @@ on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckTitlePlugin *wt
 {
     wtp->prefs->show_on_desktop = gtk_toggle_button_get_active (show_on_desktop);
 
-    reload_wnck_title (wtp);
+    reload_xfw_title (wtp);
 }
 
 
@@ -52,7 +52,7 @@ on_only_current_display_toggled (GtkToggleButton *only_current_display, WckTitle
 {
     wtp->prefs->only_current_display = gtk_toggle_button_get_active (only_current_display);
 
-    reload_wnck_title (wtp);
+    reload_xfw_title (wtp);
 }
 
 

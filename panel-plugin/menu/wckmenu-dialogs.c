@@ -33,14 +33,14 @@ static void
 on_only_maximized_toggled (GtkRadioButton *only_maximized, WckMenuPlugin *wmp)
 {
     wmp->prefs->only_maximized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(only_maximized));
-    reload_wnck_icon (wmp);
+    reload_xfw_icon (wmp);
 }
 
 static void
 on_only_current_display_toggled (GtkToggleButton *only_current_display, WckMenuPlugin *wmp)
 {
     wmp->prefs->only_current_display = gtk_toggle_button_get_active (only_current_display);
-    reload_wnck_icon (wmp);
+    reload_xfw_icon (wmp);
 }
 
 
@@ -51,7 +51,7 @@ on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckMenuPlugin *wmp
 
     if (wmp->icon->symbol)
         gtk_widget_set_sensitive (wmp->icon->symbol, TRUE);
-    reload_wnck_icon (wmp);
+    reload_xfw_icon (wmp);
 }
 
 

@@ -125,7 +125,7 @@ window_icon_new (void)
 static void
 wckmenu_scale_factor (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
-    reload_wnck_icon(wmp);
+    reload_xfw_icon(wmp);
 }
 
 
@@ -178,7 +178,7 @@ wckmenu_new (XfcePanelPlugin *plugin)
     gtk_widget_show(wmp->ebox);
     gtk_widget_show(wmp->box);
 
-    /* adapt wnck default icon size when UI scale changes */
+    /* adapt xfw default icon size when UI scale changes */
     wckmenu_scale_factor (plugin, wmp);
     g_signal_connect (plugin, "notify::scale-factor", G_CALLBACK (wckmenu_scale_factor), wmp);
 
@@ -191,7 +191,7 @@ wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
     GtkWidget *dialog;
 
-    disconnect_wnck (wmp->win);
+    disconnect_xfw (wmp->win);
 
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data(G_OBJECT (plugin), "dialog");
@@ -203,7 +203,7 @@ wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 
     /* free the plugin structure */
     g_slice_free(WindowIcon, wmp->icon);
-    g_slice_free(WckUtils, wmp->win);
+    g_slice_free(XfwUtils, wmp->win);
     g_slice_free(WckMenuPreferences, wmp->prefs);
     g_slice_free(WckMenuPlugin, wmp);
 }
@@ -239,7 +239,7 @@ wckmenu_size_changed (XfcePanelPlugin *plugin, gint size, WckMenuPlugin *wmp)
 static void on_refresh_item_activated (GtkMenuItem *refresh, WckMenuPlugin *wmp)
 {
     init_icon_colors (wmp);
-    reload_wnck_icon (wmp);
+    reload_xfw_icon (wmp);
 }
 
 static XfcePanelPlugin* wckmenu_get_plugin(gpointer wtp) {
@@ -294,9 +294,9 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
     g_signal_connect (G_OBJECT (refresh), "activate", G_CALLBACK (on_refresh_item_activated), wmp);
 
     /* start tracking */
-    wmp->win = g_slice_new0 (WckUtils);
+    wmp->win = g_slice_new0 (XfwUtils);
     wmp->win->get_plugin = wckmenu_get_plugin;
-    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
+    init_xfw (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
 
     /* start tracking icon color */
     init_icon_colors (wmp);

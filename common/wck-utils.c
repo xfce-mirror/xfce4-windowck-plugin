@@ -23,17 +23,17 @@
 
 /* Prototypes */
 static XfwWindow *get_root_window(XfwScreen *);
-static XfwWindow *get_upper_maximized(WckUtils *);
+static XfwWindow *get_upper_maximized(XfwUtils *);
 static XfwMonitor *get_plugin_monitor(XfcePanelPlugin *);
 static XfwWorkspace *get_active_workspace(XfwScreen *, XfwMonitor *, gboolean);
-static void track_controlled_window (WckUtils *);
-static void active_workspace_changed(XfwScreen *, XfwWorkspace *, WckUtils *);
-static void active_window_changed(XfwScreen *, XfwWindow *, WckUtils *);
-static void track_changed_max_state(XfwWindow *, XfwWindowState, XfwWindowState, WckUtils *);
-static void on_umaxed_window_state_changed(XfwWindow *, XfwWindowState, XfwWindowState, WckUtils *);
-static void on_viewports_changed(XfwScreen *, WckUtils *);
-static void on_window_closed(XfwScreen *, XfwWindow *, WckUtils *);
-static void on_window_opened(XfwScreen *, XfwWindow *, WckUtils *);
+static void track_controlled_window (XfwUtils *);
+static void active_workspace_changed(XfwScreen *, XfwWorkspace *, XfwUtils *);
+static void active_window_changed(XfwScreen *, XfwWindow *, XfwUtils *);
+static void track_changed_max_state(XfwWindow *, XfwWindowState, XfwWindowState, XfwUtils *);
+static void on_umaxed_window_state_changed(XfwWindow *, XfwWindowState, XfwWindowState, XfwUtils *);
+static void on_viewports_changed(XfwScreen *, XfwUtils *);
+static void on_window_closed(XfwScreen *, XfwWindow *, XfwUtils *);
+static void on_window_opened(XfwScreen *, XfwWindow *, XfwUtils *);
 
 
 gboolean wck_signal_handler_disconnect (GObject *object, gulong handler)
@@ -63,7 +63,7 @@ static XfwWindow *get_root_window (XfwScreen *screen)
 
 /* Trigger when activewindow's workspaces changes */
 static void umax_window_workspace_changed (XfwWindow *window,
-                                           WckUtils *win)
+                                           XfwUtils *win)
 {
         track_controlled_window (win);
 }
@@ -73,7 +73,7 @@ static void umax_window_workspace_changed (XfwWindow *window,
 static void track_changed_max_state (XfwWindow *window,
                                          XfwWindowState changed_mask,
                                          XfwWindowState new_state,
-                                         WckUtils *win)
+                                         XfwUtils *win)
 {
     /* track the window max state only if it isn't the control window */
     if (window != win->controlwindow)
@@ -109,7 +109,7 @@ static XfwMonitor *get_plugin_monitor(XfcePanelPlugin *plugin)
 static void on_umaxed_window_state_changed (XfwWindow *window,
                                           XfwWindowState changed_mask,
                                           XfwWindowState new_state,
-                                          WckUtils *win)
+                                          XfwUtils *win)
 {
     /* WARNING : only if window is unmaximized to prevent growing loop !!!*/
     if (!xfw_window_is_maximized(window)
@@ -154,7 +154,7 @@ static XfwWorkspace *get_active_workspace(XfwScreen *screen, XfwMonitor *monitor
 	return workspaces ? workspaces->data : NULL;
 }
 /* Returns the highest maximized window */
-static XfwWindow *get_upper_maximized (WckUtils *win)
+static XfwWindow *get_upper_maximized (XfwUtils *win)
 {
     XfwWindow      *umaxedwindow = NULL;
 
@@ -180,7 +180,7 @@ static XfwWindow *get_upper_maximized (WckUtils *win)
 
 
 /* track the new controlled window according to preferences */
-static void track_controlled_window (WckUtils *win)
+static void track_controlled_window (XfwUtils *win)
 {
     XfwWindow      *previous_umax = NULL;
     XfwWindow      *previous_control = NULL;
@@ -251,7 +251,7 @@ static void track_controlled_window (WckUtils *win)
 /* Triggers when a new window has been opened */
 static void on_window_opened (XfwScreen *screen,
                            XfwWindow *window,
-                           WckUtils *win)
+                           XfwUtils *win)
 {
     // track new maximized window
     if (xfw_window_is_maximized(window))
@@ -262,7 +262,7 @@ static void on_window_opened (XfwScreen *screen,
 /* Triggers when a window has been closed */
 static void on_window_closed (XfwScreen *screen,
                            XfwWindow *window,
-                           WckUtils *win)
+                           XfwUtils *win)
 {
     // track closed maximized window
     if (xfw_window_is_maximized(window))
@@ -273,7 +273,7 @@ static void on_window_closed (XfwScreen *screen,
 /* Triggers when a new active window is selected */
 static void active_window_changed (XfwScreen *screen,
                                    XfwWindow *previous,
-                                   WckUtils *win)
+                                   XfwUtils *win)
 {
 
     win->activewindow = xfw_screen_get_active_window(screen);
@@ -298,18 +298,18 @@ static void active_window_changed (XfwScreen *screen,
 
 /* Triggers when user changes viewports on Compiz */
 // We ONLY need this for Compiz (Marco doesn't use viewports)
-static void on_viewports_changed (XfwScreen *screen, WckUtils *win)
+static void on_viewports_changed (XfwScreen *screen, XfwUtils *win)
 {
-    reload_wnck (win, win->only_maximized, win->only_current_display, win->data);
+    reload_xfw (win, win->only_maximized, win->only_current_display, win->data);
 }
 
 
 /* Triggers when user changes workspace on Marco (?) */
 static void active_workspace_changed (XfwScreen *screen,
                                       XfwWorkspace *previous,
-                                      WckUtils *win)
+                                      XfwUtils *win)
 {
-    reload_wnck (win, win->only_maximized, win->only_current_display, win->data);
+    reload_xfw (win, win->only_maximized, win->only_current_display, win->data);
 }
 
 
@@ -320,15 +320,15 @@ void toggle_maximize (XfwWindow *window)
 }
 
 
-void reload_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data)
+void reload_xfw (XfwUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data)
 {
-    disconnect_wnck (win);
+    disconnect_xfw (win);
 
-    init_wnck (win, only_maximized, only_current_display, data);
+    init_xfw (win, only_maximized, only_current_display, data);
 }
 
 
-void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data)
+void init_xfw (XfwUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data)
 {
     /* save data */
     win->data = data;
@@ -362,7 +362,7 @@ void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_di
 }
 
 
-void disconnect_wnck (WckUtils *win)
+void disconnect_xfw (XfwUtils *win)
 {
     /* disconnect all signal handlers */
     if (win->controlwindow)

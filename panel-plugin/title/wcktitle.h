@@ -81,7 +81,7 @@ typedef struct {
     GtkLabel *title;
 
     WckTitlePreferences     *prefs;
-    WckUtils *win;
+    XfwUtils *win;
     XfwWindow *controlwindow;
 
     gulong cnh;                     // controlled window name handler id

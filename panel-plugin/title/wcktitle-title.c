@@ -27,12 +27,12 @@
 #include "wcktitle.h"
 #include "wcktitle-title.h"
 
-void reload_wnck_title (WckTitlePlugin *wtp)
+void reload_xfw_title (WckTitlePlugin *wtp)
 {
     /* disconnect controlled window name signal handler */
     wck_signal_handler_disconnect (G_OBJECT (wtp->win->controlwindow), wtp->cnh);
 
-    reload_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
+    reload_xfw (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
 }
 
 
@@ -404,7 +404,7 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *proper
                 else if (!strcmp (name, "theme"))
                 {
                     init_title (wtp);
-                    reload_wnck_title (wtp);
+                    reload_xfw_title (wtp);
                 }
                 break;
             default:

@@ -176,7 +176,7 @@ wckbuttons_free (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
 {
     GtkWidget *dialog;
 
-    disconnect_wnck (wbp->win);
+    disconnect_xfw (wbp->win);
 
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data (G_OBJECT (plugin), "dialog");
@@ -191,7 +191,7 @@ wckbuttons_free (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
         g_free (wbp->prefs->button_layout);
 
     /* free the plugin structure */
-    g_slice_free (WckUtils, wbp->win);
+    g_slice_free (XfwUtils, wbp->win);
     g_slice_free (WckButtonsPreferences, wbp->prefs);
     g_slice_free (WckButtonsPlugin, wbp);
 }
@@ -461,7 +461,7 @@ on_refresh_item_activated (GtkMenuItem *refresh, WckButtonsPlugin *wbp)
 {
     wbp->prefs = wckbuttons_read (wbp->plugin);
     init_theme (wbp);
-    reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
+    reload_xfw (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
 }
 
 static XfcePanelPlugin* wckbuttons_get_plugin(gpointer wtp) {
@@ -519,9 +519,9 @@ wckbuttons_construct (XfcePanelPlugin *plugin)
                       G_CALLBACK (on_refresh_item_activated), wbp);
 
     /* start tracking windows */
-    wbp->win = g_slice_new0 (WckUtils);
+    wbp->win = g_slice_new0 (XfwUtils);
     wbp->win->get_plugin = wckbuttons_get_plugin;
-    init_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
+    init_xfw (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
 
     /* get theme */
     init_theme (wbp);
