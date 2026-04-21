@@ -28,12 +28,12 @@
 #include "wckmenu.h"
 #include "wckmenu-icon.h"
 
-void reload_wnck_icon (WckMenuPlugin *wmp)
+void reload_xfw_icon (WckMenuPlugin *wmp)
 {
     /* disconnect controlled window icon signal handler */
     wck_signal_handler_disconnect (G_OBJECT(wmp->win->controlwindow), wmp->cih);
 
-    reload_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
+    reload_xfw (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
 }
 
 
@@ -246,7 +246,7 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *proper
                 if (!strcmp (name, "theme"))
                 {
                     init_icon_colors (wmp);
-                    reload_wnck_icon (wmp);
+                    reload_xfw_icon (wmp);
                 }
                 break;
             default:
