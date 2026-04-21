@@ -29,10 +29,10 @@ plugin_lib = shared_module(
   dependencies: [
     glib,
     gtk,
-    libwnck,
     libxfce4panel,
     libxfce4ui,
     libxfce4util,
+    libxfce4windowing,
     xfconf,
   ],
   link_with: [

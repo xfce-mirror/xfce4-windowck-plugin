@@ -20,10 +20,10 @@ wck_common = static_library(
   dependencies: [
     glib,
     gtk,
-    libwnck,
     libxfce4panel,
     libxfce4ui,
     libxfce4util,
+    libxfce4windowing,
     xfconf,
   ],
   install: false,
