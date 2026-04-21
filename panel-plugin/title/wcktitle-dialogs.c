@@ -155,7 +155,7 @@ on_sync_wm_font_toggled (GtkToggleButton *sync_wm_font, WckTitlePlugin *wtp)
 static gchar *
 set_title_font (GtkLabel *title, GtkFontButton *font_button)
 {
-    gchar *font = g_strdup (gtk_font_chooser_get_font (GTK_FONT_CHOOSER (font_button)));
+    gchar *font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (font_button));
     PangoFontDescription *font_desc = pango_font_description_from_string (font);
     PangoAttribute *attr = pango_attr_font_desc_new (font_desc);
     PangoAttrList *attr_list = pango_attr_list_new ();
