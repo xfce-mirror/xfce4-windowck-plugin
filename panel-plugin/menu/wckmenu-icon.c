@@ -19,6 +19,7 @@
  */
 
 #include <libxfce4panel/libxfce4panel.h>
+#include <libxfce4windowingui/libxfce4windowingui.h>
 
 #include <common/ui_style.h>
 #include <common/wck-plugin.h>
@@ -36,7 +37,7 @@ void reload_wnck_icon (WckMenuPlugin *wmp)
 }
 
 
-static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
+static void on_icon_changed(XfwWindow *controlwindow, WckMenuPlugin *wmp)
 {
     gint icon_size;
 
@@ -53,7 +54,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
 
         if (window_is_desktop (controlwindow))
         {
-            if (!wnck_window_is_active(controlwindow))
+            if (!xfw_window_is_active(controlwindow))
                 gtk_widget_set_sensitive (wmp->icon->symbol, FALSE);
 
             gtk_image_set_from_icon_name (GTK_IMAGE (wmp->icon->symbol), "go-home", GTK_ICON_SIZE_BUTTON);
@@ -69,10 +70,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
         gint scale_factor;
 
         /* This only returns a pointer - it SHOULDN'T be unrefed! */
-        if (icon_size < WNCK_DEFAULT_ICON_SIZE)
-            pixbuf = wnck_window_get_mini_icon(controlwindow);
-        else
-            pixbuf = wnck_window_get_icon(controlwindow);
+        pixbuf = xfw_window_get_icon(controlwindow, icon_size, xfw_monitor_get_scale(wmp->win->monitor));
 
         /* leave when there is no valid pixbuf */
         if (G_UNLIKELY (pixbuf == NULL))
@@ -81,7 +79,7 @@ static void on_icon_changed(WnckWindow *controlwindow, WckMenuPlugin *wmp)
             return;
         }
 
-        if (!wnck_window_is_active(controlwindow))
+        if (!xfw_window_is_active(controlwindow))
         {
             /* icon color is set to grayscale */
             grayscale = gdk_pixbuf_copy(pixbuf);
@@ -124,7 +122,7 @@ set_icon_color (GtkWidget *widget, const gchar *color)
 }
 
 
-void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
+void on_wck_state_changed (XfwWindow *controlwindow, gpointer data)
 {
     WckMenuPlugin *wmp = data;
 
@@ -136,12 +134,12 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
              && (!window_is_desktop (controlwindow)
                  || wmp->prefs->show_on_desktop))
     {
-        set_icon_color (wmp->icon->symbol, wnck_window_is_active (controlwindow) ? wmp->prefs->active_color : wmp->prefs->inactive_color);
+        set_icon_color (wmp->icon->symbol, xfw_window_is_active (controlwindow) ? wmp->prefs->active_color : wmp->prefs->inactive_color);
     }
 }
 
 
-void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, gpointer data)
+void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, gpointer data)
 {
     WckMenuPlugin *wmp = data;
 
@@ -192,7 +190,7 @@ gboolean on_icon_released(GtkWidget *icon, GdkEventButton *event, WckMenuPlugin 
         || window_is_desktop (wmp->win->controlwindow))
         return FALSE;
 
-    menu = wnck_action_menu_new (wmp->win->controlwindow);
+    menu = xfw_window_action_menu_new (wmp->win->controlwindow);
 
     gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(wmp->icon->eventbox), NULL);
     gtk_menu_popup_at_widget (GTK_MENU (menu), GTK_WIDGET(wmp->icon->eventbox),

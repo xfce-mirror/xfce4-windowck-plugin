@@ -255,6 +255,9 @@ wcktitle_construct (XfcePanelPlugin *plugin)
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
+    /* set client type */
+    xfw_set_client_type(XFW_CLIENT_TYPE_PAGER);
+
     /* create the plugin */
     wtp = wcktitle_new (plugin);
 
