@@ -24,7 +24,7 @@
 #include "wckmenu.h"
 
 void init_icon_colors (WckMenuPlugin *wmp);
-void reload_wnck_icon (WckMenuPlugin *wmp);
+void reload_xfw_icon (WckMenuPlugin *wmp);
 gboolean on_icon_released(GtkWidget *icon, GdkEventButton *event, WckMenuPlugin *wmp);
 
 #endif /* __WCKMENU_ICON_H__ */

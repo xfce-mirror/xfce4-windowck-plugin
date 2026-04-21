@@ -62,7 +62,7 @@ typedef struct {
     WindowIcon  *icon;              // Icon widget
 
     WckMenuPreferences     *prefs;
-    WckUtils *win;
+    XfwUtils *win;
 
     gulong cih;                     // controlled window icon handler id
 

@@ -178,7 +178,7 @@ wcktitle_free (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
     GtkWidget *dialog;
 
     wck_signal_handler_disconnect (G_OBJECT (wtp->controlwindow), wtp->cnh);
-    disconnect_wnck (wtp->win);
+    disconnect_xfw (wtp->win);
 
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data(G_OBJECT (plugin), "dialog");
@@ -189,7 +189,7 @@ wcktitle_free (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
     gtk_widget_destroy (wtp->box);
 
     /* free the plugin structure */
-    g_slice_free (WckUtils, wtp->win);
+    g_slice_free (XfwUtils, wtp->win);
     g_slice_free (WckTitlePreferences, wtp->prefs);
     g_slice_free (WckTitlePlugin, wtp);
 }
@@ -239,7 +239,7 @@ static void
 on_refresh_item_activated (GtkMenuItem *refresh, WckTitlePlugin *wtp)
 {
     init_title (wtp);
-    reload_wnck_title (wtp);
+    reload_xfw_title (wtp);
 }
 
 static XfcePanelPlugin* wcktitle_get_plugin(gpointer wtp) {
@@ -254,6 +254,9 @@ wcktitle_construct (XfcePanelPlugin *plugin)
 
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
+    /* set client type */
+	xfw_set_client_type(XFW_CLIENT_TYPE_PAGER);
 
     /* create the plugin */
     wtp = wcktitle_new (plugin);
@@ -303,10 +306,10 @@ wcktitle_construct (XfcePanelPlugin *plugin)
                       G_CALLBACK (on_refresh_item_activated), wtp);
 
     /* start tracking title text */
-    wtp->win = g_slice_new0 (WckUtils);
+    wtp->win = g_slice_new0 (XfwUtils);
     wtp->win->get_plugin = wcktitle_get_plugin;
 
-    init_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
+    init_xfw (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
 
     /* start tracking title size */
     init_title (wtp);
