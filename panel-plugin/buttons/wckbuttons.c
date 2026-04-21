@@ -534,4 +534,4 @@ wckbuttons_construct (XfcePanelPlugin *plugin)
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER_WITH_CHECK (wckbuttons_construct, wck_check_x11_windowing);
+XFCE_PANEL_PLUGIN_REGISTER (wckbuttons_construct);
