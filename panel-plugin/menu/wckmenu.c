@@ -123,14 +123,9 @@ window_icon_new (void)
 
 
 static void
-wckmenu_scale_factor (XfcePanelPlugin *plugin)
+wckmenu_scale_factor (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
-    gint scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (plugin));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    /* TODO switch to wnck_handle_set_default_icon_size() and wnck_handle_set_default_mini_icon_size() */
-    wnck_set_default_icon_size (WNCK_DEFAULT_ICON_SIZE * scale_factor);
-    wnck_set_default_mini_icon_size (WNCK_DEFAULT_MINI_ICON_SIZE * scale_factor);
-G_GNUC_END_IGNORE_DEPRECATIONS
+    reload_xfw_icon(wmp);
 }
 
 
@@ -183,9 +178,9 @@ wckmenu_new (XfcePanelPlugin *plugin)
     gtk_widget_show(wmp->ebox);
     gtk_widget_show(wmp->box);
 
-    /* adapt wnck default icon size when UI scale changes */
-    wckmenu_scale_factor (plugin);
-    g_signal_connect (plugin, "notify::scale-factor", G_CALLBACK (wckmenu_scale_factor), NULL);
+    /* adapt xfw default icon size when UI scale changes */
+    wckmenu_scale_factor (plugin, wmp);
+    g_signal_connect (plugin, "notify::scale-factor", G_CALLBACK (wckmenu_scale_factor), wmp);
 
     return wmp;
 }
@@ -196,7 +191,7 @@ wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
     GtkWidget *dialog;
 
-    disconnect_wnck (wmp->win);
+    disconnect_xfw (wmp->win);
 
     /* check if the dialog is still open. if so, destroy it */
     dialog = g_object_get_data(G_OBJECT (plugin), "dialog");
@@ -208,7 +203,7 @@ wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 
     /* free the plugin structure */
     g_slice_free(WindowIcon, wmp->icon);
-    g_slice_free(WckUtils, wmp->win);
+    g_slice_free(XfwUtils, wmp->win);
     g_slice_free(WckMenuPreferences, wmp->prefs);
     g_slice_free(WckMenuPlugin, wmp);
 }
@@ -244,7 +239,7 @@ wckmenu_size_changed (XfcePanelPlugin *plugin, gint size, WckMenuPlugin *wmp)
 static void on_refresh_item_activated (GtkMenuItem *refresh, WckMenuPlugin *wmp)
 {
     init_icon_colors (wmp);
-    reload_wnck_icon (wmp);
+    reload_xfw_icon (wmp);
 }
 
 static XfcePanelPlugin* wckmenu_get_plugin(gpointer wtp) {
@@ -259,6 +254,9 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
+    /* set client type */
+	xfw_set_client_type(XFW_CLIENT_TYPE_PAGER);
 
     /* create the plugin */
     wmp = wckmenu_new(plugin);
@@ -296,9 +294,9 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
     g_signal_connect (G_OBJECT (refresh), "activate", G_CALLBACK (on_refresh_item_activated), wmp);
 
     /* start tracking */
-    wmp->win = g_slice_new0 (WckUtils);
+    wmp->win = g_slice_new0 (XfwUtils);
     wmp->win->get_plugin = wckmenu_get_plugin;
-    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
+    init_xfw (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
 
     /* start tracking icon color */
     init_icon_colors (wmp);
@@ -306,4 +304,4 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER_WITH_CHECK(wckmenu_construct, wck_check_x11_windowing);
+XFCE_PANEL_PLUGIN_REGISTER (wckmenu_construct);

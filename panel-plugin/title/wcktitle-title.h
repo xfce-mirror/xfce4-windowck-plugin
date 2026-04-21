@@ -27,7 +27,7 @@
 
 void init_title (WckTitlePlugin *wtp);
 void resize_title (WckTitlePlugin *wtp);
-void reload_wnck_title (WckTitlePlugin *wtp);
+void reload_xfw_title (WckTitlePlugin *wtp);
 void set_title_padding (WckTitlePlugin *wtp);
 void set_title_alignment (WckTitlePlugin *wtp);
 gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlugin *wtp);

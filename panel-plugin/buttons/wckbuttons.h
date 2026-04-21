@@ -96,7 +96,7 @@ typedef struct {
     WindowButton  *button[BUTTONS]; // Array of buttons
 
     WckButtonsPreferences *prefs;   // Main properties
-    WckUtils *win;
+    XfwUtils *win;
 
     GdkPixbuf *pixbufs[IMAGES_STATES][IMAGES_BUTTONS];
     XfconfChannel *wm_channel;      // window manager chanel
