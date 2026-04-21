@@ -24,9 +24,6 @@
 
 #include <string.h>
 #include <gtk/gtk.h>
-#ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
-#endif
 #include <libxfce4ui/libxfce4ui.h>
 
 #include "wck-plugin.h"
@@ -267,26 +264,4 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
         /* destroy the properties dialog */
         gtk_widget_destroy (dialog);
     }
-}
-
-
-gboolean
-wck_check_x11_windowing (GdkScreen *screen)
-{
-#ifdef GDK_WINDOWING_X11
-    gboolean x11_windowing = GDK_IS_X11_DISPLAY (gdk_display_get_default ());
-#else
-    gboolean x11_windowing = FALSE;
-#endif
-    if (!x11_windowing)
-    {
-        GtkWidget *dialog = xfce_message_dialog_new (NULL, NULL, "dialog-error",
-                                                     _("Unsupported windowing environment"), NULL,
-                                                     _("_OK"), GTK_RESPONSE_OK, NULL);
-        gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
-        return FALSE;
-    }
-
-    return TRUE;
 }
