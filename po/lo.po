@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# BoneNI, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2026-04-14 12:59+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: BoneNI, 2026\n"
+"Language-Team: Lao (https://app.transifex.com/xfce/teams/16840/lo/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lo\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: common/wck-plugin.c:176
+msgid "_Refresh"
+msgstr "_ໂຫຼດໃໝ່"
+
+#: common/wck-plugin.c:213
+msgid "Help"
+msgstr "ຊ່ວຍເຫຼືອ"
+
+#: common/wck-plugin.c:214
+msgid "_Close"
+msgstr "_ປິດ"
+
+#: common/wck-plugin.c:257
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "ບໍ່ສາມາດເປີດ URL ຕໍ່ໄປນີ້ໄດ້: %s"
+
+#: common/wck-plugin.c:284
+msgid "Unsupported windowing environment"
+msgstr "ສະພາບແວດລ້ອມໜ້າຕ່າງບໍ່ຮອງຮັບ"
+
+#: common/wck-plugin.c:285
+msgid "_OK"
+msgstr "_ຕົກລົງ"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:332
+msgid "Directory"
+msgstr "ໄດເຣັກທໍຣີ"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:334
+msgid "Themes usable"
+msgstr "ຊຸດຮູບແບບທີ່ໃຊ້ໄດ້"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
+msgid "Control maximized windows."
+msgstr "ຄວບຄຸມໜ້າຕ່າງທີ່ຂະຫຍາຍໃຫຍ່ສຸດ."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
+msgid "Control active windows."
+msgstr "ຄວບຄຸມໜ້າຕ່າງທີ່ກຳລັງໃຊ້ງານ."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
+msgid "Show the buttons on desktop."
+msgstr "ສະແດງປຸ່ມເທິງເດັສທັອບ."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
+msgid "Clicking the close button on the desktop causes log out."
+msgstr "ການຄລິກປຸ່ມປິດເທິງເດັສທັອບຈະເຮັດໃຫ້ອອກຈາກລະບົບ."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr "ເມີນເສີຍໜ້າຕ່າງຈາກຈໍພາບອື່ນ"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
+msgid "<b>Behaviour</b>"
+msgstr "<b>ພຶດຕິກຳ</b>"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
+msgid "Get in sync with the window manager theme."
+msgstr "ຊິ້ງຂໍ້ມູນກັບຊຸດຮູບແບບຂອງຕົວຈັດການໜ້າຕ່າງ."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
+msgid "Button layout:"
+msgstr "ຮູບແບບປຸ່ມ:"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"ວາງໄອດີປຸ່ມຕາມລໍາດັບທີ່ຕ້ອງການ.\n"
+"ຕົວຢ່າງ: [HMC]\n"
+"H=ເຊື່ອງ, M=ຂະຫຍາຍ/ຄືນຄ່າ, C=ປິດ"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
+msgid "<b>Appearance</b>"
+msgstr "<b>ຮູບລັກສະນະ</b>"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "ສ່ວນຫົວໜ້າຕ່າງ - ປຸ່ມ"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "ວາງປຸ່ມໜ້າຕ່າງທີ່ຂະຫຍາຍໃຫຍ່ສຸດໄວ້ໃນພາເນລ."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
+msgid "Show the plugin on desktop."
+msgstr "ສະແດງປລັກອິນເທິງເດັສທັອບ."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
+msgid "Show the window Icon."
+msgstr "ສະແດງໄອຄອນໜ້າຕ່າງ."
+
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "ສ່ວນຫົວໜ້າຕ່າງ - ເມນູ"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "ວາງເມນູໜ້າຕ່າງທີ່ຂະຫຍາຍໃຫຍ່ສຸດໄວ້ໃນພາເນລ."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
+msgid "at most"
+msgstr "ຢ່າງຫຼາຍສຸດ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:15
+msgid "fixed to"
+msgstr "ຄົງທີ່ຢູ່ທີ່"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:18
+msgid "expand"
+msgstr "ຂະຫຍາຍ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:29
+msgid "left"
+msgstr "ຊ້າຍ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:32
+msgid "center"
+msgstr "ກາງ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:35
+msgid "right"
+msgstr "ຂວາ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:164
+msgid "Width:"
+msgstr "ຄວາມກວ້າງ:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:215
+msgid "chars"
+msgstr "ຕົວອັກສອນ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:244
+msgid "Padding:"
+msgstr "ໄລຍະຫ່າງຂອບ:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:274
+msgid "pixels"
+msgstr "ພິກເຊວ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:295
+msgid "Show the full title name"
+msgstr "ສະແດງຊື່ຫົວຂໍ້ແບບເຕັມ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:309
+msgid "Display the title in two lines"
+msgstr "ສະແດງຫົວຂໍ້ເປັນສອງແຖວ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:323
+msgid "Sync the font with the window manager."
+msgstr "ຊິ້ງຟອນກັບຕົວຈັດການໜ້າຕ່າງ."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:347
+msgid "Title font:"
+msgstr "ຟອນຫົວຂໍ້:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:375
+msgid "Subtitle font:"
+msgstr "ຟອນຫົວຂໍ້ຍ່ອຍ:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:403
+msgid "Alignment:"
+msgstr "ການຈັດວາງ:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "ສ່ວນຫົວໜ້າຕ່າງ - ຫົວຂໍ້"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "ວາງຫົວຂໍ້ໜ້າຕ່າງທີ່ຂະຫຍາຍໃຫຍ່ສຸດໄວ້ໃນພາເນລ."
