@@ -123,14 +123,9 @@ window_icon_new (void)
 
 
 static void
-wckmenu_scale_factor (XfcePanelPlugin *plugin)
+wckmenu_scale_factor (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 {
-    gint scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (plugin));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    /* TODO switch to wnck_handle_set_default_icon_size() and wnck_handle_set_default_mini_icon_size() */
-    wnck_set_default_icon_size (WNCK_DEFAULT_ICON_SIZE * scale_factor);
-    wnck_set_default_mini_icon_size (WNCK_DEFAULT_MINI_ICON_SIZE * scale_factor);
-G_GNUC_END_IGNORE_DEPRECATIONS
+    reload_wnck_icon(wmp);
 }
 
 
@@ -184,8 +179,7 @@ wckmenu_new (XfcePanelPlugin *plugin)
     gtk_widget_show(wmp->box);
 
     /* adapt wnck default icon size when UI scale changes */
-    wckmenu_scale_factor (plugin);
-    g_signal_connect (plugin, "notify::scale-factor", G_CALLBACK (wckmenu_scale_factor), NULL);
+    g_signal_connect (plugin, "notify::scale-factor", G_CALLBACK (wckmenu_scale_factor), wmp);
 
     return wmp;
 }
@@ -260,6 +254,9 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
+    /* set client type */
+    xfw_set_client_type(XFW_CLIENT_TYPE_PAGER);
+
     /* create the plugin */
     wmp = wckmenu_new(plugin);
 
@@ -306,4 +303,4 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER_WITH_CHECK(wckmenu_construct, wck_check_x11_windowing);
+XFCE_PANEL_PLUGIN_REGISTER (wckmenu_construct);
