@@ -57,7 +57,6 @@ GtkWidget *show_refresh_item (XfcePanelPlugin *plugin);
 GtkWidget *wck_dialog_get_widget (GtkBuilder *builder, const gchar *name);
 void wck_configure_dialog (XfcePanelPlugin *plugin, const gchar *icon_name, GtkWidget *ca, GCallback response_cb, gpointer data);
 void wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint response, WckSettingsCb save_settings, gpointer data);
-gboolean wck_check_x11_windowing (GdkScreen *screen);
 
 G_END_DECLS
 

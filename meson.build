@@ -20,16 +20,17 @@ python = import('python')
 dependency_versions = {
   'glib': '>= 2.64.0',
   'gtk': '>= 3.22.0',
-  'libwnck': '>= 3.22',
+  'libxfce4windowing': '>= 4.20.0',
   'xfce4': '>= 4.16.0',
 }
 
 glib = dependency('glib-2.0', version: dependency_versions['glib'])
 gtk = dependency('gtk+-3.0', version: dependency_versions['gtk'])
-libwnck = dependency('libwnck-3.0', version: dependency_versions['libwnck'])
 libxfce4panel = dependency('libxfce4panel-2.0', version: dependency_versions['xfce4'])
 libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['xfce4'])
+libxfce4windowing = dependency('libxfce4windowing-0', version: dependency_versions['libxfce4windowing'])
+libxfce4windowingui = dependency('libxfce4windowingui-0', version: dependency_versions['libxfce4windowing'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfce4'])
 
 python3 = python.find_installation('python3')
