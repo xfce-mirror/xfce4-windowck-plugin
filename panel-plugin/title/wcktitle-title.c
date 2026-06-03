@@ -48,10 +48,11 @@ static gboolean is_window_visible_on_active_workspace(XfwScreen *screen, XfwWind
     }
 
     workspace = xfw_window_get_workspace(window);
-    group = xfw_workspace_get_workspace_group(workspace);
+    if (workspace) {
+        group = xfw_workspace_get_workspace_group(workspace);
 
-    if (xfw_workspace_group_get_active_workspace(group) != workspace) {
-        return FALSE;
+        if (xfw_workspace_group_get_active_workspace(group) != workspace)
+            return FALSE;
     }
 
     windows = xfw_screen_get_windows_stacked(screen);
@@ -271,20 +272,6 @@ void set_title_alignment (WckTitlePlugin *wtp)
     gtk_label_set_yalign (wtp->title, 0.5);
 }
 
-static void window_try_activate(XfwWindow *window, guint64 timestamp)
-{
-    GList *seats;
-    seats = xfw_screen_get_seats(xfw_screen_get_default());
-
-    while (seats && seats->data)
-    {
-        if(xfw_window_activate (window, seats->data, timestamp, NULL))
-            break;
-
-        seats = seats->next;
-    }
-}
-
 gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlugin *wtp)
 {
 
@@ -301,7 +288,7 @@ gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlug
         }
         else /* left-click */
         {
-            window_try_activate (wtp->win->controlwindow, GDK_CURRENT_TIME);
+            xfw_window_activate (wtp->win->controlwindow, NULL, GDK_CURRENT_TIME, NULL);
         }
         return TRUE;
     }
@@ -309,7 +296,7 @@ gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlug
     if (event->button == 3)
     {
         /* right-click */
-        window_try_activate (wtp->win->controlwindow, GDK_CURRENT_TIME);
+        xfw_window_activate (wtp->win->controlwindow, NULL, GDK_CURRENT_TIME, NULL);
 
         /* let the panel show the menu */
         return TRUE;
