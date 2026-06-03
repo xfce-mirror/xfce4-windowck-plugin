@@ -24,7 +24,7 @@
 /* Prototypes */
 static XfwWindow *get_root_window(XfwScreen *);
 static XfwWindow *get_upper_maximized(WckUtils *);
-static XfwMonitor *get_plugin_monitor(XfcePanelPlugin *);
+static GdkMonitor *get_plugin_monitor(WckUtils *);
 static XfwWorkspaceGroup *get_workspace_group(XfwScreen *, XfwMonitor *, gboolean);
 static void track_controlled_window (WckUtils *);
 static void active_workspace_changed(XfwWorkspaceGroup *, XfwWorkspace *, WckUtils *);
@@ -94,22 +94,14 @@ static void track_changed_max_state (XfwWindow *window,
     }
 }
 
-static XfwMonitor *get_plugin_monitor(XfcePanelPlugin *plugin)
+static GdkMonitor *get_plugin_monitor(WckUtils *win)
 {
-    GdkMonitor *mon;
+    XfcePanelPlugin *plugin = win->get_plugin(win->data);
 
     if (plugin == NULL) return NULL;
-    mon = gdk_display_get_monitor_at_window(gdk_display_get_default(),
-                    gtk_widget_get_window(GTK_WIDGET(plugin)));
-    if (mon == NULL) return NULL;
 
-    GList* monitors = xfw_screen_get_monitors (xfw_screen_get_default());
-    while (monitors && monitors->data)
-    {
-        if (xfw_monitor_get_gdk_monitor(monitors->data) == mon) return monitors->data;
-        monitors = monitors->next;
-    }
-    return NULL;
+    return gdk_display_get_monitor_at_window(gdk_display_get_default(),
+                    gtk_widget_get_window(GTK_WIDGET(plugin)));
 }
 
 /* Triggers when umaxedwindow's state changes */
@@ -160,7 +152,7 @@ static XfwWindow *get_upper_maximized (WckUtils *win)
 
     GList *windows = xfw_screen_get_windows_stacked(win->activescreen);
 
-    while (windows && windows->data)
+    while (windows)
     {
 
         if ((!win->activeworkspace
@@ -335,7 +327,7 @@ void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_di
     win->data = data;
 
     win->activescreen = xfw_screen_get_default ();
-    win->monitor = get_plugin_monitor(win->get_plugin(win->data));
+    win->monitor = xfw_screen_get_monitor_from_gdk_monitor(win->activescreen, get_plugin_monitor(win));
     win->workspaces = get_workspace_group(win->activescreen, win->monitor, only_current_display);
     win->activeworkspace = xfw_workspace_group_get_active_workspace(win->workspaces);
     win->activewindow = xfw_screen_get_active_window(win->activescreen);
@@ -388,4 +380,6 @@ void disconnect_wnck (WckUtils *win)
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->soh);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->svh);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->swh);
+
+    g_clear_object(&win->activescreen);
 }

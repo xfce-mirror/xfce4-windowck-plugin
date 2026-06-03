@@ -20,7 +20,7 @@ python = import('python')
 dependency_versions = {
   'glib': '>= 2.64.0',
   'gtk': '>= 3.22.0',
-  'libxfce4windowing': '>= 4.20.0',
+  'libxfce4windowing': '>= 4.20.6',
   'xfce4': '>= 4.16.0',
 }
 
