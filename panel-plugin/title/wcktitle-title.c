@@ -276,9 +276,9 @@ static void window_try_activate(XfwWindow *window, guint64 timestamp)
     GList *seats;
     seats = xfw_screen_get_seats(xfw_screen_get_default());
 
-    while (seats && seats->data)
+    while (seats)
     {
-        if(xfw_window_activate (window, seats->data, timestamp, NULL))
+        if (xfw_window_activate (window, seats->data, timestamp, NULL))
             break;
 
         seats = seats->next;
