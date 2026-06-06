@@ -39,7 +39,7 @@ msgstr "_Zavřít"
 #: common/wck-plugin.c:257
 #, c-format
 msgid "Unable to open the following url: %s"
-msgstr "Nelze otevřít následující url: %s"
+msgstr "Nelze otevřít následující adresu URL: %s"
 
 #: common/wck-plugin.c:284
 msgid "Unsupported windowing environment"
@@ -61,7 +61,7 @@ msgstr "Dostupné styly"
 #: panel-plugin/menu/wckmenu-dialogs.glade:32
 #: panel-plugin/title/wcktitle-dialogs.glade:66
 msgid "Control maximized windows."
-msgstr "Ovládání maximalizovaných okek"
+msgstr "Ovládání maximalizovaných oken"
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:46
 #: panel-plugin/menu/wckmenu-dialogs.glade:46
