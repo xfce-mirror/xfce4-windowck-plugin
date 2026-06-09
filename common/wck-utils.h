@@ -57,11 +57,14 @@ typedef struct {
     gpointer data;
 } WckUtils;
 
-void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data);
+WckUtils* construct_wnck(gpointer data);
+void destroy_wnck(WckUtils *win);
+
+void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display);
 void disconnect_wnck (WckUtils *win);
 void on_wck_state_changed (XfwWindow *controlwindow, gpointer data);
 void on_control_window_changed(XfwWindow *controlwindow, XfwWindow *previous, gpointer data);
-void reload_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data);
+void reload_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display);
 void toggle_maximize (XfwWindow *window);
 gboolean wck_signal_handler_disconnect (GObject *object, gulong handler);
 
