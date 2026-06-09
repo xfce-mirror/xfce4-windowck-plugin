@@ -189,7 +189,7 @@ wcktitle_free (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
     gtk_widget_destroy (wtp->box);
 
     /* free the plugin structure */
-    g_slice_free (WckUtils, wtp->win);
+    destroy_wnck(wtp->win);
     g_slice_free (WckTitlePreferences, wtp->prefs);
     g_slice_free (WckTitlePlugin, wtp);
 }
@@ -255,6 +255,9 @@ wcktitle_construct (XfcePanelPlugin *plugin)
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
+    /* set client type */
+    xfw_set_client_type(XFW_CLIENT_TYPE_PAGER);
+
     /* create the plugin */
     wtp = wcktitle_new (plugin);
 
@@ -303,10 +306,10 @@ wcktitle_construct (XfcePanelPlugin *plugin)
                       G_CALLBACK (on_refresh_item_activated), wtp);
 
     /* start tracking title text */
-    wtp->win = g_slice_new0 (WckUtils);
+    wtp->win = construct_wnck(wtp);
     wtp->win->get_plugin = wcktitle_get_plugin;
 
-    init_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
+    init_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display);
 
     /* start tracking title size */
     init_title (wtp);
@@ -314,4 +317,4 @@ wcktitle_construct (XfcePanelPlugin *plugin)
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER_WITH_CHECK (wcktitle_construct, wck_check_x11_windowing);
+XFCE_PANEL_PLUGIN_REGISTER (wcktitle_construct);
