@@ -202,7 +202,7 @@ wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
 
     /* free the plugin structure */
     g_slice_free(WindowIcon, wmp->icon);
-    g_slice_free(WckUtils, wmp->win);
+    destroy_wnck(wmp->win);
     g_slice_free(WckMenuPreferences, wmp->prefs);
     g_slice_free(WckMenuPlugin, wmp);
 }
@@ -293,9 +293,9 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
     g_signal_connect (G_OBJECT (refresh), "activate", G_CALLBACK (on_refresh_item_activated), wmp);
 
     /* start tracking */
-    wmp->win = g_slice_new0 (WckUtils);
+    wmp->win = construct_wnck(wmp);
     wmp->win->get_plugin = wckmenu_get_plugin;
-    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display, wmp);
+    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display);
 
     /* start tracking icon color */
     init_icon_colors (wmp);

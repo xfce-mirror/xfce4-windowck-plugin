@@ -74,7 +74,7 @@ static void on_workspace_group_changed(XfwWorkspaceManager *mgr, WckUtils *win)
 {
     disconnect_wnck(win);
 
-    reload_wnck (win, win->only_maximized, win->only_current_display, win->data);
+    reload_wnck (win, win->only_maximized, win->only_current_display);
 }
 /* Trigger when a specific window's state changes */
 static void track_changed_max_state (XfwWindow *window,
@@ -292,7 +292,7 @@ static void active_window_changed (XfwScreen *screen,
 // We ONLY need this for Compiz (Marco doesn't use viewports)
 static void on_viewports_changed (XfwWorkspaceGroup *screen, WckUtils *win)
 {
-    reload_wnck (win, win->only_maximized, win->only_current_display, win->data);
+    reload_wnck (win, win->only_maximized, win->only_current_display);
 }
 
 
@@ -301,7 +301,7 @@ static void active_workspace_changed (XfwWorkspaceGroup *screen,
                                       XfwWorkspace *previous,
                                       WckUtils *win)
 {
-    reload_wnck (win, win->only_maximized, win->only_current_display, win->data);
+    reload_wnck (win, win->only_maximized, win->only_current_display);
 }
 
 
@@ -312,22 +312,22 @@ void toggle_maximize (XfwWindow *window)
 }
 
 
-void reload_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data)
+void reload_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display)
 {
     disconnect_wnck (win);
 
-    init_wnck (win, only_maximized, only_current_display, data);
+    init_wnck (win, only_maximized, only_current_display);
 }
 
 
-void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data)
+void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display)
 {
     XfwWorkspaceManager *mgr;
-    /* save data */
-    win->data = data;
+    GdkMonitor* monitor = NULL;
 
-    win->activescreen = xfw_screen_get_default ();
-    win->monitor = xfw_screen_get_monitor_from_gdk_monitor(win->activescreen, get_plugin_monitor(win));
+    monitor = get_plugin_monitor(win);
+    if (monitor)
+        win->monitor = xfw_screen_get_monitor_from_gdk_monitor(win->activescreen, monitor);
     win->workspaces = get_workspace_group(win->activescreen, win->monitor, only_current_display);
     win->activeworkspace = xfw_workspace_group_get_active_workspace(win->workspaces);
     win->activewindow = xfw_screen_get_active_window(win->activescreen);
@@ -380,6 +380,22 @@ void disconnect_wnck (WckUtils *win)
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->soh);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->svh);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->swh);
-
-    g_clear_object(&win->activescreen);
 }
+
+
+WckUtils* construct_wnck(gpointer data)
+{
+    WckUtils *win = g_slice_new0 (WckUtils);
+    win->activescreen = xfw_screen_get_default ();
+    win->data = data;
+    return win;
+}
+
+
+void destroy_wnck(WckUtils *win)
+{
+    g_clear_object(&win->activescreen);
+    g_slice_free (WckUtils, win);
+}
+
+// vim: ts=4:et:
