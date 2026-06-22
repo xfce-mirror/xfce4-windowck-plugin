@@ -25,16 +25,17 @@
 static XfwWindow *get_root_window(XfwScreen *);
 static XfwWindow *get_upper_maximized(WckUtils *);
 static GdkMonitor *get_plugin_monitor(WckUtils *);
-static XfwWorkspaceGroup *get_workspace_group(XfwScreen *, XfwMonitor *, gboolean);
+static XfwWorkspaceGroup *get_workspace_group(XfwWorkspaceManager *, XfwMonitor *, gboolean);
 static void track_controlled_window (WckUtils *);
 static void active_workspace_changed(XfwWorkspaceGroup *, XfwWorkspace *, WckUtils *);
 static void active_window_changed(XfwScreen *, XfwWindow *, WckUtils *);
 static void track_changed_max_state(XfwWindow *, XfwWindowState, XfwWindowState, WckUtils *);
 static void on_umaxed_window_state_changed(XfwWindow *, XfwWindowState, XfwWindowState, WckUtils *);
-static void on_workspace_group_changed(XfwWorkspaceManager *, WckUtils *);
 static void on_viewports_changed(XfwWorkspaceGroup *, WckUtils *);
 static void on_window_closed(XfwScreen *, XfwWindow *, WckUtils *);
 static void on_window_opened(XfwScreen *, XfwWindow *, WckUtils *);
+static void on_workspace_group_created(XfwWorkspaceManager *, XfwWorkspaceGroup *group, WckUtils *);
+static void on_workspace_group_destroyed(XfwWorkspaceManager *, XfwWorkspaceGroup *group, WckUtils *);
 
 
 gboolean wck_signal_handler_disconnect (GObject *object, gulong handler)
@@ -70,12 +71,44 @@ static void umax_window_workspace_changed (XfwWindow *window,
 }
 
 /* Trigger when Workspace Groups are Created/Destroyed */
-static void on_workspace_group_changed(XfwWorkspaceManager *mgr, WckUtils *win)
+static void on_workspace_group_created(XfwWorkspaceManager *mgr, XfwWorkspaceGroup *group, WckUtils *win)
 {
-    disconnect_wnck(win);
+    if (win->workspaces == NULL)
+    {
+        win->workspaces = get_workspace_group(mgr, win->monitor, win->only_current_display);
+        win->activeworkspace = xfw_workspace_group_get_active_workspace(win->workspaces);
 
-    reload_wnck (win, win->only_maximized, win->only_current_display);
+        g_signal_connect (G_OBJECT (win->workspaces), "active-workspace-changed",
+                        G_CALLBACK (active_workspace_changed), win);
+        g_signal_connect (G_OBJECT (win->workspaces), "viewports-changed",
+                        G_CALLBACK (on_viewports_changed), win);
+    }
+
 }
+
+static void on_workspace_group_destroyed(XfwWorkspaceManager *mgr, XfwWorkspaceGroup *group, WckUtils *win)
+{
+    if (group == win->workspaces)
+    {
+        XfwWorkspaceGroup *current = get_workspace_group(mgr, win->monitor, win->only_current_display);
+        if (current != NULL)
+        {
+            win->workspaces = current;
+            win->activeworkspace = xfw_workspace_group_get_active_workspace(win->workspaces);
+
+            g_signal_connect (G_OBJECT (win->workspaces), "active-workspace-changed",
+                            G_CALLBACK (active_workspace_changed), win);
+            g_signal_connect (G_OBJECT (win->workspaces), "viewports-changed",
+                            G_CALLBACK (on_viewports_changed), win);
+        }
+        else
+        {
+            win->workspaces = NULL;
+        }
+    }
+}
+
+
 /* Trigger when a specific window's state changes */
 static void track_changed_max_state (XfwWindow *window,
                                          XfwWindowState changed_mask,
@@ -129,10 +162,8 @@ static gboolean window_is_in_monitor(XfwWindow* win, XfwMonitor *m) {
     return g_list_find (monitors, m) != NULL;
 }
 
-static XfwWorkspaceGroup *get_workspace_group(XfwScreen *screen, XfwMonitor *monitor, gboolean only_current_display)
+static XfwWorkspaceGroup *get_workspace_group(XfwWorkspaceManager* mgr, XfwMonitor *monitor, gboolean only_current_display)
 {
-    XfwWorkspaceManager* mgr = xfw_screen_get_workspace_manager(screen);
-
     GList *groups = xfw_workspace_manager_list_workspace_groups(mgr);
     while(groups) {
         GList *monitors = xfw_workspace_group_get_monitors(groups->data);
@@ -328,19 +359,20 @@ void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_di
     monitor = get_plugin_monitor(win);
     if (monitor)
         win->monitor = xfw_screen_get_monitor_from_gdk_monitor(win->activescreen, monitor);
-    win->workspaces = get_workspace_group(win->activescreen, win->monitor, only_current_display);
-    win->activeworkspace = xfw_workspace_group_get_active_workspace(win->workspaces);
     win->activewindow = xfw_screen_get_active_window(win->activescreen);
     win->umaxwindow = NULL;
     win->controlwindow = NULL;
+    win->workspaces = NULL;
+    win->activeworkspace = NULL;
     win->only_maximized = only_maximized;
     win->only_current_display = only_current_display;
 
     mgr = xfw_screen_get_workspace_manager (win->activescreen);
     /* Global window tracking */
     win->sah = g_signal_connect(win->activescreen, "active-window-changed", G_CALLBACK (active_window_changed), win);
-    win->scg = g_signal_connect(mgr, "workspace-group-created", G_CALLBACK(on_workspace_group_changed), win);
-    win->sdg = g_signal_connect(mgr, "workspace-group-destroyed", G_CALLBACK(on_workspace_group_changed), win);
+    win->scg = g_signal_connect(mgr, "workspace-group-created", G_CALLBACK(on_workspace_group_created), win);
+    win->sdg = g_signal_connect(mgr, "workspace-group-destroyed", G_CALLBACK(on_workspace_group_destroyed), win);
+    on_workspace_group_created(mgr, NULL, win);
 
     if (win->only_maximized)
     {
@@ -385,6 +417,7 @@ void disconnect_wnck (WckUtils *win)
 
 WckUtils* construct_wnck(gpointer data)
 {
+    xfw_set_client_type(XFW_CLIENT_TYPE_PAGER);
     WckUtils *win = g_slice_new0 (WckUtils);
     win->activescreen = xfw_screen_get_default ();
     win->data = data;
