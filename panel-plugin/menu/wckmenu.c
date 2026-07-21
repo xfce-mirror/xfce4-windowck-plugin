@@ -91,11 +91,7 @@ wckmenu_read (XfcePanelPlugin *plugin)
 
 void reset_symbol (WckMenuPlugin *wmp)
 {
-    if (wmp->icon->symbol)
-    {
-        gtk_widget_destroy (wmp->icon->symbol);
-        wmp->icon->symbol = NULL;
-    }
+    g_clear_pointer (&wmp->icon->symbol, gtk_widget_destroy);
 
     if (wmp->prefs->show_app_icon)
         wmp->icon->symbol = gtk_image_new ();
