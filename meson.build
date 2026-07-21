@@ -18,10 +18,10 @@ i18n = import('i18n')
 python = import('python')
 
 dependency_versions = {
-  'glib': '>= 2.64.0',
-  'gtk': '>= 3.22.0',
+  'glib': '>= 2.66.0',
+  'gtk': '>= 3.24.0',
   'libxfce4windowing': '>= 4.20.6',
-  'xfce4': '>= 4.16.0',
+  'xfce4': '>= 4.18.0',
 }
 
 glib = dependency('glib-2.0', version: dependency_versions['glib'])
