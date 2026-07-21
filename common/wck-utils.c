@@ -38,6 +38,21 @@ static void on_workspace_group_created(XfwWorkspaceManager *, XfwWorkspaceGroup 
 static void on_workspace_group_destroyed(XfwWorkspaceManager *, XfwWorkspaceGroup *group, WckUtils *);
 
 
+
+static gboolean wck_xfw_window_is_in_viewport (XfwWindow *window, XfwWorkspace *workspace)
+{
+    if (xfw_windowing_get () == XFW_WINDOWING_WAYLAND)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return xfw_window_is_in_viewport (window, workspace);
+    }
+}
+
+
+
 gboolean wck_signal_handler_disconnect (GObject *object, gulong handler)
 {
     if (object && handler > 0)
@@ -169,7 +184,7 @@ static XfwWindow *get_upper_maximized (WckUtils *win)
     {
 
         if ((!win->activeworkspace
-                || xfw_window_is_in_viewport(windows->data, win->activeworkspace))
+                || wck_xfw_window_is_in_viewport(windows->data, win->activeworkspace))
             && (!win->only_current_display
                 || window_is_in_monitor(windows->data, win->monitor))
             && xfw_window_is_maximized(windows->data)
@@ -200,7 +215,7 @@ static void track_controlled_window (WckUtils *win)
     }
     else if (win->activewindow
             && (!win->activeworkspace
-                || xfw_window_is_in_viewport(win->activewindow, win->activeworkspace))
+                || wck_xfw_window_is_in_viewport(win->activewindow, win->activeworkspace))
             && !xfw_window_is_minimized(win->activewindow)
             && (window_is_desktop (win->activewindow)
                 || !xfw_window_is_pinned(win->activewindow))
