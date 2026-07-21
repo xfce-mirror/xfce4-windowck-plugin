@@ -290,7 +290,7 @@ on_x_chanel_property_changed (XfconfChannel *x_channel,
                               const GValue  *value,
                               WckButtonsPlugin *wbp)
 {
-    if (g_str_has_prefix (property_name, "/Net/") == TRUE)
+    if (g_str_has_prefix (property_name, "/Net/"))
     {
         const gchar *name = &property_name[5];
         switch (G_VALUE_TYPE(value))
@@ -315,7 +315,7 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel,
                                   const GValue  *value,
                                   WckButtonsPlugin *wbp)
 {
-    if (g_str_has_prefix (property_name, "/general/") == TRUE)
+    if (g_str_has_prefix (property_name, "/general/"))
     {
         const gchar *name = &property_name[9];
         switch (G_VALUE_TYPE(value))

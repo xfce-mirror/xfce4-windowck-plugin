@@ -355,7 +355,7 @@ apply_wm_settings (WckTitlePlugin *wtp)
 static void
 on_x_channel_property_changed (XfconfChannel *x_channel, const gchar *property_name, const GValue *value, WckTitlePlugin *wtp)
 {
-    if (g_str_has_prefix(property_name, "/Net/") == TRUE)
+    if (g_str_has_prefix(property_name, "/Net/"))
     {
         const gchar *name = &property_name[5];
         switch (G_VALUE_TYPE(value))
@@ -378,7 +378,7 @@ on_x_channel_property_changed (XfconfChannel *x_channel, const gchar *property_n
 static void
 on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *property_name, const GValue *value, WckTitlePlugin *wtp)
 {
-    if (g_str_has_prefix(property_name, "/general/") == TRUE)
+    if (g_str_has_prefix(property_name, "/general/"))
     {
         const gchar *name = &property_name[9];
         switch (G_VALUE_TYPE(value))

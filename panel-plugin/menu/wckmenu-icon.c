@@ -215,7 +215,7 @@ set_icon_colors (WckMenuPlugin *wmp)
 static void
 on_x_channel_property_changed (XfconfChannel *x_channel, const gchar *property_name, const GValue *value, WckMenuPlugin *wmp)
 {
-    if (g_str_has_prefix(property_name, "/Net/") == TRUE)
+    if (g_str_has_prefix(property_name, "/Net/"))
     {
         const gchar *name = &property_name[5];
         switch (G_VALUE_TYPE(value))

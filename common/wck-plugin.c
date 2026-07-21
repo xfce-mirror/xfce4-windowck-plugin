@@ -250,7 +250,7 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
         result = g_spawn_command_line_async ("exo-open --launch WebBrowser " PACKAGE_URL, NULL);
 #endif
 
-        if (G_UNLIKELY (result == FALSE))
+        if (G_UNLIKELY (!result))
             g_warning (_("Unable to open the following url: %s"), PACKAGE_URL);
     }
     else
