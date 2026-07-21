@@ -361,7 +361,7 @@ on_x_channel_property_changed (XfconfChannel *x_channel, const gchar *property_n
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "ThemeName"))
+                if (strcmp (name, "ThemeName") == 0)
                 {
                     set_title_colors (wtp);
                     on_name_changed (wtp->win->controlwindow, wtp);
@@ -384,11 +384,11 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *proper
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "title_font"))
+                if (strcmp (name, "title_font") == 0)
                 {
                     apply_wm_settings (wtp);
                 }
-                else if (!strcmp (name, "theme"))
+                else if (strcmp (name, "theme") == 0)
                 {
                     init_title (wtp);
                     reload_wnck_title (wtp);

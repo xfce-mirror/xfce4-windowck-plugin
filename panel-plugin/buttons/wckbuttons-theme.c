@@ -296,7 +296,7 @@ on_x_chanel_property_changed (XfconfChannel *x_channel,
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "ThemeName"))
+                if (strcmp (name, "ThemeName") == 0)
                 {
                     apply_wm_theme (wbp);
                 }
@@ -321,8 +321,8 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel,
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "theme")
-                    || !strcmp (name, "button_layout"))
+                if (strcmp (name, "theme") == 0
+                    || strcmp (name, "button_layout") == 0)
                 {
                     apply_wm_theme (wbp);
                 }

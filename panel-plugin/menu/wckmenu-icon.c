@@ -221,7 +221,7 @@ on_x_channel_property_changed (XfconfChannel *x_channel, const gchar *property_n
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "ThemeName"))
+                if (strcmp (name, "ThemeName") == 0)
                 {
                     set_icon_colors (wmp);
                 }
@@ -243,7 +243,7 @@ on_xfwm_channel_property_changed (XfconfChannel *wm_channel, const gchar *proper
         switch (G_VALUE_TYPE(value))
         {
             case G_TYPE_STRING:
-                if (!strcmp (name, "theme"))
+                if (strcmp (name, "theme") == 0)
                 {
                     init_icon_colors (wmp);
                     reload_wnck_icon (wmp);
