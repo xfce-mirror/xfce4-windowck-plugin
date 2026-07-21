@@ -187,8 +187,7 @@ wckbuttons_free (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
     gtk_widget_destroy (wbp->box);
 
     /* cleanup the settings */
-    if (G_LIKELY (wbp->prefs->button_layout != NULL))
-        g_free (wbp->prefs->button_layout);
+    g_free (wbp->prefs->button_layout);
 
     /* free the plugin structure */
     destroy_wnck(wbp->win);
