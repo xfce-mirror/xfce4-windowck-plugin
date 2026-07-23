@@ -2,6 +2,7 @@ names = [
   'wckbuttons-plugin',
   'wckmenu-plugin',
   'wcktitle-plugin',
+  'wckspacer-plugin',
 ]
 
 foreach name : names
