@@ -38,6 +38,8 @@ void reload_wnck_title (WckTitlePlugin *wtp)
 
 static gboolean is_window_visible_on_active_workspace(XfwScreen *screen, XfwWindow *window)
 {
+    static const XfwWindowState state_mask = XFW_WINDOW_STATE_MINIMIZED | XFW_WINDOW_STATE_MAXIMIZED;
+
     XfwWorkspace *workspace;
     XfwWorkspaceGroup *group;
     GList *windows;
@@ -61,10 +63,13 @@ static gboolean is_window_visible_on_active_workspace(XfwScreen *screen, XfwWind
     }
 
     bottom_window = g_list_first(windows);
+
     for (GList *top_window = g_list_last(windows);
          top_window->data != window && top_window != bottom_window;
          top_window = top_window->prev) {
-        if (xfw_window_is_maximized((XfwWindow *)top_window->data)) {
+            XfwWindowState state = xfw_window_get_state((XfwWindow *)top_window->data);
+
+        if ((state & state_mask) == XFW_WINDOW_STATE_MAXIMIZED) {
             return FALSE;
         }
     }
@@ -434,3 +439,5 @@ void init_title (WckTitlePlugin *wtp)
         g_signal_connect (wtp->x_channel, "property-changed",
                           G_CALLBACK (on_x_channel_property_changed), wtp);
 }
+
+/* vim: ts=4:et */
