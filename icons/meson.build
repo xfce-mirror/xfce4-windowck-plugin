@@ -1,6 +1,7 @@
 names = [
   'wckbuttons-plugin',
   'wckmenu-plugin',
+  'wckspacer-plugin',
   'wcktitle-plugin',
 ]
 
