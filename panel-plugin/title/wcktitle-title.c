@@ -61,7 +61,6 @@ static gboolean is_window_visible_on_active_workspace(XfwScreen *screen, XfwWind
     }
 
     bottom_window = g_list_first(windows);
-
     for (GList *top_window = g_list_last(windows);
          top_window->data != window && top_window != bottom_window;
          top_window = top_window->prev) {
