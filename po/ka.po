@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2026-04-14 12:59+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026\n"
+"Language-Team: Georgian (https://app.transifex.com/xfce/teams/16840/ka/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: common/wck-plugin.c:176
+msgid "_Refresh"
+msgstr "_განახლება"
+
+#: common/wck-plugin.c:213
+msgid "Help"
+msgstr "დახმარება"
+
+#: common/wck-plugin.c:214
+msgid "_Close"
+msgstr "და_ხურვა"
+
+#: common/wck-plugin.c:257
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "ვერ გაიხსნა შემდეგი url: %s"
+
+#: common/wck-plugin.c:284
+msgid "Unsupported windowing environment"
+msgstr "მხარდაუჭერელი ფანჯრების გარემო"
+
+#: common/wck-plugin.c:285
+msgid "_OK"
+msgstr "_დიახ"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:332
+msgid "Directory"
+msgstr "საქაღალდე"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:334
+msgid "Themes usable"
+msgstr "გამოყენებადი თემები"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
+msgid "Control maximized windows."
+msgstr "გაშლილი ფანჯრების მართვა."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
+msgid "Control active windows."
+msgstr "აქტიური ფანჯრების მართვა."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
+msgid "Show the buttons on desktop."
+msgstr "ღილაკების ჩვენება სამუშაო მაგიდაზე."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
+msgid "Clicking the close button on the desktop causes log out."
+msgstr ""
+"სამუშაო მაგიდაზე დახურვის ღილაკზე დაწკაპუნება სესიიდან გასვლას გამოიწვევს."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr "სხვა ეკრანებზე არსებული ფანჯრების იგნორი"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
+msgid "<b>Behaviour</b>"
+msgstr "<b>ქცევა</b>"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
+msgid "Get in sync with the window manager theme."
+msgstr "სინქრონიზაცია ფანჯრების მმართველის თემასთან."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
+msgid "Button layout:"
+msgstr "ღილაკების განლაგება:"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"დაალაგეთ ღილაკების id სასურველი მიმდევრობით.\n"
+"მაგ: [HMC]\n"
+"H=ჩაკეცვა, M=გაშლა/გაშლის გაუქმება, C=დახურვა"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
+msgid "<b>Appearance</b>"
+msgstr "გარეგნობა"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "ფანჯრის სათაური - ღილაკები"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "გაშლილი ფანჯრის ღილაკების მოთავსება პანელზე."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
+msgid "Show the plugin on desktop."
+msgstr "დამატების ჩვენება სამუშაო მაგიდაზე."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
+msgid "Show the window Icon."
+msgstr "ფანჯრის ხატულას ჩვენება."
+
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "ფანჯრის სათაური - მენიუ"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "გაშლილი ფანჯრის მენიუს მოთავსება პანელზე."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
+msgid "at most"
+msgstr "მაქსიმუმ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:15
+msgid "fixed to"
+msgstr "ფიქსირებულია მნიშვნელობაზე"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:18
+msgid "expand"
+msgstr "ამოკეცვა"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:29
+msgid "left"
+msgstr "მარცხნივ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:32
+msgid "center"
+msgstr "ცენტრი"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:35
+msgid "right"
+msgstr "მარჯვნივ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:164
+msgid "Width:"
+msgstr "სიგანე:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:215
+msgid "chars"
+msgstr "სიმბოლო"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:244
+msgid "Padding:"
+msgstr "შევსება:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:274
+msgid "pixels"
+msgstr "პიქსელი"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:295
+msgid "Show the full title name"
+msgstr "სრული სათაურის სახელის ჩვენება"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:309
+msgid "Display the title in two lines"
+msgstr "სათაურის ჩვენება ორ ხაზში"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:323
+msgid "Sync the font with the window manager."
+msgstr "ფონტის სინქრონიზაცია ფანჯრების მმართველის თემასთან."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:347
+msgid "Title font:"
+msgstr "სათაურის ფონტი:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:375
+msgid "Subtitle font:"
+msgstr "სუბტიტრების ფონტი:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:403
+msgid "Alignment:"
+msgstr "სწორება:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "ფანჯრის სათაური - სახელი"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "გაშლილი ფანჯრის სათაურის მოთავსება პანელზე."
