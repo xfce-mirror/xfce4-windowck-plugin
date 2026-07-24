@@ -64,7 +64,9 @@ static gboolean is_window_visible_on_active_workspace(XfwScreen *screen, XfwWind
     for (GList *top_window = g_list_last(windows);
          top_window->data != window && top_window != bottom_window;
          top_window = top_window->prev) {
-        if (xfw_window_is_maximized((XfwWindow *)top_window->data)) {
+            XfwWindow *top = top_window->data;
+
+        if (xfw_window_is_maximized(top) && !xfw_window_is_minimized(top)) {
             return FALSE;
         }
     }
