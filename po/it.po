@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-04-14 12:59+0200\n"
+"POT-Creation-Date: 2026-07-25 01:23+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.com>, 2026\n"
 "Language-Team: Italian (https://app.transifex.com/xfce/teams/16840/it/)\n"
@@ -25,36 +25,28 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: common/wck-plugin.c:176
+#: common/wck-plugin.c:173
 msgid "_Refresh"
 msgstr "_Ricarica"
 
-#: common/wck-plugin.c:213
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Aiuto"
 
-#: common/wck-plugin.c:214
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: common/wck-plugin.c:257
+#: common/wck-plugin.c:254
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Impossibile aprire l'url: %s"
 
-#: common/wck-plugin.c:284
-msgid "Unsupported windowing environment"
-msgstr "Ambiente di finestre non supportato"
-
-#: common/wck-plugin.c:285
-msgid "_OK"
-msgstr "_OK"
-
-#: panel-plugin/buttons/wckbuttons-dialogs.c:332
+#: panel-plugin/buttons/wckbuttons-dialogs.c:335
 msgid "Directory"
 msgstr "Cartella"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:334
+#: panel-plugin/buttons/wckbuttons-dialogs.c:337
 msgid "Themes usable"
 msgstr "Temi usabili"
 
