@@ -6,7 +6,7 @@
 # Translators:
 # Ardjuna <Asyura.x@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Triyan W. Nugroho <triyan.wn@gmail.com>, 2024
+# Triyan W. Nugroho <triyan.wn@gmail.com>, 2022
 # Arif Budiman <arifpedia@gmail.com>, 2026
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:09+0200\n"
+"POT-Creation-Date: 2026-07-25 01:23+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>, 2026\n"
 "Language-Team: Indonesian (https://app.transifex.com/xfce/teams/16840/id/)\n"
@@ -24,36 +24,28 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: common/wck-plugin.c:176
+#: common/wck-plugin.c:173
 msgid "_Refresh"
 msgstr "Sega_rkan"
 
-#: common/wck-plugin.c:213
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Bantuan"
 
-#: common/wck-plugin.c:214
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Tutup"
 
-#: common/wck-plugin.c:257
+#: common/wck-plugin.c:254
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Tak dapat membuka url berikut: %s"
 
-#: common/wck-plugin.c:284
-msgid "Unsupported windowing environment"
-msgstr "Lingkungan windowing tidak didukung"
-
-#: common/wck-plugin.c:285
-msgid "_OK"
-msgstr "_Oke"
-
-#: panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:335
 msgid "Directory"
 msgstr "Direktori"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:337
 msgid "Themes usable"
 msgstr "Tema yang dapat digunakan"
 
@@ -77,21 +69,27 @@ msgstr "Tampilkan tombol-tombol pada desktop."
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Mengklik tombol tutup di desktop menyebabkan log out."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr ""
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
 msgid "<b>Behaviour</b>"
 msgstr "<b>Perilaku</b>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
 msgid "Get in sync with the window manager theme."
 msgstr "Sinkronkan dengan tema manajer jendela."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
 msgid "Button layout:"
 msgstr "Tata letak tombol:"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -101,9 +99,9 @@ msgstr ""
 "Contoh: [HMC]\n"
 "H=Sembunyikan, M=Maksimalkan/Batalkan Maksimalkan, C=Tutup"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
 msgid "<b>Appearance</b>"
 msgstr "<b>Tampilan</b>"
 
@@ -120,7 +118,7 @@ msgstr "Letakkan tombol jendela yang dimaksimalkan pada panel."
 msgid "Show the plugin on desktop."
 msgstr "Tampilkan plugin di desktop."
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
 msgid "Show the window Icon."
 msgstr "Tampilkan ikon jendela."
 
@@ -156,43 +154,43 @@ msgstr "tengah"
 msgid "right"
 msgstr "kanan"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: panel-plugin/title/wcktitle-dialogs.glade:164
 msgid "Width:"
 msgstr "Lebar:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: panel-plugin/title/wcktitle-dialogs.glade:215
 msgid "chars"
 msgstr "karakter"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: panel-plugin/title/wcktitle-dialogs.glade:244
 msgid "Padding:"
 msgstr "Padding:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: panel-plugin/title/wcktitle-dialogs.glade:274
 msgid "pixels"
 msgstr "piksel"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Show the full title name"
 msgstr "Tampilkan nama judul lengkap"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:295
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Display the title in two lines"
 msgstr "Tampilkan judul dalam dua baris"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:309
+#: panel-plugin/title/wcktitle-dialogs.glade:323
 msgid "Sync the font with the window manager."
 msgstr "Sinkronkan font dengan manajer jendela."
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: panel-plugin/title/wcktitle-dialogs.glade:347
 msgid "Title font:"
 msgstr "Font judul:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: panel-plugin/title/wcktitle-dialogs.glade:375
 msgid "Subtitle font:"
 msgstr "Font subjudul:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: panel-plugin/title/wcktitle-dialogs.glade:403
 msgid "Alignment:"
 msgstr "Perataan:"
 
