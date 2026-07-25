@@ -7,7 +7,6 @@
 # AlexanderFilev, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Arkadiy Illarionov, 2022
-# vladiruzz, 2025
 # Andrei Stepanov, 2026
 # 
 #, fuzzy
@@ -15,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-04-14 12:59+0200\n"
+"POT-Creation-Date: 2026-07-25 01:23+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Andrei Stepanov, 2026\n"
 "Language-Team: Russian (https://app.transifex.com/xfce/teams/16840/ru/)\n"
@@ -25,36 +24,28 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: common/wck-plugin.c:176
+#: common/wck-plugin.c:173
 msgid "_Refresh"
 msgstr "О_бновить"
 
-#: common/wck-plugin.c:213
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Справка"
 
-#: common/wck-plugin.c:214
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: common/wck-plugin.c:257
+#: common/wck-plugin.c:254
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Невозможно открыть ссылку: %s"
 
-#: common/wck-plugin.c:284
-msgid "Unsupported windowing environment"
-msgstr "Неподдерживаемое оконное окружение"
-
-#: common/wck-plugin.c:285
-msgid "_OK"
-msgstr "_ОК"
-
-#: panel-plugin/buttons/wckbuttons-dialogs.c:332
+#: panel-plugin/buttons/wckbuttons-dialogs.c:335
 msgid "Directory"
 msgstr "Каталог"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:334
+#: panel-plugin/buttons/wckbuttons-dialogs.c:337
 msgid "Themes usable"
 msgstr "Доступные темы"
 
