@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:09+0200\n"
+"POT-Creation-Date: 2026-07-25 01:23+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2025\n"
 "Language-Team: Slovenian (https://app.transifex.com/xfce/teams/16840/sl/)\n"
@@ -24,36 +24,28 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: common/wck-plugin.c:176
+#: common/wck-plugin.c:173
 msgid "_Refresh"
 msgstr "Osve_ži"
 
-#: common/wck-plugin.c:213
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Pomoč"
 
-#: common/wck-plugin.c:214
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Zapri"
 
-#: common/wck-plugin.c:257
+#: common/wck-plugin.c:254
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Ni bilo mogoče odpreti URL naslova: %s"
 
-#: common/wck-plugin.c:284
-msgid "Unsupported windowing environment"
-msgstr ""
-
-#: common/wck-plugin.c:285
-msgid "_OK"
-msgstr "_V redu"
-
-#: panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:335
 msgid "Directory"
 msgstr "Mapa"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:337
 msgid "Themes usable"
 msgstr "Uporabne teme"
 
@@ -77,21 +69,27 @@ msgstr "Pokaži gumbe na namizju."
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Klik na gumb za zapiranje na namizju sproži odjavo."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr ""
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
 msgid "<b>Behaviour</b>"
 msgstr "<b>Vedenje</b>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
 msgid "Get in sync with the window manager theme."
 msgstr "Uskladitev s temo upravljanika oken."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
 msgid "Button layout:"
 msgstr "Postavitev gumbov:"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -101,9 +99,9 @@ msgstr ""
 "Primer: [HMC]\n"
 "H=Hide, M=Maximize/unMaximize, C=Close"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
 msgid "<b>Appearance</b>"
 msgstr "<b>Videz</b>"
 
@@ -120,7 +118,7 @@ msgstr "Postavi gumbe povečanega okna na pano."
 msgid "Show the plugin on desktop."
 msgstr "Pokaži vstavek na namizju."
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
 msgid "Show the window Icon."
 msgstr "Prikaži ikono okna."
 
@@ -156,43 +154,43 @@ msgstr "center"
 msgid "right"
 msgstr "desno"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: panel-plugin/title/wcktitle-dialogs.glade:164
 msgid "Width:"
 msgstr "Širina:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: panel-plugin/title/wcktitle-dialogs.glade:215
 msgid "chars"
 msgstr "znakov"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: panel-plugin/title/wcktitle-dialogs.glade:244
 msgid "Padding:"
 msgstr "Odmik:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: panel-plugin/title/wcktitle-dialogs.glade:274
 msgid "pixels"
 msgstr "pikslov"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Show the full title name"
 msgstr "Prikaži celoten naslov"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:295
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Display the title in two lines"
 msgstr "Naslov prikaži v dveh vrsticah"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:309
+#: panel-plugin/title/wcktitle-dialogs.glade:323
 msgid "Sync the font with the window manager."
 msgstr "Uskladi pisavo z upravljalnikom oken."
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: panel-plugin/title/wcktitle-dialogs.glade:347
 msgid "Title font:"
 msgstr "Pisava naslova:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: panel-plugin/title/wcktitle-dialogs.glade:375
 msgid "Subtitle font:"
 msgstr "Pisava podnaslova:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: panel-plugin/title/wcktitle-dialogs.glade:403
 msgid "Alignment:"
 msgstr "Poravnava:"
 
