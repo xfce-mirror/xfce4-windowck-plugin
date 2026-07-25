@@ -6,7 +6,7 @@
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
 # Asier Iturralde Sarasola <asier.iturralde@gmail.com>, 2022
-# beriain, 2025
+# beriain, 2022
 # Eder Etxebarria Rojo, 2025
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-07-18 11:09+0200\n"
+"POT-Creation-Date: 2026-07-25 01:23+0200\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Eder Etxebarria Rojo, 2025\n"
 "Language-Team: Basque (https://app.transifex.com/xfce/teams/16840/eu/)\n"
@@ -24,36 +24,28 @@ msgstr ""
 "Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: common/wck-plugin.c:176
+#: common/wck-plugin.c:173
 msgid "_Refresh"
 msgstr "_Freskatu"
 
-#: common/wck-plugin.c:213
+#: common/wck-plugin.c:210
 msgid "Help"
 msgstr "Laguntza"
 
-#: common/wck-plugin.c:214
+#: common/wck-plugin.c:211
 msgid "_Close"
 msgstr "_Itxi"
 
-#: common/wck-plugin.c:257
+#: common/wck-plugin.c:254
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Ezin da hurrengo urla ireki: %s"
 
-#: common/wck-plugin.c:284
-msgid "Unsupported windowing environment"
-msgstr "Leiho ingurune ez onartua"
-
-#: common/wck-plugin.c:285
-msgid "_OK"
-msgstr "_Ados"
-
-#: panel-plugin/buttons/wckbuttons-dialogs.c:318
+#: panel-plugin/buttons/wckbuttons-dialogs.c:335
 msgid "Directory"
 msgstr "Direktorioa"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.c:320
+#: panel-plugin/buttons/wckbuttons-dialogs.c:337
 msgid "Themes usable"
 msgstr "Itxura erabilgarriak"
 
@@ -77,21 +69,27 @@ msgstr "Botoiak mahaigainean erakutsi."
 msgid "Clicking the close button on the desktop causes log out."
 msgstr "Mahaigaineko ixteko botoian klik egiteak saioa amaitzen du."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
-#: panel-plugin/menu/wckmenu-dialogs.glade:79
-#: panel-plugin/title/wcktitle-dialogs.glade:113
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr ""
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
 msgid "<b>Behaviour</b>"
 msgstr "<b>Portaera</b>"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
 msgid "Get in sync with the window manager theme."
 msgstr "Sinkronizatu leiho-kudeatzailearen gaiarekin."
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
 msgid "Button layout:"
 msgstr "Botoien diseinua:"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
 msgid ""
 "Put the buttons id in the desired order.\n"
 "Example: [HMC]\n"
@@ -101,9 +99,9 @@ msgstr ""
 "Esaterako: [HMC]\n"
 "E=Ezkutatu, M=Maximizatu, I=Itxi"
 
-#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
-#: panel-plugin/menu/wckmenu-dialogs.glade:127
-#: panel-plugin/title/wcktitle-dialogs.glade:427
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
 msgid "<b>Appearance</b>"
 msgstr "<b>Itxura</b>"
 
@@ -120,7 +118,7 @@ msgstr "Jarri maximizatutako leiho-botoiak panelean."
 msgid "Show the plugin on desktop."
 msgstr "Erakutsi hedapena mahaigainean."
 
-#: panel-plugin/menu/wckmenu-dialogs.glade:108
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
 msgid "Show the window Icon."
 msgstr "Erakutsi leihoaren ikonoa."
 
@@ -156,43 +154,43 @@ msgstr "zentro"
 msgid "right"
 msgstr "eskuin"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:150
+#: panel-plugin/title/wcktitle-dialogs.glade:164
 msgid "Width:"
 msgstr "Zabalera"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:201
+#: panel-plugin/title/wcktitle-dialogs.glade:215
 msgid "chars"
 msgstr "karaktereak"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:230
+#: panel-plugin/title/wcktitle-dialogs.glade:244
 msgid "Padding:"
 msgstr "Betegarria:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:260
+#: panel-plugin/title/wcktitle-dialogs.glade:274
 msgid "pixels"
 msgstr "pixelak"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:281
+#: panel-plugin/title/wcktitle-dialogs.glade:295
 msgid "Show the full title name"
 msgstr "Izenburu izen osoa erakutsi"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:295
+#: panel-plugin/title/wcktitle-dialogs.glade:309
 msgid "Display the title in two lines"
 msgstr "Izenburua bi lerrotan erakutsi"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:309
+#: panel-plugin/title/wcktitle-dialogs.glade:323
 msgid "Sync the font with the window manager."
 msgstr "Sinkronizatu letra-tipoa leiho-kudeatzailearekin."
 
-#: panel-plugin/title/wcktitle-dialogs.glade:333
+#: panel-plugin/title/wcktitle-dialogs.glade:347
 msgid "Title font:"
 msgstr "Izenburuaren letra-mota:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:361
+#: panel-plugin/title/wcktitle-dialogs.glade:375
 msgid "Subtitle font:"
 msgstr "Azpitituluaren letra-mota:"
 
-#: panel-plugin/title/wcktitle-dialogs.glade:389
+#: panel-plugin/title/wcktitle-dialogs.glade:403
 msgid "Alignment:"
 msgstr "Lerrokatzea:"
 
