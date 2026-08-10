@@ -27,10 +27,31 @@
 #include "wcktitle.h"
 #include "wcktitle-title.h"
 
+static void
+reset_control_window (gpointer data, GObject* where_the_object_was)
+{
+    WckTitlePlugin *wtp = data;
+    wtp->controlwindow = NULL;
+}
+
+
+static void
+set_control_window (WckTitlePlugin *wtp, XfwWindow *window)
+{
+    if (wtp->controlwindow != NULL)
+        g_object_weak_unref (G_OBJECT (wtp->controlwindow), reset_control_window, wtp);
+
+    wtp->controlwindow = window;
+    if (wtp->controlwindow != NULL)
+        g_object_weak_ref (G_OBJECT (wtp->controlwindow), reset_control_window, wtp);
+}
+
+
 void reload_wnck_title (WckTitlePlugin *wtp)
 {
     /* disconnect controlled window name signal handler */
     wck_signal_handler_disconnect (G_OBJECT (wtp->win->controlwindow), wtp->cnh);
+    set_control_window (wtp, NULL);
 
     reload_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display);
 }
@@ -217,7 +238,7 @@ void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, g
 
     /* disconect previous window title signal */
     wck_signal_handler_disconnect (G_OBJECT(wtp->controlwindow), wtp->cnh);
-    wtp->controlwindow = NULL;
+    set_control_window (wtp, NULL);
 
     on_wck_state_changed (controlwindow, wtp);
 
@@ -236,7 +257,7 @@ void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, g
 
     if (controlwindow && !window_is_desktop (controlwindow))
     {
-        wtp->controlwindow = controlwindow;
+        set_control_window (wtp, controlwindow);
         wtp->cnh = g_signal_connect (G_OBJECT (controlwindow), "name-changed",
                                      G_CALLBACK (on_name_changed), wtp);
     }
