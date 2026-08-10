@@ -1,0 +1,10 @@
+[Xfce Panel]
+Type=X-XFCE-PanelPlugin
+Encoding=UTF-8
+Name=Window Header - Spacer
+Comment=Put maximized window title as spacer on the panel.
+Icon=wckspacer-plugin
+X-XFCE-Module=wckspacer
+X-XFCE-Internal=false
+X-XFCE-Unique=false
+X-XFCE-API=2.0
