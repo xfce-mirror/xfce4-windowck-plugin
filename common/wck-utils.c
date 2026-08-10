@@ -39,6 +39,26 @@ static void on_workspace_group_destroyed(XfwWorkspaceManager *, XfwWorkspaceGrou
 
 
 
+static void
+reset_control_window (gpointer data, GObject* where_the_object_was)
+{
+    WckUtils *win = data;
+    win->controlwindow = NULL;
+}
+
+
+static void
+set_control_window (WckUtils *win, XfwWindow *window)
+{
+    if (win->controlwindow != NULL)
+        g_object_weak_unref (G_OBJECT (win->controlwindow), reset_control_window, win);
+
+    win->controlwindow = window;
+    if (win->controlwindow != NULL)
+        g_object_weak_ref (G_OBJECT (win->controlwindow), reset_control_window, win);
+}
+
+
 static gboolean wck_xfw_window_is_in_viewport (XfwWindow *window, XfwWorkspace *workspace)
 {
     if (xfw_windowing_get () == XFW_WINDOWING_WAYLAND)
@@ -211,7 +231,7 @@ static void track_controlled_window (WckUtils *win)
     {
         previous_umax = win->umaxwindow;
         win->umaxwindow = get_upper_maximized(win);
-        win->controlwindow = win->umaxwindow;
+        set_control_window (win, win->umaxwindow);
     }
     else if (win->activewindow
             && (!win->activeworkspace
@@ -222,7 +242,7 @@ static void track_controlled_window (WckUtils *win)
             && (!win->only_current_display
                 || window_is_in_monitor(win->activewindow, win->monitor)))
     {
-            win->controlwindow = win->activewindow;
+            set_control_window (win, win->activewindow);
     }
 
     if (!win->umaxwindow || (win->umaxwindow != previous_umax))
@@ -259,7 +279,7 @@ static void track_controlled_window (WckUtils *win)
     }
 
     if (!win->controlwindow)
-        win->controlwindow = get_root_window(win->activescreen);
+        set_control_window (win, get_root_window(win->activescreen));
 
     if (win->controlwindow != previous_control)
         on_control_window_changed(win->controlwindow, previous_control, win->data);
@@ -399,6 +419,8 @@ void disconnect_wnck (WckUtils *win)
       g_signal_handlers_disconnect_by_data (win->activewindow, win);
     if (win->umaxwindow)
       g_signal_handlers_disconnect_by_data (win->umaxwindow, win);
+
+    set_control_window (win, NULL);
 
     mgr = xfw_screen_get_workspace_manager(win->activescreen);
     wck_signal_handler_disconnect (G_OBJECT(mgr), win->scg);
