@@ -419,7 +419,7 @@ on_close_button_release (GtkWidget        *event_box,
 {
     if (event->button != 1) return FALSE;
 
-    xfw_window_close(wbp->win->controlwindow, GDK_CURRENT_TIME, NULL);
+    xfw_window_close(wbp->win->controlwindow, event->time, NULL);
 
     return TRUE;
 }

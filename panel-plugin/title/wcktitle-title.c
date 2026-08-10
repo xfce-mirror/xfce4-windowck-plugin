@@ -290,7 +290,7 @@ gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlug
         }
         else /* left-click */
         {
-            xfw_window_activate (wtp->win->controlwindow, NULL, GDK_CURRENT_TIME, NULL);
+            xfw_window_activate (wtp->win->controlwindow, NULL, event->time, NULL);
         }
         return TRUE;
     }
@@ -298,7 +298,7 @@ gboolean on_title_pressed (GtkWidget *title, GdkEventButton *event, WckTitlePlug
     if (event->button == 3)
     {
         /* right-click */
-        xfw_window_activate (wtp->win->controlwindow, NULL, GDK_CURRENT_TIME, NULL);
+        xfw_window_activate (wtp->win->controlwindow, NULL, event->time, NULL);
 
         /* let the panel show the menu */
         return TRUE;
@@ -316,7 +316,7 @@ gboolean on_title_released (GtkWidget *title, GdkEventButton *event, WckTitlePlu
     if (event->button == 2)
     {
         /* middle-click */
-        xfw_window_close(wtp->win->controlwindow, GDK_CURRENT_TIME, NULL);
+        xfw_window_close(wtp->win->controlwindow, event->time, NULL);
         return TRUE;
     }
 
