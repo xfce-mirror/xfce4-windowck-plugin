@@ -190,6 +190,8 @@ wcktitle_free (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 
     /* free the plugin structure */
     destroy_wnck(wtp->win);
+    g_free (wtp->prefs->active_text_color);
+    g_free (wtp->prefs->inactive_text_color);
     g_slice_free (WckTitlePreferences, wtp->prefs);
     g_slice_free (WckTitlePlugin, wtp);
 }
