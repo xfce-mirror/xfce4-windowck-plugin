@@ -55,8 +55,7 @@ build_properties_area (WckSpacerPlugin *wsp)
 {
     GError *error = NULL;
 
-    if (wsp->prefs->builder)
-        g_clear_object (&wsp->prefs->builder);
+    g_clear_object (&wsp->prefs->builder);
 
     wsp->prefs->builder = gtk_builder_new();
 
