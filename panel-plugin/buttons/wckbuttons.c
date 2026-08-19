@@ -191,6 +191,7 @@ wckbuttons_free (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
 
     /* free the plugin structure */
     destroy_wnck(wbp->win);
+    g_slice_free (WckConf, wbp->prefs->conf);
     g_slice_free (WckButtonsPreferences, wbp->prefs);
     g_slice_free (WckButtonsPlugin, wbp);
 }

@@ -199,6 +199,7 @@ wckmenu_free (XfcePanelPlugin *plugin, WckMenuPlugin *wmp)
     /* free the plugin structure */
     g_slice_free(WindowIcon, wmp->icon);
     destroy_wnck(wmp->win);
+    g_slice_free(WckConf, wmp->prefs->conf);
     g_slice_free(WckMenuPreferences, wmp->prefs);
     g_slice_free(WckMenuPlugin, wmp);
 }

@@ -111,6 +111,7 @@ wckspacer_free (XfcePanelPlugin *plugin, WckSpacerPlugin *wsp)
 
     /* free the plugin structure */
     destroy_wnck(wsp->win);
+    g_slice_free(WckConf, wsp->prefs->conf);
     g_slice_free(WckSpacerPreferences, wsp->prefs);
     g_slice_free(WckSpacerPlugin, wsp);
 }
