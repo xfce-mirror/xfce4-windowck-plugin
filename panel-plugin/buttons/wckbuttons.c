@@ -188,6 +188,7 @@ wckbuttons_free (XfcePanelPlugin *plugin, WckButtonsPlugin *wbp)
 
     /* cleanup the settings */
     g_free (wbp->prefs->button_layout);
+    g_free (wbp->prefs->theme);
 
     /* free the plugin structure */
     destroy_wnck(wbp->win);
