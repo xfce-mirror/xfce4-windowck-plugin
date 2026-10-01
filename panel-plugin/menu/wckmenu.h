@@ -60,6 +60,7 @@ typedef struct {
     GtkWidget *ebox;
     GtkWidget *box;
     WindowIcon  *icon;              // Icon widget
+    GtkWidget *menu;                // WM Menu
 
     WckMenuPreferences     *prefs;
     WckUtils *win;

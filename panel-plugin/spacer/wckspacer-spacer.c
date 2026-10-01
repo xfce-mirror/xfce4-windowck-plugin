@@ -85,7 +85,7 @@ void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, g
 
     if(wsp->menu && GTK_IS_MENU(wsp->menu)) {
         gtk_menu_detach (GTK_MENU(wsp->menu));
-        wsp->menu = NULL;
+        g_clear_object(&wsp->menu);
     }
 
     on_name_changed(controlwindow, wsp);
