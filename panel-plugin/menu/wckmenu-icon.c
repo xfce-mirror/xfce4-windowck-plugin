@@ -50,6 +50,7 @@ set_control_window (WckMenuPlugin *wmp, XfwWindow *window)
 void reload_wnck_icon (WckMenuPlugin *wmp)
 {
     if (wmp->menu && GTK_IS_MENU(wmp->menu)) {
+        gtk_menu_popdown(GTK_MENU(wmp->menu));
         gtk_menu_detach (GTK_MENU(wmp->menu));
         wmp->menu = NULL;
     }
@@ -170,6 +171,7 @@ void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, g
 {
     WckMenuPlugin *wmp = data;
     if (wmp->menu && GTK_IS_MENU(wmp->menu)) {
+        gtk_menu_popdown(GTK_MENU(wmp->menu));
         gtk_menu_detach (GTK_MENU(wmp->menu));
         wmp->menu = NULL;
     }
