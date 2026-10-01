@@ -49,9 +49,15 @@ set_control_window (WckSpacerPlugin *wsp, XfwWindow *window)
 
 void reload_wnck_spacer (WckSpacerPlugin *wsp)
 {
+    if(wsp->menu && GTK_IS_MENU(wsp->menu)) {
+        gtk_menu_popdown(GTK_MENU(wsp->menu));
+        gtk_menu_detach (GTK_MENU(wsp->menu));
+        wsp->menu = NULL;
+    }
+
     /* disconect previous window title signal */
-    if(wsp->controlwindow) {
-        wck_signal_handler_disconnect (G_OBJECT (wsp->controlwindow), wsp->cnh);
+    if (wsp->controlwindow) {
+        wck_signal_handler_disconnect (G_OBJECT(wsp->controlwindow), wsp->cnh);
         set_control_window (wsp, NULL);
     }
 
