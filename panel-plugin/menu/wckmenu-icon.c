@@ -28,10 +28,37 @@
 #include "wckmenu.h"
 #include "wckmenu-icon.h"
 
+static void
+reset_control_window (gpointer data, GObject* where_the_object_was)
+{
+    WckMenuPlugin *wmp = data;
+    wmp->controlwindow = NULL;
+}
+
+
+static void
+set_control_window (WckMenuPlugin *wmp, XfwWindow *window)
+{
+    if (wmp->controlwindow != NULL)
+        g_object_weak_unref (G_OBJECT (wmp->controlwindow), reset_control_window, wmp);
+
+    wmp->controlwindow = window;
+    if (wmp->controlwindow != NULL)
+        g_object_weak_ref (G_OBJECT (wmp->controlwindow), reset_control_window, wmp);
+}
+
 void reload_wnck_icon (WckMenuPlugin *wmp)
 {
+    if (wmp->menu && GTK_IS_MENU(wmp->menu)) {
+        gtk_menu_detach (GTK_MENU(wmp->menu));
+        wmp->menu = NULL;
+    }
+
     /* disconnect controlled window icon signal handler */
-    wck_signal_handler_disconnect (G_OBJECT(wmp->win->controlwindow), wmp->cih);
+    if (wmp->controlwindow) {
+        wck_signal_handler_disconnect (G_OBJECT(wmp->controlwindow), wmp->cih);
+        set_control_window(wmp, NULL);
+    }
 
     reload_wnck (wmp->win, wmp->prefs->only_maximized, wmp->prefs->only_current_display);
 }
@@ -142,9 +169,17 @@ void on_wck_state_changed (XfwWindow *controlwindow, gpointer data)
 void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, gpointer data)
 {
     WckMenuPlugin *wmp = data;
+    if (wmp->menu && GTK_IS_MENU(wmp->menu)) {
+        gtk_menu_detach (GTK_MENU(wmp->menu));
+        wmp->menu = NULL;
+    }
+
+    if (wmp->controlwindow && wmp->prefs->show_app_icon) {
+        wck_signal_handler_disconnect (G_OBJECT(wmp->controlwindow), wmp->cih);
+        set_control_window (wmp, NULL);
+    }
 
     on_wck_state_changed (controlwindow, wmp);
-
     if (!controlwindow
         || (window_is_desktop (controlwindow)
             && !wmp->prefs->show_on_desktop))
@@ -164,6 +199,9 @@ void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, g
         {
             if (!gtk_widget_get_visible(GTK_WIDGET(wmp->icon->eventbox)))
                 gtk_widget_show_all (GTK_WIDGET(wmp->icon->eventbox));
+
+            wmp->menu = xfw_window_action_menu_new (controlwindow);
+            gtk_menu_attach_to_widget (GTK_MENU(wmp->menu), GTK_WIDGET(wmp->icon->eventbox), NULL);
         }
         else if (wmp->prefs->show_on_desktop && !wmp->prefs->show_app_icon)
         {
@@ -172,29 +210,24 @@ void on_control_window_changed (XfwWindow *controlwindow, XfwWindow *previous, g
         }
     }
 
-    if (wmp->prefs->show_app_icon)
-    {
-        wck_signal_handler_disconnect (G_OBJECT(previous), wmp->cih);
-
-        if (controlwindow)
-            wmp->cih = g_signal_connect(G_OBJECT(controlwindow), "icon-changed", G_CALLBACK(on_icon_changed), wmp);
+    if (controlwindow && !window_is_desktop (controlwindow)) {
+        set_control_window (wmp, controlwindow);
+        wmp->cih = g_signal_connect(G_OBJECT(controlwindow), "icon-changed",
+                                    G_CALLBACK(on_icon_changed), wmp);
     }
 }
 
 
 gboolean on_icon_released(GtkWidget *icon, GdkEventButton *event, WckMenuPlugin *wmp)
 {
-    GtkWidget *menu;
-
     if ((event->button != 1)
-        || window_is_desktop (wmp->win->controlwindow))
+        || window_is_desktop (wmp->controlwindow)
+        || ! wmp->menu
+        || ! GTK_IS_MENU(wmp->menu))
         return FALSE;
 
-    menu = xfw_window_action_menu_new (wmp->win->controlwindow);
 
-    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(wmp->icon->eventbox), NULL);
-    gtk_menu_popup_at_widget (GTK_MENU (menu), GTK_WIDGET(wmp->icon->eventbox),
-                              GDK_GRAVITY_STATIC, GDK_GRAVITY_STATIC, NULL);
+    gtk_menu_popup_at_pointer (GTK_MENU (wmp->menu), (GdkEvent *) event);
 
     return TRUE;
 }
