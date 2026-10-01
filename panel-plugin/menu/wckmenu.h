@@ -60,10 +60,12 @@ typedef struct {
     GtkWidget *ebox;
     GtkWidget *box;
     WindowIcon  *icon;              // Icon widget
+    GtkWidget *menu;                // WM Menu
 
     WckMenuPreferences     *prefs;
     WckUtils *win;
 
+    XfwWindow *controlwindow;
     gulong cih;                     // controlled window icon handler id
 
     XfconfChannel *wm_channel;      // window manager chanel
