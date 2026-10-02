@@ -163,9 +163,8 @@ wckbuttons_new (XfcePanelPlugin *plugin)
         wbp->button[i] = window_button_new (wbp);
     }
 
-    gtk_widget_show (wbp->ebox);
-    gtk_widget_show (wbp->box);
     gtk_container_add (GTK_CONTAINER (wbp->ebox), wbp->box);
+    gtk_widget_show_all (wbp->ebox);
 
     return wbp;
 }
