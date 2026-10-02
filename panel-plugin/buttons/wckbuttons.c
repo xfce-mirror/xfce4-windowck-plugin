@@ -460,7 +460,6 @@ on_close_button_hover_enter (GtkWidget        *widget,
 static void
 on_refresh_item_activated (GtkMenuItem *refresh, WckButtonsPlugin *wbp)
 {
-    wbp->prefs = wckbuttons_read (wbp->plugin);
     init_theme (wbp);
     reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display);
 }
