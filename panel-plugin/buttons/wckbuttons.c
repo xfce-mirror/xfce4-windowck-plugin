@@ -114,6 +114,11 @@ window_button_new (WckButtonsPlugin *wbp)
     gtk_event_box_set_visible_window (button->eventbox, FALSE);
     gtk_box_pack_start (GTK_BOX (wbp->box), GTK_WIDGET (button->eventbox), TRUE, TRUE, 0);
 
+    // hide the button by default
+    gtk_widget_set_no_show_all(GTK_WIDGET (button->eventbox), TRUE);
+    // always show the image
+    gtk_widget_show(GTK_WIDGET(button->image));
+
     /* Add hover events to eventboxes */
     gtk_widget_add_events (GTK_WIDGET (button->eventbox), GDK_ENTER_NOTIFY_MASK); //add the "enter" signal
     gtk_widget_add_events (GTK_WIDGET (button->eventbox), GDK_LEAVE_NOTIFY_MASK); //add the "leave" signal
