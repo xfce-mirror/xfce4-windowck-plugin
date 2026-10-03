@@ -174,7 +174,7 @@ void replace_buttons (const gchar *button_layout, WckButtonsPlugin *wbp)
         {
             gtk_box_reorder_child (GTK_BOX (wbp->box), GTK_WIDGET(wbp->button[button]->eventbox), j);
 
-            gtk_widget_show_all (GTK_WIDGET (wbp->button[button]->eventbox));
+            gtk_widget_show (GTK_WIDGET (wbp->button[button]->eventbox));
             j++;
         }
     }
