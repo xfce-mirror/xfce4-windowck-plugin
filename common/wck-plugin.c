@@ -153,7 +153,6 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
         NULL
     };
 
-    /* TODO: add translators. */
 #if LIBXFCE4PANEL_CHECK_VERSION(4, 21, 4)
     xfce_panel_gtk_show_about_dialog (
 #else
@@ -167,6 +166,7 @@ wck_about (XfcePanelPlugin *plugin, const gchar *icon_name)
                            "website", PACKAGE_URL,
                            "copyright", "Copyright \302\251 2003-" COPYRIGHT_YEAR " The Xfce development team",
                            "authors", authors,
+                           "translator-credits", _("translator-credits"),
                            NULL);
 }
 
