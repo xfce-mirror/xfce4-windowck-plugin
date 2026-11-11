@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-07-25 01:23+0200\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026\n"
 "Language-Team: Kazakh (https://app.transifex.com/xfce/teams/16840/kk/)\n"
@@ -22,19 +22,23 @@ msgstr ""
 "Language: kk\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: common/wck-plugin.c:173
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: common/wck-plugin.c:177
 msgid "_Refresh"
 msgstr "Жаңа_рту"
 
-#: common/wck-plugin.c:210
+#: common/wck-plugin.c:214
 msgid "Help"
 msgstr "Көмек"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:215
 msgid "_Close"
 msgstr "_Жабу"
 
-#: common/wck-plugin.c:254
+#: common/wck-plugin.c:258
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Келесі url-ды ашу мүмкін емес: %s"
