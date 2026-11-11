@@ -6,16 +6,16 @@
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
 # Chris Darnell <chris@cedeel.com>, 2022
-# scootergrisen, 2025
+# scootergrisen, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-07-25 01:23+0200\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: scootergrisen, 2025\n"
+"Last-Translator: scootergrisen, 2026\n"
 "Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,19 +23,23 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: common/wck-plugin.c:173
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr "Per Kongstad <p_kongstad@op.pl>"
+
+#: common/wck-plugin.c:177
 msgid "_Refresh"
 msgstr "_Opdater"
 
-#: common/wck-plugin.c:210
+#: common/wck-plugin.c:214
 msgid "Help"
 msgstr "Hjælp"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:215
 msgid "_Close"
 msgstr "_Luk"
 
-#: common/wck-plugin.c:254
+#: common/wck-plugin.c:258
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Kan ikke åbne den følgende url: %s"
