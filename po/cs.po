@@ -4,19 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Nick Schermer <nick@xfce.org>, 2022
 # fri, 2022
 # Xfce Bot <transifex@xfce.org>, 2025
 # Michal Várady <miko.vaji@gmail.com>, 2026
+# Nick Schermer <nick@xfce.org>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-07-25 01:23+0200\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2026\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/xfce/teams/16840/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,19 +24,23 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: common/wck-plugin.c:173
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr "Michal Várady <miko.vaji@gmail.com>"
+
+#: common/wck-plugin.c:177
 msgid "_Refresh"
 msgstr "_Obnovit"
 
-#: common/wck-plugin.c:210
+#: common/wck-plugin.c:214
 msgid "Help"
 msgstr "Nápověda"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:215
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: common/wck-plugin.c:254
+#: common/wck-plugin.c:258
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Nelze otevřít následující adresu URL: %s"
