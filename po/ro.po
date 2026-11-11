@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-07-25 01:23+0200\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2026\n"
 "Language-Team: Romanian (https://app.transifex.com/xfce/teams/16840/ro/)\n"
@@ -23,19 +23,24 @@ msgstr ""
 "Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: common/wck-plugin.c:173
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr ""
+"Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2024. 2025, 2026"
+
+#: common/wck-plugin.c:177
 msgid "_Refresh"
 msgstr "_Reîmprospătează"
 
-#: common/wck-plugin.c:210
+#: common/wck-plugin.c:214
 msgid "Help"
 msgstr "Ajutor"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:215
 msgid "_Close"
 msgstr "În_chide"
 
-#: common/wck-plugin.c:254
+#: common/wck-plugin.c:258
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Nu s-a putut deschide următoarea adresă URL: %s"
@@ -112,7 +117,7 @@ msgstr "Antetul ferestrei - Butoane"
 
 #: panel-plugin/buttons/wckbuttons.desktop.in:6
 msgid "Put the maximized window buttons on the panel."
-msgstr "Punei butoanele ferestrei maximizate pe panou."
+msgstr "Pune butoanele ferestrei maximizate pe panou."
 
 #: panel-plugin/menu/wckmenu-dialogs.glade:61
 #: panel-plugin/title/wcktitle-dialogs.glade:95
