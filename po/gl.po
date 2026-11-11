@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
-# Daniel Muñiz Fontoira <dani@damufo.eu>, 2025
+# Daniel Muñiz Fontoira <dani@damufo.eu>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-07-25 01:23+0200\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
-"Last-Translator: Daniel Muñiz Fontoira <dani@damufo.eu>, 2025\n"
+"Last-Translator: Daniel Muñiz Fontoira <dani@damufo.eu>, 2026\n"
 "Language-Team: Galician (https://app.transifex.com/xfce/teams/16840/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,19 +22,23 @@ msgstr ""
 "Language: gl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: common/wck-plugin.c:173
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr "Leandro Regueiro <leandro.regueiro@gmail.com>, 2008, 2009, 2010."
+
+#: common/wck-plugin.c:177
 msgid "_Refresh"
 msgstr "Actualiza_r"
 
-#: common/wck-plugin.c:210
+#: common/wck-plugin.c:214
 msgid "Help"
 msgstr "Axuda"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:215
 msgid "_Close"
 msgstr "_Pechar"
 
-#: common/wck-plugin.c:254
+#: common/wck-plugin.c:258
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Non se puido abrir o seguinte url: %s"
