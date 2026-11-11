@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-07-25 01:23+0200\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
 "PO-Revision-Date: 2022-04-20 11:58+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2026\n"
 "Language-Team: Korean (https://app.transifex.com/xfce/teams/16840/ko/)\n"
@@ -24,19 +24,25 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: common/wck-plugin.c:173
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr ""
+"Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"Junggyu Bag <bagjunggyu@gmail.com>"
+
+#: common/wck-plugin.c:177
 msgid "_Refresh"
 msgstr "새로 고침(_R)"
 
-#: common/wck-plugin.c:210
+#: common/wck-plugin.c:214
 msgid "Help"
 msgstr "도움말"
 
-#: common/wck-plugin.c:211
+#: common/wck-plugin.c:215
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: common/wck-plugin.c:254
+#: common/wck-plugin.c:258
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "다음 URL을 열 수 없습니다: %s"
