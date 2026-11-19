@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Nick Schermer <nick@xfce.org>, 2022
+# Rihards Priedītis <rprieditis@gmail.com>, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2026-11-11 01:01+0100\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: Rihards Priedītis <rprieditis@gmail.com>, 2026\n"
+"Language-Team: Latvian (https://app.transifex.com/xfce/teams/16840/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: common/wck-plugin.c:169
+msgid "translator-credits"
+msgstr "Rihards Priedītis <rprieditis@gmail.com>"
+
+#: common/wck-plugin.c:177
+msgid "_Refresh"
+msgstr "_Atsvaidzināt"
+
+#: common/wck-plugin.c:214
+msgid "Help"
+msgstr "Palīdzība"
+
+#: common/wck-plugin.c:215
+msgid "_Close"
+msgstr "_Aizvērt"
+
+#: common/wck-plugin.c:258
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "Neizdevās atvērt šo URL: %s"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:335
+msgid "Directory"
+msgstr "Mape"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:337
+msgid "Themes usable"
+msgstr "Izmantojamie motīvi"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
+msgid "Control maximized windows."
+msgstr "Vadīt maksimizētos logus."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
+msgid "Control active windows."
+msgstr "Vadīt aktīvos logus."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
+msgid "Show the buttons on desktop."
+msgstr "Rādīt pogas uz darbvirsmas."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
+msgid "Clicking the close button on the desktop causes log out."
+msgstr "Noklikšķinot uz darbvirsmas aizvēršanas pogas, notiek atteikšanās."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:76
+#: panel-plugin/menu/wckmenu-dialogs.glade:75
+#: panel-plugin/title/wcktitle-dialogs.glade:109
+msgid "Ignore Windows from other monitors"
+msgstr "Ignorēt citu monitoru logus"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:94
+#: panel-plugin/menu/wckmenu-dialogs.glade:93
+#: panel-plugin/title/wcktitle-dialogs.glade:127
+msgid "<b>Behaviour</b>"
+msgstr "<b>Uzvedība</b>"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:123
+msgid "Get in sync with the window manager theme."
+msgstr "Sinhronizēt ar logu pārvaldnieka motīvu."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:167
+msgid "Button layout:"
+msgstr "Pogu izkārtojums:"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:180
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"Ievietojiet pogu ID vēlamajā secībā.\n"
+"Piemērs: [HMC]\n"
+"H=paslēpt, M=maksimizēt/atjaunot, C=aizvērt"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:209
+#: panel-plugin/menu/wckmenu-dialogs.glade:141
+#: panel-plugin/title/wcktitle-dialogs.glade:441
+msgid "<b>Appearance</b>"
+msgstr "<b>Izskats</b>"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "Loga galvene — pogas"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "Novietot maksimizētā loga pogas panelī."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
+msgid "Show the plugin on desktop."
+msgstr "Rādīt spraudni uz darbvirsmas."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:122
+msgid "Show the window Icon."
+msgstr "Rādīt loga ikonu."
+
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "Loga galvene — izvēlne"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "Novietot maksimizētā loga izvēlni panelī."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
+msgid "at most"
+msgstr "ne vairāk kā"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:15
+msgid "fixed to"
+msgstr "fiksēts uz"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:18
+msgid "expand"
+msgstr "izplest"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:29
+msgid "left"
+msgstr "pa kreisi"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:32
+msgid "center"
+msgstr "centrā"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:35
+msgid "right"
+msgstr "pa labi"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:164
+msgid "Width:"
+msgstr "Platums:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:215
+msgid "chars"
+msgstr "rakstzīmes"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:244
+msgid "Padding:"
+msgstr "Iekšējā atkāpe:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:274
+msgid "pixels"
+msgstr "pikseļi"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:295
+msgid "Show the full title name"
+msgstr "Rādīt pilnu virsrakstu"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:309
+msgid "Display the title in two lines"
+msgstr "Rādīt virsrakstu divās rindās"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:323
+msgid "Sync the font with the window manager."
+msgstr "Sinhronizēt fontu ar logu pārvaldnieku."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:347
+msgid "Title font:"
+msgstr "Virsraksta fonts:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:375
+msgid "Subtitle font:"
+msgstr "Apakšvirsraksta fonts:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:403
+msgid "Alignment:"
+msgstr "Līdzinājums:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "Loga galvene — virsraksts"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "Novietot maksimizētā loga virsrakstu panelī."
