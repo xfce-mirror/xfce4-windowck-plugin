@@ -69,7 +69,7 @@ msgstr "Rādīt pogas uz darbvirsmas."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:65
 msgid "Clicking the close button on the desktop causes log out."
-msgstr "Noklikšķinot uz darbvirsmas aizvēršanas pogas, notiek atteikšanās."
+msgstr "Noklikšķinot uz darbvirsmas aizvēršanas pogas, notiek izrakstīšanās."
 
 #: panel-plugin/buttons/wckbuttons-dialogs.glade:76
 #: panel-plugin/menu/wckmenu-dialogs.glade:75
